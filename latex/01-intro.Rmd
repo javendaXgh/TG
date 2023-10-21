@@ -1,0 +1,13 @@
+---
+bibliography: references.bib
+---
+
+# Descripción del problemita {#problema}
+
+
+
+
+
+
+
+

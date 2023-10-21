@@ -1,0 +1,102 @@
+%\vspace{-2.0cm}
+\pagenumbering{roman}
+\begin{center}
+	UNIVERSIDAD CENTRAL DE VENEZUELA\\
+	FACULTAD DE CIENCIAS\\
+	POSTGRADO EN CIENCIAS DE LA COMPUTACI\'ON\\
+
+	\begin{figure}
+						\centering
+						  \includegraphics[height=.7\textwidth]{images/UCV.png}
+  \end{figure}
+  \vspace{1.5cm}
+  \large{\textbf{RECUPERACI\'ON, EXTRACCI\'ON Y CLASIFICACI\'ON DE \\ INFORMACI\'ON DE SABER UCV}}
+
+  \vspace{3cm}
+  Trabajo de grado de Maestría presentado ante la \\
+  ilustre Universidad Central de Venezuela por el\\
+  Econ. José Miguel Avendaño Infante para  optar
+  al título de \\Magister Scientiarum en Ciencias de la Computaci\'on\\
+  \vspace{0.5cm}
+  Tutor: Dr. Andres Sanoja\\
+  \vspace{1.5cm}
+  Caracas - Venezuela\\
+  Octubre 2023
+\end{center}
+
+
+\newpage
+\thispagestyle{empty}
+\large{\textbf{Resumen:}}
+
+Se presenta una propuesta de aplicación web distribuida para implementar un Sistema de Recuperación de Información (\emph{information retrieval}) mediante técnicas de Procesamiento de Lenguaje Natural (NLP), de indexación en base de datos y visualizaciones con gráficos y gráfos de coocurrencias de palabras para los trabajos especiales de pre y postgrado realizados por los estudiantes de la Universidad Central de Venezuela que se encuentran alojados en el repositorio www.saber.ucv.ve.
+
+Esta propuesta se basa principalmente en que mediante la búsqueda de palabras o frases se genere un (\emph{query}), y mediante la técnica conocida como "\emph{full text search}" se puedan extraer los trabajos en que se encuentran contenidas tales palabras y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información recuperada.
+
+La aplicación se diseña como un sistema distribuido en distintos contenedores soportando cada uno un proceso para el funcionamiento, teniendo entre los principales el de base de datos, el servidor de la aplicación y otro con los distintos procesamientos que son efectuados sobre los textos.
+
+\thispagestyle{empty}
+
+
+%\newpage
+
+
+\setlength{\abovedisplayskip}{-5pt}
+\setlength{\abovedisplayshortskip}{-5pt}
+\thispagestyle{empty}
+
+\newpage
+\begin{center}
+\large{\textbf{\emph{\Huge{Dedicatoria:}}}}
+\end{center}
+\thispagestyle{empty}
+\vspace*{5cm}
+\thispagestyle{empty}
+\begin{center} \Large \emph{A  mi hijo Cassiel y  } \end{center}
+\vspace*{1cm}
+\begin{center} \Large \emph{mi esposa Waleska.} \end{center}
+
+
+
+\newpage
+\begin{center}
+\large{\textbf{\emph{\Huge{Agradecimientos:}}}}
+\end{center}
+\thispagestyle{empty}
+\vspace*{2cm}
+\thispagestyle{empty}
+
+- A mi madre, obvio, sino no habría ni una sola palabra acá.\\\\
+- A mi padre Fernando por negarme el Atari e insistir en el Oddysey 2.\\\\
+- A mi tía Mercedes Infante.\\\\
+- A Cesar Alejandro García por todas las ayudas.\\\\
+- A mi hermano David por su soporte.\\\\
+-   Dr. Andres Sanoja primero por aceptar la tutoría y enseñarme qué es la investigación dentro de una comunidad científica.\\\\
+-   Dr. José Mirabal por siempre andar con alguna idea a desarrollar y el tiempo dedicado a escuchar las propuestas y complementar esta Investigación.\\\\
+-   Dra. Concettina Di Vasta por las imponentes sesiones de 2 horas 15 minutos llenas de coherencia y conocimiento.\\\\
+-   Dra. Haydemar Nuñez por la rigurosidad al impartir los conocimientos.\\\\
+-   Dra. Vanessa Leguizamo por tomarse el tiempo de revisar la solicitud de estudio de un oxidado economista y por ser mi Prof.ª.\\\\
+-   Dra. Nuri Hurtado Villasana por tomarse el tiempo de escucharme y brindarme sugerencias en la elaboración de este trabajo.\\\\
+-   A todo el personal del Postgrado: sus buenos días, por tener a mano la llave, por ayudar a mantener viva la Academia.\\\\
+-   Mauricio Sáez Toro del equipo Saber UCV por mantener activo el Sistema Saber UCV y tener el tiempo de haber colaborado con esta investigación.\\\\
+-   A toda la comunidad de creadores de software libre y open sourcem en especial a los \#useRs por motivarme a adentrarme al mundo de las ciencias de la computación.\\\\
+- A Alexandra Asanovna Elbakyan, sin ella serían mínimas las citas bibliográficas de esta Investigación.
+
+
+
+
+
+
+\newpage
+\thispagestyle{empty}
+\vspace*{5cm}
+\hspace*{2cm}
+\begin{quote}
+Every important aspect of programming arises somewhere in the context of sorting or searching.
+
+--- Donald Knuth, \textit{The Art of Computer Programming}, Volume 3
+\end{quote}
+\thispagestyle{empty}
+\maketitle
+
+

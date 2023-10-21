@@ -1,0 +1,58 @@
+---
+title: "RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV"
+author: "José Miguel Avendaño Infante"
+date: "`r Sys.Date()`"
+output: pdf_document
+keep_tex: yes
+cover-image: images/UCV.png
+always_allow_html: true
+biblio-style: apalike
+subtitle: Caso de Estudio Repositorio www.saber.ucv.ve
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: references.bib
+link-citations: yes
+github-repo: javendaXgh/TG
+latex_engine: xelatex
+lang: es-ES
+fontsize: 10
+lof: yes
+lot: yes
+geometry: left=2.54cm, right=2.54cm, top=2.54cm, bottom=2.54cm
+mainfont: Times New Roman
+classoption: openany
+description: Trabajo de Grado de Maestría
+---
+
+```{r, echo=FALSE, include=FALSE}
+library(janitor)
+library(stringr)
+library(dplyr)
+library(kableExtra)
+library(ggpubr)
+flextable::set_flextable_defaults(big.mark = '.',decimal.mark = ',')
+
+```
+
+`r if (knitr::is_html_output()) '
+
+# Resumen: {.unnumbered}
+
+Se presenta la propuesta de un sistema para hacer procesos de clasificación y de Recuperación de Información sobre los Resúmenes, tanto de las Tesis como de los Trabajos Especiales de Grado (TEG) que se encuentran alojados en el repositorio institucional Saber UCV (www.saber.ucv.ve).
+
+Se aplican técnicas de Procesamiento de Lenguaje Natural (NLP), de Minería de Texto y de indexación en base de datos sobre los textos.
+
+Esta propuesta se basa en que mediante la búsqueda de palabras o frases, aplicando filtros y determinando la granularidad, se genere un (*query*) con el que se puedan recuperar los trabajos en que se encuentran contenidas tales palabras y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información recuperada en tablas interactivas, visualizaciones con gráficos y grafos de coocurrencia de palabras.
+
+La aplicación se diseña como un sistema distribuido bajo la arquitectura cliente-servidor y se soporta en el uso de contenedores, donde en cada uno se ejecuta un proceso para el funcionamiento del sistema, siendo los principales el de la base de datos, el servidor de la aplicación y otro con los distintos procesamientos que son efectuados sobre los textos.
+
+También se propone una rutina que permite clasificar las Tesis y los TEG por el área académica donde cursó estudios el autor del correspondiente trabajo y así se solventa la carencia que actualmente presenta Saber UCV, donde no están disponibles estas clasificaciones. '`
+
+```{=tex}
+\clearpage
+\pagenumbering{arabic}
+```
+
+# Introducción: {#introduccion}
+
+

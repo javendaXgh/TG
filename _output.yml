@@ -1,0 +1,94 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Consulta Información</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+    download: ["pdf"]
+
+    lib_dir: "book_assets"
+    split_by: section
+    config:
+      toc:
+        collapse: subsection
+        scroll_highlight: true
+
+    edit : null
+
+    sharing:
+      facebook: false
+      github: false
+      twitter: false
+      linkedin: false
+      weibo: false
+      instapaper: false
+      vk: false
+      whatsapp: false
+      all: ['facebook', 'twitter', 'linkedin','whatsapp']
+
+
+bookdown::pdf_book:
+  includes:
+    before_body: latex/portada.tex
+    in_header: latex/preamble.tex
+
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+  fig_width: 7 #default
+  fig_height: 5
+  number_sections: true
+  self_contained: true
+  toc_depth: 4
+  toc: true
+  lot: true
+  lof: true
+
+
+bookdown::word_document2:
+  toc: yes
+  reference_docx: my-styles.docx
+
+officedown::rdocx_document:
+  tables:
+      style: Table
+      layout: autofit
+      width: 1.0
+      caption:
+        style: Table Caption
+        pre: 'Tabla '
+        sep: ': '
+      conditional:
+        first_row: true
+        first_column: false
+        last_row: false
+        last_column: false
+        no_hband: false
+        no_vband: true
+  plots:
+    style: Normal
+    align: center
+    caption:
+      style: Image Caption
+      pre: 'Figura '
+      sep: ': '
+  lists:
+    ol.style: null
+    ul.style: null
+  mapstyles:
+    Normal: ['First Paragraph', 'Author', 'Date']
+  page_size:
+    width: 8.3
+    height: 11.7
+    orient: "portrait"
+  page_margins:
+    bottom: 1
+    top: 1
+    right: 1.25
+    left: 1.25
+    header: 0.5
+    footer: 0.5
+    gutter: 0.5
+  reference_num: true
