@@ -10,3 +10,7 @@ propuesta_apendices
 /temp
 formato_soloHtml.R
 README.html
+_main.log
+/demo/
+draw.rds
+notas_latex.md
