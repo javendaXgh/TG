@@ -3,3 +3,33 @@ bibliography: references.bib
 ---
 
 # Desarrollo de la Solución: {#desarrollo}
+
+Este es el capítulo del desarrollo
+
+## Descripción general de la Solución: {#desarollodescripcion}
+
+## Arquitectura de la Solución: {#desarrolloarquitectura}
+
+## Análisis y diseño: {#desarrolloanalisis}
+
+## Ciclos de Desarrollo: {#desarrollociclos}
+
+### Obtención del Conjunto de Datos: {#desarrollociclos1}
+
+Recuperación
+
+### Extracción y Clasificación de Información del Conjunto de Datos: {#desarrollociclos2}
+
+Extracción y clasificación
+
+### Prototipo de buscador: {#desarrollociclos3}
+
+### Integración de componentes del software: {#desarrollociclos4}
+
+## Pruebas: {#pruebas}
+
+### Funcionales: {#pruebas1}
+
+### Rendimiento: {#pruebas2}
+
+### Relevancia: {#pruebas3}

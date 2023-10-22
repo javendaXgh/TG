@@ -136,13 +136,14 @@
 \makeatother
 \subtitle{Caso de Estudio Repositorio www.saber.ucv.ve}
 \author{José Miguel Avendaño Infante}
-\date{2023-10-20}
+\date{2023-10-22}
 
 \begin{document}
 \maketitle
 
 %\vspace{-2.0cm}
 \pagenumbering{roman}
+\thispagestyle{empty}
 \begin{center}
 	UNIVERSIDAD CENTRAL DE VENEZUELA\\
 	FACULTAD DE CIENCIAS\\
@@ -177,6 +178,21 @@ Se presenta una propuesta de aplicación web distribuida para implementar un Sis
 Esta propuesta se basa principalmente en que mediante la búsqueda de palabras o frases se genere un (\emph{query}), y mediante la técnica conocida como "\emph{full text search}" se puedan extraer los trabajos en que se encuentran contenidas tales palabras y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información recuperada.
 
 La aplicación se diseña como un sistema distribuido en distintos contenedores soportando cada uno un proceso para el funcionamiento, teniendo entre los principales el de base de datos, el servidor de la aplicación y otro con los distintos procesamientos que son efectuados sobre los textos.
+
+\textbf{Palabras Clave::} sistemas de recuperación de información, procesamiento del lenguaje natural, búsqueda de texto completo, mapas del conocimiento, sistemas distribuidos.
+
+\vspace*{2cm}
+
+\large{\textbf{Abstract:}}
+
+A proposal is presented for a distributed web application to implement an Information Retrieval System (\emph{information retrieval}) using Natural Language Processing (NLP) techniques, database indexing and visualizations with graphics and graphs of word cooccurrences for the special undergraduate and graduate works done by the students of the Universidad Central de Venezuela that are hosted in the repository www.saber.ucv.ve.
+
+This proposal is mainly based on the search for words or phrases to generate a (\emph{query}), and by means of the technique known as "\emph{full text search}" the works containing such words can be extracted and from there enrich the user's experience with the presentation of the retrieved information.
+
+The application is designed as a distributed system in different containers, each one supporting a process for the operation, having among the main ones the database, the application server and another one with the different processes that are carried out on the texts.
+
+\textbf{Keywords:} information retrieval, natural language processing, full text search, knowledge maps, distributed systems.
+
 
 \thispagestyle{empty}
 
@@ -233,12 +249,21 @@ La aplicación se diseña como un sistema distribuido en distintos contenedores 
 \newpage
 \thispagestyle{empty}
 \vspace*{5cm}
+\hfill
+\begin{minipage}{0.70\textwidth}
+\begin{quote}
+Como todos los hombres de la Biblioteca, he viajado en mi juventud; he peregrinado en busca de un libro, acaso del catálogo de catálogos; ahora que mis ojos caso no pueden descifrar lo que escribo, me preparo a morir a unas pocas leguas del hexágono en que nací.\\
+--- Jorge Luis Borges, \textit{La Bibioloteca de Babel}, Ficciones
+\end{quote}
 \hspace*{2cm}
+
 \begin{quote}
 Every important aspect of programming arises somewhere in the context of sorting or searching.
 
 --- Donald Knuth, \textit{The Art of Computer Programming}, Volume 3
 \end{quote}
+\end{minipage}
+
 \thispagestyle{empty}
 \maketitle
 
@@ -254,381 +279,167 @@ Every important aspect of programming arises somewhere in the context of sorting
 \pagenumbering{arabic}
 
 \hypertarget{introduccion}{%
-\chapter{Introducción}\label{introduccion}}
+\chapter{Introducción:}\label{introduccion}}
+
+Es conocida la gran disponibilidad de información en distintos formatos que tienen a su disposición los investigadores. Ejemplo de esto son libros en las bibliotecas, o la variedad de documentos que se encuentran accesibles en formatos digitales como artículos publicados en revistas arbitradas, libros, páginas de internet especializadas en algún tema o los repositorios digitales de documentos. Es en esta abundancia donde recaen varios de los problemas a los cuales se enfrenta la labor investigativa, en particular, cuando se realiza la fase exploratoria de selección de aquellos documentos que puedan resultar de mayor relevancia.
+
+Una de las herramientas con que cuentan los investigadores, para la búsqueda de documentos que se encuentran en formato digital, son los Sistemas de Recuperación de Información, donde ante una búsqueda, a la cual denominaremos el \textbf{\emph{query}}, serán recuperados del conjunto de documentos, conjunto al que denominaremos \textbf{\emph{Corpus}}, aquellos que cumplan ciertos parámetros\citep{manning2008}. Los documentos que el Sistema logre recuperar se deben adaptar a las necesidades del investigador y en caso de existir múltiples documentos, el sistema debe poder jerarquizar aquellos que puedan resultar de mayor relevancia.
+
+En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos denominado SABER.UCV al cual se puede acceder desde la dirección web \href{http://saber.ucv.ve/}{saber.ucv.ve} el cual permite realizar búsquedas de información sobre documentos generados dentro de la comunidad de investigadores de la Universidad.
+
+En este Trabajo de Grado se presenta la propuesta para la \textbf{Recuperación, Extracción y Clasificación de Información de SABER UCV}, mediante el desarrollo de un sistema informático que se denomina \textbf{Sistema Complementario Saber UCV (SCSU)}, el cual complementa las funcionalidades de búsqueda de información que actualmente tiene el repositorio oficial de la Universidad Central de Venezuela.
+
+La implementación del SCSU hace un aporte a los investigadores que necesitan realizar búsquedas de información sobre el subconjunto de tesis doctorales, de trabajos de grado de maestría y de pregrado, que se encuentran disponibles en SABER.UCV . Adicionalmente, la representación de los resultados de los \emph{querys} son enriquecidas con gráficos interactivos que muestran ``mapas del conocimiento'' (citar a dueñas).
+
+Gran parte de las funcionalidades que incorpora el SCSU se sustentan en los procesos de extracción y clasificación de información de datos que originalmente no se encuentran estructurados en el repositorio oficial, como lo son los nombres de las carreras de pregrado o del postrgrado donde fue generada cada una de las investigaciones o el nombre del tutor que acompañó el desarrollo de cada investigación, así que el Sistema acá descrito contribuye efectivamente a que estos datos puedan estar disponibles y afinar con una mayor cantidad de parámetros las búsquedas de información que se deban realizar y se incorporan técnicas de búsqueda indexada mediante un índice inverso que establece los criterios de relevancia al momento de jerarquizar y mostrar los resultados de una búsqueda.
+
+\hypertarget{estructura}{%
+\section{Estructura:}\label{estructura}}
+
+En el Capítulo \ref{capproblema} \textbf{El Problema} se hace una exposición de cuáles son las funcionalidades de SABER.UCV que pueden ser complementadas por el Sistema Complementario Saber UCV mientras que en \ref{delimitacion} se establecen las delimitaciones en el proceso de investigación abordado. En \ref{justificacion} se justifica la necesidad de realizar este estudio y en \ref{descripcion} se presenta la Solución propuesta junto con el \ref{objegeneral} Objetivo General y los \ref{objeespe} Objetivos Específicos . En \ref{alcance} se enuncia el alcance del proceso de recuperación, extracción y clasificación de Información de SABER UCV y en \ref{aporte} se enumeran los aportes que brinda esta investigación.
+
+En el Capítulo \ref{teorico} \textbf{Marco Teórico} se hace una reseña histórica \ref{alghist} sobre el problema computacional que es la ``búsqueda'', entendido de manera genérica. En la sección \ref{infret} ``Recuperación de Información'' se mencionan los conceptos para comprender los procesos de búsqueda de texto dentro de un Corpus y también se introducen a los ``Sistemas'' que permiten ejecutar dicha tarea. Luego en \ref{MRI} se describen algunos ``Modelos de Recuperación de Información'' que se usan en la implementación del SCSU. Para representar los resultados de las búsquedas, el Sistema implementado necesita que los textos sean procesados mediante diversos métodos que son descritos en en \ref{PT} Procesamiento de Texto, como los son el \ref{nlproc} Procesamiento del Lenguaje Natural y \ref{textmin} la Minería de Texto . Seguidamente en \ref{SD} se conceptualiza a los ``Sistemas Distribuidos'', motivado a que la implementación realizada del Software se hace mediante este tipo de sistemas.Al finalizar este Capítulo en \ref{sota} se presentan el Estado del Arte en lo relativo a los procesos de Recuperación de Información.
+
+En el Capítulo \citet{ref}(mm) \textbf{Marco Metodológico} se presenta la metodología de trabajo Kanban \ref{mmmetodologia} que sirvió para realizar la planificación de la investigación así como también el Desarrollo Adaptable de Software --Adaptive Software Development (ASD)- \ref{mmasd} que fue la metodología adaptada para realizar los ciclos de desarrollo del SCSU.
+
+En el Capítulo \ref{desarrollo} \textbf{Desarrollo} se presenta la \ref{desarollodescripcion} Descripción general de la Solución y en \ref{desarrolloarquitectura} se presenta la Arquitectura de la misma. Luego en \ref{desarrolloanalisis} Análisis y Diseño se muestran las consideraciones adoptadas para dicho proceso. En \ref{desarrollociclos} Ciclos de Desarrollo se muestran las iteraciones que se hicieron para crear el SCSU; en un primer ciclo para la \ref{desarrollociclos1} Obtención del Conjunto de Datos , en un segundo ciclo \ref{desarrollociclos2} para la Extracción y Clasificación de Información del Conjunto de Datos , en el tercero \ref{desarrollociclos3} para crear el Prototipo de Buscador y en el cuarto \ref{desarrollociclos4} se realizó la Integración de Componentes del Software . En este Capítulo adicionalmente se realizan las distintas \ref{pruebas} Pruebas tanto \ref{pruebas1} Funcionales, \ref{pruebas2} de Rendimiento y en \ref{pruebas3} las pruebas de Relevancia sobre la información recuperada al momento de hacer una búsqueda.
+
+Para concluir esta investigación, en el Capítulo \ref{conclusiones} \textbf{Conclusiones} se exponen las \ref{conclusionescontri} Contribuciones y los \ref{conclusionestrabafutu} Trabajos Futuros que se pueden derivar del proceso expuesto a lo largo del contenido de los capítulos anteriormente citados.
+
+\hypertarget{capproblema}{%
+\chapter{El Problema:}\label{capproblema}}
 
 \hypertarget{problema}{%
-\chapter{Planteamiento del Problema:}\label{problema}}
+\section{El Problema:}\label{problema}}
 
-\hypertarget{propuesta-tuxe9cnica}{%
-\section{Propuesta Técnica:}\label{propuesta-tuxe9cnica}}
+\hypertarget{delimitacion}{%
+\section{Delimitación del Problema}\label{delimitacion}}
 
-En este Capítulo se detalla la propuesta técnica de la Solución en la sección \ref{propuestatec}. Posteriormente se indica el Objetivo General \ref{objetivogral} y los Objetivos Específicos \ref{objetivosespe} que se aspiran cubrir en el desarrollo. A continuación se muestra el esquema general de la aplicación \ref{esquemas}, junto con el esquema de funcionamiento en los contenedores \ref{contenedores} y se describe el funcionamiento de cada contenedor.
+\hypertarget{justificacion}{%
+\section{Justificación e Importancia:}\label{justificacion}}
 
-Se realiza un análisis de factibilidad en la sección \ref{factibilidad} para la implementación y se muestra un cronograma \ref{cronograma} de actividades.
+\hypertarget{descripcion}{%
+\section{Descripción de la Solución:}\label{descripcion}}
 
-\hypertarget{propuestatec}{%
-\section{Propuesta Técnica:}\label{propuestatec}}
+\hypertarget{obje}{%
+\section{Objetivos de la Investigación:}\label{obje}}
 
-Crear una Solución que funcione como una aplicación web distribuida bajo la arquitectura cliente-servidor. Del lado del servidor se encontrarán contenedores que alojarán los distintos servicios necesarios para el funcionamiento.
+\hypertarget{objegeneral}{%
+\subsection{Objetivo General:}\label{objegeneral}}
 
-Del lado del cliente se podrán formular los \emph{querys} con múltiples atributos (la frase a buscar, la jerarquía académica, intervalo de fechas, facultad y/o escuela de adscripción).
+\hypertarget{objeespe}{%
+\subsection{Objetivos Específicos:}\label{objeespe}}
 
-La Solución permitirá generar procesos de extracción de información (\emph{information retrieval}) y los resultados se mostrarán en tablas interactivas, gráficos y grafos de coocurrencia de palabras. Adicionalmente se indicarán recomendaciones de textos basados en la similitud que presente un documento con los otros.
+\hypertarget{alcance}{%
+\section{Alcance:}\label{alcance}}
 
-Los textos del resumen de cada tesis con los cuales se conformará el \emph{Corpus}, serán obtenidos y actualizados mediante técnicas de \emph{web crawling} realizadas al repositorio Saber UCV.
-
-Se opta por la estrategia de hacer el \emph{web crawling} a los documentos contenidos en Saber UCV al no ser posible, al momento de realizar esta propuesta, la obtención de la base de datos de los documentos ahí alojados.
-
-La Solución propuesta está diseñada para irse actualizando periódicamente incorporando los nuevos documentos que sean alojados en el repositorio Saber UCV.
-
-Contará con un procedimiento que permite clasificar los documentos (tesis) por área académica, según donde haya efectuado estudios el autor del trabajo, al ser la tesis el requisito necesario para obtener el título de grado. Actualmente el repositorio Saber UCV no dispone de esta clasificación.
-
-\hypertarget{objetivogral}{%
-\section{Objetivo:}\label{objetivogral}}
-
-Crear una Solución que permita realizar la clasificación de documentos y la búsqueda de información sobre los trabajos de investigación que se encuentran en el Repositorio SABER UCV usando técnicas de extracción de información (\emph{information retrieval}).
-
-Para el procesamiento de las búsquedas será usado un sistema distribuido con distintos componentes (contenedores) que permitan la ingesta, procesamiento y transformación de los datos, al igual que el alojamiento de los mismos en una base de datos.
-
-\hypertarget{objetivosespe}{%
-\section{Objetivos Específicos}\label{objetivosespe}}
-
-\begin{itemize}
-\item
-  \emph{Querys} multi atributo en distintas dimensiones: tiempo, jerarquías (pregrado, especializaciones, maestría y/o doctorado), facultad ,carreras o postgrados.
-\item
-  A cada resultado que arroje la búsqueda se le debe asignar un nivel de relevancia. El conjunto de los textos recuperados se debe mostrar ordenadamente de mayor a menor relevancia. La asignación de la relevancia será hecha mediante una función que cuente con distintos parámetros.
-\item
-  Los datos: textos, fechas, clasificaciones, y demás que sean necesarios para el funcionamiento de la Solución, deben registrarse en una base de datos estructurada y la ingesta y consulta se efectuará mediante un manejador de base de datos.
-\item
-  Generar recomendaciones de textos basados en la similitud coseno que presente un documento con cada uno de otros que conforman el \emph{Corpus}.
-\item
-  En los documentos extraídos se debe contar con el enlace a los documentos que reposan en Saber UCV.
-\item
-  Permitir la concurrencia de accesos al Sistema.
-\item
-  La tolerancia a fallas en los contenedores.
-\item
-  Contar con el certificado SSL para acceso seguro por parte de los visitantes.
-\item
-  Procesar las coocurrencias de las palabras más comunes las cuales se deberán visualizar mediante grafos.
-\item
-  Disponer de una aplicación web para el acceso al Sistema por parte del cliente.
-\item
-  Disponer de ventanas emergentes de ayuda en la interface gráfica de la aplicación web.
-\item
-  En la representación de coocurrencias de palabras mediante grafos, se debe poder filtrar documentos interactivamente al hacer \emph{click} con el \emph{mouse} sobre los arcos que unen un par de nodos, donde cada uno de estos representa la coocurrencia de una dupla de palabras. El \emph{click} generará el evento para el query sobre los documentos que contienen esa determinada coocurrencia.
-\end{itemize}
-
-\hypertarget{esquemas}{%
-\section{Esquema del SSCSU:}\label{esquemas}}
-
-Se representa el Sistema y sus interacciones mediante un esquema con un elevado grado de abstracción. Ver figura \ref{fig:esquema}.
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{formas/diagramageneral} \caption{Esquema General}\label{fig:esquema}
-\end{figure}
-
-En la figura \ref{fig:esquema} se muestra como el SSCSU está diseñado para que mediante técnicas de \emph{web crawling} se pueda extraer la información del repositorio Saber UCV. Posteriormente el sistema ante la consulta del usuario va a recuperar los documentos que sean relevantes, representando el conocimiento con la generación de jerarquías, rankings, coocurrencias de las palabras más mencionadas y recomendaciones de texto según similitudes.
-
-El SSCSU se implementará mediante el uso de Docker. En la figura \ref{fig:esquemadocker} se muestra el esquema con los contenedores.
-
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{formas/diagrama_docker1} \caption{Diagrama de Componentes}\label{fig:esquemadocker}
-\end{figure}
-
-\hypertarget{cliente---servidor}{%
-\subsection{Cliente - Servidor:}\label{cliente---servidor}}
-
-La arquitectura \textbf{cliente-servidor} en esta Propuesta se basa en:
-
-\hypertarget{cliente---navegador-web}{%
-\subsubsection{1 - Cliente - Navegador web:}\label{cliente---navegador-web}}
-
-El acceso del cliente a la aplicación web se hace en el navegador web. Este realiza la petición al servidor que aloja la Solución. Actualmente se cuenta con un prototipo al que se puede acceder en la dirección \url{https://proyecta.me/}.
-
-El sistema no está diseñado para usarse desde dispositivos móviles, aunque igualmente es viable el acceso no estando optimizada la interfaz del usuario ni las visualizaciones de los resultados de los \emph{querys}.
-
-\hypertarget{servidor}{%
-\subsubsection{2 - Servidor:}\label{servidor}}
-
-El prototipo del sistema requiere para funcionar al menos estos recursos:
-
-\begin{itemize}
-\tightlist
-\item
-  2 CPU virtual
-\item
-  2 GB de memoria RAM
-\item
-  50 GB de disco duro
-\end{itemize}
-
-En el servidor se instala el software Docker sobre el cual se despliegan los siguientes contenedores:
-
-\hypertarget{contenedores}{%
-\subsection{Contenedores:}\label{contenedores}}
-
-\hypertarget{docker-compose}{%
-\subsubsection{Docker Compose:}\label{docker-compose}}
-
-Funciona como un orquestador para correr aplicaciones distribuidas en múltiples contenedores usando un archivo en formato yml donde se establecen las imágenes, los puertos y los volúmenes que serán usados y compartidos por cada uno de los contenedores.
-
-\hypertarget{contenedor-con-nginx}{%
-\subsubsection{Contenedor con Nginx:}\label{contenedor-con-nginx}}
-
-Es el servidor web/proxy inverso de código abierto que sirve para redireccionar las peticiones del puerto 80 al puerto 8090. Mediante este contenedor también se define el certificado SSL para permitir conexiones por el protocolo HTTPS.
-
-Este contenedor fue generado desde una imagen oficial de NGINX que se encuentra en el \textbf{\emph{docker hub}} \footnote{repositorio de imágenes de contenedores de docker.} sin añadir ninguna capa (layer) adicional.
-
-\hypertarget{contenedor-con-cerbot}{%
-\subsubsection{Contenedor con Cerbot:}\label{contenedor-con-cerbot}}
-
-Cerbot es una herramienta de código abierto que permite habilitar las conexiones mediante el protocolo HTTPS con el uso de un certificado ``Let´s Encrypt''. El uso de este certificado está asociado al uso de un dominio en el \emph{deploy} de la aplicación.
-
-Este contenedor fue generado desde una imagen de CERBOT del \textbf{\emph{docker hub}} sin ninguna modificación posterior.
-
-\hypertarget{conshinyproxy}{%
-\subsubsection{Contenedor con Shinyproxy:}\label{conshinyproxy}}
-
-Es una implementación del servidor ``\emph{Spring boo}t'' que dará servicio a las aplicación web desarrolladas en \emph{shiny} \footnote{Shiny un framework para crear aplicaciones web en el lenguaje de programación R.} \ref{conshiny}. Con el uso de este \emph{middleware} se obtienen las siguientes ventajas:
-
-\begin{itemize}
-\item
-  Ante cada petición de acceso al servidor se despliega un \emph{workspace} completamente aislado, es decir, un contenedor distinto. Las aplicaciones desarrolladas en \emph{shiny} son \emph{single threaded} y adoptar esta estrategia representa una ventaja, motivado a que se pueden controlar los recursos de memoria y cpu asignados a cada contenedor que se despliega.
-\item
-  Permite establecer \emph{login} en el uso de la aplicación y grupos de usuarios. También da soporte a distintos métodos de autenticación. Si bien en estos momentos la aplicación es de libre acceso, en algún momento se pudiese restringir y no sería necesaria ninguna modificación en la arquitectura, más allá de cambiar el archivo de configuración.
-\item
-  Uso de una tecnología estable y probada.
-\end{itemize}
-
-Es necesario destacar que originalmente \emph{Shiny} como \emph{framework} cuenta con su propio software que actúa como servidor, pero para tener acceso a ciertas funcionalidades es necesario pagar por el servicio directamente a la Fundación RStudio Software y usar el alojamiento que ellos proveen, no siendo todos los componentes de código abierto. Por ejemplo, el acceso mediante \emph{login} no está disponible en la versión libre del \emph{Shiny Server} sino en la \emph{Shiny Server Professional}.
-
-Ciertas configuraciones de librerías e incluso la propia contenerización de la aplicación, no es posible usando el servicio pago, así que la propuesta acá adoptada, si bien representa un mayor esfuerzo en la configuración, claramente implica que se obtienen una serie de ventajas, por todas las adaptaciones y control que es posible realizar al y sobre el sistema.
-
-Este contenedor funciona en el puerto 2375 y fue generado desde la imagen del docker hub \emph{Shinyproxy} sin ninguna modificación.
-
-\hypertarget{conshiny}{%
-\subsubsection{\texorpdfstring{Contenedor con ``\emph{R Shiny Web App framework}'':}{Contenedor con ``R Shiny Web App framework'':}}\label{conshiny}}
-
-En este contenedor es donde reposa la aplicación web con todas las librerías necesarias para generar las visualizaciones y remitir los \emph{querys} al contenedor del manejador de la base de datos \ref{conposgres} . Como comentamos anteriormente, cada vez que ocurre desde el navegador del cliente una petición de acceso, desde el contenedor \emph{shinyproxy} \ref{conshinyproxy}, se crea una replica de este contenedor con todos los elementos necesarios para que la app funcione correctamente.
-
-En caso de presentar alguna falla, el sistema sería tolerante, porque se pueden seguir recibiendo peticiones que replicarían una imagen nueva del contenedor sin afectar al que presentase el fallo, o viceversa.
-
-Desde este contenedor se realiza el acceso de lectura al contenedor que contiene \emph{PostgreSQL} \ref{conposgres} donde reposa la base de datos que contiene los textos ya procesados.
-
-Por los momentos no hay escritura de datos en las tablas, pero está contemplado que se registren los querys formulados en alguna tabla, junto con los documentos que el usuario revisa mediante las interacciones, para así generar métricas de calidad del sistema y del uso que se le da.
-
-La imagen que se usa en este servidor fue definida a medida con todos los recursos necesarios.
-
-En un posterior Capítulo a desarrollar en donde se mostrará el proceso de desarrollo de la Solución, serán descritas todas las librerías que se encuentran incluidas en este contenedor y se expondrán las razones para seleccionar cada una de ellas.
-
-Varios de los procesos que se ejecutan en este contenedor ocurren al momento de recibir un \emph{query,} no obstante todos los procesos que puedan ser pre computados, se trata de ejecutarlos previamente en el contenedor ``R Servicios'' \ref{conservicios}, para lograr así la disminución de los tiempos.
-
-Funcionalidades principales: \textbf{ENTRADAS}
-
-\begin{itemize}
-\item
-  Contiene un campo para la entrada de texto que generará el query.
-\item
-  Contiene un selector para indicar si se quiere generar la coocurrencia de palabras
-\item
-  Contiene tablas para seleccionar:
-
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi})}
-  \tightlist
-  \item
-    Nivel académico del trabajo. Opciones (pregrado, especialización, maestría, doctorado).
-  \item
-    Facultad o Centro de adscripción. Opciones: 11 Facultades más un centro (CENDES).
-  \item
-    Nombre del pregrado o postgrado. En total son 412 las opciones.
-  \end{enumerate}
-
-  Cada una de las tablas anteriores se actualiza según se vayan seleccionando las relaciones y la disponibilidades. Por ejemplo, al seleccionar pregrado solo se mostrarán los nombres de las carreras de pregrado, pero si se selecciona también el nombre de la Facultad, sólo se mostrarán las carreras de pregrado dentro de la Facultad seleccionada. Para una determinada tabla también se permiten selecciones múltiples dando una total flexibilidad al momento de ejecutar los \emph{querys}.
-\end{itemize}
-
-\textbf{SALIDAS} - Ante el \emph{query} se genera:
-
-\begin{itemize}
-\item
-  Una tabla creada con la librería \emph{reactable}. En la misma se muestra cada uno de los documentos recuperados con los distintos atributos disponibles: autor, fecha, palabras clave, texto resumen. El orden en que aparece está generado con una función de ranking. Adicionalmente se muestra un enlace al repositorio Saber UCV que es donde se encuentra alojado el respectivo trabajo (el documento en PDF). Igualmente se presentan los textos que tienen mayor similitud con el texto seleccionado.
-\item
-  Un gráfico con la frecuencia por año de los trabajos extraídos mediante el \emph{query}. El gráfico se generá con la librería \emph{apexcharter} que es un wraper para Javascript, por lo cual el gráfico tiene ciertas interactividades. Con el \emph{hoover} muestra el valor de cada columna.
-\item
-  Gráfico de coocurrencia interactivo de palabras: se genera mediante la librería de \emph{VisNetwork} que también es un \emph{wrapper} de javascript. Este gráfico permite seleccionar un arco de unión entre dos palabras coocurrentes. Al realizar la selección se filtran un subconjunto de los documentos que contienen ambas palabras representadas por nodos. Los documentos filtrados se mostrarán en una tabla contigua, también generada en \emph{reactable}, donde sólo se incluye el texto resumen de cada trabajo. En un próximo Capítulo a desarrollar será mencionado el diseño y funcionamiento a detalle de esta visualización.
-\item
-  Gráfico de coocurrencia estático de palabras: mediante la librería \emph{ggraph} son generados un par de gráficos con distintas granularidades. El primero exhibe la misma coocurrencia de palabras expuesta en el punto anterior pero esta vez es generada en una visualización estática. En cuandoa la granularidad se muestran las palabras que coocurren dentro de todo el resumen, El segundo gráfico también muestra la coocurrencia, pero solo de palabras que coocurren una seguida de otra dentro del texto resumen, es decir que se muestran los resultados con una menor granularidad.
-\end{itemize}
-
-Con la librería \emph{UdPipe} se generan las estructuras de datos necesarias para generar los grafos (arcos y nodos).
-
-\hypertarget{conposgres}{%
-\subsubsection{Contenedor con PostgreSQL:}\label{conposgres}}
-
-En este contenedor se tiene una imagen de \emph{PostgreSQL} versión 13.3. No fue realizada ninguna otra modificación distinta a la definición de usuarios y poblado desde base de datos incluyendo un volumen compartido para garantizar que tengamos ``datos persistentes. Este contenedor recibe consultas del contenedor''R Shiny Web App framework'' \ref{conshiny} y escritura desde el contenedor ``R imagen Servicios'' \ref{conservicios}.
-
-En este contenedor ocurre la indexación de la base de datos y la generación del ranking al procesar el resultado con la función de PosgreSQL llamada tsrank \footnote{esta función mide la relevancia de los documentos para una consulta en particular, de modo que cuando haya muchas coincidencias, las más relevantes puedan mostrarse primero tomando en cuenta la información léxica, de proximidad y estructural del documento (título, cuerpo del documento, etc).}.
-
-En una tabla se encuentra la identificación del documento, la fecha de creación y propiamente los textos que mediante el Tsvector \footnote{El Tsvector es una función de postgresql que crea una estructura de datos que es una lista ordenada de distintos lexemas, que son palabras que se han normalizado para fusionar diferentes variantes de la misma palabra mediante el algoritmo de Porter.} almacena el título, el resumen, el autor y las palabras clave.
-
-En otra tabla se encuentra el almacenamiento del procesamiento que se le hace a los textos, clasificando cada una de las palabras mediante el \emph{part of speach} , y registrando el identificador del documento al que está asociada y el lema \footnote{El lema es la forma que por convenio se acepta como representante de todas las formas flexionadas de una misma palabra.}de cada una.
-
-El TSvector es la estructura de datos que permite la búsqueda de texto completa (\emph{Full Text Seach}) mediante la función de \emph{PostgreSQL} denominada \emph{tsquery}. En un futuro capítulo a desarrollar será mostrado el diseño de las tablas con sus campos.
-
-\hypertarget{conservicios}{%
-\subsubsection{Contenedor con ``R Imagen Servicios'':}\label{conservicios}}
-
-En este contenedor se creó una imagen con todos los servicios necesarios para realizar el web crawling, el procesamientos de textos y la descarga de los archivos desde Saber UCV para realizar la clasificación de las Tesis. Al iniciar el Sistema también contiene las funcionalidades que permiten realizar la creación de la base de datos, de las tablas y el poblado de estas.
-
-Periodicamente es invocado este contenedor para realizar los procesos de incorporación de aquellos documentos nuevos que se detecte que están disponibles en Saber UCV.
-
-En una primera fase se uso la utilidad del sistema operativo linux para la programación de actividades, sin embargo se está implementando el uso de la tecnología \emph{Apache Airflow} para la ejecución de la programación de los flujos de trabajo.
-
-La imagen base usada es la del proyecto \textbf{\emph{Rocker}} {[}@RJ-2017-065:2017{]} ,la cual es una versión ampliamente probada y optimizada en, y por, la comunidad de usuarios de R.
-
-Posteriormente serán descritas todas las librerías que fueron añadidas mediante una capa (layer) a este contenedor. Por los momentos se especifican que se encuentran agregadas las siguientes:
-
-\hypertarget{text-mining-y-nlp}{%
-\paragraph{Text Mining y NLP:}\label{text-mining-y-nlp}}
-
-Generalmente las distintas librerías que permiten realizar procesos de \emph{Natural Language Processing} también hacen procesos de \emph{Text Mining} parcial o totalmente. En la investigación fueron evaluadas múltiples librerías como \emph{Spacy, Quanteda, OPENLP, CoreNLP, Freeling y Udpipe}.
-
-En una futura entrega se hará una breve mención a cada una y la razón por la cual se adoptó Spacy para varios de los procesos de NLP.
-
-Para ejecutar \emph{Spacy} es necesario usar los archivos que se encuentran en el contenedor \emph{``Python Spacy''} , \ref{conspacy} donde está instalada la libraría \emph{Spacy} que corre en \emph{Python}.
-
-Procesos que se ejecutan llamando al contenedor ``Python Spacy'': Tokenización, POS y Lematización.
-
-También en este contenedor se realizan los siguientes procesos:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Poblado base de datos: se hace el \emph{web crawling} para el poblado inicial y adicionales de la base de dato, con los textos de los Resúmenes.
-\item
-  Clasificación de los documentos: mediante una rutina compuesta por varios algoritmos serán clasificados los distintos trabajos según lo antes expuesto.
-\item
-  Cálculo de la Similitud de los documentos: cuando se ha realizado la lematización de las palabras se procede a generar una matriz de tipo Td-Idf (term document- inverse document frecuency), que sirve de insumo para el cálculo de similitud entre los documentos. Este cálculo de similitud se realiza con la librería Quanteda.texstats y se usa la medida de similitud coseno, ya que varios autores la sitúan como una de las mejores formas de comparar la similitud entre un documento y otro.
-\end{enumerate}
-
-\hypertarget{conspacy}{%
-\subsubsection{Contenedor con ``Python Spacy'':}\label{conspacy}}
-
-Se creó una imagen que contiene un ubuntu con python, spacy y el modelo de Spacy \href{https://spacy.io/models/es\#es_core_news_sm}{es\_core\_news\_sm} . Su función es que mediante un volumen compartido pueda ser invocado desde el contenedor ``R Imagen Servicios'' \ref{conservicios} para así realizar los procesamientos de NLP antes descritos.
-
-\hypertarget{factibilidad}{%
-\section{Factibilidad:}\label{factibilidad}}
-
-Para la propuesta del SCSU se hizo una evaluación de la factibilidad del desarrollo del proyecto que consistió en hacer pruebas de \textbf{\emph{web crawling}} sobre el repositorio Saber UCV al no ser viable la obtención del conjunto de datos por otro medio. Igualmente se realizaron pruebas sobre el hardware disponible con arquitecturas similares a la que se propondrá más adelante en nuestro desarrollo.
-
-Estas pruebas fueron exitosas por lo cual no se estima que exista algún factor que impida la implementación del Sistema acá expuesto.
+\hypertarget{aporte}{%
+\section{Aporte:}\label{aporte}}
 
 \hypertarget{teorico}{%
 \chapter{Marco teórico-referencial:}\label{teorico}}
 
-En este Capítulo se muestra el marco teórico en que se sustentan los aspectos de mayor relevancia para el desarrollo de la Solución. Principalmente se enuncian una serie de conceptos que involucran algoritmos de búsqueda, la recuperación de información, la minería de texto, el procesamiento del lenguaje natural, la estructuración de la base de datos y lo referente a la arquitectura distribuida en que se soporta la SSCSU.
+En este capítulo se establece el fundamento teórico para los procesos que sustentan la Recuperación, Extracción y Clasificación de Información de SABER UCV.
+
+Se hace una reseña histórica \ref{alghist} sobre los procesos de búsqueda, se examinan conceptos de claves \ref{infret} como indexación, búsqueda, relevancia y evaluación de resultados. Además, se exploran modelos como el modelo boleano y vectorial junto se introduce el Estado del Arte. Para indicar los métodos con que son \ref{PT} procesados los textos se muestran las técnicas de \ref{nlproc} Procesamiento de Lenguaje Natural y de \ref{textmin}. Adicionalmente al formar parte de este Trabajo el Sistema Complementario Saber UCV que es un software, se exponen definiciones asociadas a los \ref{SD} Sistemas Distribuidos para que así este análisis profundo siente las bases para el diseño y desarrollo del sistema, asegurando una comprensión sólida de los principios subyacentes
 
 \hypertarget{alghist}{%
 \section{Reseña histórica:}\label{alghist}}
 
-El profesor Donald Knuth señala, dentro del campo de las ciencias de la computación, que la \textbf{búsqueda} \emph{es el proceso de recolectar información que se encuentra en la memoria del computador de la forma más rápida posible, esto cuando tenemos una cantidad N de registros y nuestro problema es encontrar el registro apropiado de acuerdo a un criterio de búsqueda} \citep{knuth1997} (p.~392) .
+El profesor Donald Knuth señala, dentro del campo de las ciencias de la computación, que la \textbf{búsqueda} \emph{es el proceso de recolectar información que se encuentra en la memoria del computador de la forma más rápida posible, esto cuando tenemos una cantidad N de registros y nuestro problema es encontrar el registro apropiado de acuerdo a un criterio de búsqueda} \citep{knuth1997} (p.~392) .Iniciamos con esta cita porque la recuperación de información gira en torno a un problema central de las ciencias de la computación que es la \textbf{búsqueda}.
 
-Iniciamos con esta cita porque la recuperación de información gira en torno a un problema central de las ciencias de la computación que es la \textbf{búsqueda}. A continuación se mencionarán una serie de algoritmos que abordan este problema, no necesariamente resultando óptimos para dar solución a lo planteado en \ref{p2}.
+A continuación se mencionarán una serie de algoritmos que abordan este problema, no necesariamente resultando óptimos para dar solución a lo planteado en \ref{p2}.
 
-En la década de 1940 cuando aparecieron las computadoras, las búsquedas no representaban mayor problema debido a que estas máquinas disponían de poca memoria \emph{RAM} pudiendo almacenar sólo moderadas cantidades de datos. Ellas estaban diseñadas para realizar cómputos y arrojar los resultados más no para tenerlos almacenados en memoria.
+En la década de 1940 cuando aparecieron las computadoras, las búsquedas no representaban mayor problema debido a que estas máquinas disponían de poca memoria \emph{RAM} pudiendo almacenar sólo moderadas cantidades de datos.
 
-No obstante con el desarrollo del almacenamiento en memoria \emph{RAM} o en dispositivos de almacenamiento permanentemente, ya en la década de 1950 empezaron a aparecer los problemas de \textbf{búsqueda} y los primeras investigaciones para afrontarla. En la década de 1960 se adoptan por ejemplo estrategias basadas en arboles.
+No obstante con el desarrollo e incremento del almacenamiento en memoria \emph{RAM} o en dispositivos de almacenamiento permanentemente, ya en la década de 1950 empezaron a aparecer los problemas de \textbf{búsqueda} y los primeras investigaciones para afrontarla.
 
-Los primeros algoritmos que sirvieron para localizar la aparición de una frase dentro de un texto, o expresado de forma más abstracta, como la detección de una subcadena \emph{P} dentro de otra cadena \emph{T}, fueron los algoritmos de \emph{Pattern-Matching} \citep{goodrich2013} (p.~584).
+En la década de 1960 se adoptan por ejemplo estrategias basadas en arboles. Los primeros algoritmos que sirvieron para localizar la aparición de una frase dentro de un texto, o expresado de forma más abstracta, como la detección de una subcadena \emph{P} dentro de otra cadena \emph{T}, fueron los algoritmos de \emph{Pattern-Matching} \citep{goodrich2013}.
 
-Así nos encontramos en la literatura con el algoritmo \emph{Fuerza Bruta} donde dado un texto T y una subcadena P, se va recorriendo cada elemento de la cadena T para detectar la aparición de la subcadena P. Si bien este algoritmo no presentaba el mejor desempeño, por contar con ciclos anestados en su ejecución, creó una forma válida de enfrentar el problema de la búsqueda de subcadenas de texto.
+Así nos encontramos en la literatura con el algoritmo \emph{Fuerza Bruta} donde dado un texto T y una subcadena P, se va recorriendo cada elemento de la cadena T para detectar la aparición de la subcadena P. Si bien este algoritmo no presentaba el mejor desempeño, creó una forma válida de enfrentar el problema de la búsqueda de subcadenas de texto.
 
 El algoritmo \emph{Knuth-Morris-Pratt} que se introdujo en 1976 tenía como novedad que se agregó una función que iba almacenando ``previas coincidencias parciales'' en lo que eran fallos previos y así al realizar un desplazamiento tomaba en cuenta cuántos caracteres se podían reusar. De esta forma se logró considerablemente mejorar el rendimiento en los tiempos de ejecución de \emph{O(n+m)} que son asintóticamente óptimos.
 
 Posteriormente en 1977 el problema se enfrenta con un nuevo algoritmo que es el de \emph{Boyer-Moore} en el cual se implementan dos heurísticas (\emph{looking-glass y} \emph{character-Jump)} que permiten ir realizando algunos saltos en la búsqueda, ante la no coincidencia de la subcadena con la cadena y adicionalmente, el orden en el que se va realizando la comparación se invierte. Estas modificaciones permitieron obtener un mejor desempeño.
 
-Sobre una modificación al algoritmo \emph{Boyer-Moore} se sustenta la utilidad \emph{grep} de la línea de comandos UNIX que igualmente le da soporte a diversos lenguajes que la usan para ejecutar búsquedas de texto con un proceso que comúnmente es conocido como \emph{grepping}. Esta utilidad fue ampliamente usada para resolver parcialmente lo expuesto en \ref{clasificacion}.
+Sobre una modificación al algoritmo \emph{Boyer-Moore} se sustenta la utilidad \emph{grep} de la línea de comandos UNIX que igualmente le da soporte a diversos lenguajes que la usan para ejecutar búsquedas de texto, con un proceso que comúnmente es conocido como \emph{grepping}. Esta utilidad fue ampliamente usada para resolver parcialmente lo expuesto en \ref{desarrollociclos2}.
 
-Los algoritmos mencionados anteriormente pueden ser usados en procesos de recuperación de información en conjunto con técnicas que pueden mejorar considerablemente los tiempos en la ejecución de las rutinas siendo una de estas el preprocesamiento de los textos, \emph{eg}. remover determinados caracteres, aplicar el algoritmo de porter, entre otras más.
+Una estrategia que surgió para enfrentar las búsquedas de texto, fue el uso de la programación lineal donde bajo la premisa \emph{divida et impera,} los problemas que requieren tiempo exponencial para ser resueltos son descompuestos en polinomios y por lo tanto se disminuye la complejidad en tiempo para ser resueltos. Entre este tipo de algoritmos se puede mencionar los de \emph{alineación de cadenas del ADN} de forma parcial o total dentro de una cadena mayor, siendo una versión de estos el algoritmo \textbf{\emph{Smith-Waterman}} \citep{smith1981}. Posteriormente se identificó que este tipo de solución era extrapolable a las subcadenas de texto.
 
-Una estrategia que surgió para enfrentar las búsquedas de texto, fue el uso de la programación lineal donde bajo la premisa \emph{divida et impera} los problemas que requieren tiempo exponencial para ser resueltos son descompuestos en polinomios y por lo tanto se disminuye la complejidad en tiempo para ser resueltos. Entre este tipo de algoritmos se puede mencionar los de \emph{alineación del ADN .} Originalmente el algoritmo se desarrolló para resolver problemas de alineación de cadenas de ADN de forma parcial o total dentro de una cadena mayor. Posteriormente se identificó que este tipo de procedimiento era extrapolable a los subcadenas de texto. Una de las versiones de estos algoritmos es la denominada \textbf{\emph{Smith-Waterman}} que resultó de gran utilidad para resolver el problema planteado en \ref{clasificacion} ya que la estrategia de usar la utilidad \emph{grep} fue infructuosa en algunos casos.
+Un algoritmo que se usó para resolver el problema de hacer coincidir una etiqueta de clasificación con los textos del \emph{Corpus} en \ref{desarrollociclos2} fue el algoritmo precitado.
 
 Un gran paso para aproximarnos a la aparición de los Sistemas de Recuperación de Información lo representó el enfoque que presentan los algoritmos \emph{Tries}. Este nombre proviene del proceso de \emph{Information Retrieval} y principalmente se basa en hacer una serie de preprocesamientos a los textos para que al momento de ejecutar la búsqueda de texto, es decir, de la subcadena dentro de la cadena, ya tengamos una parte del trabajo realizado previamente y no tener que ejecutarlo todo \emph{``on the fly''}, es decir, sobre la marcha.
 
-Un \emph{Trie} \citep{fredkin1960} es una estructura de datos que se crea para almacenar textos para así poder ejecutar más rápido la coincidencia en la búsqueda. En la propuesta de la SSCSU todos los textos van siendo procesados con distintas técnicas a medida que son insertados en la base de datos. Esto claramente representa una mejora en el desempeño con la disminución en los tiempos de búsqueda.
+Un \emph{Trie} \citep{fredkin1960} es una estructura de datos que se crea para almacenar textos para así poder ejecutar más rápido la coincidencia en la búsqueda. En la propuesta del SCSU todos los textos van siendo procesados con distintas técnicas a medida que son insertados en la base de datos.
 
 \hypertarget{infret}{%
 \section{Recuperación de Información:}\label{infret}}
 
-El eje central sobre el cual gira el proceso de recuperación de información (RI) es satisfacer las necesidades de información relevante que sean expresadas por un usuario mediante una consulta (\textbf{\emph{query}}) de texto. El investigador Charu Aggarwal en su libro sobre Minería de Texto \citep{miningt2012} (p.14) menciona que el objetivo del proceso de RI es conectar la información correcta, con los usuarios correctos en el momento correcto, mientras que otro de los autores con mayor dominio sobre el tema, Christopher Manning en su libro \emph{Information Retrieval} indica que ``es el proceso de encontrar materiales (generalmente documentos) de una naturaleza no estructurada (generalmente texto) que satisface una necesidad de información dentro de grandes colecciones (normalmente almacenada en computadores)'' \citep{manning2008} (p.~25).
+El eje central sobre el cual gira el proceso de recuperación de información (RI) es satisfacer las necesidades de información relevante que sean expresadas por un usuario mediante una consulta (\textbf{\emph{query}}) de texto. El investigador Charu Aggarwal en su libro sobre Minería de Texto \citep{miningt2012} menciona que el objetivo del proceso de RI es conectar la información correcta, con los usuarios correctos en el momento correcto, mientras que otro de los autores con mayor dominio sobre el tema, Christopher Manning en su libro \emph{Information Retrieval} indica que ``es el proceso de encontrar materiales (generalmente documentos) de una naturaleza no estructurada (generalmente texto) que satisface una necesidad de información dentro de grandes colecciones (normalmente almacenada en computadores)'' \citep{manning2008}.
 
-Satisfacer una necesidad de recuperación de información no sólo se circunscribe a un problema \textbf{búsqueda} de un texto dentro de un \emph{corpus}. En la mayoría de los casos se deberá cumplir con ciertos criterios, o restricciones, como por ejemplo que el \emph{query} esté dentro de un período de fechas, o que se encuentre comprendido en un subconjunto del corpus que es a lo que se denomina \textbf{búsqueda múlti atributo}.
+Satisfacer una necesidad de recuperación de información no sólo se circunscribe a un problema \textbf{búsqueda} de un texto dentro de un \emph{corpus}. En la mayoría de los casos se deberá cumplir con ciertos criterios, o restricciones, como por ejemplo que el \emph{query} esté dentro de un período de fechas, o que se encuentre comprendido en un subconjunto del corpus, que es a lo que se denomina \textbf{búsqueda múlti atributo}.
 
-La información que se recolecte en una búsqueda tendrá distintos aspectos que aportarán peso en el orden en que sea presentada al usuario y no sólo vendrá dado por la aparición de las palabras sino también por otros elementos como lo puede ser la aparición de la frase del \textbf{\emph{query}} dentro del título, la proximidad (la cercanía entre dos palabras) que tengan los términos que conforman el \emph{query} o por otra parte la frecuencia que una palabra, o varias, se repitan dentro un determinado documento que compone el \emph{corpus}. Igual puede aportar un peso mayor a la recuperación de un documento las referencias (citas) que contengan otros documentos a ese determinado documento. El fin último será la extracción de los documentos que resulten de mayor relevancia para el usuario.
+La información que se recolecte en una búsqueda tendrá distintos aspectos que aportarán peso en el orden en que sea presentada al usuario y no sólo vendrá dado por la aparición de las palabras sino también por otros elementos como lo puede ser la aparición de la frase del \textbf{\emph{query}} dentro del título, la proximidad (la cercanía entre dos palabras) que tengan los términos que conforman el \textbf{\emph{query}} o por otra parte la frecuencia que una palabra, o varias, se repitan dentro un determinado documento que compone el \emph{corpus}.
 
-Incluso es válido incorporar documentos, en los resultados que arroje la búsqueda, que propiamente no coincidan con los términos buscados sino que contengan términos que sean sinónimos o también añadiendo a los resultados documentos que presenten alguna similitud con el texto del \textbf{\emph{query}}. Lo que acabamos de mencionar incorporará formalmente dentro del proceso de extracción de información algo de imprecisión con la intención última de enriquecer el proceso de \textbf{\emph{Information Retrieval}} \citep{kraft2017}.
+Igual puede aportar un peso mayor a la recuperación de un documento las referencias (citas) que contengan otros documentos a ese determinado documento, similar a la propuesta del algoritmo \textbf{\emph{PageRank}}\citep{brin1998}, siendo el fin último, la extracción de los documentos que resulten de mayor relevancia para el usuario. Esta aproximación también puede usarse para la detección de comunidades dentro del \emph{Corpus} \citep{heydari2020analysis}.
+
+Incluso es válido incorporar documentos, en los resultados que arroje la búsqueda, que propiamente no coincidan exactamente con los términos buscados sino que contengan palabras que sean sinónimos o también añadiendo a los resultados, documentos que presenten alguna similitud con el texto del \textbf{\emph{query}}. Lo que acabamos de mencionar incorporará formalmente dentro del proceso de extracción de información algo de imprecisión con la intención última de enriquecer el proceso de \textbf{\emph{Information Retrieval}} \citep{kraft2017}.
 
 Evaluando el proceso con cierto nivel de abstracción se tiene que el proceso de recuperación de información está compuesto principalmente por: un \emph{query}, por un corpus y por una función de \emph{ranking} para ordenar los documentos recuperados de mayor importancia a menor.
 
-El desarrollo de los algoritmos expuestos en \ref{alghist} sumado a la necesidad de resolver los problemas asociados a la búsqueda de un texto dentro de un \emph{corpus} con múltiples atributos en tiempos aceptables y la abundante cantidad de información digital, potenciada por el uso generalizado de los computadores, abonó las condiciones para la creación de los \textbf{Sistemas de Recuperación de Información}.
+El desarrollo de los algoritmos expuestos en \ref{alghist}, sumado a la necesidad de resolver los problemas asociados a la búsqueda de un texto dentro de un \emph{corpus} con múltiples atributos, en tiempos aceptables y el crecimiento exponencial de datos disponibles en formato digital \citep{worldde2016}, potenciada por el uso generalizado de los computadores desde la década de 1980 , abonó las condiciones para la creación de los \textbf{Sistemas de Recuperación de Información}.
 
 \hypertarget{SRI}{%
-\section{Sistemas de Recuperación de Información (SRI) :}\label{SRI}}
+\subsection{Sistemas de Recuperación de Información (SRI) :}\label{SRI}}
 
-Los Sistemas de Recuperación de Información (\emph{Information Retrieval Systems-IRS}) son los dispositivo (software y/o hardware) que median entre un potencial usuario que requiere información y la colección de documentos que puede contener la información solicitada \citep{kraft2017} 1. El SRI se encargará de la representación, el almacenamiento y el acceso a los datos que estén estructurados y se tendrá presente que las búsquedas que sobre él recaigan tendrán distintos costos siendo uno de estos el tiempo que tarde en efectuarse.
+Los Sistemas de Recuperación de Información (\emph{Information Retrieval Systems-IRS}) son los dispositivo (software y/o hardware) que median entre un potencial usuario que requiere información y la colección de documentos que puede contener la información solicitada \citep{kraft2017} 1. El SRI se encargará de la representación, el almacenamiento y el acceso a los datos que estén estructurados y se tendrá presente que las búsquedas que sobre él recaigan tendrán distintos costos, siendo uno de estos el tiempo que tarde en efectuarse.
 
-Es de nuestro conocimiento que generalmente los datos estructurados son gestionados mediante un sistema de base de datos pero en el caso de los textos estos se gestionan por medio de un motor de búsqueda motivado a que los textos en un estado crudo carecen de estructura \citep{miningt2012} (p.~2). Son los motores de búsqueda (\emph{search engines}) los que permiten que un usuario pueda encontrar fácilmente la información que resulte de utilidad mediante un \emph{query}.
+Es de nuestro conocimiento que generalmente los datos estructurados son gestionados mediante un sistema de base de datos, pero en el caso de los textos, estos se gestionan por medio de un motor de búsqueda, motivado a que los textos en un estado crudo carecen de estructura \citep{miningt2012} . Son los motores de búsqueda (\emph{search engines}) los que permiten que un usuario pueda encontrar fácilmente la información que resulte de utilidad mediante un \emph{query}.
 
-El SSCSU está diseñado como un IRS donde se pueden ejecutar querys que son procesados y los resultados que se obtienen son sometidos a una función de ranking que será expuesta en una fase posterior del desarrollo de esta investigación.
+El SCSU está diseñado como un ISRI donde se pueden ejecutar querys que son procesados y los resultados que se obtienen son sometidos a una función de ranking que será expuesta en una fase posterior del desarrollo de esta investigación.
 
 \hypertarget{ejemplos-de-irs}{%
-\section{Ejemplos de IRS:}\label{ejemplos-de-irs}}
+\subsection{Ejemplos de IRS:}\label{ejemplos-de-irs}}
 
-Profundizando en el tema de esta Investigación se mencionan un par de páginas de internet que funcionan coomo IRS.
+Profundizando en el tema de esta Investigación se mencionan un par de páginas de internet que funcionan coomo IRS sobre corpus de investigaciones científicas.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Una es el proyecto denominado Arvix alojado en \url{https://arxiv.org/}, que es un repositorio de trabajos de investigación. Al momento del usuario hacer un requerimiento de información, adicional al texto de la búsqueda, se pueden indicar distintos filtros a aplicar como puede ser el área del conocimiento (física, matemática, computación, etc.). Igualmente se puede indicar si se quiere buscar sólo dentro del título de una investigación, o el autor, en el \emph{abstract, o} en las referencias, por ejemplo.
-
-  Al ejecutar una búsqueda pueden ser recuperados miles de documentos y la interacción con el sistema permite ver que se genera un \emph{ranking} en la exhibición de los resultados obtenidos. El primero de estos \emph{rankings} se ordena con base en la fecha de publicación, pero es viable que se ordenaran los documentos por la relevancia que presentan.
+  Arvix alojado en \url{https://arxiv.org/}, que es un repositorio de trabajos de investigación. Al momento del usuario hacer un requerimiento de información, adicional al texto de la búsqueda, se pueden indicar distintos filtros a aplicar como puede ser el área del conocimiento (física, matemática, computación, etc.), si se quiere buscar sólo dentro del título de una investigación, o el nombre autor, en el \emph{abstract, o} en las referencias.
 \item
-  También está el portal de la \emph{Asociation Computery Machine} (ACM) que incorpora motores de búsqueda con particulares características facilitando la labor de investigación y extracción de información ante una determinada necesidad. Esto lo decimos porque los resultados de una búsqueda son acompañados de distintas representaciones gráficas que le dan un valor adicional a la representación de los resultados. En la figura \ref{fig:busquedasacm} se ve una de estas representaciones que incluye la frecuencia de aparición del \emph{query} en el tiempo.
+  Portal de la \emph{Asociation Computery Machine} (ACM) alojado en \url{https://dl.acm.org} incorpora un motor de búsqueda con particulares características ya que los resultados de una búsqueda son acompañados de distintas representaciones gráficas que le dan un valor adicional a la representación de los resultados. En la figura \ref{fig:busquedasacm} se ve una de estas representaciones que incluye la frecuencia de aparición del \emph{query} en el tiempo.
 \end{enumerate}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.4\linewidth]{images/03-marco-teorico/busquedaacm} 
-
-}
+\includegraphics[width=0.4\linewidth]{images/03-marco-teorico/busquedaacm} \hfill{}
 
 \caption{Gráfico que acompaña resultados de búsqueda de un término en la biblioteca digital de la Association for Computing Machinery (https://dl.acm.org/)}\label{fig:busquedasacm}
 \end{figure}
 
-\hypertarget{modelos-de-recuperaciuxf3n-de-informaciuxf3n}{%
-\section{Modelos de Recuperación de Información:}\label{modelos-de-recuperaciuxf3n-de-informaciuxf3n}}
+\hypertarget{MRI}{%
+\subsection{Modelos de Recuperación de Información:}\label{MRI}}
 
-\hypertarget{recuperaciuxf3n-boleana}{%
-\subsection{Recuperación boleana:}\label{recuperaciuxf3n-boleana}}
+\hypertarget{MRIbol}{%
+\subsubsection{Recuperación boleana:}\label{MRIbol}}
 
 Ante una búsqueda de información se recorre linealmente todo el documento para retornar un valor boleano indicando la presencia o no del término buscado. Es uno de los primeros modelos que se uso y está asociado a técnicas de \emph{grepping} \citep{manning2008} (p.3). El desarrollo de este modelo apareció entre 1960 y 1970.
 
 El usuario final obtendrá como respuesta a su \emph{query} sólo aquellos textos que contengan el término. Es un modelo muy cercano a los típicos \emph{querys} de bases de datos con el uso de operadores ``AND'', ``OR'' y ``NOT''. En el procesamiento de los textos se genera una matriz de incidencia binaria término-documento, donde cada término que conforma el vocabulario, ocupa una fila \emph{i} de la matriz mientras que cada columna \emph{j} se asocia a un documento. La presencia de el término \emph{i} en el documento \emph{j} se denotará con un valor verdadero o un ``\textbf{1}''.
 
-La recuperación boleana si bien representa una buena aproximación a la generación de \emph{querys} más rápidos, presenta una gran desventaja y es que al crecer la cantidad de documentos y el vocabulario, se obtiene una matriz dispersa de una alta dimensionalidad que hace poco efectiva su implementación.
+La recuperación boleana si bien representa una buena aproximación a la generación de \emph{querys} más rápidos, presenta una gran desventaja y es que al crecer la cantidad de documentos y el vocabulario (palabras únicas contenidas dentro del Corpus), se obtiene una matriz dispersa de una alta dimensionalidad que hace poco efectiva su implementación.
 
 Los documentos y los \emph{querys} son vistos como conjuntos de términos indexados, que luego fueron llamados ``bolsa de términos'' \emph{(bag of terms)}. Las deficiencias de este modelo recaen en que los resultados, no tienen ningún ranking. Si por ejemplo el término sobre el cual se realiza el \emph{query} aparece 100 veces en un documento y en otro aparece sólo una vez, en la presentación de los resultados ambos documentos aparecerán al mismo nivel, no pudiendo mostrar preferencia del uno sobre el otro.
 
-Otra de las desventajas es que no se registra el contexto semántico de las palabras, incluso se pierde el orden en que aparecen las palabras en cada texto.
+Otra de las desventajas es que no se registra el contexto semántico de las palabras e incluso se pierde el orden en que aparecen las palabras en cada texto.
 
-Este modelo se presume que en el cual se basa la implementación de Saber UCV y por eso es que en general se termina presentando el problema de que al usar el operador \emph{AND} en las búsquedas exactas mencionadas en \ref{query} se obtiene una alta \textbf{\emph{precision}} \footnote{Precision: la fracción, o porcentaje, de los documentos recuperados que son relevantes en la búsqueda efectuada.} en los resultados pero un bajo \textbf{\emph{recall}} \footnote{Recall: la fracción, o porcentaje, de los documentos relevantes en la colección que fueron recuperados por el sistema.} mientras que al usar el operador \emph{OR} da una baja \textbf{\emph{precisión}} y un gran \textbf{\emph{recall}}.
+Este modelo se presume que en el cual se basa la implementación de Saber UCV y por eso es que en general se termina presentando el problema de que al usar el operador OR en las búsquedas exactas mencionadas en \ref{query}, se obtiene un gran \textbf{\emph{recall}} \footnote{Precision: la fracción, o porcentaje, de los documentos recuperados que son relevantes en la búsqueda efectuada.} en los resultados.
 
-Con la propuesta del SSBSU se quiere una versión de recuperación de información que aplica métodos de mayor eficiencia, que permiten mejorar el desempeño (tiempo) y la calidad de los resultados.
+Con la propuesta del \ref{desarrollociclos3} Prototipo de Buscador del SCSU se obtiene una versión de recuperación de información que aplica métodos de mayor eficiencia y genera una mayor \textbf{\emph{precision}} con un menor \textbf{\emph{recall}} , mejorando el desempeño (tiempo) y la relevancia de los resultados.
 
 \hypertarget{invind}{%
-\subsection{Índices Invertidos:}\label{invind}}
+\subsubsection{Índices Invertidos:}\label{invind}}
 
 Se denominan índices invertidos porque en vez de guardar los documentos con las palabras que en ellos aparecen, en estos se procede a guardar cada palabra y se indica los documentos en los cuales se encuentra y adicionalmente se puede registrar la posición en que aparece cada palabra con distintas granularidades, pudiendo ser estas: dentro del documento, del capítulo, del párrafo o de la oración. También pueden contener la frecuencia con que se presenta determinada palabra. Toda esta información nos permite mejorar los tiempos de búsqueda pero con ciertos costos.
 
@@ -642,51 +453,56 @@ Por otra parte el peso total se puede incrementar a medida que decidamos tener u
 
 Continuando con los índices inversos hay estrategias que significan la adopción de generar dos índices inversos para un sistema, conteniendo uno de estos la lista de documentos y la frecuencia de la palabra, mientras que el otro registra la lista con las posiciones de la palabra.
 
-El uso de los índices invertidos permite la denominada ``búsqueda de texto completa'' (\emph{full text search}) que es uno de los pilares que sustenta a los motores de búsqueda y se entiende por este tipo de búsqueda aquella que permite encontrar documentos que contienen las palabras clave o frases determinadas en el texto del \emph{query}. Adicionalmente se puede introducir el criterio de búsqueda de texto aproximado \emph{(approximate text searching)}, que permite flexibilizar la coincidencia entre el texto requerido y el resultado.
+El uso de los índices invertidos permite la denominada ``búsqueda de texto completa'' (\emph{full text search}) que es uno de los pilares que sustenta a los motores de búsqueda y se entiende por este tipo de búsqueda aquella que permite encontrar documentos que contienen las palabras clave o frases determinadas en el texto del \emph{query}. Adicionalmente se puede introducir el criterio de búsqueda de texto aproximado \emph{(approximate text searching)}, donde se flexibiliza la coincidencia entre el texto requerido y el resultado.
 
 En la Solución que se propone, la optimización en la generación de este índice quedará bajo la administración del propio manejador de base de datos que es \emph{postgreSQL}.
 
-Cuando la base de datos que registra el índice invertido crece y no es viable almacenarla en un único computador, es necesario acudir al uso de técnicas que permitan distribuir la base de datos con el uso de tecnologías como \emph{Spark, Hadoop, Apache Storm} entre otras.
+Cuando la base de datos que registra el índice invertido crece y no es viable almacenarla en un único computador, es necesario acudir al uso de técnicas que permitan distribuir la base de datos con el uso de tecnologías como \emph{Spark, Hadoop, Apache Storm} entre otras. En el trabajo de \citep{Mahapatra2011} se encuentran detalles adicionales sobre este tipo de índices.
 
-\hypertarget{rank}{%
-\subsection{Scoring Model:}\label{rank}}
+En \ref{SOTA} se muestra el estado del arte en los Sistemas de Recuperación de Información al incorporar representaciones de embeddings \citep{reimers2019} para los textos y su uso como un Modelo de Recuperación de Información.
 
-Es un modelo aplicado en amplias colecciones de documentos donde es necesario exclusivamente mostrar al usuario que realizó la búsqueda, una fracción de los documentos encontrados, pero es necesario que estos sean los de mayor puntuación (\emph{score}), de acuerdo a distintos criterios que permitan determinar cuales son los que tienen mayor relevancia, como lo puede ser la cantidad de veces que se repite una palabra aparecida en el \emph{query} dentro del documento, o la distancia de aparición de cada una de las palabras que conforman el query (cantidad de palabras que median entre una y otra).
+\hypertarget{re-ordenamiento-re-ranking}{%
+\subsection{Re Ordenamiento (re-ranking):}\label{re-ordenamiento-re-ranking}}
 
-También se puede asignar un peso mayor en la generación del ranking, si una, o varias, de las palabras que generan el \emph{query} aparece dentro del título, o en otros campos que se registrasen en la base de datos.
+Es una técnica utilizada para mejorar la precisión y lograr extraer los documentos que tengan mayor relevancia en los resultados de una búsqueda. Cuando los usuarios realizan ~el query a menudo se encuentran con una gran cantidad de documentos que coinciden con sus consultas. Sin embargo, no todos estos documentos son igualmente relevantes para el usuario. Por lo tanto, el re-ranking implica reorganizar los resultados de búsqueda originales para que los documentos más relevantes aparezcan en las primeras posiciones, mejorando así la experiencia del usuario.
 
-\hypertarget{procesamientos-de-texto}{%
-\section{Procesamientos de texto:}\label{procesamientos-de-texto}}
+\hypertarget{learning-to-rank-ltr}{%
+\subsubsection{Learning to Rank (LTR):}\label{learning-to-rank-ltr}}
 
-En esta sección mostramos métodos de trabajo con los textos. Para el idioma español no son de abundante literatura, a diferencia de aquellos que están en el idioma inglés. Incluso hasta hace unos pocos años las herramientas computacionales para el procesamiento de los textos \ref(nlproc) tampoco eran abundantes y sabiendo que son justamente los textos, el insumo que recibe de nuestro sistema de recuperación de información, la calidad en los procesamientos que sobre ellos hagamos, marcarán en gran medida la propia calidad del sistema que tengamos.
+Los algoritmos de aprendizaje para la clasificación (LTR, por sus siglas en inglés) son comúnmente utilizados para el re-ranking. Estos algoritmos utilizan técnicas de aprendizaje automático para modelar la relevancia de los documentos basándose en características específicas. Los atributos pueden incluir la frecuencia de palabras clave, la proximidad de términos en el documento y otros factores que indican la relevancia. Los modelos LTR pueden ser entrenados con conjuntos de datos que contienen consultas y documentos etiquetados con su relevancia, y luego aplicados para re-ordenar los resultados de búsqueda en función de las características aprendidas.
 
-Como decíamos la literatura y herramientas disponibles para el NLP en el idioma español, fueron escasas durante un considerable período. Se tenían disponibles algunas como el coreNLP de la Universidad de Stanford pero no incluía todas las utilidades, tales como la identificación de parte del discurso \emph{(Part of Speech Tagging),} ni el análisis morfológico (\emph{Morphological Analysis)} o el reconocimiento de entidades nombradas (\emph{Named Entity Recognigtion)}, sino algunas pocas como el tokenizador \ref{token} y el separador de oraciones (Sentences Splitting).
+\hypertarget{bm25}{%
+\subsubsection{BM25:}\label{bm25}}
 
-Casos similares se presentaban con otras herramientas, siendo un caso aparte el esfuerzo del CLiC- Centre de Llenguatge i Computación quienes hicieron la anotación del Corpus AnCora \footnote{\textbf{AnCora} es un corpus del \textbf{catalán (AnCora-CA)} y del \textbf{español (AnCora-ES)} con diferentes niveles de anotación como lema y categoría morfológica, constituyentes y funciones sintácticas, estructura argumental y papeles temáticos, clase semántica verbal, tipo denotativo de los nombres deverbales, sentidos de WordNet nominales, entidades nombradas (NER), relaciones de correferencia (\url{http://clic.ub.edu/corpus/es/ancora})\[<http://clic.ub.edu/corpus/es/ancora>\]} . También la Universidad Politécnica de Cataluña creó la herramienta FreeLing \footnote{\url{https://nlp.lsi.upc.edu/freeling/node/1}} que permitió realizar algunas de las funcionalidades mencionadas en el párrafo anterior. No obstante su integración en cadenas de trabajo y la actualización de sus modelos de entrenamiento, presentan rezagos en comparación a otros modelos que actualmente se están usando, los cuales serán evaluados en el transcurso de esta investigación y serán señalados en un capítulo que aún está por desarrollar.
+Es un algoritmo que contiene una función de puntuación utilizada para calcular la relevancia de un documento con respecto a una consulta de búsqueda y es una mejora del modelo probabilístico Okapi BM, y ha demostrado ser efectivo en la práctica para clasificar documentos según su relevancia con las consultas de los usuarios. Se basa en la frecuencia de los términos de búsqueda y la longitud del documento. A diferencia de los modelos clásicos como TF-IDF, BM25 ajusta la importancia de la frecuencia del término y la longitud del documento mediante una fórmula matemática compleja \citep{zhai2016}, lo que lo hace más eficaz para lidiar con variaciones en la longitud del documento y mejorar la precisión en los resultados de búsqueda.
+
+\hypertarget{PT}{%
+\section{Procesamientos de texto:}\label{PT}}
+
+En esta sección mostramos métodos de manipulación y tratamiento de los textos. Lo primero que se indica es que hasta el año 2016 eran escasas las herramientas computacionales para el procesamiento de los textos \ref(nlproc) en el idioma español. Sabiendo que son justamente los textos, el insumo que recibe de nuestro sistema de recuperación de información, la calidad en los procesamientos que sobre ellos hagamos, marcarán en gran medida la propia calidad del sistema que tengamos.
+
+Frameworks para tareas de procesamientos de texto se basan en los proyectos de Universal Dependencies \citep{demarneffe2021}, como el coreNLP de la Universidad de Stanford \citep{manning-etal-2014-stanford} que fue uno de los primeros sistemas en incluir procesamientos para el idioma español, sin incluir todas las utilidades sí disponibles para el idioma inglés como el identificación de parte del discurso \emph{(Part of Speech Tagging),} ni el análisis morfológico (\emph{Morphological Analysis)} \citep{straka2017} o el reconocimiento de entidades nombradas (\emph{Named Entity Recognigtion)}, sino algunas pocas como el tokenizador \ref{token} y el separador de oraciones (\emph{Sentences Splitting}).
+
+Casos similares se presentaban con otras herramientas, siendo un caso aparte el esfuerzo del CLiC- Centre de Llenguatge i Computación quienes hicieron la anotación del Corpus AnCora \footnote{\textbf{AnCora} es un corpus del \textbf{catalán (AnCora-CA)} y del \textbf{español (AnCora-ES)} con diferentes niveles de anotación como lema y categoría morfológica, constituyentes y funciones sintácticas, estructura argumental y papeles temáticos, clase semántica verbal, tipo denotativo de los nombres deverbales, sentidos de WordNet nominales, entidades nombradas (NER), relaciones de correferencia (\url{http://clic.ub.edu/corpus/es/ancora})\[<http://clic.ub.edu/corpus/es/ancora>\]} . También la Universidad Politécnica de Cataluña creó la herramienta FreeLing \footnote{\url{https://nlp.lsi.upc.edu/freeling/node/1}} que permitió realizar algunas de las funcionalidades mencionadas en el párrafo anterior. No obstante su integración en cadenas de trabajo y la actualización de sus modelos de entrenamiento, presentan rezagos en comparación a otros modelos que actualmente se están usando basados en el uso del aprendizaje mediante redes neuronales \citep{chen2014fast} y que serán indicados con mayor detalle en \ref{sota} .
 
 \hypertarget{nlproc}{%
-\subsection{Procesamiento del Lenguaje Natural (natural language processing- NLP):}\label{nlproc}}
+\subsection{Procesamiento del Lenguaje Natural (Natural Language Processing- NLP):}\label{nlproc}}
 
-Son las técnicas computacionales desarrolladas para permitir al computador ``comprender'' el significado de los textos de lenguaje natural. En esta Investigación son aplicadas una serie de estos métodos sobre los textos que componen el Corpus y se pueden mencionar las siguientes:
+Son las técnicas computacionales desarrolladas para permitir al computador representar e interactuar de una forma más efectiva con el ``significado'' de los textos . Al aplicar la tokenización \ref{token} , el Etiquetado de Partes del Discurso \ref{pos}, el stemming \ref{steaming}, la lematización \ref{lemma} , entre otros métodos, se desea obtener un Corpus Anotado \citep{desagulier2017}. Los métodos que se detallan a continuación fueron aplicados sobre el Corpus del SCSU.
 
 \hypertarget{token}{%
 \subsubsection{Tokenizador:}\label{token}}
 
-Básicamente es separar el documento en palabras, o unidades semánticas que tengan algún signficado a las cuales se le llaman \emph{tokens}. Para el idioma español no representa un mayor reto, ya que se puede usar el espacio como delimitador de palabras, no así en otros idiomas como el chino donde el problema se aborda de manera distinta.
+Básicamente es separar el documento en palabras, o unidades semánticas que tengan algún signficado a las cuales se le llaman \emph{tokens} \citep{straka2017}. Para el idioma español no representa un mayor reto, ya que se puede usar el espacio como delimitador de palabras, no así en otros idiomas como el chino donde el problema se aborda de manera distinta.
 
-Al obtener las palabras como entidades separadas de un texto nos permite calcular la frecuencia de uso de las mismas.
+Al obtener las palabras como entidades separadas de un texto nos permite, por ejemplo, calcular la frecuencia de uso de las mismas.
 
 Es común que las librerías de procesamiento de lenguaje natural contengan tokenizadores que presentan un 100\% como métrica de precisión en el idioma español.
-
-\hypertarget{ner}{%
-\subsubsection{\texorpdfstring{Entidades Nombradas \emph{(named entity reconigtion-NER)}:}{Entidades Nombradas (named entity reconigtion-NER):}}\label{ner}}
-
-Son los procesos que permiten la extracción de las distintas entidades contenidas dentro de los textos. Las entidades son: nombres, lugares, organizaciones. También permite detectar relaciones entre entidades. Las medidas de precisión en los módulos de NER alcanzan una medida cercana al 89\% en modelos entrenados con \emph{machine learning}, tal es el caso de spacy, que es una de las librerías propuestas para realizar estos procesamientos en nuestro desarrollo.
 
 \hypertarget{pos}{%
 \subsubsection{\texorpdfstring{Etiquetado de Partes del Discurso \emph{(Part of speech tagging-POS)}:}{Etiquetado de Partes del Discurso (Part of speech tagging-POS):}}\label{pos}}
 
-Una de las técnicas usadas en el Procesamiento del Lenguaje Natural es el part-of-speech (POS) y consiste en asignar un rol sintáctico a cada palabra dentro de una frase \citep{eisenstein2019} siendo necesario para ello evaluar cómo cada palabra se relaciona con las otras que están contenidas en una oración y así se revela la estructura sintáctica.
+Consiste en asignar un rol sintáctico a cada palabra dentro de una frase \citep{eisenstein2019} siendo necesario para ello evaluar cómo cada palabra se relaciona con las otras que están contenidas en una oración y así se revela la estructura sintáctica.
 
 Los roles sintácticos principales de interés en la elaboración de esta Investigación son los sustantivos, adjetivos y verbos.
 
@@ -708,44 +524,53 @@ En el estado del arte este etiquetado alcanza un 98\% de precisión.
 \hypertarget{steaming}{%
 \subsubsection{Stemming:}\label{steaming}}
 
-Stemming es un algoritmo que persigue encontrar la raíz de una palabra, teniendo como el de mayor uso el Algoritmo de Porter. Al ser usado se puede reducir considerablemente el número de palabras que conforman el vocabulario del \emph{Corpus} y se pueden mejorar los tiempos en que se ejecuta la búsqueda de un texto ya que se disminuye el espacio de búsqueda. La aplicación de este tipo de algoritmos no toma en consideración el contexto en el que aparece la palabra a la que se le extrae la raíz. Como ejemplo se muestra que ``yo canto, tú cantas, ella canta, nosotros cantamos, ellos cantan'' tendrá como raíz \textbf{cant}.
+Stemming es un algoritmo que persigue encontrar la raíz de una palabra, teniendo como el de mayor uso el Algoritmo de Porter \citep{willett2006}. Al ser usado se puede reducir considerablemente el número de palabras que conforman el vocabulario del \emph{Corpus} y se pueden mejorar los tiempos en que se ejecuta la búsqueda de un texto ya que se disminuye el espacio de búsqueda. La aplicación de este tipo de algoritmos no toma en consideración el contexto en el que aparece la palabra a la que se le extrae la raíz. Como ejemplo se muestra que ``yo canto, tú cantas, ella canta, nosotros cantamos, ellos cantan'' tendrá como raíz ``cant\textbf{``}.
 
-Es necesario considerar que al crear el \textbf{índice invertido} \ref{steaming} son las raíces las que se guardarán y no propiamente la palabra que aparece en el texto
+Es necesario considerar que al crear el \textbf{índice invertido} \ref{invind} son las raíces las que se guardarán y no propiamente la palabra que aparece en el texto.
 
-\hypertarget{lematizaciuxf3n}{%
-\subsubsection{Lematización:}\label{lematizaciuxf3n}}
+\hypertarget{lemma}{%
+\subsubsection{Lematización:}\label{lemma}}
 
-Es el proceso en que se consigue el lema de una palabra, entendiendo que el lema es la forma que por convenio se acepta como representante de todas las formas flexionadas de una misma palabra.
+Es el proceso en que se consigue el lema de una palabra, entendiendo que el lema es la forma que por convenio se acepta como representante de todas las formas flexionadas de una misma palabra \citep{demarneffe2021}. Los lemas, o lexemas, constituyen la parte principal de la palabra, la que transmite el significado. Los morfemas son el elemento variable de la palabra y son los que se busca desechar en el proceso de lematización.
+
+Tener presente que hay que revisar las menciones a la lematización y explicar que va en encontrar los lexemas, o que es un proceso similar.
 
 Al buscar el lema se tiene presente la función sintáctica que tiene la palabra, es decir que se evalúa el contexto en el que ocurre. Una de las ventajas de aplicar esta técnica es que se reduce el vocabulario del Corpus y eso conlleva a que también se reduce el espacio de búsqueda en los documentos.
 
-En el estado del arte este etiquetado alcanza un 96\% de precisión.
+En el estado del arte este etiquetado alcanza un 96\% de precisión en esta tarea en varios de los modelos de aprendizaje automático preentrenados para realizarla, no obstante no se disponen datos puntuales para la precisión que se alcanza en el idioma español.
 
 \hypertarget{textmin}{%
-\section{Minería de Texto:}\label{textmin}}
+\subsection{Minería de Texto:}\label{textmin}}
 
-La extracción de ideas útiles derivadas de textos mediante la aplicación de algoritmos estadísticos y computacionales, se conoce con el nombre de minería de texto, analítica de texto o aprendizaje automático para textos (text mining, text analytics, machine learning from text). Se quiere con ella representar el conocimiento en una forma más abstracta y así poder detectar relaciones en los textos.
+La extracción de ideas útiles derivadas de textos mediante la aplicación de algoritmos estadísticos y computacionales, se conoce con el nombre de minería de texto, analítica de texto o aprendizaje automático para textos (text mining, text analytics, machine learning from text). Se quiere con ella representar el conocimiento en una forma más abstracta y así poder detectar relaciones en los textos \citep{aggarwal2018a}.
 
-El uso de las técnicas de minería de texto ha ganado atención en recientes años motivado a las grandes cantidades de textos digitales que están disponibles. La minería de texto surge para dar respuesta a la necesidad de tener métodos y algoritmos que permitan procesar estos datos no estructurados \citep{miningt2012} . Una vez que mediante el proceso de recuperación de información se tiene un cúmulo de textos, es posible que se necesite dar un paso más allá y usar un conjunto de técnicas que nos permitan analizar y digerir estos textos, mediante la detección de patrones.
+La minería de texto surge para dar respuesta a la necesidad de tener métodos y algoritmos que permitan procesar estos datos no estructurados \citep{miningt2012} y ha ganado atención en recientes años motivado a las grandes cantidades de textos digitales que están disponibles. Los procesamientos inherentes al NLP mencionados anteriormente son insumo para la minería de texto.
 
-Uno de los desafíos al trabajar con textos es darles estructura para que resulte viable trabajar con ellos desde la perspectiva de procesos computacionales.
+Algunos de los métodos que pertenecen a la Minería de Texto son:
 
-Una de las primeras fases consiste en agrupar todos los textos en un Corpus. Posteriormente se procederá a conformar una matriz dispersa de una alta dimensionalidad que se denominará \emph{``Sparce Term-Document Matrix)} de tamaño \emph{n X d,} donde \emph{n} es el número total de documentos y \emph{d} es la cantidad de términos o vocabulario (palabras distintas) presentes entre todos los documentos. Formalmente se sabe que la entrada \emph{(i,j)} de nuestra matriz es la frecuencia (cantidad de veces que aparece) de la palabra \emph{j} en el documento \emph{i} .
+\hypertarget{term-document-matrix}{%
+\subsubsection{Term-Document Matrix:}\label{term-document-matrix}}
 
-El problema de la alta dimensionalidad de la matriz mencionada motiva ir aplicando otras técnicas que en principio puedan colaborar a reducirla por medio de simplificar los atributos, es decir, disminuyendo el vocabulario por ejemplo aplicando el algoritmo de Porter (stemming).
+Una vez que se tiene conformado un Corpus, se procede a conformar una matriz dispersa de una alta dimensionalidad que se denominará \emph{``Sparce Term-Document Matrix)''} de tamaño \emph{n X d,} donde \emph{n} es el número total de documentos y \emph{d} es la cantidad de términos o vocabulario (palabras distintas) presentes entre todos los documentos. Formalmente se sabe que la entrada \emph{(i,j)} de nuestra matriz es la frecuencia (cantidad de veces que aparece) de la palabra \emph{j} en el documento \emph{i} . Este procedimiento es similar al que fue revisado en \ref{MRIbol}.
 
-Igualmente a nivel de minería de texto se hace deseable poder contar con la identificación semántica de cada una de las palabras que conforman nuestro vocabulario, para así obtener representaciones que aportan un mayor significado. Los procesamientos inherentes al NLP mencionados anteriormente son insumo para la minería de texto.
+Uno de los problemas que presenta la matriz obtenida es la alta dimensionalidad y lo dispersa que es, llegando a estar conformada en un 98\% por ceros, que indican la ausencia de la aparición de una palabra en un determinado documento.
+
+Para mejorar un tanto este tipo de representación del Corpus, se aplican otras técnicas, que en principio puedan colaborar a reducir la dimensionalidad, por medio de simplificar los atributos, es decir, disminuyendo el vocabulario aplicando el stemming \ref{steaming}.
 
 \hypertarget{coocurrencia}{%
-\subsection{Coocurrencia de Palabras:}\label{coocurrencia}}
+\subsubsection{Coocurrencia de Palabras:}\label{coocurrencia}}
 
-En esta investigación se usará una técnica denominada ``Coocurrencia de Palabras'' para la detección de patrones en los textos. Esto consiste en evaluar las palabras que coocurren dentro de los documentos que conforman el \emph{corpus} y se puede hacer con distintas granularidades. Por ejemplo: las palabras que coocurren una seguida de otra o las que coocurren dentro de la misma oración, o dentro de un párrafo y así sucesivamente.
+En esta investigación se usará un método denominado ``Coocurrencia de Palabras'' para la detección de patrones en los textos y se hará la representación de aparición de las coocurrencias mediante grafos.
 
-Para la representación visual se usan los grafos representando cada palabra un nodo y la coocurrencia de una palabra con otra implica que se extienda un arco entre ellas. Las palabras dispuestas para representarse en el grafo serán exclusivamente las que tengan la función dentro del discurso (POS) \ref{pos} de adjetivos y sustantivos, es decir que cada coocurrencia será un sustantivo con el adjetivo que la acompaña, donde es posible tener una relación de un sustantivo con \{0,1,\ldots,n\} adjetivos.
+El método se explica en que se evaluan las palabras que coocurren, es decir, aquellas que forman parte del conjunto de palabras obtenidas de la intersección de los documentos que conforman el \emph{corpus,} o del subconjunto de documentos recuperados mediante un determinado \emph{query}.
 
-La selección de las funciones gramaticales propuestas se hace para disminuir el espacio de representación y se considera que los sustantivos, al contar con el adjetivo que las acompaña, logran hacer una representación que muestra proximidad semántica y se representan los temas (\emph{topics}) más relevantes \citep{segev2021}.
+También se puede establecer el nivel al que se quiere determinar la coocurrencia, por ejemplo, las palabras que coocurren una seguida de otra en los textos, o las que coocurren dentro de la misma oración, o dentro de un párrafo o dentro de todo el texto de cada documento.
 
-En el método que se usará en este Sistema se filtrarán las \emph{n} ( \emph{n} igual a 100 ), palabras que presenten mayor coocurrencia dentro de los resúmenes filtrados en el \textbf{\emph{query}}, siendo posible seleccionar la granularidad (todo el texto o en un párrafo).
+Para la representación visual se usan los grafos donde cada palabra representa un nodo y la coocurrencia de una palabra con otra implica que se extienda un arco entre ellas. Las palabras dispuestas para representarse en el grafo serán exclusivamente las que tengan la función dentro del discurso (POS) \ref{pos} de adjetivos y sustantivos, es decir que cada coocurrencia será un sustantivo con el adjetivo que la acompaña, donde es posible tener una relación de un sustantivo con \{0,1,\ldots,n\} adjetivos.
+
+La selección de las funciones gramaticales propuestas se hace para disminuir el espacio de representación y se considera que los sustantivos, al contar con el adjetivo que las acompaña, logran hacer una representación que muestra proximidad semántica y se representan los temas (\emph{topicos}) más relevantes \citep{segev2021}.
+
+En el método que se usará en este Sistema se filtrarán las \emph{n} ( \emph{n} igual a 100 ), palabras que presenten mayor coocurrencia dentro de los textos filtrados en el \textbf{\emph{query}}, siendo posible seleccionar la granularidad (todo el texto o en un párrafo).
 
 En la figura \ref{fig:coocejem} se visualiza lo expuesto de una manera gráfica al ver la representación en un grafo de la coocurrencia de palabras sobre los textos de los resúmenes de las Tesis y TEG de la Escuela de Física de la U.C.V.
 
@@ -758,10 +583,12 @@ En la figura \ref{fig:coocejem} se visualiza lo expuesto de una manera gráfica 
 \caption{Coocurrencia de Palabras}\label{fig:coocejem}
 \end{figure}
 
-\hypertarget{similitud}{%
-\section{Similitud de documentos:}\label{similitud}}
+La representación gráfica y el método de extracción de sustantivos y adjetivos, resulta similar a la propuesta metodológica realizada por \citep{dueñas2011} para crear Mapas del Conocimiento con ``las palabras claves obtenidas a través de búsquedas recurrentes y relacionadas''. En esta Investigación se simplificará la obtención y representación de los Mapas del Conocimiento, asumiendo que las palabras claves son los sustantivos adjetivizados, equivalente a visualizar las personas, cosas o ideas que se mencionan y que son modificados por los adjetivos, al cambiar sus propiedades o atributos; seleccionando aquellas palabras que muestran una mayor aparición en el query realizado y que se interconectan mediante arcos.
 
-Para poder realizar la recomendación de documentos, una de las técnicas que se usa es medir la similitud que presenta un documento con los otros contenidos en el corpus. Un ejemplo de esta técnica es el uso de la similitud coseno que se explica con esta fórmula.
+\hypertarget{similitud}{%
+\subsection{Similitud de documentos:}\label{similitud}}
+
+Para poder realizar la recomendación de documentos, una de las técnicas que se usa es medir la similitud que presenta un documento con los otros contenidos en el corpus \citep{aggarwal2018} . Un ejemplo de esta técnica es el uso de la similitud coseno que se explica con esta fórmula.
 
 \begin{equation}
 \cos ({\bf t},{\bf e})= {{\bf t} {\bf e} \over \|{\bf t}\| \|{\bf e}\|} = \frac{ \sum_{i=1}^{n}{{\bf t}_i{\bf e}_i} }{ \sqrt{\sum_{i=1}^{n}{({\bf t}_i)^2}} \sqrt{\sum_{i=1}^{n}{({\bf e}_i)^2}} }
@@ -771,18 +598,20 @@ En la fórmula \emph{t} representa un documento y \emph{e} representa otro docum
 
 Este es uno de los métodos más usados para detectar similitudes en los textos, aunque existen otras fórmulas para el cálculo de la similitud como es el índice de jaccard.
 
-El otro elemento de gran importancia en obtención de esta medición, es la representación que se haga del documento. Son distintas las técnicas que existen estando entre ellas la representación mediante ``bolsas de palabras'' o \emph{bag of words}. Recientemente se han creado formas más complejas para la representación como lo son los \emph{words embeddings} que son obtenidos mediante el entrenamiento de redes neuronales de aprendizaje profundo.
+Al hacer la comparación de un documento i del Corpus que contiene n documentos, en un proceso iterativo con otra cantidad de (\emph{n-1)} documentos, se obtendrán (\emph{n-}1) índices de similitud. Aquel que obtenga un mayor valor se puede inferir que presenta una mayor similitud con el documento \emph{i.}
 
-Estas formas de representación de textos serán investigadas más a fondo en futuras fases de la elaboración de este trabajo.
+El otro elemento de gran importancia en obtención de esta medición, es la representación que se haga del documento. Son distintas las técnicas que existen estando entre ellas la representación mediante ``bolsas de palabras'' o \emph{bag of words,} similar a lo que se explicó en \ref{term-document-matrix} donde un documento i es el vector correspondiente a una fila de la matriz y la cantidad de dimensiones que presenta es equivalente al tamaño del vocabulario.
 
-\hypertarget{sistemas-distribuidos}{%
-\section{Sistemas Distribuidos:}\label{sistemas-distribuidos}}
+Recientemente se han creado formas más complejas para la representación de los documentos, como lo son los \emph{words embeddings} que son obtenidos mediante el entrenamiento de redes neuronales de aprendizaje profundo lo cual será expuesto a continuación en \ref{sota}.
+
+\hypertarget{SD}{%
+\section{Sistemas Distribuidos:}\label{SD}}
 
 Los distintos procesos y componentes de la Solución propuesta han sido diseñados e implementados como un sistema distribuido y por eso se hace la mención a este tema.
 
 Una definición formal que se le puede dar a los sistemas distribuidos es ``cuando los componentes de hardware y/o sofware se encuentran localizados en una red de computadores y estos coordinan sus acciones sólo mediante el pase de mensajes'' \citep{distribu2012}.
 
-Algunas de las principales características que tienen los sistemas distribuidos es la tolerancia a fallos, compartir recursos, concurrencia, ser escalables \citep{czaja2018} entre otras. Mencionamos estas en particular al ser propiedades que están presentes en la propuesta acá descrita.
+Algunas de las principales características que tienen los sistemas distribuidos es la tolerancia a fallos, compartir recursos, concurrencia, ser escalables \citep{czaja2018} entre otras. Mencionamos estas, en particular, al ser propiedades que están presentes en la propuesta acá descrita.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -799,52 +628,151 @@ Algunas de las principales características que tienen los sistemas distribuidos
 \hypertarget{contenedores}{%
 \subsection{Contenedores:}\label{contenedores}}
 
-Un contenedor es una abstracción de una aplicación que se crea en un ambiente virtual, en el cual se encuentran ``empaquetados'' todos los componentes (sistema operativo, librerías, dependencias, etc.), que una aplicación necesita para poder ejecutarse. En su diseño se tiene presente que sean ligeros y que con otros contenedores pueden compartir el \emph{kernel}, usando un sistema de múltiples capas, que también pueden ser compartidas entre diversos contenedores, ahorrando espacio en disco del \emph{host} donde se alojan los contenedores.
+Un contenedor es una abstracción de una aplicación que se crea en un ambiente virtual, en el cual se encuentran ``empaquetados'' todos los componentes (sistema operativo, librerías, dependencias, etc.), que una aplicación necesita para poder ejecutarse. En su diseño se tiene presente que sean ligeros y que con otros contenedores pueden compartir el \emph{kernel}, usando un sistema de múltiples capas, que también pueden ser compartidas entre diversos contenedores, ahorrando espacio en disco del \emph{host} donde se alojan los contenedores \citep{nüst2020}.
 
 El uso de los contenedores permite crear, distribuir y colocar en producción aplicaciones de software de una forma sencilla, segura y reproducible. También a cada contenedor se le puede realizar una asignación de recursos (memoria, cpu, almacenamiento) que garantice un óptimo funcionamiento de la aplicación que contienen.
 
 Es importante señalar que el uso de esta tecnología añade un entorno de seguridad al estar cada contenedor en una ambiente isolado.
 
-Para cada contenedor es necesario usar una imagen donde se definen las dependencias necesarias para su funcionamiento.
+Para cada contenedor es necesario usar una imagen donde previamente se definen las dependencias (sistema operativo, librerías, lenguajes) necesarias para su funcionamiento.
 
 \hypertarget{orquestador}{%
 \subsection{Orquestador:}\label{orquestador}}
 
-Al tener diversos contenedores, donde cada uno aloja una aplicación distinta, puede resultar necesario que todos se integren en un sistema. Para que esta integración sea viable es necesario contar con un orquestador. Su uso permitirá lograr altos grados de portabilidad y reproducibilidad, pudiendo colocarlos en la nube o en centros de datos garantizando que se pueda hacer el \emph{deploy} de forma sencilla y fiel a lo que se implementó en el ambiente de desarrollo.
+Al tener diversos contenedores, donde cada uno aloja una aplicación distinta, puede resultar necesario que todos se integren en un sistema. Para que esta integración sea viable es necesario contar con un orquestador \citep{cook2017}. Su uso permitirá lograr altos grados de portabilidad y reproducibilidad, pudiendo colocarlos en la nube o en centros de datos garantizando que se pueda hacer el \emph{deploy} de forma sencilla y fiel a lo que se implementó en el ambiente de desarrollo.
 
-En el caso de la Solución propuesta se adoptará el uso de Docker Compose como orquestador y en el Capítulo que contiene la Propuesta Técnica \ref{propuestatec} serán expuestas las funcionalidades de cada contenedor y se apreciará la integración que brindará el orquestador.
+En el caso de la Solución propuesta se adoptará el uso de \emph{Docker Compose} como orquestador y en el Capítulo que contiene la Propuesta Técnica \ref{desarrollociclos4} serán expuestas las funcionalidades de cada contenedor y se apreciará la integración que brindará el orquestador.
 
-\hypertarget{tendencias-actuales-sistemas-de-informaciuxf3n}{%
-\section{Tendencias actuales Sistemas de Información:}\label{tendencias-actuales-sistemas-de-informaciuxf3n}}
+\hypertarget{sota}{%
+\section{Estado del Arte:}\label{sota}}
 
 Si bien anteriormente las búsquedas de información dentro de un conjunto de textos se procesaban determinando la aparición o no de palabras, o de frases dentro de un determinado texto, este método ha ido evolucionando para llegar hoy en día a un elevado nivel de abstracción, donde a partir de la necesidad de obtener una determinada información, es decir, de aquello que necesitamos buscar, que antes consistía en hacer \emph{match} con un objeto de información, se ha pasado de los motores de búsqueda ( \emph{search engines} ) a los motores de respuestas ( \emph{answering engines} ) \citep{balog2018}, donde el sistema ante un determinada consulta del usuario va a retornar una serie de resultados enriquecidos, mostrando la identificación de entidades, hechos y cualquier otro dato estructurado que esté de forma explícita, o incluso implícita, mencionado dentro de los textos que conforman el corpus.
 
-Para lograr la generación de estos resultados se han tenido que conformar las llamadas bases de conocimiento o \emph{knowlodege bases}, que son repositorios donde previo a la búsqueda de la información dentro del sistema, se logra ir estructurando la organización de la información alrededor de objetos o datos específicos que se denominan \textbf{entidades}. Estos conceptos y métodos se asocian directamente a los que también se proponen, de manera más amplia, en la denominada \emph{web semántica} \footnote{Se basa en la idea de añadir \href{https://es.wikipedia.org/wiki/Metadato}{metadatos} \href{https://es.wikipedia.org/wiki/Sem\%C3\%A1ntica}{semánticos} y \href{https://es.wikipedia.org/wiki/Ontolog\%C3\%ADa_(Inform\%C3\%A1tica)}{ontológicos} a la \href{https://es.wikipedia.org/wiki/World_Wide_Web}{\emph{World Wide Web}}\emph{.} Esas informaciones adicionales ---que describen el contenido, el significado y la relación de los datos--- se deben proporcionar de manera formal, para que así sea posible evaluarlas automáticamente por máquinas de procesamiento. Tomado de \href{https://es.wikipedia.org/wiki/Web_sem\%C3\%A1ntica}{Wikipedia}} .
+Métodos usados para el almacenamiento o la indexación como crear agrupamientos \emph{(clusters)} de aquellos documentos que compartan algunas características, por ejemplo, en la temática que aborden. Otra de las innovaciones que se están añadiendo a los sistemas de recuperación de información, es generar resúmenes con técnicas de procesamiento de lenguaje natural soportadas en el uso de arquitecturas de aprendizaje profundo \emph{(deep learning)} .
 
-Como ejemplo de una \emph{knowledge bases} se puede mencionar a DBpedia, que se encuentra en la dirección \href{www.dbpedia.com}{www.www.dbpedia.org.com} y es un proyecto en donde puede acceder a una red global y unificada de grafos de conocimiento, la cual cubre más de 20 idiomas y principalmente genera sus grafos de conocimiento a partir de las publicaciones del Proyecto Wikipedia.
+\hypertarget{mm}{%
+\chapter{Capítulo Marco Metodológico:}\label{mm}}
 
-\hypertarget{temas-en-proceso-de-investigaciuxf3n}{%
-\subsubsection{Temas en proceso de investigación:}\label{temas-en-proceso-de-investigaciuxf3n}}
+En este capítulo, se presenta el enfoque metodológico adoptado para este estudio. La metodología Kanban \ref{mmmetodologia} se empleó para gestionar el proceso general, mientras que la metodología de Desarrollo Adaptable de Software \ref{mmasd} guió la creación del software, permitiendo una implementación eficiente y adaptable a las necesidades cambiantes del proyecto \textbf{Recuperación, Extracción y Clasificación de Información de SABER UCV}.
 
-Por estar aún en curso esta investigación a continuación se mencionan algunos temas que se está evaluando incluir en este marco teórico
+\hypertarget{mmmetodologia}{%
+\section{Metodología de Trabajo:}\label{mmmetodologia}}
 
-\begin{itemize}
-\item
-  Métodos usados para el almacenamiento o la indexación como crear agrupamientos \emph{(clusters)} de aquellos documentos que compartan algunas características, por ejemplo, en la temática que aborden. Otra de las innovaciones que se están añadiendo a los sistemas de recuperación de información, es generar resúmenes con técnicas de procesamiento de lenguaje natural soportadas en el uso de arquitecturas de aprendizaje profundo \emph{(deep learning)} .
-\item
-  Resultados ante una búsqueda personalizados: al existir mecanismos como la sesión de usuario o las \emph{cookies} que guardan información contextual, permitiendo que ante un mismo \emph{query} en distintos equipos, los resultados sean distintos en función de la persona que hizo la búsqueda.
-\item
-  En cuanto al estado del arte existen distintas librerías y modelos de representación de documentos, palabras y caracteres. Algunos de estos modelos son fastext, word2vec, GPT3. Para este momento aún estamos haciendo la evaluación del uso de ellos para nuestra investigación, por lo cual, sólo los mencionamos referencialmente en este Anteproyecto.
-\end{itemize}
+Para el desarrollo del Sistema se adoptó la metodología Kanban por considerarse idónea ante los retos propuestos. En ella se fomenta una cultura de mejora continua, incremental, al identificar cuellos de botella, la limitación del trabajo en curso y la mejora continua para aumentar la eficiencia y la productividad. Gracias a su enfoque basado en la colaboración, flexibilidad y respuesta rápida a los cambios puede considerarse que está dentro de las metodologías ``Ágiles'' y se basa en la visualización del flujo de trabajo mediante un tablero, que en el caso de los proyectos de desarrollo de software, facilita la toma de decisiones informadas y promueve la transparencia al proporcionar una visualización clara de las tareas y actividades involucradas \citep{stephens2015}.
 
-\hypertarget{metodologuxeda}{%
-\chapter{Marco Metodológico:}\label{metodologuxeda}}
+En el tablero que se aprecia en la figura \ref{fig:metkanban} se puede visualizar y facilitar la gestión del flujo de trabajo, desde la concepción de una idea, hasta su implementación y entrega. Durante el desarrollo de este Sistema se necesitaba contar con la flexibilidad que ofrece esta metodología, ya que en ella no se tienen que definir roles específicos en el equipo desarrollador, ni tampoco se querían definir períodos fijos para alguna fase en particular sino más bien para el desarrollo general.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/04-metodologia/01_kanban} 
+
+}
+
+\caption{Representación de un tablero según la metodología Kanban}\label{fig:metkanban}
+\end{figure}
+
+\hypertarget{mmasd}{%
+\section{Desarrollo Adaptable de Software:}\label{mmasd}}
+
+El \textbf{Adaptive Software Development (ASD)} \citep{highsmith2000} es una metodología ágil de desarrollo de software que se centra en la adaptabilidad y capacidad para adaptarse a los cambios, proporcionando una retroalimentación temprana y frecuente, dando la flexibilidad para abordar los desafíos cambiantes del desarrollo de software. A diferencia de los enfoques tradicionales, ASD reconoce la naturaleza impredecible del desarrollo de software y se adapta continuamente para satisfacer las necesidades del cliente en un entorno dinámico y complejo, haciendo énfasis en el principio ``Entregar el proyecto que se necesita al final, no el proyecto que se pidió al principio''.
+
+\hypertarget{caracteruxedsticas}{%
+\subsection{Características:}\label{caracteruxedsticas}}
+
+\textbf{Colaboración y Comunicación Constante:} fomenta la colaboración cercana entre los equipos de desarrollo y los stakeholders. La comunicación constante permite una comprensión profunda de los requisitos del cliente y facilita ajustes rápidos según las necesidades cambiantes.
+
+\textbf{Iteraciones Incrementales:} divide el proyecto en iteraciones cortas y manejables. Cada iteración produce un incremento funcional del software, lo que permite obtener retroalimentación temprana que permite corregir errores y ajustar el rumbo del proyecto antes de que los problemas se vuelvan críticos.
+
+\textbf{Flexibilidad y Adaptabilidad:} reconoce que los requisitos del proyecto pueden cambiar con el tiempo. Por lo tanto, se adapta fácilmente a los cambios, permitiendo una rápida reevaluación y ajuste de las estrategias y metas del proyecto asegurando que el producto final esté alineado de manera óptima con las necesidades y expectativas del cliente, incluso en un entorno de desarrollo volátil.
+
+\hypertarget{ciclo}{%
+\subsection{Ciclo:}\label{ciclo}}
+
+El desarrollo adaptable de software se basa en un proceso dinámico e iterativo donde cada ciclo contiene las siguientes fases: Especular-Colaborar-Aprender. Cada ciclo se enfoca en el aprendizaje continuo y la colaboración intensiva entre desarrolladores y clientes, fundamental para enfrentar las cambiantes dinámicas empresariales.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{images/04-metodologia/02_ciclo} 
+
+}
+
+\caption{Ciclo ASD}\label{fig:metdas}
+\end{figure}
+
+\hypertarget{especulaciuxf3n}{%
+\subsubsection{\texorpdfstring{\textbf{Especulación:}}{Especulación:}}\label{especulaciuxf3n}}
+
+Este componente ofrece un espacio para la exploración y la comprensión de la incertidumbre. Permite desviarse del plan inicial sin temor, transformando los errores en oportunidades de aprendizaje. Aceptar que no se sabe todo impulsa la disposición para aprender y experimentar.
+
+\hypertarget{colaboraciuxf3n}{%
+\subsubsection{\texorpdfstring{\textbf{Colaboración:}}{Colaboración:}}\label{colaboraciuxf3n}}
+
+Las aplicaciones complejas requieren la recopilación y el análisis de grandes volúmenes de información y ejecución de tareas. Este proceso es inmanejable para un individuo. En entornos dinámicos, donde fluyen grandes cantidades de datos, es esencial la colaboración. Un solo individuo o un pequeño grupo no puede abarcar todo el conocimiento necesario.
+
+\hypertarget{aprendizaje}{%
+\subsubsection{\texorpdfstring{\textbf{Aprendizaje:}}{Aprendizaje:}}\label{aprendizaje}}
+
+La evaluación continua del conocimiento a través de retroalimentaciones y reuniones grupales al final de cada ciclo iterativo es esencial. Este enfoque difiere de la evaluación al final del proyecto. Evaluar constantemente permite enfrentar y resolver de manera efectiva los cambios constantes del proyecto y su adaptación.
+
+Para el desarrollo del SCSU se hizo un proceso iterativo donde en cada ciclo se abordó cada una de las fases descritas y así se fueron añadiendo funcionalidades al Sistema, y también en otros casos desechándolas, ya que no se adaptaban de forma correcta a los objetivos propuestos. Como esta metodología se enfoca en construir el software en pequeñas y frecuentes partes incrementales, añadiendo funcionalidades con cada iteración, es válido asumir que este modelo es representativo para la aproximación de desarrollo realizada.
+
+La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evolucionan. Esto fue lo que se hizo en reuniones continuas en la materia Tópicos Especiales en Sistemas de Información y Gerencia que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis ,se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados usados para los procesamiento de los textos.
 
 \hypertarget{desarrollo}{%
 \chapter{Desarrollo de la Solución:}\label{desarrollo}}
 
+Este es el capítulo del desarrollo
+
+\hypertarget{desarollodescripcion}{%
+\section{Descripción general de la Solución:}\label{desarollodescripcion}}
+
+\hypertarget{desarrolloarquitectura}{%
+\section{Arquitectura de la Solución:}\label{desarrolloarquitectura}}
+
+\hypertarget{desarrolloanalisis}{%
+\section{Análisis y diseño:}\label{desarrolloanalisis}}
+
+\hypertarget{desarrollociclos}{%
+\section{Ciclos de Desarrollo:}\label{desarrollociclos}}
+
+\hypertarget{desarrollociclos1}{%
+\subsection{Obtención del Conjunto de Datos:}\label{desarrollociclos1}}
+
+Recuperación
+
+\hypertarget{desarrollociclos2}{%
+\subsection{Extracción y Clasificación de Información del Conjunto de Datos:}\label{desarrollociclos2}}
+
+Extracción y clasificación
+
+\hypertarget{desarrollociclos3}{%
+\subsection{Prototipo de buscador:}\label{desarrollociclos3}}
+
+\hypertarget{desarrollociclos4}{%
+\subsection{Integración de componentes del software:}\label{desarrollociclos4}}
+
+\hypertarget{pruebas}{%
+\section{Pruebas:}\label{pruebas}}
+
+\hypertarget{pruebas1}{%
+\subsection{Funcionales:}\label{pruebas1}}
+
+\hypertarget{pruebas2}{%
+\subsection{Rendimiento:}\label{pruebas2}}
+
+\hypertarget{pruebas3}{%
+\subsection{Relevancia:}\label{pruebas3}}
+
 \hypertarget{conclusiones}{%
 \chapter{Conclusiones:}\label{conclusiones}}
+
+Este es el capítulo de las Conclusiones
+
+\hypertarget{conclusionescontri}{%
+\section{Contribución:}\label{conclusionescontri}}
+
+\hypertarget{conclusionestrabafutu}{%
+\section{Trabajos Futuros:}\label{conclusionestrabafutu}}
 
   \bibliography{references.bib}
 
