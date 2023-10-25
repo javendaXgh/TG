@@ -136,7 +136,7 @@
 \makeatother
 \subtitle{Caso de Estudio Repositorio www.saber.ucv.ve}
 \author{José Miguel Avendaño Infante}
-\date{2023-10-22}
+\date{2023-10-25}
 
 \begin{document}
 \maketitle
@@ -337,34 +337,38 @@ Para concluir esta investigación, en el Capítulo \ref{conclusiones} \textbf{Co
 \section{Aporte:}\label{aporte}}
 
 \hypertarget{teorico}{%
-\chapter{Marco teórico-referencial:}\label{teorico}}
+\chapter{Marco Teórico-Referencial:}\label{teorico}}
 
-En este capítulo se establece el fundamento teórico para los procesos que sustentan la Recuperación, Extracción y Clasificación de Información de SABER UCV.
+En este capítulo se exponen los fundamentos teóricos para los procesos y métodos que sustentan la investigación \ref{introduccion} \textbf{Recuperación, Extracción y Clasificación de Información de SABER UCV}.
 
-Se hace una reseña histórica \ref{alghist} sobre los procesos de búsqueda, se examinan conceptos de claves \ref{infret} como indexación, búsqueda, relevancia y evaluación de resultados. Además, se exploran modelos como el modelo boleano y vectorial junto se introduce el Estado del Arte. Para indicar los métodos con que son \ref{PT} procesados los textos se muestran las técnicas de \ref{nlproc} Procesamiento de Lenguaje Natural y de \ref{textmin}. Adicionalmente al formar parte de este Trabajo el Sistema Complementario Saber UCV que es un software, se exponen definiciones asociadas a los \ref{SD} Sistemas Distribuidos para que así este análisis profundo siente las bases para el diseño y desarrollo del sistema, asegurando una comprensión sólida de los principios subyacentes
+En \ref{alghist} se hace una \textbf{Reseña histórica} sobre los procesos de búsqueda, en \ref{infret} se examina qué es la \textbf{Recuperación de Información} (RI), en \ref{SRI} se indica qué son los \textbf{Sistemas de Recuperación de Información (SRI}) y en \ref{ejemplos-de-irs} se muestran un par de ejemplos de SRI. Adicionalmente en \ref{MRI} \textbf{Modelos de Recuperación de Información} se exploran modelos como el \ref{MRIbol} \textbf{Boleano} y el \ref{invind} de \textbf{Índices Invertidos}. En la sección \ref{relevancia} se introduce el concepto de \textbf{Relevancia} que es clave para comprender cuál es uno de los principales objetivos que tiene cualquier SRI. En \ref{re-ordenamiento-re-ranking} \textbf{Re Ordenamiento} se exponen dos algoritmos usados para jerarquizar los documentos que sean más relevantes en un proceso de RI y en \ref{evaluacion} \textbf{Métodos de Evaluación} se muestran algunas técnicas usadas para medir la precisión que se obtiene en los procesos de recuperación de información.
+
+Para indicar los métodos con los =que es tratado el corpus de esta Investigación en \ref{PT} \textbf{Procesamiento de Texto} se muestran las técnicas del \ref{nlproc} \textbf{Procesamiento de Lenguaje Natura}l y de \ref{textmin} \textbf{Minería de Texto}. En \ref{similitud} \textbf{Similitud de Documentos} se indica cómo se puede comparar la similitud de los textos y su aplicación.
+
+Adicionalmente, al formar parte de este Investigación, el desarrollo e implementación del software denominado \textbf{Sistema Complementario Saber UCV (SCSU)}, se exponen definiciones asociadas a los \ref{SD} \textbf{Sistemas Distribuidos}, sentando las bases para el desarrollo e implementación del \textbf{SCSU}.
+
+Se finaliza este Capítulo haciendo una inspección en \ref{sota} a lo que constituye el \textbf{Estado del Arte} en la materia, haciendo énfasis en la representación de textos mediante \ref{embed} \textbf{Embeddings}, en \ref{trans} se introduce la \textbf{Arquitectura de} \textbf{Redes Neuronales Transformers} con que se logran generar los embeddings de mayor calidad para el IR y brevemente se muestra en \ref{LLM} los \textbf{Largos Modelos de Lenguaje (LLM´s)} y en \ref{int} \textbf{Integración} se comentan los distintos avances y tendencias que se presentan en los Sistemas de Recuperación de Información.
 
 \hypertarget{alghist}{%
 \section{Reseña histórica:}\label{alghist}}
 
-El profesor Donald Knuth señala, dentro del campo de las ciencias de la computación, que la \textbf{búsqueda} \emph{es el proceso de recolectar información que se encuentra en la memoria del computador de la forma más rápida posible, esto cuando tenemos una cantidad N de registros y nuestro problema es encontrar el registro apropiado de acuerdo a un criterio de búsqueda} \citep{knuth1997} (p.~392) .Iniciamos con esta cita porque la recuperación de información gira en torno a un problema central de las ciencias de la computación que es la \textbf{búsqueda}.
-
-A continuación se mencionarán una serie de algoritmos que abordan este problema, no necesariamente resultando óptimos para dar solución a lo planteado en \ref{p2}.
+El profesor Donald Knuth señala, dentro del campo de las ciencias de la computación, que la \textbf{búsqueda} \emph{es el proceso de recolectar información que se encuentra en la memoria del computador de la forma más rápida posible, esto cuando tenemos una cantidad N de registros y nuestro problema es encontrar el registro apropiado de acuerdo a un criterio de búsqueda} \citep[p.392]{knuth1997} .Iniciamos con esta cita porque la recuperación de información gira en torno a un problema central de las ciencias de la computación que es la \textbf{búsqueda}.
 
 En la década de 1940 cuando aparecieron las computadoras, las búsquedas no representaban mayor problema debido a que estas máquinas disponían de poca memoria \emph{RAM} pudiendo almacenar sólo moderadas cantidades de datos.
 
 No obstante con el desarrollo e incremento del almacenamiento en memoria \emph{RAM} o en dispositivos de almacenamiento permanentemente, ya en la década de 1950 empezaron a aparecer los problemas de \textbf{búsqueda} y los primeras investigaciones para afrontarla.
 
-En la década de 1960 se adoptan por ejemplo estrategias basadas en arboles. Los primeros algoritmos que sirvieron para localizar la aparición de una frase dentro de un texto, o expresado de forma más abstracta, como la detección de una subcadena \emph{P} dentro de otra cadena \emph{T}, fueron los algoritmos de \emph{Pattern-Matching} \citep{goodrich2013}.
+En la década de 1960 se adoptan estrategias basadas en arboles. Los primeros algoritmos que sirvieron para localizar la aparición de una frase dentro de un texto, o expresado de forma más abstracta, como la detección de una subcadena \emph{P} dentro de otra cadena \emph{T}, fueron los algoritmos de ``\emph{Pattern-Matching}'' \citep{goodrich2013}.
 
-Así nos encontramos en la literatura con el algoritmo \emph{Fuerza Bruta} donde dado un texto T y una subcadena P, se va recorriendo cada elemento de la cadena T para detectar la aparición de la subcadena P. Si bien este algoritmo no presentaba el mejor desempeño, creó una forma válida de enfrentar el problema de la búsqueda de subcadenas de texto.
+Así nos encontramos en la literatura con el algoritmo ``Fuerza Bruta'' donde dado un texto T y una subcadena P, se va recorriendo cada elemento de la cadena T para detectar la aparición de la subcadena P. Si bien este algoritmo no presentaba el mejor desempeño, creó una forma válida de enfrentar el problema de la búsqueda de subcadenas de texto.
 
-El algoritmo \emph{Knuth-Morris-Pratt} que se introdujo en 1976 tenía como novedad que se agregó una función que iba almacenando ``previas coincidencias parciales'' en lo que eran fallos previos y así al realizar un desplazamiento tomaba en cuenta cuántos caracteres se podían reusar. De esta forma se logró considerablemente mejorar el rendimiento en los tiempos de ejecución de \emph{O(n+m)} que son asintóticamente óptimos.
+El algoritmo ``\emph{Knuth-Morris-Pratt''} que se introdujo en 1976 tenía como novedad que se agregó una función que iba almacenando''previas coincidencias parciales'' en lo que eran fallos previos y así al realizar un desplazamiento tomaba en cuenta cuántos caracteres se podían reusar. De esta forma se logró considerablemente mejorar el rendimiento en los tiempos de ejecución de \textbackslash( O\^{}\{(a+b)\} \textbackslash) que son asintóticamente óptimos.
 
 Posteriormente en 1977 el problema se enfrenta con un nuevo algoritmo que es el de \emph{Boyer-Moore} en el cual se implementan dos heurísticas (\emph{looking-glass y} \emph{character-Jump)} que permiten ir realizando algunos saltos en la búsqueda, ante la no coincidencia de la subcadena con la cadena y adicionalmente, el orden en el que se va realizando la comparación se invierte. Estas modificaciones permitieron obtener un mejor desempeño.
 
-Sobre una modificación al algoritmo \emph{Boyer-Moore} se sustenta la utilidad \emph{grep} de la línea de comandos UNIX que igualmente le da soporte a diversos lenguajes que la usan para ejecutar búsquedas de texto, con un proceso que comúnmente es conocido como \emph{grepping}. Esta utilidad fue ampliamente usada para resolver parcialmente lo expuesto en \ref{desarrollociclos2}.
+Sobre una modificación al algoritmo \emph{Boyer-Moore} se sustenta la utilidad \emph{grep} de la línea de comandos UNIX que también da soporte a diversos lenguajes que la usan para ejecutar búsquedas de texto, con un proceso que comúnmente es conocido como \emph{grepping}. Esta utilidad fue ampliamente usada para resolver parcialmente lo expuesto en \ref{desarrollociclos2}.
 
-Una estrategia que surgió para enfrentar las búsquedas de texto, fue el uso de la programación lineal donde bajo la premisa \emph{divida et impera,} los problemas que requieren tiempo exponencial para ser resueltos son descompuestos en polinomios y por lo tanto se disminuye la complejidad en tiempo para ser resueltos. Entre este tipo de algoritmos se puede mencionar los de \emph{alineación de cadenas del ADN} de forma parcial o total dentro de una cadena mayor, siendo una versión de estos el algoritmo \textbf{\emph{Smith-Waterman}} \citep{smith1981}. Posteriormente se identificó que este tipo de solución era extrapolable a las subcadenas de texto.
+Otra de las estrategias que surgió para enfrentar las búsquedas de texto, fue el uso de la programación lineal, donde bajo la premisa \emph{divida et impera,} los problemas que requieren tiempo exponencial para ser resueltos son descompuestos en polinomios y por lo tanto se disminuye la complejidad en tiempo para ser resueltos. Entre este tipo de algoritmos se puede mencionar los de \emph{alineación de cadenas del ADN} de forma parcial o total dentro de una cadena mayor, siendo una versión de estos el algoritmo \textbf{\emph{Smith-Waterman}} \citep{smith1981}. Posteriormente se identificó que este tipo de solución era extrapolable a las subcadenas de texto.
 
 Un algoritmo que se usó para resolver el problema de hacer coincidir una etiqueta de clasificación con los textos del \emph{Corpus} en \ref{desarrollociclos2} fue el algoritmo precitado.
 
@@ -377,11 +381,13 @@ Un \emph{Trie} \citep{fredkin1960} es una estructura de datos que se crea para a
 
 El eje central sobre el cual gira el proceso de recuperación de información (RI) es satisfacer las necesidades de información relevante que sean expresadas por un usuario mediante una consulta (\textbf{\emph{query}}) de texto. El investigador Charu Aggarwal en su libro sobre Minería de Texto \citep{miningt2012} menciona que el objetivo del proceso de RI es conectar la información correcta, con los usuarios correctos en el momento correcto, mientras que otro de los autores con mayor dominio sobre el tema, Christopher Manning en su libro \emph{Information Retrieval} indica que ``es el proceso de encontrar materiales (generalmente documentos) de una naturaleza no estructurada (generalmente texto) que satisface una necesidad de información dentro de grandes colecciones (normalmente almacenada en computadores)'' \citep{manning2008}.
 
+A los efectos de delimitar el espacio de búsqueda que se realiza ante la acción de la consulta, el \emph{query}, se define al \textbf{Corpus} como el conjunto cerrado de documentos codificados electrónicamente que se encuentra integrado en un sistema de almacenamiento y conformará el agregado \citep{martiaurora} sobre el cual se realizará el proceso de recuperación de información. Entendido desde otra perspectiva, es el conjunto de datos sobre el cuál se hará la búsqueda.
+
 Satisfacer una necesidad de recuperación de información no sólo se circunscribe a un problema \textbf{búsqueda} de un texto dentro de un \emph{corpus}. En la mayoría de los casos se deberá cumplir con ciertos criterios, o restricciones, como por ejemplo que el \emph{query} esté dentro de un período de fechas, o que se encuentre comprendido en un subconjunto del corpus, que es a lo que se denomina \textbf{búsqueda múlti atributo}.
 
 La información que se recolecte en una búsqueda tendrá distintos aspectos que aportarán peso en el orden en que sea presentada al usuario y no sólo vendrá dado por la aparición de las palabras sino también por otros elementos como lo puede ser la aparición de la frase del \textbf{\emph{query}} dentro del título, la proximidad (la cercanía entre dos palabras) que tengan los términos que conforman el \textbf{\emph{query}} o por otra parte la frecuencia que una palabra, o varias, se repitan dentro un determinado documento que compone el \emph{corpus}.
 
-Igual puede aportar un peso mayor a la recuperación de un documento las referencias (citas) que contengan otros documentos a ese determinado documento, similar a la propuesta del algoritmo \textbf{\emph{PageRank}}\citep{brin1998}, siendo el fin último, la extracción de los documentos que resulten de mayor relevancia para el usuario. Esta aproximación también puede usarse para la detección de comunidades dentro del \emph{Corpus} \citep{heydari2020analysis}.
+Igual puede aportar un peso mayor a la recuperación de un documento las referencias (citas) que contengan otros documentos a ese determinado documento, similar a la propuesta del algoritmo \textbf{\emph{PageRank}} \citep{brin1998}, siendo el fin último, la extracción de los documentos que resulten de mayor relevancia para el usuario. Esta aproximación también puede usarse para la detección de comunidades dentro del \emph{Corpus} \citep{heydari2020analysis}.
 
 Incluso es válido incorporar documentos, en los resultados que arroje la búsqueda, que propiamente no coincidan exactamente con los términos buscados sino que contengan palabras que sean sinónimos o también añadiendo a los resultados, documentos que presenten alguna similitud con el texto del \textbf{\emph{query}}. Lo que acabamos de mencionar incorporará formalmente dentro del proceso de extracción de información algo de imprecisión con la intención última de enriquecer el proceso de \textbf{\emph{Information Retrieval}} \citep{kraft2017}.
 
@@ -413,7 +419,7 @@ Profundizando en el tema de esta Investigación se mencionan un par de páginas 
 
 \begin{figure}
 
-\includegraphics[width=0.4\linewidth]{images/03-marco-teorico/busquedaacm} \hfill{}
+\includegraphics[width=0.3\linewidth]{images/03-marco-teorico/busquedaacm} \hfill{}
 
 \caption{Gráfico que acompaña resultados de búsqueda de un término en la biblioteca digital de la Association for Computing Machinery (https://dl.acm.org/)}\label{fig:busquedasacm}
 \end{figure}
@@ -424,7 +430,7 @@ Profundizando en el tema de esta Investigación se mencionan un par de páginas 
 \hypertarget{MRIbol}{%
 \subsubsection{Recuperación boleana:}\label{MRIbol}}
 
-Ante una búsqueda de información se recorre linealmente todo el documento para retornar un valor boleano indicando la presencia o no del término buscado. Es uno de los primeros modelos que se uso y está asociado a técnicas de \emph{grepping} \citep{manning2008} (p.3). El desarrollo de este modelo apareció entre 1960 y 1970.
+Ante una búsqueda de información se recorre linealmente todo el documento para retornar un valor boleano indicando la presencia o no del término buscado. Es uno de los primeros modelos que se uso y está asociado a técnicas de \emph{grepping} \citep{manning2008}. El desarrollo de este modelo apareció entre 1960 y 1970.
 
 El usuario final obtendrá como respuesta a su \emph{query} sólo aquellos textos que contengan el término. Es un modelo muy cercano a los típicos \emph{querys} de bases de datos con el uso de operadores ``AND'', ``OR'' y ``NOT''. En el procesamiento de los textos se genera una matriz de incidencia binaria término-documento, donde cada término que conforma el vocabulario, ocupa una fila \emph{i} de la matriz mientras que cada columna \emph{j} se asocia a un documento. La presencia de el término \emph{i} en el documento \emph{j} se denotará con un valor verdadero o un ``\textbf{1}''.
 
@@ -434,7 +440,7 @@ Los documentos y los \emph{querys} son vistos como conjuntos de términos indexa
 
 Otra de las desventajas es que no se registra el contexto semántico de las palabras e incluso se pierde el orden en que aparecen las palabras en cada texto.
 
-Este modelo se presume que en el cual se basa la implementación de Saber UCV y por eso es que en general se termina presentando el problema de que al usar el operador OR en las búsquedas exactas mencionadas en \ref{query}, se obtiene un gran \textbf{\emph{recall}} \footnote{Precision: la fracción, o porcentaje, de los documentos recuperados que son relevantes en la búsqueda efectuada.} en los resultados.
+Este modelo se presume que en el cual se basa la implementación de Saber UCV y por eso es que en general se termina presentando el problema de que al usar el operador OR en las búsquedas exactas, se obtiene un gran \textbf{\emph{recall}} \footnote{Precision: la fracción, o porcentaje, de los documentos recuperados que son relevantes en la búsqueda efectuada.} en los resultados.
 
 Con la propuesta del \ref{desarrollociclos3} Prototipo de Buscador del SCSU se obtiene una versión de recuperación de información que aplica métodos de mayor eficiencia y genera una mayor \textbf{\emph{precision}} con un menor \textbf{\emph{recall}} , mejorando el desempeño (tiempo) y la relevancia de los resultados.
 
@@ -447,7 +453,7 @@ El primero es el espacio en disco que implica guardar estos datos adicionales, q
 
 Existen diversos tipos de \textbf{Índices Invertidos} y constantemente se están realizando investigaciones que permitan mejorar su desempeño motivado en que sobre ellos recae gran parte de la efectividad que podamos obtener ejecutando los \emph{querys}. Algunos ejemplos de estos índices son el \emph{Generalized Inverted Index} (GIN), también está el RUM \footnote{En el vínculo \url{https://github.com/postgrespro/rum} se tiene acceso a la explicación e implementación de este índice para PostgreSQL.} o el VODKA \footnote{este índice fue presentado en la Postgres Conference en el año 2014 \url{https://www.pgcon.org/2014/schedule/attachments/318_pgcon-2014-vodka.pdf}}que es otra implementación con menos literatura sobre posibles usos pero con métodos disponibles para su uso en manejadores de base de datos como PostgreSQL.
 
-El espacio que ocupa la implementación de estos índices se puede ver afectado, por un lado se tiene que se puede reducir mediante el preprocesamiento que hagamos a las palabras buscando su raiz con el stemming \{\#steaming\} o removiendo las stop words (las palabras que no generan mayor valor semántico como: la, el, tu).
+El espacio que ocupa la implementación de estos índices se puede ver afectado, por un lado se tiene que se puede reducir mediante el preprocesamiento que hagamos a las palabras buscando su raiz con el stemming \ref{steaming} o removiendo las stop words (las palabras que no generan mayor valor semántico como: la, el, tu).
 
 Por otra parte el peso total se puede incrementar a medida que decidamos tener una granularidad más fina en el registro de las palabras y su ubicación dentro de los documentos. En el transcurso del desarrollo de nuestra investigación se indicará en cuánto se incremento el espacio de almacenamiento en disco con la aplicación de este índice y la granularidad que se adoptó junto con el valor del costo en espacio de almacenamiento.
 
@@ -459,22 +465,30 @@ En la Solución que se propone, la optimización en la generación de este índi
 
 Cuando la base de datos que registra el índice invertido crece y no es viable almacenarla en un único computador, es necesario acudir al uso de técnicas que permitan distribuir la base de datos con el uso de tecnologías como \emph{Spark, Hadoop, Apache Storm} entre otras. En el trabajo de \citep{Mahapatra2011} se encuentran detalles adicionales sobre este tipo de índices.
 
-En \ref{SOTA} se muestra el estado del arte en los Sistemas de Recuperación de Información al incorporar representaciones de embeddings \citep{reimers2019} para los textos y su uso como un Modelo de Recuperación de Información.
+En \ref{sota} se muestra el estado del arte en los Sistemas de Recuperación de Información al incorporar representaciones de embeddings \citep{reimers2019} para los textos y su uso como un Modelo de Recuperación de Información.
+
+\hypertarget{relevancia}{%
+\subsection{Relevancia:}\label{relevancia}}
+
+Refiere la medida en que un documento o recurso recuperado satisface las necesidades de información del usuario. En otras palabras, un documento es relevante si contiene información que es útil y está relacionada con el \emph{query} realizado por el usuario \citep{büttcher2010a}. La relevancia no es una propiedad intrínseca del documento, sino que depende del contexto y de las necesidades de información del usuario en un momento específico.
 
 \hypertarget{re-ordenamiento-re-ranking}{%
 \subsection{Re Ordenamiento (re-ranking):}\label{re-ordenamiento-re-ranking}}
 
-Es una técnica utilizada para mejorar la precisión y lograr extraer los documentos que tengan mayor relevancia en los resultados de una búsqueda. Cuando los usuarios realizan ~el query a menudo se encuentran con una gran cantidad de documentos que coinciden con sus consultas. Sin embargo, no todos estos documentos son igualmente relevantes para el usuario. Por lo tanto, el re-ranking implica reorganizar los resultados de búsqueda originales para que los documentos más relevantes aparezcan en las primeras posiciones, mejorando así la experiencia del usuario.
+Es una técnica utilizada para mejorar la precisión y lograr extraer los documentos que tengan mayor relevancia \ref{relevancia} en los resultados de una búsqueda. Cuando los usuarios realizan el \emph{query} a menudo se encuentran con una gran cantidad de documentos que coinciden con sus consultas. Sin embargo, no todos estos documentos son igualmente relevantes para el usuario. Por lo tanto, el re-ranking implica reorganizar los resultados de búsqueda originales para que los documentos más relevantes aparezcan en las primeras posiciones, mejorando así la experiencia del usuario.
 
 \hypertarget{learning-to-rank-ltr}{%
 \subsubsection{Learning to Rank (LTR):}\label{learning-to-rank-ltr}}
 
-Los algoritmos de aprendizaje para la clasificación (LTR, por sus siglas en inglés) son comúnmente utilizados para el re-ranking. Estos algoritmos utilizan técnicas de aprendizaje automático para modelar la relevancia de los documentos basándose en características específicas. Los atributos pueden incluir la frecuencia de palabras clave, la proximidad de términos en el documento y otros factores que indican la relevancia. Los modelos LTR pueden ser entrenados con conjuntos de datos que contienen consultas y documentos etiquetados con su relevancia, y luego aplicados para re-ordenar los resultados de búsqueda en función de las características aprendidas.
+Los algoritmos de aprendizaje para la clasificación (LTR, por sus siglas en inglés) son comúnmente utilizados para el re-ranking. Estos algoritmos utilizan técnicas de aprendizaje automático para modelar la relevancia de los documentos basándose en características específicas \citep{büttcher2010}. Los atributos pueden incluir la frecuencia de palabras clave, la proximidad de términos en el documento y otros factores que indican la relevancia. Los modelos LTR pueden ser entrenados con conjuntos de datos que contienen consultas y documentos etiquetados con su relevancia, y luego aplicados para re-ordenar los resultados de búsqueda en función de las características aprendidas.
 
 \hypertarget{bm25}{%
 \subsubsection{BM25:}\label{bm25}}
 
-Es un algoritmo que contiene una función de puntuación utilizada para calcular la relevancia de un documento con respecto a una consulta de búsqueda y es una mejora del modelo probabilístico Okapi BM, y ha demostrado ser efectivo en la práctica para clasificar documentos según su relevancia con las consultas de los usuarios. Se basa en la frecuencia de los términos de búsqueda y la longitud del documento. A diferencia de los modelos clásicos como TF-IDF, BM25 ajusta la importancia de la frecuencia del término y la longitud del documento mediante una fórmula matemática compleja \citep{zhai2016}, lo que lo hace más eficaz para lidiar con variaciones en la longitud del documento y mejorar la precisión en los resultados de búsqueda.
+Es un algoritmo que apareció a mediados de la década de 1990 el cual contiene una función de puntuación basada en un modelo probabilístico que es utilizada para calcular la relevancia de un documento con respecto a una consulta de búsqueda \citep{robertson2009} y ha demostrado ser efectivo en la práctica para clasificar documentos según su relevancia con las consultas de los usuarios, llegando en su momento a compararse a que obtenía un rendimiento similar al humano al hacer los procesos de ranking sobre las colecciones \citep{trotman2014} de documentos TREC \citep{trec:ex2005}. Se basa en la frecuencia de los términos de búsqueda y la longitud del documento. A diferencia de los modelos clásicos como TF-IDF, BM25 ajusta la importancia de la frecuencia del término y la longitud del documento mediante una fórmula matemática compleja \citep{zhai2016}, lo que lo hace más eficaz para lidiar con variaciones en la longitud del documento y mejorar la precisión en los resultados de búsqueda.
+
+\hypertarget{evaluacion}{%
+\subsection{Métodos de Evaluación:}\label{evaluacion}}
 
 \hypertarget{PT}{%
 \section{Procesamientos de texto:}\label{PT}}
@@ -483,7 +497,7 @@ En esta sección mostramos métodos de manipulación y tratamiento de los textos
 
 Frameworks para tareas de procesamientos de texto se basan en los proyectos de Universal Dependencies \citep{demarneffe2021}, como el coreNLP de la Universidad de Stanford \citep{manning-etal-2014-stanford} que fue uno de los primeros sistemas en incluir procesamientos para el idioma español, sin incluir todas las utilidades sí disponibles para el idioma inglés como el identificación de parte del discurso \emph{(Part of Speech Tagging),} ni el análisis morfológico (\emph{Morphological Analysis)} \citep{straka2017} o el reconocimiento de entidades nombradas (\emph{Named Entity Recognigtion)}, sino algunas pocas como el tokenizador \ref{token} y el separador de oraciones (\emph{Sentences Splitting}).
 
-Casos similares se presentaban con otras herramientas, siendo un caso aparte el esfuerzo del CLiC- Centre de Llenguatge i Computación quienes hicieron la anotación del Corpus AnCora \footnote{\textbf{AnCora} es un corpus del \textbf{catalán (AnCora-CA)} y del \textbf{español (AnCora-ES)} con diferentes niveles de anotación como lema y categoría morfológica, constituyentes y funciones sintácticas, estructura argumental y papeles temáticos, clase semántica verbal, tipo denotativo de los nombres deverbales, sentidos de WordNet nominales, entidades nombradas (NER), relaciones de correferencia (\url{http://clic.ub.edu/corpus/es/ancora})\[<http://clic.ub.edu/corpus/es/ancora>\]} . También la Universidad Politécnica de Cataluña creó la herramienta FreeLing \footnote{\url{https://nlp.lsi.upc.edu/freeling/node/1}} que permitió realizar algunas de las funcionalidades mencionadas en el párrafo anterior. No obstante su integración en cadenas de trabajo y la actualización de sus modelos de entrenamiento, presentan rezagos en comparación a otros modelos que actualmente se están usando basados en el uso del aprendizaje mediante redes neuronales \citep{chen2014fast} y que serán indicados con mayor detalle en \ref{sota} .
+Casos similares se presentaban con otras herramientas, siendo un caso aparte el esfuerzo del CLiC- Centre de Llenguatge i Computación quienes hicieron la anotación del Corpus AnCora \footnote{\textbf{AnCora} es un corpus del \textbf{catalán (AnCora-CA)} y del \textbf{español (AnCora-ES)} con diferentes niveles de anotación como lema y categoría morfológica, constituyentes y funciones sintácticas, estructura argumental y papeles temáticos, clase semántica verbal, tipo denotativo de los nombres deverbales, sentidos de WordNet nominales, entidades nombradas (NER), relaciones de correferencia (\url{http://clic.ub.edu/corpus/es/ancora})} . También la Universidad Politécnica de Cataluña creó la herramienta FreeLing \footnote{\url{https://nlp.lsi.upc.edu/freeling/node/1}} que permitió realizar algunas de las funcionalidades mencionadas en el párrafo anterior. No obstante su integración en cadenas de trabajo y la actualización de sus modelos de entrenamiento, presentan rezagos en comparación a otros modelos que actualmente se están usando basados en el uso del aprendizaje mediante redes neuronales \citep{chen2014fast} y que serán indicados con mayor detalle en \ref{sota} .
 
 \hypertarget{nlproc}{%
 \subsection{Procesamiento del Lenguaje Natural (Natural Language Processing- NLP):}\label{nlproc}}
@@ -548,8 +562,8 @@ La minería de texto surge para dar respuesta a la necesidad de tener métodos y
 
 Algunos de los métodos que pertenecen a la Minería de Texto son:
 
-\hypertarget{term-document-matrix}{%
-\subsubsection{Term-Document Matrix:}\label{term-document-matrix}}
+\hypertarget{tdm}{%
+\subsubsection{Term-Document Matrix:}\label{tdm}}
 
 Una vez que se tiene conformado un Corpus, se procede a conformar una matriz dispersa de una alta dimensionalidad que se denominará \emph{``Sparce Term-Document Matrix)''} de tamaño \emph{n X d,} donde \emph{n} es el número total de documentos y \emph{d} es la cantidad de términos o vocabulario (palabras distintas) presentes entre todos los documentos. Formalmente se sabe que la entrada \emph{(i,j)} de nuestra matriz es la frecuencia (cantidad de veces que aparece) de la palabra \emph{j} en el documento \emph{i} . Este procedimiento es similar al que fue revisado en \ref{MRIbol}.
 
@@ -600,9 +614,11 @@ Este es uno de los métodos más usados para detectar similitudes en los textos,
 
 Al hacer la comparación de un documento i del Corpus que contiene n documentos, en un proceso iterativo con otra cantidad de (\emph{n-1)} documentos, se obtendrán (\emph{n-}1) índices de similitud. Aquel que obtenga un mayor valor se puede inferir que presenta una mayor similitud con el documento \emph{i.}
 
-El otro elemento de gran importancia en obtención de esta medición, es la representación que se haga del documento. Son distintas las técnicas que existen estando entre ellas la representación mediante ``bolsas de palabras'' o \emph{bag of words,} similar a lo que se explicó en \ref{term-document-matrix} donde un documento i es el vector correspondiente a una fila de la matriz y la cantidad de dimensiones que presenta es equivalente al tamaño del vocabulario.
+El otro elemento de gran importancia en obtención de esta medición, es la representación que se haga del documento. Son distintas las técnicas que existen estando entre ellas la representación mediante ``bolsas de palabras'' o \emph{bag of words,} similar a lo que se explicó en \ref{tdm} donde un documento i es el vector correspondiente a una fila de la matriz y la cantidad de dimensiones que presenta es equivalente al tamaño del vocabulario.
 
-Recientemente se han creado formas más complejas para la representación de los documentos, como lo son los \emph{words embeddings} que son obtenidos mediante el entrenamiento de redes neuronales de aprendizaje profundo lo cual será expuesto a continuación en \ref{sota}.
+La aplicación de realizar este tipo de comparaciones mediante la estimación de la similitud, es que ante un proceso de \emph{query} también pueden ser recuperados, o sugerir al investigador, en la entrega de los documentos recuperados, aquellos documentos que también presenten alguna similitud, a manera de que el propio sistema tenga la capacidad de realizar recomendaciones.
+
+Recientemente se han creado formas más complejas para la representación de los documentos, como lo son los \emph{word embeddings} que son obtenidos mediante el entrenamiento de redes neuronales de aprendizaje profundo lo cual será expuesto a continuación en \ref{embed}.
 
 \hypertarget{SD}{%
 \section{Sistemas Distribuidos:}\label{SD}}
@@ -646,9 +662,89 @@ En el caso de la Solución propuesta se adoptará el uso de \emph{Docker Compose
 \hypertarget{sota}{%
 \section{Estado del Arte:}\label{sota}}
 
-Si bien anteriormente las búsquedas de información dentro de un conjunto de textos se procesaban determinando la aparición o no de palabras, o de frases dentro de un determinado texto, este método ha ido evolucionando para llegar hoy en día a un elevado nivel de abstracción, donde a partir de la necesidad de obtener una determinada información, es decir, de aquello que necesitamos buscar, que antes consistía en hacer \emph{match} con un objeto de información, se ha pasado de los motores de búsqueda ( \emph{search engines} ) a los motores de respuestas ( \emph{answering engines} ) \citep{balog2018}, donde el sistema ante un determinada consulta del usuario va a retornar una serie de resultados enriquecidos, mostrando la identificación de entidades, hechos y cualquier otro dato estructurado que esté de forma explícita, o incluso implícita, mencionado dentro de los textos que conforman el corpus.
+Si bien anteriormente las búsquedas de información dentro de un corpus se procesaban determinando la aparición de palabras dentro de un texto, este método ha ido evolucionando para llegar hoy en día a un elevado nivel de abstracción, donde a partir de la necesidad de obtener una información, es decir, de aquello que necesitamos buscar, que antes consistía en hacer \emph{match} con un objeto de información, se ha pasado de los motores de búsqueda (\emph{search engines} ) a los motores de respuestas ( \emph{answering engines} ) \citep{balog2018}, donde el sistema, ante un determinada consulta del usuario, va a retornar una serie de resultados enriquecidos, mostrando la identificación de entidades, hechos y cualquier otro dato estructurado que esté de forma explícita, e incluso implícita, mencionado dentro de los textos que conforman el corpus.
 
-Métodos usados para el almacenamiento o la indexación como crear agrupamientos \emph{(clusters)} de aquellos documentos que compartan algunas características, por ejemplo, en la temática que aborden. Otra de las innovaciones que se están añadiendo a los sistemas de recuperación de información, es generar resúmenes con técnicas de procesamiento de lenguaje natural soportadas en el uso de arquitecturas de aprendizaje profundo \emph{(deep learning)} .
+Para hablar sobre el Estado del Arte tanto en los Sistemas de Recuperación de Información \ref{infret} así como en el Procesamiento del Lenguaje Natural \ref{nlproc} y en la medición de similitud entre documentos \ref{similitud} es necesario referir la representación de los textos mediante \emph{embeddings}.
+
+\hypertarget{embed}{%
+\subsection{Embeddings}\label{embed}}
+
+Para comprender qué son los \emph{embeddings} se debe partir de estudiar la Hipótesis~ Distribucional, la cual se enmarca en al área de la lingüística y enuncia que la similaridad en significados, resulta en que también se presente una similaridad en la distribución lingüística. Dos palabras que sean próximas en significado, o que sean sinónimos, es un fenómeno que también se detectará en la distribución que presentan dichas palabras dentro de un corpus. Más adelante se mostrará un ejemplo de esto.
+
+De esta Hipótesis surge la propuesta de crear la Distribución Semántica, donde se representa el significado de una palabra, mediante el proceso en que se toma como entrada grandes cantidades de texto, el corpus, y se construye un modelo de distribución, también llamado "espacio semántico", que logra extraer la representación semántica del vocabulario en un espacio n-dimensional, haciendo que una palabra se muestre como un vector en dicho espacio.
+
+"Semántica" se entiende como el significado específico que puede tener una palabra en una oración. Al evaluar las siguientes dos frases:
+
+1. "El banco está ubicado junto al río"
+
+2. "Voy a depositar dinero al banco"
+
+el significado de la palabra "río" en los ejemplos tiene dos acepciones. Claramente el lingüista Firth J.R. enfrentó este problema en su famosa frase: "entenderás una palabra por aquellas que la acompañan", donde hace entrever que para comprender el significado de una palabra hay que revisar el contexto en el que ocurre.
+
+Al recordar \ref{tdm} el modelo Term Document Frecuency (TDF), para representar en un documento la aparición de una determinada palabra, se colocaba en la matríz el valor 1 en la posición \emph{i,j} , o se colocaba un 0 en su ausencia, correspondo la \emph{i} al índice del documento y \emph{j} al índicede la palabra dentro del vocabulario; no obstante, en este método de representación no se puede lograr inferir la semántica de la palabra, sino simplemente la aparición, o no, dentro del texto o corpus, independientemente de la acepción que tenga la palabra ``banco'', que siempre se representaría con un valor 1 tanto en un documento que contenga "El banco está ubicado junto al río", como en el otro con "Voy a depositar dinero al banco".
+
+\hfill\break
+Lo anterior constituye un problema clave para los procesos de Recuperación de Información ya que si estuviésemos usando el modelo \ref{invind} de Índices Invertidos, que comparte algunos fundamentos del modelo \ref{tdm} \emph{Term Document Frecuency (TDF)}, retomando el ejemplo en que usamos la palabra "banco", al intentar encontrar aquellos documentos que mencionen a los "bancos" en su acepción de "Asiento, con respaldo o sin él\ldots", también se recuperaría el documento que habla de la "empresa que se dedica a realizar transacciones financieras".
+
+Este ejemplo, bastante trivial, plantea la necesidad de contar con modelos de representaciones con una estructura más compleja y que puedan facilitar mediante los métodos de \emph{Information Retrieval}, la recuperación de los documentos que tengan la mayor relevancia \ref{relevancia} ante un \emph{query} y que también se correspondan con lo que ciertamente se está buscando, como pudiera ser ``fabrica de bancos''.
+
+Son los "embeddings" la representación que hoy constituye el Estado del Arte en el los procesos de Recuperación de Información ya que hacen posible aplicar distintos métodos algebraicos y computacionales para inspeccionar el vocabulario de un determinado corpus y tener nociones más precisas sobre la cercanía de una palabra con otra y hacer mediciones \ref{similitud} de similitud entre un documento, que se ha transformado en partes o en su totalidad en un \emph{embedding}, con otro que tenga el mismo tipo de representación.~
+
+En el siguiente ejemplo que se obtiene del trabajo \emph{Distributional Semantics and Linguistic Theory} \citep{boleda2020}, se muestra una versión simplificada de un espacio semántico de dos dimensiones donde están los vectores que se corresponden con 3 palabras que son \emph{postdoc, estudent} y \emph{wealth}:
+
+\begin{longtable}[]{@{}lrr@{}}
+\toprule\noalign{}
+& Dimensión 1 & Dimensión 2 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\emph{postdoc} & 0.71038 & 1.76058 \\
+\emph{student} & 0.43679 & 1.93841 \\
+\emph{wealth} & 1.77337 & 0.00012 \\
+\end{longtable}
+
+Al tener cada palabra un vector de dos componentes, se puede hacer una representación gráfica en un plano, que sería la que se aprecia en la imagen ????, donde al aplicar la medición de similitud coseno, revisada en \ref{similitud}, las palabras \emph{postdoc} y \emph{student} se encuentran más próximas y tienen una mayor similitud, que por ejemplo, \emph{postdoc} y \emph{wealth}.
+
+\begin{figure}
+
+\includegraphics[width=0.4\linewidth]{images/03-marco-teorico/word_vec} \hfill{}
+
+\caption{Representación de palabras}(\#fig:embedding )
+\end{figure}
+
+Al generar la representación completa de un espacio semántico, haciendo la búsqueda de una palabra, podemos encontrar también aquellas que son cercanas y no limitar la búsqueda al \emph{match} que los modelos anteriormente estudiados sí imponían. Más adelante también veremos que el modelo semántico puede ser expandido y representar mediante un \emph{embedding} oraciones (\emph{sentences}), siendo esto el sustento de que al hacer una pregunta, o query, a un sistema de Recuperación de Información, este sea capaz de encontrar la respuesta dentro del corpus, ya que la pregunta o query se transforma en un \emph{embedding} y luego se determina en el espacio semántico cuál es la oración que más se aproxima, o guarda algún tipo de proximidad o relación de distancia vectorial con la pregunta formulada.
+
+Los \emph{embeddings} son representaciones numéricas densas de las palabras contenidas en un vocabulario. A diferencia de los modelos de tipo "one hot encodding (OHE)" de representación binaria, donde en un vector se usa un 1 para representar la aparición de una palabra dentro de un vocabulario y cero para representar su ausencia, teniendo que la dimensionalidad del vector será la cantidad de \emph{n} palabras que tenga el vocabulario. Es común que un corpus se puedan disponer de unas 20 mil o más palabras distintas, es decir un vocabulario con \emph{n} igual a 20 mil, así sea para representar una sola palabra se requerirá en el OHE de unos 20 mil componentes con 19.999 ceros y un solo uno lo cual es una representación bastante dispersa que dificulta cálculos computacionales. Retornando al embedding lo que ellos representan es una representación vectorial de las palabras pero con muchos menos componentes. En algunas de la primeras representaciones realizadas, por ejemplo con el modelo ``GloVe: Global Vectors for Word Representation'' \citep{pennington2014}, se tenían 100 componentes, cifra considerablemente menor a las 20 mil que del modelo de "one hot encodding", evitando así la alta esparcidad. Otro cambio sustancial que se introdujo con este tipo de representación es que los los componentes no son valores binarios de unos o ceros, sino se hace con números reales que pueden tener más de ocho decimales (floating point numbers).
+
+\hfill\break
+Usando el mismo modelo GloVe, una representación gráfica de las palabras "King", "Man" y "Woman" en 50 dimensiones es la que se observa en la imagen \ref{fig:GloVeEmbedd}.
+
+\begin{figure}
+
+\includegraphics[width=0.95\linewidth]{images/03-marco-teorico/embedding} \hfill{}
+
+\caption{Representación de palabras mediante el modelo GloVe}\label{fig:GloVeEmbedd}
+\end{figure}
+
+El crédito a la visualización \ref{fig:GloVeEmbedd} corresponde al divulgador Alammar,J. (2019). The Illustrated Word2vec. Blog. \url{https://jalammar.github.io/illustrated-word2vec/} (acceso 18 el octubre,2023). ~La representación muestra gráficamente que las palabras "man" y "woman" son más "parecidas" visualmente que "King" y "man" y esto es lo que se puede generalizar para entender como las distintas palabras que se representan en un espacio semántico pueden presentar proximidades, similitudes o diferencias entre si, obteniendo de esta forma un significado semántico según la posición relativa que cada una tenga con respecto a la otra en el espacio indicado.
+
+No obstante, en los puntos expuestos aún no ha explicado cómo se generan los \emph{embeddings}, lo cual es indispensable para entender sus capacidades. En el año 2003 mediante el entrenamiento de redes neuronales logran modelar la probabilidad de las secuencias de palabras demostrando la capacidad de las redes neuronales para capturar patrones complejos en datos textuales. Otro hito fue la investigación ``Semantic Hashing'' (2008) \citep{salakhutdinov2009} donde usaron redes neuronales para transformar datos de alta dimensionalidad en representaciones binarias de baja dimensionalidad. Otro aporte es que se empiezan a usar técnicas de aprendizaje no supervisado para entrenar las redes neuronales deshaciéndose de los cuellos de botella que introducían previamente los procesos de etiquetado necesarios en métodos supervisados.
+
+Ante la ampliación de capacidades de computo en sistemas distribuidos compuestos por tarjetas gráficas (Graphics Processing Unit - GPU), empieza a incrementarse el uso de redes neuronales de aprendizaje profundo y es cuando se presenta la investigación ``Word2Vec: Efficient Estimation of Word Representations in Vector Space'' \citep{mikolov2013} (2013) que al implementa la técnica \emph{Skip-gram} y \emph{Continuous Bag of Words (CBOW)} que permitieron a las redes neuronales el aprendizaje de representaciones semánticas de palabras a partir de grandes volúmenes de texto. Word2Vec no solo era eficiente computacionalmente, sino que también producía \emph{embeddings} que capturaban relaciones semánticas y sintácticas, transformando cómo se abordaban las tareas de NLP y las aplicaciones de recuperación de información.
+
+Una vez que se empezó a tener un método para capturar la semántica de las palabras debió seguir el paso de lograr representar el sentido semántico de frases (sentences) y expresiones más complejas. Esto se introdujo en la investigación ``Distributed Representations of Words and Phrases and their Compositionality'' (2013) \citep{mikolov2013a} donde se hicieron representaciones vectoriales distribuidas para frases, mejorando la capacidad de capturar significados contextuales y relaciones sintácticas en un nivel más alto siendo esto un avance importante hacia la comprensión de la semántica en un contexto más amplio, lo cual resultó crucial para aplicaciones como la recuperación de información y también para la traducción automática.
+
+La investigación GloVe (2014)\citep{pennington2014} también implicó grandes avances ya que superó limitaciones que presentaban investigaciones anteriores ya que permitió generar analogías del tipo (vector de embedding para la palabra Rey) menos (vector de embedding para la palabra hombre) más (embedding para la palabra mujer) es igual, o muy aproximado en el espacio semántico, al (vector de embedding de la palabra reina) o simplificado como rey-hombre+mujer=reina. Igualmente con esta investigación se intensificó el uso de este modelo en tareas de clasificación de texto como las revisadas en \ref{nlproc}.
+
+\hypertarget{trans}{%
+\subsection{Arquitectura de Redes Neuronales Transformers:}\label{trans}}
+
+\hypertarget{LLM}{%
+\subsection{Largos Modelos de Lenguaje:}\label{LLM}}
+
+\hypertarget{int}{%
+\subsection{Integración}\label{int}}
 
 \hypertarget{mm}{%
 \chapter{Capítulo Marco Metodológico:}\label{mm}}
@@ -685,10 +781,10 @@ El \textbf{Adaptive Software Development (ASD)} \citep{highsmith2000} es una met
 
 \textbf{Flexibilidad y Adaptabilidad:} reconoce que los requisitos del proyecto pueden cambiar con el tiempo. Por lo tanto, se adapta fácilmente a los cambios, permitiendo una rápida reevaluación y ajuste de las estrategias y metas del proyecto asegurando que el producto final esté alineado de manera óptima con las necesidades y expectativas del cliente, incluso en un entorno de desarrollo volátil.
 
-\hypertarget{ciclo}{%
-\subsection{Ciclo:}\label{ciclo}}
+\hypertarget{ciclos}{%
+\subsection{Ciclos:}\label{ciclos}}
 
-El desarrollo adaptable de software se basa en un proceso dinámico e iterativo donde cada ciclo contiene las siguientes fases: Especular-Colaborar-Aprender. Cada ciclo se enfoca en el aprendizaje continuo y la colaboración intensiva entre desarrolladores y clientes, fundamental para enfrentar las cambiantes dinámicas empresariales.
+El desarrollo adaptable de software se basa en un proceso dinámico e iterativo donde cada ciclo contiene las siguientes fases: Especular-Colaborar-Aprender. El proceso se enfoca en el aprendizaje continuo y la colaboración intensiva entre desarrolladores y clientes, fundamental para enfrentar las cambiantes dinámicas empresariales.
 
 \begin{figure}
 

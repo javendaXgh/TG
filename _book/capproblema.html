@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 1 Introducción: | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV</title>
+  <title>Capítulo 2 El Problema: | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV</title>
   <meta name="description" content="Trabajo de Grado de Maestría" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 1 Introducción: | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV" />
+  <meta property="og:title" content="Capítulo 2 El Problema: | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/UCV.png" />
   <meta property="og:description" content="Trabajo de Grado de Maestría" />
   <meta name="github-repo" content="javendaXgh/TG" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 1 Introducción: | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV" />
+  <meta name="twitter:title" content="Capítulo 2 El Problema: | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV" />
   
   <meta name="twitter:description" content="Trabajo de Grado de Maestría" />
   <meta name="twitter:image" content="/images/UCV.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="capproblema.html"/>
+<link rel="prev" href="introduccion.html"/>
+<link rel="next" href="teorico.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -201,28 +201,35 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduccion" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Capítulo 1</span> Introducción:<a href="introduccion.html#introduccion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Es conocida la gran disponibilidad de información en distintos formatos que tienen a su disposición los investigadores. Ejemplo de esto son libros en las bibliotecas, o la variedad de documentos que se encuentran accesibles en formatos digitales como artículos publicados en revistas arbitradas, libros, páginas de internet especializadas en algún tema o los repositorios digitales de documentos. Es en esta abundancia donde recaen varios de los problemas a los cuales se enfrenta la labor investigativa, en particular, cuando se realiza la fase exploratoria de selección de aquellos documentos que puedan resultar de mayor relevancia.</p>
-<p>Una de las herramientas con que cuentan los investigadores, para la búsqueda de documentos que se encuentran en formato digital, son los Sistemas de Recuperación de Información, donde ante una búsqueda, a la cual denominaremos el <strong><em>query</em></strong>, serán recuperados del conjunto de documentos, conjunto al que denominaremos <strong><em>Corpus</em></strong>, aquellos que cumplan ciertos parámetros<span class="citation">(<a href="#ref-manning2008">C. D. Manning, Raghavan, y Schütze 2008</a>)</span>. Los documentos que el Sistema logre recuperar se deben adaptar a las necesidades del investigador y en caso de existir múltiples documentos, el sistema debe poder jerarquizar aquellos que puedan resultar de mayor relevancia.</p>
-<p>En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos denominado SABER.UCV al cual se puede acceder desde la dirección web <a href="http://saber.ucv.ve/">saber.ucv.ve</a> el cual permite realizar búsquedas de información sobre documentos generados dentro de la comunidad de investigadores de la Universidad.</p>
-<p>En este Trabajo de Grado se presenta la propuesta para la <strong>Recuperación, Extracción y Clasificación de Información de SABER UCV</strong>, mediante el desarrollo de un sistema informático que se denomina <strong>Sistema Complementario Saber UCV (SCSU)</strong>, el cual complementa las funcionalidades de búsqueda de información que actualmente tiene el repositorio oficial de la Universidad Central de Venezuela.</p>
-<p>La implementación del SCSU hace un aporte a los investigadores que necesitan realizar búsquedas de información sobre el subconjunto de tesis doctorales, de trabajos de grado de maestría y de pregrado, que se encuentran disponibles en SABER.UCV . Adicionalmente, la representación de los resultados de los <em>querys</em> son enriquecidas con gráficos interactivos que muestran “mapas del conocimiento” (citar a dueñas).</p>
-<p>Gran parte de las funcionalidades que incorpora el SCSU se sustentan en los procesos de extracción y clasificación de información de datos que originalmente no se encuentran estructurados en el repositorio oficial, como lo son los nombres de las carreras de pregrado o del postrgrado donde fue generada cada una de las investigaciones o el nombre del tutor que acompañó el desarrollo de cada investigación, así que el Sistema acá descrito contribuye efectivamente a que estos datos puedan estar disponibles y afinar con una mayor cantidad de parámetros las búsquedas de información que se deban realizar y se incorporan técnicas de búsqueda indexada mediante un índice inverso que establece los criterios de relevancia al momento de jerarquizar y mostrar los resultados de una búsqueda.</p>
-<div id="estructura" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Estructura:<a href="introduccion.html#estructura" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En el Capítulo <a href="capproblema.html#capproblema">2</a> <strong>El Problema</strong> se hace una exposición de cuáles son las funcionalidades de SABER.UCV que pueden ser complementadas por el Sistema Complementario Saber UCV mientras que en <a href="capproblema.html#delimitacion">2.2</a> se establecen las delimitaciones en el proceso de investigación abordado. En <a href="capproblema.html#justificacion">2.3</a> se justifica la necesidad de realizar este estudio y en <a href="capproblema.html#descripcion">2.4</a> se presenta la Solución propuesta junto con el <a href="capproblema.html#objegeneral">2.5.1</a> Objetivo General y los <a href="capproblema.html#objeespe">2.5.2</a> Objetivos Específicos . En <a href="capproblema.html#alcance">2.6</a> se enuncia el alcance del proceso de recuperación, extracción y clasificación de Información de SABER UCV y en <a href="capproblema.html#aporte">2.7</a> se enumeran los aportes que brinda esta investigación.</p>
-<p>En el Capítulo <a href="teorico.html#teorico">3</a> <strong>Marco Teórico</strong> se hace una reseña histórica <a href="teorico.html#alghist">3.1</a> sobre el problema computacional que es la “búsqueda”, entendido de manera genérica. En la sección <a href="teorico.html#infret">3.2</a> “Recuperación de Información” se mencionan los conceptos para comprender los procesos de búsqueda de texto dentro de un Corpus y también se introducen a los “Sistemas” que permiten ejecutar dicha tarea. Luego en <a href="teorico.html#MRI">3.2.3</a> se describen algunos “Modelos de Recuperación de Información” que se usan en la implementación del SCSU. Para representar los resultados de las búsquedas, el Sistema implementado necesita que los textos sean procesados mediante diversos métodos que son descritos en en <a href="teorico.html#PT">3.3</a> Procesamiento de Texto, como los son el <a href="teorico.html#nlproc">3.3.1</a> Procesamiento del Lenguaje Natural y <a href="teorico.html#textmin">3.3.2</a> la Minería de Texto . Seguidamente en <a href="teorico.html#SD">3.4</a> se conceptualiza a los “Sistemas Distribuidos”, motivado a que la implementación realizada del Software se hace mediante este tipo de sistemas.Al finalizar este Capítulo en <a href="teorico.html#sota">3.5</a> se presentan el Estado del Arte en lo relativo a los procesos de Recuperación de Información.</p>
-<p>En el Capítulo <span class="citation">(<a href="#ref-ref"><strong>ref?</strong></a>)</span>(mm) <strong>Marco Metodológico</strong> se presenta la metodología de trabajo Kanban <a href="mm.html#mmmetodologia">4.1</a> que sirvió para realizar la planificación de la investigación así como también el Desarrollo Adaptable de Software –Adaptive Software Development (ASD)- <a href="mm.html#mmasd">4.2</a> que fue la metodología adaptada para realizar los ciclos de desarrollo del SCSU.</p>
-<p>En el Capítulo <a href="desarrollo.html#desarrollo">5</a> <strong>Desarrollo</strong> se presenta la <a href="desarrollo.html#desarollodescripcion">5.1</a> Descripción general de la Solución y en <a href="desarrollo.html#desarrolloarquitectura">5.2</a> se presenta la Arquitectura de la misma. Luego en <a href="desarrollo.html#desarrolloanalisis">5.3</a> Análisis y Diseño se muestran las consideraciones adoptadas para dicho proceso. En <a href="desarrollo.html#desarrollociclos">5.4</a> Ciclos de Desarrollo se muestran las iteraciones que se hicieron para crear el SCSU; en un primer ciclo para la <a href="desarrollo.html#desarrollociclos1">5.4.1</a> Obtención del Conjunto de Datos , en un segundo ciclo <a href="desarrollo.html#desarrollociclos2">5.4.2</a> para la Extracción y Clasificación de Información del Conjunto de Datos , en el tercero <a href="desarrollo.html#desarrollociclos3">5.4.3</a> para crear el Prototipo de Buscador y en el cuarto <a href="desarrollo.html#desarrollociclos4">5.4.4</a> se realizó la Integración de Componentes del Software . En este Capítulo adicionalmente se realizan las distintas <a href="desarrollo.html#pruebas">5.5</a> Pruebas tanto <a href="desarrollo.html#pruebas1">5.5.1</a> Funcionales, <a href="desarrollo.html#pruebas2">5.5.2</a> de Rendimiento y en <a href="desarrollo.html#pruebas3">5.5.3</a> las pruebas de Relevancia sobre la información recuperada al momento de hacer una búsqueda.</p>
-<p>Para concluir esta investigación, en el Capítulo <a href="conclusiones.html#conclusiones">6</a> <strong>Conclusiones</strong> se exponen las <a href="conclusiones.html#conclusionescontri">6.1</a> Contribuciones y los <a href="conclusiones.html#conclusionestrabafutu">6.2</a> Trabajos Futuros que se pueden derivar del proceso expuesto a lo largo del contenido de los capítulos anteriormente citados.</p>
+<div id="capproblema" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> El Problema:<a href="capproblema.html#capproblema" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="problema" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> El Problema:<a href="capproblema.html#problema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="delimitacion" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Delimitación del Problema<a href="capproblema.html#delimitacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="justificacion" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Justificación e Importancia:<a href="capproblema.html#justificacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="descripcion" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Descripción de la Solución:<a href="capproblema.html#descripcion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="obje" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Objetivos de la Investigación:<a href="capproblema.html#obje" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="objegeneral" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Objetivo General:<a href="capproblema.html#objegeneral" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="objeespe" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Objetivos Específicos:<a href="capproblema.html#objeespe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="alcance" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Alcance:<a href="capproblema.html#alcance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="aporte" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Aporte:<a href="capproblema.html#aporte" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-manning2008" class="csl-entry">
-Manning, Christopher D., Prabhakar Raghavan, y Hinrich Schütze. 2008. <em>Introduction to information retrieval</em>. New York: Cambridge University Press.
 </div>
 </div>
             </section>
@@ -230,8 +237,8 @@ Manning, Christopher D., Prabhakar Raghavan, y Hinrich Schütze. 2008. <em>Intro
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="capproblema.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduccion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="teorico.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

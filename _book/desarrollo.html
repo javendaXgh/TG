@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es-ES" xml:lang="es-ES">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Desarrollo de la Solución: | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV</title>
+  <meta name="description" content="Trabajo de Grado de Maestría" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Desarrollo de la Solución: | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/UCV.png" />
+  <meta property="og:description" content="Trabajo de Grado de Maestría" />
+  <meta name="github-repo" content="javendaXgh/TG" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Desarrollo de la Solución: | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV" />
+  
+  <meta name="twitter:description" content="Trabajo de Grado de Maestría" />
+  <meta name="twitter:image" content="/images/UCV.png" />
+
+<meta name="author" content="José Miguel Avendaño Infante" />
+
+
+<meta name="date" content="2023-10-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mm.html"/>
+<link rel="next" href="conclusiones.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Consulta Información</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Resumen:</a></li>
+<li class="chapter" data-level="1" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i><b>1</b> Introducción:</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduccion.html"><a href="introduccion.html#estructura"><i class="fa fa-check"></i><b>1.1</b> Estructura:</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="capproblema.html"><a href="capproblema.html"><i class="fa fa-check"></i><b>2</b> El Problema:</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="capproblema.html"><a href="capproblema.html#problema"><i class="fa fa-check"></i><b>2.1</b> El Problema:</a></li>
+<li class="chapter" data-level="2.2" data-path="capproblema.html"><a href="capproblema.html#delimitacion"><i class="fa fa-check"></i><b>2.2</b> Delimitación del Problema</a></li>
+<li class="chapter" data-level="2.3" data-path="capproblema.html"><a href="capproblema.html#justificacion"><i class="fa fa-check"></i><b>2.3</b> Justificación e Importancia:</a></li>
+<li class="chapter" data-level="2.4" data-path="capproblema.html"><a href="capproblema.html#descripcion"><i class="fa fa-check"></i><b>2.4</b> Descripción de la Solución:</a></li>
+<li class="chapter" data-level="2.5" data-path="capproblema.html"><a href="capproblema.html#obje"><i class="fa fa-check"></i><b>2.5</b> Objetivos de la Investigación:</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="capproblema.html"><a href="capproblema.html#objegeneral"><i class="fa fa-check"></i><b>2.5.1</b> Objetivo General:</a></li>
+<li class="chapter" data-level="2.5.2" data-path="capproblema.html"><a href="capproblema.html#objeespe"><i class="fa fa-check"></i><b>2.5.2</b> Objetivos Específicos:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="capproblema.html"><a href="capproblema.html#alcance"><i class="fa fa-check"></i><b>2.6</b> Alcance:</a></li>
+<li class="chapter" data-level="2.7" data-path="capproblema.html"><a href="capproblema.html#aporte"><i class="fa fa-check"></i><b>2.7</b> Aporte:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="teorico.html"><a href="teorico.html"><i class="fa fa-check"></i><b>3</b> Marco Teórico-Referencial:</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="teorico.html"><a href="teorico.html#alghist"><i class="fa fa-check"></i><b>3.1</b> Reseña histórica:</a></li>
+<li class="chapter" data-level="3.2" data-path="teorico.html"><a href="teorico.html#infret"><i class="fa fa-check"></i><b>3.2</b> Recuperación de Información:</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="teorico.html"><a href="teorico.html#SRI"><i class="fa fa-check"></i><b>3.2.1</b> Sistemas de Recuperación de Información (SRI) :</a></li>
+<li class="chapter" data-level="3.2.2" data-path="teorico.html"><a href="teorico.html#ejemplos-de-irs"><i class="fa fa-check"></i><b>3.2.2</b> Ejemplos de IRS:</a></li>
+<li class="chapter" data-level="3.2.3" data-path="teorico.html"><a href="teorico.html#MRI"><i class="fa fa-check"></i><b>3.2.3</b> Modelos de Recuperación de Información:</a></li>
+<li class="chapter" data-level="3.2.4" data-path="teorico.html"><a href="teorico.html#relevancia"><i class="fa fa-check"></i><b>3.2.4</b> Relevancia:</a></li>
+<li class="chapter" data-level="3.2.5" data-path="teorico.html"><a href="teorico.html#ranking"><i class="fa fa-check"></i><b>3.2.5</b> Re Ordenamiento (re-ranking):</a></li>
+<li class="chapter" data-level="3.2.6" data-path="teorico.html"><a href="teorico.html#evaluacion"><i class="fa fa-check"></i><b>3.2.6</b> Métodos de Evaluación:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="teorico.html"><a href="teorico.html#PT"><i class="fa fa-check"></i><b>3.3</b> Procesamientos de texto:</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="teorico.html"><a href="teorico.html#nlproc"><i class="fa fa-check"></i><b>3.3.1</b> Procesamiento del Lenguaje Natural (Natural Language Processing- NLP):</a></li>
+<li class="chapter" data-level="3.3.2" data-path="teorico.html"><a href="teorico.html#textmin"><i class="fa fa-check"></i><b>3.3.2</b> Minería de Texto:</a></li>
+<li class="chapter" data-level="3.3.3" data-path="teorico.html"><a href="teorico.html#similitud"><i class="fa fa-check"></i><b>3.3.3</b> Similitud de documentos:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="teorico.html"><a href="teorico.html#SD"><i class="fa fa-check"></i><b>3.4</b> Sistemas Distribuidos:</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="teorico.html"><a href="teorico.html#contenedores"><i class="fa fa-check"></i><b>3.4.1</b> Contenedores:</a></li>
+<li class="chapter" data-level="3.4.2" data-path="teorico.html"><a href="teorico.html#orquestador"><i class="fa fa-check"></i><b>3.4.2</b> Orquestador:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="teorico.html"><a href="teorico.html#sota"><i class="fa fa-check"></i><b>3.5</b> Estado del Arte:</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="teorico.html"><a href="teorico.html#embed"><i class="fa fa-check"></i><b>3.5.1</b> Embeddings</a></li>
+<li class="chapter" data-level="3.5.2" data-path="teorico.html"><a href="teorico.html#trans"><i class="fa fa-check"></i><b>3.5.2</b> Arquitectura de Redes Neuronales Transformers:</a></li>
+<li class="chapter" data-level="3.5.3" data-path="teorico.html"><a href="teorico.html#LLM"><i class="fa fa-check"></i><b>3.5.3</b> Largos Modelos de Lenguaje:</a></li>
+<li class="chapter" data-level="3.5.4" data-path="teorico.html"><a href="teorico.html#int"><i class="fa fa-check"></i><b>3.5.4</b> Integración:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mm.html"><a href="mm.html"><i class="fa fa-check"></i><b>4</b> Capítulo Marco Metodológico:</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="mm.html"><a href="mm.html#mmmetodologia"><i class="fa fa-check"></i><b>4.1</b> Metodología de Trabajo:</a></li>
+<li class="chapter" data-level="4.2" data-path="mm.html"><a href="mm.html#mmasd"><i class="fa fa-check"></i><b>4.2</b> Desarrollo Adaptable de Software:</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="mm.html"><a href="mm.html#características"><i class="fa fa-check"></i><b>4.2.1</b> Características:</a></li>
+<li class="chapter" data-level="4.2.2" data-path="mm.html"><a href="mm.html#ciclos"><i class="fa fa-check"></i><b>4.2.2</b> Ciclos:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="desarrollo.html"><a href="desarrollo.html"><i class="fa fa-check"></i><b>5</b> Desarrollo de la Solución:</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="desarrollo.html"><a href="desarrollo.html#desarollodescripcion"><i class="fa fa-check"></i><b>5.1</b> Descripción general de la Solución:</a></li>
+<li class="chapter" data-level="5.2" data-path="desarrollo.html"><a href="desarrollo.html#desarrolloarquitectura"><i class="fa fa-check"></i><b>5.2</b> Arquitectura de la Solución:</a></li>
+<li class="chapter" data-level="5.3" data-path="desarrollo.html"><a href="desarrollo.html#desarrolloanalisis"><i class="fa fa-check"></i><b>5.3</b> Análisis y diseño:</a></li>
+<li class="chapter" data-level="5.4" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos"><i class="fa fa-check"></i><b>5.4</b> Ciclos de Desarrollo:</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos1"><i class="fa fa-check"></i><b>5.4.1</b> Obtención del Conjunto de Datos:</a></li>
+<li class="chapter" data-level="5.4.2" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos2"><i class="fa fa-check"></i><b>5.4.2</b> Extracción y Clasificación de Información del Conjunto de Datos:</a></li>
+<li class="chapter" data-level="5.4.3" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos3"><i class="fa fa-check"></i><b>5.4.3</b> Prototipo de buscador:</a></li>
+<li class="chapter" data-level="5.4.4" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos4"><i class="fa fa-check"></i><b>5.4.4</b> Integración de componentes del software:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="desarrollo.html"><a href="desarrollo.html#pruebas"><i class="fa fa-check"></i><b>5.5</b> Pruebas:</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="desarrollo.html"><a href="desarrollo.html#pruebas1"><i class="fa fa-check"></i><b>5.5.1</b> Funcionales:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="desarrollo.html"><a href="desarrollo.html#pruebas2"><i class="fa fa-check"></i><b>5.5.2</b> Rendimiento:</a></li>
+<li class="chapter" data-level="5.5.3" data-path="desarrollo.html"><a href="desarrollo.html#pruebas3"><i class="fa fa-check"></i><b>5.5.3</b> Relevancia:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones:</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="conclusiones.html"><a href="conclusiones.html#conclusionescontri"><i class="fa fa-check"></i><b>6.1</b> Contribución:</a></li>
+<li class="chapter" data-level="6.2" data-path="conclusiones.html"><a href="conclusiones.html#conclusionestrabafutu"><i class="fa fa-check"></i><b>6.2</b> Trabajos Futuros:</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="desarrollo" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Desarrollo de la Solución:<a href="desarrollo.html#desarrollo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Este es el capítulo del desarrollo</p>
+<div id="desarollodescripcion" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Descripción general de la Solución:<a href="desarrollo.html#desarollodescripcion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="desarrolloarquitectura" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Arquitectura de la Solución:<a href="desarrollo.html#desarrolloarquitectura" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="desarrolloanalisis" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Análisis y diseño:<a href="desarrollo.html#desarrolloanalisis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="desarrollociclos" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Ciclos de Desarrollo:<a href="desarrollo.html#desarrollociclos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="desarrollociclos1" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Obtención del Conjunto de Datos:<a href="desarrollo.html#desarrollociclos1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recuperación</p>
+</div>
+<div id="desarrollociclos2" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Extracción y Clasificación de Información del Conjunto de Datos:<a href="desarrollo.html#desarrollociclos2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Extracción y clasificación</p>
+</div>
+<div id="desarrollociclos3" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Prototipo de buscador:<a href="desarrollo.html#desarrollociclos3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="desarrollociclos4" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Integración de componentes del software:<a href="desarrollo.html#desarrollociclos4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="pruebas" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Pruebas:<a href="desarrollo.html#pruebas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pruebas1" class="section level3 hasAnchor" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Funcionales:<a href="desarrollo.html#pruebas1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="pruebas2" class="section level3 hasAnchor" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Rendimiento:<a href="desarrollo.html#pruebas2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="pruebas3" class="section level3 hasAnchor" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Relevancia:<a href="desarrollo.html#pruebas3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusiones.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "whatsapp"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"lib_dir": "book_assets",
+"split_by": "section",
+"config": {
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
