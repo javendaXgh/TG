@@ -35,18 +35,20 @@ flextable::set_flextable_defaults(big.mark = '.',decimal.mark = ',')
 ```
 
 `r if (knitr::is_html_output()) '
-
 # Resumen: {.unnumbered}
 
-Se presenta la propuesta de un sistema para hacer procesos de clasificación y de Recuperación de Información sobre los Resúmenes, tanto de las Tesis como de los Trabajos Especiales de Grado (TEG) que se encuentran alojados en el repositorio institucional Saber UCV ([saber.ucv.ve](http://saber.ucv.ve/)).
+Se presenta la investigación e implementación de un sistema para hacer la **Recuperación, Extracción y Clasificación de Información de SABER UCV**. El sistema ejecuta procesos de clasificación, almacenamiento y recuperación de información sobre los Resúmenes, tanto de las Tesis como de los Trabajos Especiales de Grado (TEG) que se encuentran publicados en el repositorio institucional Saber UCV  ([saber.ucv.ve](http://saber.ucv.ve/)) y permite al usuario hacer procesos de búsqueda mediante una aplicación web.
 
-Se aplican técnicas de Procesamiento de Lenguaje Natural (NLP), de Minería de Texto y de indexación en base de datos sobre los textos.
+A los Resúmenes con los cuales se conforma el corpus, se le aplican técnicas de Procesamiento de Lenguaje Natural (PLN), de Minería de Texto, de indexación en base de datos y se usan modelos preentrenados de inteligencia artificial para generar *embeddings* y soportar procesos de búsqueda semántica.
 
-Esta propuesta se basa en que mediante la búsqueda de palabras o frases, aplicando filtros y determinando la granularidad, se genere un (*query*) con el que se puedan recuperar los trabajos en que se encuentran contenidas tales palabras y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información recuperada en tablas interactivas, visualizaciones con gráficos y grafos de coocurrencia de palabras.
+Mediante la búsqueda de palabras o frases, aplicando filtros como fechas de publicación, área en la cual se generó la investigación y/o el nivel académico, el usuario genera un (*query*) con el que se pueden recuperar los trabajos de mayor relevancia en que se encuentran contenidas tales palabras, o palabras similares y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información extraída en tablas interactivas, gráficos, grafos de coocurrencia de palabras y recomendaciones de textos que puedan ser de interés para el investigador.
 
-La aplicación se diseña como un sistema distribuido bajo la arquitectura cliente-servidor y se soporta en el uso de contenedores, donde en cada uno se ejecuta un proceso para el funcionamiento del sistema, siendo los principales el de la base de datos, el servidor de la aplicación y otro con los distintos procesamientos que son efectuados sobre los textos.
+La aplicación se implementa como un sistema distribuido bajo la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.
 
-También se propone una rutina que permite clasificar las Tesis y los TEG por el área académica donde cursó estudios el autor del correspondiente trabajo y así se solventa la carencia que actualmente presenta Saber UCV, donde no están disponibles estas clasificaciones. '`
+También se implementa una rutina que permite clasificar las Tesis y los TEG, según el área académica donde cursó estudios el autor del correspondiente trabajo y así se solventa la carencia que actualmente presenta Saber UCV, donde no están disponibles estas clasificaciones.
+
+**Palabras Clave:** Recuperación de Información, Procesamiento del Lenguaje Natural,  Minería de Texto, Relevancia, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas del Conocimiento.
+'`
 
 ```{=tex}
 \clearpage
@@ -56,13 +58,13 @@ También se propone una rutina que permite clasificar las Tesis y los TEG por el
 
 Es conocida la gran disponibilidad de información en distintos formatos que tienen a su disposición los investigadores. Ejemplo de esto son libros en las bibliotecas, o la variedad de documentos que se encuentran accesibles en formatos digitales como artículos publicados en revistas arbitradas, libros, páginas de internet especializadas en algún tema o los repositorios digitales de documentos. Es en esta abundancia donde recaen varios de los problemas a los cuales se enfrenta la labor investigativa, en particular, cuando se realiza la fase exploratoria de selección de aquellos documentos que puedan resultar de mayor relevancia.
 
-Una de las herramientas con que cuentan los investigadores, para la búsqueda de documentos que se encuentran en formato digital, son los Sistemas de Recuperación de Información, donde ante una búsqueda, a la cual denominaremos el ***query***, serán recuperados del conjunto de documentos, conjunto al que denominaremos ***Corpus***, aquellos que cumplan ciertos parámetros[@manning2008]. Los documentos que el Sistema logre recuperar se deben adaptar a las necesidades del investigador y en caso de existir múltiples documentos, el sistema debe poder jerarquizar aquellos que puedan resultar de mayor relevancia.
+Una de las herramientas con que cuentan los investigadores, para la búsqueda de documentos que se encuentran en formato digital, son los Sistemas de Recuperación de Información, donde ante una búsqueda, a la cual denominaremos el ***query***, serán recuperados del conjunto de documentos, conjunto al que denominaremos ***Corpus***, aquellos que cumplan ciertos parámetros [@manning2008]. Los documentos que el Sistema logre recuperar se deben adaptar a las necesidades del investigador y en caso de existir múltiples documentos, el sistema debe poder jerarquizar aquellos que puedan resultar de mayor relevancia.
 
 En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos denominado SABER.UCV al cual se puede acceder desde la dirección web [saber.ucv.ve](http://saber.ucv.ve/) el cual permite realizar búsquedas de información sobre documentos generados dentro de la comunidad de investigadores de la Universidad.
 
 En este Trabajo de Grado se presenta la propuesta para la **Recuperación, Extracción y Clasificación de Información de SABER UCV**, mediante el desarrollo de un sistema informático que se denomina **Sistema Complementario Saber UCV (SCSU)**, el cual complementa las funcionalidades de búsqueda de información que actualmente tiene el repositorio oficial de la Universidad Central de Venezuela.
 
-La implementación del SCSU hace un aporte a los investigadores que necesitan realizar búsquedas de información sobre el subconjunto de tesis doctorales, de trabajos de grado de maestría y de pregrado, que se encuentran disponibles en SABER.UCV . Adicionalmente, la representación de los resultados de los *querys* son enriquecidas con gráficos interactivos que muestran "mapas del conocimiento" (citar a dueñas).
+La implementación del SCSU hace un aporte a los investigadores que necesitan realizar búsquedas de información sobre el subconjunto de tesis doctorales, de trabajos de grado de maestría y de pregrado, que se encuentran disponibles en SABER.UCV . Adicionalmente, la representación de los resultados de los *querys* son enriquecidas con gráficos interactivos que muestran "mapas del conocimiento" [@dueñas2011].
 
 Gran parte de las funcionalidades que incorpora el SCSU se sustentan en los procesos de extracción y clasificación de información de datos que originalmente no se encuentran estructurados en el repositorio oficial, como lo son los nombres de las carreras de pregrado o del postrgrado donde fue generada cada una de las investigaciones o el nombre del tutor que acompañó el desarrollo de cada investigación, así que el Sistema acá descrito contribuye efectivamente a que estos datos puedan estar disponibles y afinar con una mayor cantidad de parámetros las búsquedas de información que se deban realizar y se incorporan técnicas de búsqueda indexada mediante un índice inverso que establece los criterios de relevancia al momento de jerarquizar y mostrar los resultados de una búsqueda.
 

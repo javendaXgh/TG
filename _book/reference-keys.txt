@@ -1,6 +1,8 @@
 fig:busquedasacm
 fig:coocejem
+tab:tblembedding
 fig:embeddingimg
+fig:embking
 fig:GloVeEmbedd
 fig:llm
 fig:metkanban

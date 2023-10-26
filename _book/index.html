@@ -23,7 +23,7 @@
 <meta name="author" content="José Miguel Avendaño Infante" />
 
 
-<meta name="date" content="2023-10-25" />
+<meta name="date" content="2023-10-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -127,7 +127,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.3" data-path="teorico.html"><a href="teorico.html#MRI"><i class="fa fa-check"></i><b>3.2.3</b> Modelos de Recuperación de Información:</a></li>
 <li class="chapter" data-level="3.2.4" data-path="teorico.html"><a href="teorico.html#relevancia"><i class="fa fa-check"></i><b>3.2.4</b> Relevancia:</a></li>
 <li class="chapter" data-level="3.2.5" data-path="teorico.html"><a href="teorico.html#ranking"><i class="fa fa-check"></i><b>3.2.5</b> Re Ordenamiento (re-ranking):</a></li>
-<li class="chapter" data-level="3.2.6" data-path="teorico.html"><a href="teorico.html#evaluacion"><i class="fa fa-check"></i><b>3.2.6</b> Métodos de Evaluación:</a></li>
+<li class="chapter" data-level="3.2.6" data-path="teorico.html"><a href="teorico.html#evaluacion"><i class="fa fa-check"></i><b>3.2.6</b> Medidas y Métodos de Evaluación:</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="teorico.html"><a href="teorico.html#PT"><i class="fa fa-check"></i><b>3.3</b> Procesamientos de texto:</a>
 <ul>
@@ -143,7 +143,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.5" data-path="teorico.html"><a href="teorico.html#sota"><i class="fa fa-check"></i><b>3.5</b> Estado del Arte:</a>
 <ul>
 <li class="chapter" data-level="3.5.1" data-path="teorico.html"><a href="teorico.html#embed"><i class="fa fa-check"></i><b>3.5.1</b> Embeddings</a></li>
-<li class="chapter" data-level="3.5.2" data-path="teorico.html"><a href="teorico.html#trans"><i class="fa fa-check"></i><b>3.5.2</b> Arquitectura de Redes Neuronales Transformers:</a></li>
+<li class="chapter" data-level="3.5.2" data-path="teorico.html"><a href="teorico.html#trans"><i class="fa fa-check"></i><b>3.5.2</b> Arquitectura de Redes Neuronales <em>Transformers</em>:</a></li>
 <li class="chapter" data-level="3.5.3" data-path="teorico.html"><a href="teorico.html#LLM"><i class="fa fa-check"></i><b>3.5.3</b> Largos Modelos de Lenguaje:</a></li>
 <li class="chapter" data-level="3.5.4" data-path="teorico.html"><a href="teorico.html#int"><i class="fa fa-check"></i><b>3.5.4</b> Integración:</a></li>
 </ul></li>
@@ -205,15 +205,16 @@ div.csl-indent {
 <h1 class="title">RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV</h1>
 <h2 class="subtitle"><em>Caso de Estudio Repositorio www.saber.ucv.ve</em></h2>
 <p class="author"><em>José Miguel Avendaño Infante</em></p>
-<p class="date"><em>2023-10-25</em></p>
+<p class="date"><em>2023-10-26</em></p>
 </div>
 <div id="resumen" class="section level1 unnumbered hasAnchor">
 <h1>Resumen:<a href="index.html#resumen" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Se presenta la propuesta de un sistema para hacer procesos de clasificación y de Recuperación de Información sobre los Resúmenes, tanto de las Tesis como de los Trabajos Especiales de Grado (TEG) que se encuentran alojados en el repositorio institucional Saber UCV (<a href="http://saber.ucv.ve/">saber.ucv.ve</a>).</p>
-<p>Se aplican técnicas de Procesamiento de Lenguaje Natural (NLP), de Minería de Texto y de indexación en base de datos sobre los textos.</p>
-<p>Esta propuesta se basa en que mediante la búsqueda de palabras o frases, aplicando filtros y determinando la granularidad, se genere un (<em>query</em>) con el que se puedan recuperar los trabajos en que se encuentran contenidas tales palabras y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información recuperada en tablas interactivas, visualizaciones con gráficos y grafos de coocurrencia de palabras.</p>
-<p>La aplicación se diseña como un sistema distribuido bajo la arquitectura cliente-servidor y se soporta en el uso de contenedores, donde en cada uno se ejecuta un proceso para el funcionamiento del sistema, siendo los principales el de la base de datos, el servidor de la aplicación y otro con los distintos procesamientos que son efectuados sobre los textos.</p>
-<p>También se propone una rutina que permite clasificar las Tesis y los TEG por el área académica donde cursó estudios el autor del correspondiente trabajo y así se solventa la carencia que actualmente presenta Saber UCV, donde no están disponibles estas clasificaciones.</p>
+<p>Se presenta la investigación e implementación de un sistema para hacer la <strong>Recuperación, Extracción y Clasificación de Información de SABER UCV</strong>. El sistema ejecuta procesos de clasificación, almacenamiento y recuperación de información sobre los Resúmenes, tanto de las Tesis como de los Trabajos Especiales de Grado (TEG) que se encuentran publicados en el repositorio institucional Saber UCV (<a href="http://saber.ucv.ve/">saber.ucv.ve</a>) y permite al usuario hacer procesos de búsqueda mediante una aplicación web.</p>
+<p>A los Resúmenes con los cuales se conforma el corpus, se le aplican técnicas de Procesamiento de Lenguaje Natural (PLN), de Minería de Texto, de indexación en base de datos y se usan modelos preentrenados de inteligencia artificial para generar <em>embeddings</em> y soportar procesos de búsqueda semántica.</p>
+<p>Mediante la búsqueda de palabras o frases, aplicando filtros como fechas de publicación, área en la cual se generó la investigación y/o el nivel académico, el usuario genera un (<em>query</em>) con el que se pueden recuperar los trabajos de mayor relevancia en que se encuentran contenidas tales palabras, o palabras similares y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información extraída en tablas interactivas, gráficos, grafos de coocurrencia de palabras y recomendaciones de textos que puedan ser de interés para el investigador.</p>
+<p>La aplicación se implementa como un sistema distribuido bajo la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.</p>
+<p>También se implementa una rutina que permite clasificar las Tesis y los TEG, según el área académica donde cursó estudios el autor del correspondiente trabajo y así se solventa la carencia que actualmente presenta Saber UCV, donde no están disponibles estas clasificaciones.</p>
+<p><strong>Palabras Clave:</strong> Recuperación de Información, Procesamiento del Lenguaje Natural, Minería de Texto, Relevancia, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas del Conocimiento.</p>
 </div>
             </section>
 

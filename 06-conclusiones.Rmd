@@ -9,3 +9,5 @@ Este es el capítulo de las Conclusiones
 ## Contribución: {#conclusionescontri}
 
 ## Trabajos Futuros: {#conclusionestrabafutu}
+
+Finalizar con que este libro en sus dos versiones pdf y html se generó con bookdown

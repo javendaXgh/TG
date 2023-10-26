@@ -23,7 +23,7 @@
 <meta name="author" content="José Miguel Avendaño Infante" />
 
 
-<meta name="date" content="2023-10-25" />
+<meta name="date" content="2023-10-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -127,7 +127,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.3" data-path="teorico.html"><a href="teorico.html#MRI"><i class="fa fa-check"></i><b>3.2.3</b> Modelos de Recuperación de Información:</a></li>
 <li class="chapter" data-level="3.2.4" data-path="teorico.html"><a href="teorico.html#relevancia"><i class="fa fa-check"></i><b>3.2.4</b> Relevancia:</a></li>
 <li class="chapter" data-level="3.2.5" data-path="teorico.html"><a href="teorico.html#ranking"><i class="fa fa-check"></i><b>3.2.5</b> Re Ordenamiento (re-ranking):</a></li>
-<li class="chapter" data-level="3.2.6" data-path="teorico.html"><a href="teorico.html#evaluacion"><i class="fa fa-check"></i><b>3.2.6</b> Métodos de Evaluación:</a></li>
+<li class="chapter" data-level="3.2.6" data-path="teorico.html"><a href="teorico.html#evaluacion"><i class="fa fa-check"></i><b>3.2.6</b> Medidas y Métodos de Evaluación:</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="teorico.html"><a href="teorico.html#PT"><i class="fa fa-check"></i><b>3.3</b> Procesamientos de texto:</a>
 <ul>
@@ -143,7 +143,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.5" data-path="teorico.html"><a href="teorico.html#sota"><i class="fa fa-check"></i><b>3.5</b> Estado del Arte:</a>
 <ul>
 <li class="chapter" data-level="3.5.1" data-path="teorico.html"><a href="teorico.html#embed"><i class="fa fa-check"></i><b>3.5.1</b> Embeddings</a></li>
-<li class="chapter" data-level="3.5.2" data-path="teorico.html"><a href="teorico.html#trans"><i class="fa fa-check"></i><b>3.5.2</b> Arquitectura de Redes Neuronales Transformers:</a></li>
+<li class="chapter" data-level="3.5.2" data-path="teorico.html"><a href="teorico.html#trans"><i class="fa fa-check"></i><b>3.5.2</b> Arquitectura de Redes Neuronales <em>Transformers</em>:</a></li>
 <li class="chapter" data-level="3.5.3" data-path="teorico.html"><a href="teorico.html#LLM"><i class="fa fa-check"></i><b>3.5.3</b> Largos Modelos de Lenguaje:</a></li>
 <li class="chapter" data-level="3.5.4" data-path="teorico.html"><a href="teorico.html#int"><i class="fa fa-check"></i><b>3.5.4</b> Integración:</a></li>
 </ul></li>
@@ -204,10 +204,10 @@ div.csl-indent {
 <div id="introduccion" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Capítulo 1</span> Introducción:<a href="introduccion.html#introduccion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Es conocida la gran disponibilidad de información en distintos formatos que tienen a su disposición los investigadores. Ejemplo de esto son libros en las bibliotecas, o la variedad de documentos que se encuentran accesibles en formatos digitales como artículos publicados en revistas arbitradas, libros, páginas de internet especializadas en algún tema o los repositorios digitales de documentos. Es en esta abundancia donde recaen varios de los problemas a los cuales se enfrenta la labor investigativa, en particular, cuando se realiza la fase exploratoria de selección de aquellos documentos que puedan resultar de mayor relevancia.</p>
-<p>Una de las herramientas con que cuentan los investigadores, para la búsqueda de documentos que se encuentran en formato digital, son los Sistemas de Recuperación de Información, donde ante una búsqueda, a la cual denominaremos el <strong><em>query</em></strong>, serán recuperados del conjunto de documentos, conjunto al que denominaremos <strong><em>Corpus</em></strong>, aquellos que cumplan ciertos parámetros<span class="citation">(<a href="#ref-manning2008">C. D. Manning, Raghavan, y Schütze 2008</a>)</span>. Los documentos que el Sistema logre recuperar se deben adaptar a las necesidades del investigador y en caso de existir múltiples documentos, el sistema debe poder jerarquizar aquellos que puedan resultar de mayor relevancia.</p>
+<p>Una de las herramientas con que cuentan los investigadores, para la búsqueda de documentos que se encuentran en formato digital, son los Sistemas de Recuperación de Información, donde ante una búsqueda, a la cual denominaremos el <strong><em>query</em></strong>, serán recuperados del conjunto de documentos, conjunto al que denominaremos <strong><em>Corpus</em></strong>, aquellos que cumplan ciertos parámetros <span class="citation">(<a href="#ref-manning2008">C. D. Manning, Raghavan, y Schütze 2008</a>)</span>. Los documentos que el Sistema logre recuperar se deben adaptar a las necesidades del investigador y en caso de existir múltiples documentos, el sistema debe poder jerarquizar aquellos que puedan resultar de mayor relevancia.</p>
 <p>En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos denominado SABER.UCV al cual se puede acceder desde la dirección web <a href="http://saber.ucv.ve/">saber.ucv.ve</a> el cual permite realizar búsquedas de información sobre documentos generados dentro de la comunidad de investigadores de la Universidad.</p>
 <p>En este Trabajo de Grado se presenta la propuesta para la <strong>Recuperación, Extracción y Clasificación de Información de SABER UCV</strong>, mediante el desarrollo de un sistema informático que se denomina <strong>Sistema Complementario Saber UCV (SCSU)</strong>, el cual complementa las funcionalidades de búsqueda de información que actualmente tiene el repositorio oficial de la Universidad Central de Venezuela.</p>
-<p>La implementación del SCSU hace un aporte a los investigadores que necesitan realizar búsquedas de información sobre el subconjunto de tesis doctorales, de trabajos de grado de maestría y de pregrado, que se encuentran disponibles en SABER.UCV . Adicionalmente, la representación de los resultados de los <em>querys</em> son enriquecidas con gráficos interactivos que muestran “mapas del conocimiento” (citar a dueñas).</p>
+<p>La implementación del SCSU hace un aporte a los investigadores que necesitan realizar búsquedas de información sobre el subconjunto de tesis doctorales, de trabajos de grado de maestría y de pregrado, que se encuentran disponibles en SABER.UCV . Adicionalmente, la representación de los resultados de los <em>querys</em> son enriquecidas con gráficos interactivos que muestran “mapas del conocimiento” <span class="citation">(<a href="#ref-dueñas2011">Dueñas, Rojas, y Morales 2011</a>)</span>.</p>
 <p>Gran parte de las funcionalidades que incorpora el SCSU se sustentan en los procesos de extracción y clasificación de información de datos que originalmente no se encuentran estructurados en el repositorio oficial, como lo son los nombres de las carreras de pregrado o del postrgrado donde fue generada cada una de las investigaciones o el nombre del tutor que acompañó el desarrollo de cada investigación, así que el Sistema acá descrito contribuye efectivamente a que estos datos puedan estar disponibles y afinar con una mayor cantidad de parámetros las búsquedas de información que se deban realizar y se incorporan técnicas de búsqueda indexada mediante un índice inverso que establece los criterios de relevancia al momento de jerarquizar y mostrar los resultados de una búsqueda.</p>
 <div id="estructura" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Estructura:<a href="introduccion.html#estructura" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -221,6 +221,9 @@ div.csl-indent {
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-dueñas2011" class="csl-entry">
+Dueñas, Marco, Diana Rojas, y María Eugenia Morales. 2011. <span>«Propuesta metodológica para realizar mapas de conocimiento»</span>. <em>Revista Facultad de Ciencias Económicas</em> 20 (1): 77-90. <a href="https://doi.org/10.18359/rfce.2186">https://doi.org/10.18359/rfce.2186</a>.
+</div>
 <div id="ref-manning2008" class="csl-entry">
 Manning, Christopher D., Prabhakar Raghavan, y Hinrich Schütze. 2008. <em>Introduction to information retrieval</em>. New York: Cambridge University Press.
 </div>

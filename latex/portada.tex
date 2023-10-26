@@ -30,25 +30,39 @@
 \thispagestyle{empty}
 \large{\textbf{Resumen:}}
 
-Se presenta una propuesta de aplicación web distribuida para implementar un Sistema de Recuperación de Información (\emph{information retrieval}) mediante técnicas de Procesamiento de Lenguaje Natural (NLP), de indexación en base de datos y visualizaciones con gráficos y gráfos de coocurrencias de palabras para los trabajos especiales de pre y postgrado realizados por los estudiantes de la Universidad Central de Venezuela que se encuentran alojados en el repositorio www.saber.ucv.ve.
+Se presenta la investigación e implementación de un sistema para hacer la \emph{Recuperación, Extracción y Clasificación de Información de SABER UCV}. El sistema ejecuta procesos de clasificación, almacenamiento y recuperación de información sobre los Resúmenes, tanto de las tesis como de los trabajos especiales de grado (TEG) que se encuentran publicados en el repositorio institucional Saber UCV y permite al usuario hacer procesos de búsqueda mediante una aplicación web.
 
-Esta propuesta se basa principalmente en que mediante la búsqueda de palabras o frases se genere un (\emph{query}), y mediante la técnica conocida como "\emph{full text search}" se puedan extraer los trabajos en que se encuentran contenidas tales palabras y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información recuperada.
+A los Resúmenes con los cuales se conforma el corpus, se le aplican técnicas de Procesamiento de Lenguaje Natural (PLN), de Minería de Texto, de indexación en base de datos y se usan modelos preentrenados de inteligencia artificial para generar \textit{embeddings} y soportar procesos de búsqueda semántica.
 
-La aplicación se diseña como un sistema distribuido en distintos contenedores soportando cada uno un proceso para el funcionamiento, teniendo entre los principales el de base de datos, el servidor de la aplicación y otro con los distintos procesamientos que son efectuados sobre los textos.
+Mediante la búsqueda de palabras o frases, aplicando filtros como fechas de publicación, área en la cual se generó la investigación y/o el nivel académico, el usuario genera un \textit{query} con el que se pueden recuperar los trabajos de mayor relevancia en que se encuentran contenidas tales palabras, o palabras similares y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información extraída en tablas interactivas, gráficos, grafos de coocurrencia de palabras y recomendaciones de textos que puedan ser de interés para el investigador.
 
-\textbf{Palabras Clave::} sistemas de recuperación de información, procesamiento del lenguaje natural, búsqueda de texto completo, mapas del conocimiento, sistemas distribuidos.
+La aplicación se implementa como un sistema distribuido bajo la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.
+
+También se implementa una rutina que permite clasificar las tesis y los TEG, según el área académica donde cursó estudios el autor del correspondiente trabajo y así se solventa la carencia que actualmente presenta Saber UCV, donde no están disponibles estas clasificaciones.
 
 \vspace*{2cm}
 
+\textbf{Palabras Clave::} Recuperación de Información, Procesamiento del Lenguaje Natural,  Minería de Texto, Relevancia, Búsqueda de Texto Completo, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas del Conocimiento.
+
+
+
+\newpage
+\thispagestyle{empty}
 \large{\textbf{Abstract:}}
 
-A proposal is presented for a distributed web application to implement an Information Retrieval System (\emph{information retrieval}) using Natural Language Processing (NLP) techniques, database indexing and visualizations with graphics and graphs of word cooccurrences for the special undergraduate and graduate works done by the students of the Universidad Central de Venezuela that are hosted in the repository www.saber.ucv.ve.
+The research and implementation of a system for the Retrieval, Extraction, and Classification of Information from SABER UCV (UCV's Institutional Repository) is presented. The system performs processes of classification, storage, and retrieval of information about Abstracts, both from Theses and Special Degree Works (TEG), that are published in the institutional repository Saber UCV, allowing users to perform search processes through a web application.
 
-This proposal is mainly based on the search for words or phrases to generate a (\emph{query}), and by means of the technique known as "\emph{full text search}" the works containing such words can be extracted and from there enrich the user's experience with the presentation of the retrieved information.
+Natural Language Processing (NLP) techniques, Text Mining, database indexing, and pre-trained artificial intelligence models are applied to the Abstracts forming the corpus. These techniques are used to generate embeddings and support semantic search processes.
 
-The application is designed as a distributed system in different containers, each one supporting a process for the operation, having among the main ones the database, the application server and another one with the different processes that are carried out on the texts.
+By searching for words or phrases and applying filters such as publication dates, research area, and/or academic level, the user generates a query with which the most relevant works containing those words or similar words can be retrieved. From there, the user experience is enhanced by presenting the extracted information in interactive tables, graphs, word co-occurrence graphs, and recommendations of texts that might be of interest to the researcher.
 
-\textbf{Keywords:} information retrieval, natural language processing, full text search, knowledge maps, distributed systems.
+The application is implemented as a distributed system under the client-server architecture and relies on the use of orchestrated containers.
+
+Additionally, a routine is implemented that allows the classification of Theses and TEGs based on the academic area where the corresponding work's author studied, thus addressing the current deficiency of Saber UCV, where these classifications are not available.
+
+\vspace*{2cm}
+
+\textbf{Keywords:} Information Retrieval, Natural Language Processing, Text Mining, Relevance, Full Text Search, Artificial Intelligence, Embeddings, Semantic Search, Knowledge Maps.
 
 
 \thispagestyle{empty}
