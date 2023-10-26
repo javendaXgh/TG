@@ -1,0 +1,18 @@
+---
+title: "02-problema-complemento"
+author: "José M. Avendaño I."
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Alcance:
+
+Mediante el Sistema propuesto se podrán recuperar, extraer y clasificar los documentos alojados como trabajos de grado o tesis. Posteriormente al acceder a una dirección web, o una versión corriendo en un servidor de una red local, se podrán realizar búsquedas y obtener los resultados más relevantes.
+
+El Sistema estará disponible en versión local al momento de la presentación del trabajo de grado y por un período de un mes en producción a los fines de comprobar el funcionamiento en el ambiente de desarrollo y de producción. 
+
+Los códigos estarán alojados en un repo de github para que los interesados puedan evaluar, revisar y/o reusar los códigos implementados. Igualmente estará disponible el conjunto de datos que se conformó a la fecha 29 de octubre de 2023, incluyendo toda la información disponible, en las categorías mencionadas previamente en el repositorio Saber UCV.
+
+
+'''''''
+pudiera incluirse "Evidencias del Problema"

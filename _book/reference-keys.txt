@@ -1,3 +1,4 @@
+fig:arquitecturasri
 fig:busquedasacm
 fig:coocejem
 tab:tblembedding
@@ -10,15 +11,14 @@ fig:metdas
 introduccion
 estructura
 capproblema
-problema
+desproblema
 delimitacion
 justificacion
+aportes
 descripcion
-obje
 objegeneral
 objeespe
 alcance
-aporte
 teorico
 alghist
 infret
