@@ -1,0 +1,309 @@
+\begin{thebibliography}{}
+
+\bibitem[wor, 2016]{worldde2016}
+ (2016).
+\newblock {\em World Development Report 2016: Digital Dividends}.
+\newblock World Bank, Washington, DC.
+\newblock OCLC: ocn915488955.
+
+\bibitem[Aggarwal, 2018]{aggarwal2018a}
+Aggarwal, C.~C. (2018).
+\newblock {\em Machine Learning for Text}.
+\newblock Springer International Publishing : Imprint: Springer, Cham, 1st ed. 2018 edition.
+\newblock DOI: 10.1007/978-3-319-73531-3.
+
+\bibitem[Aggarwal and Zhai, 2012]{miningt2012}
+Aggarwal, C.~C. and Zhai, C., editors (2012).
+\newblock {\em Mining text data}.
+\newblock Springer, New York Heidelberg.
+\newblock DOI: 10.1007/978-1-4614-3223-4.
+
+\bibitem[Balog, 2018]{balog2018}
+Balog, K. (2018).
+\newblock {\em Entity-Oriented Search}.
+\newblock Number~39 in The Information Retrieval Series. Springer International Publishing : Imprint: Springer, Cham, 1st ed. 2018 edition.
+\newblock DOI: 10.1007/978-3-319-93935-3.
+
+\bibitem[Boleda, 2020]{boleda2020}
+Boleda, G. (2020).
+\newblock Distributional semantics and linguistic theory.
+\newblock {\em Annual Review of Linguistics}, 6(1):213--234.
+
+\bibitem[Brin and Page, 1998]{brin1998}
+Brin, S. and Page, L. (1998).
+\newblock The anatomy of a large-scale hypertextual web search engine.
+\newblock {\em Computer Networks and ISDN Systems}, 30(1-7):107--117.
+
+\bibitem[{Büttcher} et~al., 2010a]{büttcher2010a}
+{Büttcher}, S., Clarke, C. L.~A., and Cormack, G.~V. (2010a).
+\newblock {\em Information retrieval: implementing and evaluating search engines}.
+\newblock MIT Press, Cambridge, Mass.
+\newblock OCLC: ocn473652398.
+
+\bibitem[{Büttcher} et~al., 2010b]{büttcher2010}
+{Büttcher}, S., Clarke, C. L.~A., and Cormack, G.~V. (2010b).
+\newblock {\em Information retrieval: implementing and evaluating search engines}.
+\newblock MIT Press, Cambridge, Mass.
+\newblock OCLC: ocn473652398.
+
+\bibitem[Cañete et~al., 2020]{CaneteCFP2020}
+Cañete, J., Chaperon, G., Fuentes, R., Ho, J.-H., Kang, H., and Pérez, J. (2020).
+\newblock Spanish pre-trained bert model and evaluation data.
+\newblock In {\em PML4DC at ICLR 2020}.
+
+\bibitem[Chang et~al., 2023]{shiny}
+Chang, W., Cheng, J., Allaire, J., Sievert, C., Schloerke, B., Xie, Y., Allen, J., McPherson, J., Dipert, A., and Borges, B. (2023).
+\newblock shiny: Web application framework for r.
+
+\bibitem[Chen and Manning, 2014a]{chen2014}
+Chen, D. and Manning, C. (2014a).
+\newblock A fast and accurate dependency parser using neural networks.
+\newblock {\em Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)}.
+
+\bibitem[Chen and Manning, 2014b]{chen2014fast}
+Chen, D. and Manning, C.~D. (2014b).
+\newblock A fast and accurate dependency parser using neural networks.
+\newblock In {\em Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP)}, pages 740--750.
+
+\bibitem[Cook, 2017]{cook2017}
+Cook, J. (2017).
+\newblock {\em Docker for Data Science}.
+\newblock Apress.
+
+\bibitem[Coulouris, 2012]{distribu2012}
+Coulouris, G.~F., editor (2012).
+\newblock {\em Distributed systems: concepts and design}.
+\newblock Addison-Wesley, Boston, 5th ed edition.
+
+\bibitem[Czaja, 2018]{czaja2018}
+Czaja, L. (2018).
+\newblock {\em Introduction to Distributed Computer Systems: Principles and Features}.
+\newblock Number~27 in Lecture Notes in Networks and Systems. Springer International Publishing : Imprint: Springer, Cham, 1st ed. 2018 edition.
+\newblock DOI: 10.1007/978-3-319-72023-4.
+
+\bibitem[de~Marneffe et~al., 2021]{demarneffe2021}
+de~Marneffe, M.-C., Manning, C.~D., Nivre, J., and Zeman, D. (2021).
+\newblock Universal dependencies.
+\newblock {\em Computational Linguistics}, pages 1--54.
+
+\bibitem[Desagulier, 2017]{desagulier2017}
+Desagulier, G. (2017).
+\newblock {\em Corpus Linguistics and Statistics with R}.
+\newblock Springer International Publishing.
+
+\bibitem[Dettmers et~al., 2023]{dettmers2023}
+Dettmers, T., Pagnoni, A., Holtzman, A., and Zettlemoyer, L. (2023).
+\newblock Qlora: Efficient finetuning of quantized llms.
+
+\bibitem[Devlin et~al., 2018]{devlin2018}
+Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K. (2018).
+\newblock Bert: Pre-training of deep bidirectional transformers for language understanding.
+\newblock Publisher: arXiv Version Number: 2.
+
+\bibitem[{Dueñas} et~al., 2011]{dueñas2011}
+{Dueñas}, M., Rojas, D., and Morales, M. (2011).
+\newblock Propuesta metodológica para realizar mapas de conocimiento.
+\newblock {\em Revista Facultad de Ciencias Económicas}, 20(1):77--90.
+
+\bibitem[Eisenstein, 2019]{eisenstein2019}
+Eisenstein, J. (2019).
+\newblock {\em Introduction to natural language processing}.
+\newblock Adaptive computation and machine learning. The MIT Press, Cambridge, Massachusetts.
+
+\bibitem[Fredkin, 1960]{fredkin1960}
+Fredkin, E. (1960).
+\newblock Trie memory.
+\newblock {\em Communications of the ACM}, 3(9):490--499.
+
+\bibitem[Frej et~al., 2020]{frej-etal-2020-wikir}
+Frej, J., Schwab, D., and Chevallet, J.-P. (2020).
+\newblock {WIKIR}: A python toolkit for building a large-scale {W}ikipedia-based {E}nglish information retrieval dataset.
+\newblock In {\em Proceedings of the Twelfth Language Resources and Evaluation Conference}, pages 1926--1933, Marseille, France. European Language Resources Association.
+
+\bibitem[Goodrich et~al., 2013]{goodrich2013}
+Goodrich, M.~T., Tamassia, R., and Goldwasser, M.~H. (2013).
+\newblock {\em Data structures and algorithms in Python}.
+\newblock Wiley, Hoboken, NJ.
+
+\bibitem[Harman, 2011]{harman2011}
+Harman, D. (2011).
+\newblock {\em Information retrieval evaluation}.
+\newblock Number~19 in Synthesis lectures on information concepts, retrieval, and services. Morgan Claypool, San Rafael, Calif.
+
+\bibitem[Heydari and Teimourpour, 2020]{heydari2020analysis}
+Heydari, M. and Teimourpour, B. (2020).
+\newblock Analysis of researchgate, a community detection approach.
+\newblock In {\em 2020 6th International Conference on Web Research (ICWR)}, pages 319--324. IEEE.
+
+\bibitem[Highsmith, 2000]{highsmith2000}
+Highsmith, J.~A. (2000).
+\newblock {\em Adaptive software development: a collaborative approach to managing complex systems}.
+\newblock Dorset House Pub, New York.
+
+\bibitem[Howard and Ruder, 2018]{howard2018}
+Howard, J. and Ruder, S. (2018).
+\newblock Universal language model fine-tuning for text classification.
+
+\bibitem[Knuth, 1997]{knuth1997}
+Knuth, D.~E. (1997).
+\newblock {\em The art of computer programming}.
+\newblock Addison-Wesley, Reading, Mass, 3rd ed edition.
+
+\bibitem[Kraft and Colvin, 2017]{kraft2017}
+Kraft, D.~H. and Colvin, E. (2017).
+\newblock Fuzzy information retrieval.
+\newblock {\em Synthesis Lectures on Information Concepts, Retrieval, and Services}, 9(1):i--63.
+
+\bibitem[Lewis et~al., 2020]{lewis2020}
+Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., {Küttler}, H., Lewis, M., Yih, W.-t., {Rocktäschel}, T., Riedel, S., and Kiela, D. (2020).
+\newblock Retrieval-augmented generation for knowledge-intensive nlp tasks.
+
+\bibitem[Liu et~al., 2019]{liu2019}
+Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Zettlemoyer, L., and Stoyanov, V. (2019).
+\newblock Roberta: A robustly optimized bert pretraining approach.
+
+\bibitem[Lv et~al., 2023]{lv2023}
+Lv, K., Yang, Y., Liu, T., Gao, Q., Guo, Q., and Qiu, X. (2023).
+\newblock Full parameter fine-tuning for large language models with limited resources.
+
+\bibitem[Mahapatra and Biswas, 2011]{Mahapatra2011}
+Mahapatra, A.~K. and Biswas, S. (2011).
+\newblock Inverted indexes: Types and techniques.
+\newblock {\em International Journal of Computer Science Issues}, 8.
+
+\bibitem[Manning et~al., 2014]{manning-etal-2014-stanford}
+Manning, C., Surdeanu, M., Bauer, J., Finkel, J., Bethard, S., and McClosky, D. (2014).
+\newblock The {S}tanford {C}ore{NLP} natural language processing toolkit.
+\newblock In {\em Proceedings of 52nd Annual Meeting of the Association for Computational Linguistics: System Demonstrations}, pages 55--60, Baltimore, Maryland. Association for Computational Linguistics.
+
+\bibitem[Manning et~al., 2008]{manning2008}
+Manning, C.~D., Raghavan, P., and {Schütze}, H. (2008).
+\newblock {\em Introduction to information retrieval}.
+\newblock Cambridge University Press, New York.
+\newblock OCLC: ocn190786122.
+
+\bibitem[{Martín}~de Santa Olalla~Sánchez, 1994]{martiaurora}
+{Martín}~de Santa Olalla~Sánchez, A. (1994).
+\newblock Una propuesta de codificación morfosintáctica para corpus de referencia en lengua española.
+
+\bibitem[Mikolov et~al., 2013a]{mikolov2013}
+Mikolov, T., Chen, K., Corrado, G., and Dean, J. (2013a).
+\newblock Efficient estimation of word representations in vector space.
+\newblock Publisher: arXiv Version Number: 3.
+
+\bibitem[Mikolov et~al., 2013b]{mikolov2013a}
+Mikolov, T., Sutskever, I., Chen, K., Corrado, G., and Dean, J. (2013b).
+\newblock Distributed representations of words and phrases and their compositionality.
+\newblock Publisher: arXiv Version Number: 1.
+
+\bibitem[Muennighoff et~al., 2022]{muennighoff2022}
+Muennighoff, N., Tazi, N., Magne, L., and Reimers, N. (2022).
+\newblock Mteb: Massive text embedding benchmark.
+
+\bibitem[Nogueira and Cho, 2019]{nogueira2019}
+Nogueira, R. and Cho, K. (2019).
+\newblock Passage re-ranking with bert.
+
+\bibitem[{Nüst} et~al., 2020]{nüst2020}
+{Nüst}, D., Sochat, V., Marwick, B., Eglen, S.~J., Head, T., Hirst, T., and Evans, B.~D. (2020).
+\newblock Ten simple rules for writing dockerfiles for reproducible data science.
+\newblock {\em PLOS Computational Biology}, 16(11):e1008316.
+
+\bibitem[Pang et~al., 2017]{pang2017}
+Pang, L., Lan, Y., Guo, J., Xu, J., Xu, J., and Cheng, X. (2017).
+\newblock Deeprank: A new deep architecture for relevance ranking in information retrieval.
+\newblock {\em arXiv}.
+
+\bibitem[Penedo et~al., 2023]{penedo2023}
+Penedo, G., Malartic, Q., Hesslow, D., Cojocaru, R., Cappelli, A., Alobeidli, H., Pannier, B., Almazrouei, E., and Launay, J. (2023).
+\newblock The refinedweb dataset for falcon llm: Outperforming curated corpora with web data, and web data only.
+\newblock Publisher: arXiv Version Number: 1.
+
+\bibitem[Pennington et~al., 2014]{pennington2014}
+Pennington, J., Socher, R., and Manning, C. (2014).
+\newblock Proceedings of the 2014 conference on empirical methods in natural language processing (emnlp).
+\newblock pages 1532--1543, Doha, Qatar. Association for Computational Linguistics.
+
+\bibitem[Reimers and Gurevych, 2019a]{reimers2019}
+Reimers, N. and Gurevych, I. (2019a).
+\newblock Sentence-bert: Sentence embeddings using siamese bert-networks.
+
+\bibitem[Reimers and Gurevych, 2019b]{reimers2019a}
+Reimers, N. and Gurevych, I. (2019b).
+\newblock Sentence-bert: Sentence embeddings using siamese bert-networks.
+
+\bibitem[Reimers and Gurevych, 2020]{reimers2020}
+Reimers, N. and Gurevych, I. (2020).
+\newblock Making monolingual sentence embeddings multilingual using knowledge distillation.
+
+\bibitem[Risch et~al., 2021]{risch2021}
+Risch, J., {Möller}, T., Gutsch, J., and Pietsch, M. (2021).
+\newblock Semantic answer similarity for evaluating question answering models.
+\newblock {\em arXiv}.
+
+\bibitem[Robertson and Zaragoza, 2009]{robertson2009}
+Robertson, S. and Zaragoza, H. (2009).
+\newblock The probabilistic relevance framework: Bm25 and beyond.
+\newblock {\em Foundations and Trends® in Information Retrieval}, 3(4):333--389.
+
+\bibitem[Salakhutdinov and Hinton, 2009]{salakhutdinov2009}
+Salakhutdinov, R. and Hinton, G. (2009).
+\newblock Semantic hashing.
+\newblock {\em International Journal of Approximate Reasoning}, 50(7):969--978.
+
+\bibitem[Segev, 2021]{segev2021}
+Segev, E. (2021).
+\newblock {\em Semantic Network Analysis in Social Sciences}.
+\newblock Routledge.
+
+\bibitem[Smith and Waterman, 1981]{smith1981}
+Smith, T. and Waterman, M. (1981).
+\newblock Identification of common molecular subsequences.
+\newblock {\em Journal of Molecular Biology}, 147(1):195--197.
+
+\bibitem[Stephens, 2015]{stephens2015}
+Stephens, R. (2015).
+\newblock {\em Beginning software engineering}.
+\newblock Wrox, A Wiley Brand, Indianapolis, IN.
+
+\bibitem[Straka and {Straková}, 2017]{straka2017}
+Straka, M. and {Straková}, J. (2017).
+\newblock Tokenizing, pos tagging, lemmatizing and parsing ud 2.0 with udpipe.
+\newblock {\em Proceedings of the CoNLL 2017 Shared Task: Multilingual Parsing from Raw Text to Universal Dependencies}.
+
+\bibitem[Touvron et~al., 2023]{touvron2023}
+Touvron, H., Martin, L., Stone, K., Albert, P., Almahairi, A., Babaei, Y., Bashlykov, N., Batra, S., Bhargava, P., Bhosale, S., Bikel, D., Blecher, L., Ferrer, C.~C., Chen, M., Cucurull, G., Esiobu, D., Fernandes, J., Fu, J., Fu, W., Fuller, B., Gao, C., Goswami, V., Goyal, N., Hartshorn, A., Hosseini, S., Hou, R., Inan, H., Kardas, M., Kerkez, V., Khabsa, M., Kloumann, I., Korenev, A., Koura, P.~S., Lachaux, M.-A., Lavril, T., Lee, J., Liskovich, D., Lu, Y., Mao, Y., Martinet, X., Mihaylov, T., Mishra, P., Molybog, I., Nie, Y., Poulton, A., Reizenstein, J., Rungta, R., Saladi, K., Schelten, A., Silva, R., Smith, E.~M., Subramanian, R., Tan, X.~E., Tang, B., Taylor, R., Williams, A., Kuan, J.~X., Xu, P., Yan, Z., Zarov, I., Zhang, Y., Fan, A., Kambadur, M., Narang, S., Rodriguez, A., Stojnic, R., Edunov, S., and Scialom, T. (2023).
+\newblock Llama 2: Open foundation and fine-tuned chat models.
+\newblock Publisher: arXiv Version Number: 2.
+
+\bibitem[Trotman et~al., 2014]{trotman2014}
+Trotman, A., Puurula, A., and Burgess, B. (2014).
+\newblock Improvements to bm25 and language models examined.
+\newblock {\em Proceedings of the 2014 Australasian Document Computing Symposium}.
+
+\bibitem[Vaswani et~al., 2017]{vaswani2017}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N., Kaiser, L., and Polosukhin, I. (2017).
+\newblock Attention is all you need.
+\newblock Publisher: arXiv Version Number: 7.
+
+\bibitem[Voorhees et~al., 2005]{trec:ex2005}
+Voorhees, E.~M., Harman, D.~K., Voorhees, E.~M., of~Standards, N.~I., and Technology, editors (2005).
+\newblock {\em TREC: experiment and evaluation in information retrieval}.
+\newblock Digital libraries and electronic publishing. MIT, Cambridge, Mass. London.
+
+\bibitem[Willett, 2006]{willett2006}
+Willett, P. (2006).
+\newblock The porter stemming algorithm: then and now.
+\newblock {\em Program}, 40(3):219--223.
+
+\bibitem[Wolf et~al., 2019]{wolf2019}
+Wolf, T., Debut, L., Sanh, V., Chaumond, J., Delangue, C., Moi, A., Cistac, P., Rault, T., Louf, R., Funtowicz, M., Davison, J., Shleifer, S., von Platen, P., Ma, C., Jernite, Y., Plu, J., Xu, C., Scao, T.~L., Gugger, S., Drame, M., Lhoest, Q., and Rush, A.~M. (2019).
+\newblock Huggingface's transformers: State-of-the-art natural language processing.
+
+\bibitem[Zhai and Massung, 2016]{zhai2016}
+Zhai, C. and Massung, S. (2016).
+\newblock {\em Text data management and analysis: a practical introduction to information retrieval and text mining}.
+\newblock Number {\#}12 in ACM Books. ACM Books, New York, first edition edition.
+\newblock OCLC: ocn957355971.
+
+\end{thebibliography}

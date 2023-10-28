@@ -8,7 +8,7 @@ En el presente Capítulo se introduce la \@ref(desproblema) **Descripción del P
 
 En \@ref(objegeneral) se menciona el **Objetivo Principal** que se trazó, mientras que en \@ref(objeespe) se enumeran los **Objetivos Específicos**.
 
-## Descripción del Problema:  {#desproblema}
+## Descripción del Problema: {#desproblema}
 
 La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad de la Universidad. Ingresando a la dirección web <http://saber.ucv.ve/> se permite "el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV." ¿Qué es Saber UCV?. (2023). Saber UCV.[http://saber.ucv.ve](http://saber.ucv.ve/){.uri}.
 
@@ -32,7 +32,7 @@ Adicionalmente, se detectó que es posible generar una propuesta alterna de impl
 
 ## Delimitación del Problema: {#delimitacion}
 
-El corpus con el que se trabajará sólo es el subconjunto de los trabajos de grado de pregrado y maestría junto con las tesis doctorales, no abarcando otro tipo de documentos que se encuentran registrados en el repositorio. No obstante en la implementación del ciclo final \@ref(desarrollociclos4) se incluyen dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes Saber U.L.A. para mostrar posibles ampliaciones en la ingesta de distintos tipos de publicaciones y fuentes dentro del SCSU.
+El corpus con el que se trabajará sólo es el subconjunto de los trabajos de grado de pregrado y maestría junto con las tesis doctorales, no abarcando otro tipo de documentos que se encuentran registrados en el repositorio. No obstante en la implementación del ciclo \@ref(desarrollociclos4) se incluyen dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes Saber U.L.A. para mostrar posibles ampliaciones en la ingesta de distintos tipos de publicaciones y fuentes dentro del SCSU.
 
 Sin embargo, posibles incorporaciones de otras fuentes de datos implican procesos de revisión en las estructuras de los datos, ya que por los momentos el Sistema no está diseñado para incorporaciones de datos adicionales, sin la modificación de los códigos con los que se extraen los datos desde las páginas web donde se alojan los documentos.
 
@@ -48,25 +48,25 @@ Algunos de los aportes que se generaron al realizar esta investigación son los 
 
 -   Se crean visualizaciones y representaciones de Mapas del Conocimiento.
 
--   Se implementa la búsqueda de texto completo con una función de relevancia distinta.
+-   Se implementa la búsqueda de texto completo con una función de relevancia distinta a la de Saber UCV.
 
 -   Se implementa un "sistema de recomendación" de documentos que presenten similitudes con los textos recuperados.
 
--   Se obtiene mejores métricas de desempeño en la recuperación de información.
+-   Se obtienen mejores métricas de desempeño en la recuperación de información.
 
--   La experiencia del usuario se enriquece mediante gráficos que muestran la evolución de aparición de los términos buscados en el período establecido para la búsqueda de la información.
+-   La experiencia del usuario se enriquece mediante gráficos que muestran la evolución de aparición de los términos buscados en el período establecido para la recuperació de información.
 
--   El Sistema fue diseñado para estar en producción y todos los componentes son de código abierto, libres de algún pago de licencia.
+-   El Sistema puede fácilmente ponerse en producción y todos los componentes son de código abierto, libres de algún pago de licencia.
 
--   Se puede implementar fácilmente el Sistema en un servidor ya que está diseñado de manera que con los archivos "docker compose" y "dockerfiles", se puedan desplegar la aplicación, adicionalmente alcanzando elevados niveles de reproducibilidad en todos los procesos que conforman la Solución.
+-   La implementación se hace mediante un orquestador de contenedores, teniendo asociados los archivos "docker compose" y "dockerfiles", que facilitan que pueda estar en producción el Sistema con un mínimo de configuraciones y se garantiza la reproducibilidad de los códigos que conforman la Solución.
 
 -   El tipo de componentes hace que el Sistema sea escalable y adaptable a la demanda de accesos.
 
--   El Sistema está diseñado para poder actualizarse cada vez que sea necesario o con la periodicidad que se defina.
+-   El Sistema está diseñado para poder actualizarse con la periodicidad que se defina.
 
 -   El Sistema puede servir de prototipo para integrar publicaciones de otros repositorios de documentos que pertenecen a instituciones nacionales de investigación.
 
--   Se realiza una aproximación a la implementación de "búsquedas semánticas".
+-   Se realiza la implementación de "búsquedas semánticas".
 
 ## Descripción de la Solución: {#descripcion}
 
@@ -74,15 +74,15 @@ La Solución que se propone es un Sistema de Recuperación de Información imple
 
 Posteriormente se descarga el documento en formato word o pdf, anexo a la investigación, que es donde se encuentran, generalmente en las primeras páginas, los datos de la facultad, escuela y/o postgrado donde se generó la investigación así como el nombre del tutor.
 
-Con todos los datos recopilados se conforma un corpus, al cual se le aplican distintas técnicas de procesamiento del lenguaje natural y de minería de texto, que permiten obtener un corpus anotado y un índice invertido sobre los textos, que posteriormente alimentan a un sistema gestor de base de datos.
+Con todos los datos recopilados se conforma un corpus, al cual se le aplican distintas técnicas de procesamiento del lenguaje natural y de minería de texto, que permiten obtener un corpus anotado y un índice invertido sobre los textos, que posteriormente alimentan a la base de datos.
 
-Una vez que se tienen estructurados los datos, se cuenta con una aplicación web que se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador.
+Una vez que se tienen estructurados los datos, se implementa una aplicación web que se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura "modelo-vista-controlador".
 
-A esta aplicación web, que funciona bajo la arquitectura cliente servidor, el usuario puede ingresar para realizar consultas de texto, aplicando distintos filtros como la selección del área académica donde se generó la investigación, bien sea en la escuela, postgrado o facultad, así como la selección de un rango de fechas y las palabras a buscar.
+La aplicación web está diseñada para permitir por parte del usuario la exploración exhaustiva del corpus anotado realizando consultas de texto, aplicando distintos filtros como la selección del área académica donde se generó la investigación, bien sea en la escuela, postgrado o facultad, así como la selección de un rango de fechas y las palabras a buscar.
 
-Posterior a realizar la búsqueda el sistema recuperará los documentos que cumplan con las condiciones establecidas y les será aplicada una función de relevancia para mostrar de primero aquellos que puedan resultar de mayor interés para el usuario.
+Posterior a realizar la búsqueda el Sistema recuperará los documentos que cumplan con las condiciones establecidas y a los resultados les será aplicada una función de relevancia para mostrar de primero aquellos que puedan resultar de mayor interés para el usuario.
 
-Adicionalmente para cada texto que se muestre en los resultados, se incluirán recomendaciones de otros documentos que sean similares. Igualmente se presentará un selector, que al estar activado, hará que se generé una representación de "mapas del conocimiento" según una adaptación *ad-hoc* hecha para la implementación del SCSU basada en el trabajo de [@dueñas2011] donde mediante una representación en grafos en formato interactivo, se podrán aplicar filtros sobre palabras coocurrentes en los resultados de la búsqueda.
+Adicionalmente para cada texto que se muestre en los resultados, se incluirán recomendaciones de otros documentos que sean similares. Igualmente se presentará un selector, que al estar activado, hará que se generé una representación de "mapas del conocimiento", según una adaptación *ad-hoc* hecha para la implementación del SCSU basada en el trabajo de [@dueñas2011], donde mediante una representación en grafos presentados en formato interactivo, se podrán aplicar filtros sobre palabras coocurrentes en los resultados de la búsqueda.
 
 La Solución contempla procesos de actualización de los datos ante la incorporación de nuevas investigaciones en el repositorio Saber UCV.
 

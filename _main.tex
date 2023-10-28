@@ -136,7 +136,7 @@
 \makeatother
 \subtitle{Caso de Estudio Repositorio www.saber.ucv.ve}
 \author{José Miguel Avendaño Infante}
-\date{2023-10-26}
+\date{2023-10-27}
 
 \begin{document}
 \maketitle
@@ -323,32 +323,129 @@ Para concluir esta investigación, en el Capítulo \ref{conclusiones} \textbf{Co
 \hypertarget{capproblema}{%
 \chapter{El Problema:}\label{capproblema}}
 
-\hypertarget{problema}{%
-\section{El Problema:}\label{problema}}
+En el presente Capítulo se introduce la \ref{desproblema} \textbf{Descripción del Problema} que se intenta solucionar con esta Investigación. En \ref{delimitacion} se hace la \textbf{Delimitación del Problema} se hacen algunas consideraciones al respecto. En \ref{justificacion} \textbf{Justificación e Importancia} se menciona la razón principal para haber llevado a cabo este trabajo. En \ref{aportes} se listan los \textbf{Aportes} que se logró hacer en el transcurso de la investigación. En \ref{descripcion} \textbf{Descripción de la Solución} se hace una aproximación a una descripción con algún nivel de detalle.
+
+En \ref{objegeneral} se menciona el \textbf{Objetivo Principal} que se trazó, mientras que en \ref{objeespe} se enumeran los \textbf{Objetivos Específicos}.
+
+\hypertarget{desproblema}{%
+\section{Descripción del Problema:}\label{desproblema}}
+
+La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad de la Universidad. Ingresando a la dirección web \url{http://saber.ucv.ve/} se permite ``el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV.'' ¿Qué es Saber UCV?. (2023). Saber UCV.\href{http://saber.ucv.ve/}{http://saber.ucv.ve}.
+
+Los usuarios interesados en hacer búsquedas sobre la información académica alojada en el repositorio, pueden efectuarlas aplicando filtros sobre distintas categorías como:
+
+\begin{itemize}
+\item
+  Seleccionar ``comunidades'': artículos de investigación, tesis (doctorales, maestrías, otras y pregrado), guías de estudio, revistas entre otras categorías.
+\item
+  Seleccionar la fecha de inicio (referente al año en que se efectuó la publicación).
+\end{itemize}
+
+También pueden realizar la búsqueda en el texto que incluye el nombre del documento, el nombre del autor o el texto del resumen.
+
+Dadas estas funcionalidades, en algunos casos el investigador que acuda a este repositorio puede necesitar filtrar información por algunos criterios adicionales, como lo es el área de académica donde fue realizada la investigación, en particular, si fue hecha en una escuela determinada, o en una facultad, o postgrado.
+
+Aplicar el filtrado descrito en el párrafo anterior es donde se presenta una de las limitaciones principales al hacer búsquedas en Saber UCV, ya que el sistema no dispone de esos criterios para la recuperación de información.
+
+De manera similar ocurre con el nombre del tutor de los trabajos de grado y tesis, al no encontrarse registro de esta información.
+
+Motivado a que es viable realizar procesos para extraer y clasificar la información faltante, se realiza esta Investigación que mediante la implementación de un software denominado \textbf{Sistema Complementario Saber UCV (SCSU)}, extrae y clasifica los datos del área académica donde se realizaron las distintas investigaciones de tesis y trabajos de grado que están alojadas en la página precitada.
+
+Adicionalmente, se detectó que es posible generar una propuesta alterna de implementación de criterios de relevancia para realizar la recuperación de información. Este problema será descrito con mayor detalle en \ref{desarrollociclos3} correspondiente al tercer ciclo de desarrollo de la Solución.
 
 \hypertarget{delimitacion}{%
-\section{Delimitación del Problema}\label{delimitacion}}
+\section{Delimitación del Problema:}\label{delimitacion}}
+
+El corpus con el que se trabajará sólo es el subconjunto de los trabajos de grado de pregrado y maestría junto con las tesis doctorales, no abarcando otro tipo de documentos que se encuentran registrados en el repositorio. No obstante en la implementación del ciclo final \ref{desarrollociclos4} se incluyen dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes Saber U.L.A. para mostrar posibles ampliaciones en la ingesta de distintos tipos de publicaciones y fuentes dentro del SCSU.
+
+Sin embargo, posibles incorporaciones de otras fuentes de datos implican procesos de revisión en las estructuras de los datos, ya que por los momentos el Sistema no está diseñado para incorporaciones de datos adicionales, sin la modificación de los códigos con los que se extraen los datos desde las páginas web donde se alojan los documentos.
 
 \hypertarget{justificacion}{%
 \section{Justificación e Importancia:}\label{justificacion}}
 
+Con esta Investigación se implementa un método que permite subsanar la falta de clasificaciones por áreas académica que tiene el repositorio Saber UCV y mediante la aplicación web se amplian los criterios de búsqueda disponibles para investigadores que necesiten realizar consultas sobre los documentos disponibles en el repositorio.
+
+\hypertarget{aportes}{%
+\section{Aportes:}\label{aportes}}
+
+Algunos de los aportes que se generaron al realizar esta investigación son los siguientes:
+
+\begin{itemize}
+\item
+  Se mejora y flexibilizan los criterios de búsqueda en comparación a los que tiene el repositorio Saber UCV.
+\item
+  Se crean visualizaciones y representaciones de Mapas del Conocimiento.
+\item
+  Se implementa la búsqueda de texto completo con una función de relevancia distinta.
+\item
+  Se implementa un ``sistema de recomendación'' de documentos que presenten similitudes con los textos recuperados.
+\item
+  Se obtiene mejores métricas de desempeño en la recuperación de información.
+\item
+  La experiencia del usuario se enriquece mediante gráficos que muestran la evolución de aparición de los términos buscados en el período establecido para la búsqueda de la información.
+\item
+  El Sistema fue diseñado para estar en producción y todos los componentes son de código abierto, libres de algún pago de licencia.
+\item
+  Se puede implementar fácilmente el Sistema en un servidor ya que está diseñado de manera que con los archivos ``docker compose'' y ``dockerfiles'', se puedan desplegar la aplicación, adicionalmente alcanzando elevados niveles de reproducibilidad en todos los procesos que conforman la Solución.
+\item
+  El tipo de componentes hace que el Sistema sea escalable y adaptable a la demanda de accesos.
+\item
+  El Sistema está diseñado para poder actualizarse cada vez que sea necesario o con la periodicidad que se defina.
+\item
+  El Sistema puede servir de prototipo para integrar publicaciones de otros repositorios de documentos que pertenecen a instituciones nacionales de investigación.
+\item
+  Se realiza una aproximación a la implementación de ``búsquedas semánticas''.
+\end{itemize}
+
 \hypertarget{descripcion}{%
 \section{Descripción de la Solución:}\label{descripcion}}
 
-\hypertarget{obje}{%
-\section{Objetivos de la Investigación:}\label{obje}}
+La Solución que se propone es un Sistema de Recuperación de Información implementado para que mediante técnicas de extracción de datos de archivos html´s se puedan obtener datos estructurados de los trabajos mencionados en \ref{delimitacion} que están disponibles en Saber UCV. Los datos que se extraen de cada documento son el título de la investigación, el nombre del investigador, las palabras claves, la fecha de publicación y el resumen.
+
+Posteriormente se descarga el documento en formato word o pdf, anexo a la investigación, que es donde se encuentran, generalmente en las primeras páginas, los datos de la facultad, escuela y/o postgrado donde se generó la investigación así como el nombre del tutor.
+
+Con todos los datos recopilados se conforma un corpus, al cual se le aplican distintas técnicas de procesamiento del lenguaje natural y de minería de texto, que permiten obtener un corpus anotado y un índice invertido sobre los textos, que posteriormente alimentan a un sistema gestor de base de datos.
+
+Una vez que se tienen estructurados los datos, se cuenta con una aplicación web que se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador.
+
+A esta aplicación web está diseñada para permitir la exploración exhaustiva. El usuario puede ingresar para realizar consultas de texto, aplicando distintos filtros como la selección del área académica donde se generó la investigación, bien sea en la escuela, postgrado o facultad, así como la selección de un rango de fechas y las palabras a buscar. La aplicación funciona bajo la arquitectura cliente servidor.
+
+Posterior a realizar la búsqueda el sistema recuperará los documentos que cumplan con las condiciones establecidas y les será aplicada una función de relevancia para mostrar de primero aquellos que puedan resultar de mayor interés para el usuario.
+
+Adicionalmente para cada texto que se muestre en los resultados, se incluirán recomendaciones de otros documentos que sean similares. Igualmente se presentará un selector, que al estar activado, hará que se generé una representación de ``mapas del conocimiento'' según una adaptación \emph{ad-hoc} hecha para la implementación del SCSU basada en el trabajo de \citep{dueñas2011} donde mediante una representación en grafos en formato interactivo, se podrán aplicar filtros sobre palabras coocurrentes en los resultados de la búsqueda.
+
+La Solución contempla procesos de actualización de los datos ante la incorporación de nuevas investigaciones en el repositorio Saber UCV.
+
+En la figura \ref{fig:arquitecturasri} se muestra un diagrama con la arquitectura del SCSU. (falta adaptarlo-pequeños cambios).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{images/02-problema/arquitectura_sri} 
+
+}
+
+\caption{Arquitectura del Sistema-Este diagrama se va a traducir y adaptar al SCSU. Se coloca ya que es muy similar a la Solución Implementada}\label{fig:arquitecturasri}
+\end{figure}
 
 \hypertarget{objegeneral}{%
 \subsection{Objetivo General:}\label{objegeneral}}
 
+Implementar un Sistema que pueda realizar procesos de recuperación de información (\emph{information retrieval}), extracción y clasificación de los textos académicos alojados en el Repositorio SABER.UCV empleando técnicas de procesamiento de lenguaje natural, de minería de texto y usando modelos de lenguaje preentrenados de inteligencia artificial.
+
 \hypertarget{objeespe}{%
 \subsection{Objetivos Específicos:}\label{objeespe}}
 
-\hypertarget{alcance}{%
-\section{Alcance:}\label{alcance}}
-
-\hypertarget{aporte}{%
-\section{Aporte:}\label{aporte}}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Conformar un corpus con los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado y maestría alojados en SABER.UCV.
+\item
+  Clasificar los trabajos de grado alojados en SABER.UCV por área académica donde se haya realizado la investigación y extraer el nombre completo del tutor. (nota para el Prof.~Mirabal: en este punto se puede separar, o colocar un nombre genérico para el objetivo como: creación de metadata a partir del texto contenido en los documentos de cada trabajo de grado).
+\item
+  Crear una aplicación web que permita realizar las ``búsquedas de texto completo'' sobre el corpus conformado.
+\item
+  Generar recomendaciones de investigaciones que presenten similitud con los documentos recuperados por el Sistema.
+\end{enumerate}
 
 \hypertarget{teorico}{%
 \chapter{Marco Teórico-Referencial:}\label{teorico}}
@@ -949,16 +1046,120 @@ La literatura en este tema siempre especifica a un cliente del que hay que obten
 \hypertarget{desarrollo}{%
 \chapter{Desarrollo de la Solución:}\label{desarrollo}}
 
-Este es el capítulo del desarrollo
+En este Capítulo en \ref{desarrollodescripcion} se presenta la \textbf{Descripción General de la Solución}. Posteriormente se muestra la \ref{desarrolloarquitectura} \textbf{Arquitectura de la Solución} con el ``Modelo-Vista-Controlador''. En \ref{desarrollociclos} se exponen los cinco \textbf{Ciclos de Desarrollo} que se efectuaron, mientras que en \ref{pruebas} \textbf{Pruebas} se muestran las distintas pruebas que fueron ejecutadas.
 
 \hypertarget{desarollodescripcion}{%
-\section{Descripción general de la Solución:}\label{desarollodescripcion}}
+\section{Descripción General de la Solución:}\label{desarollodescripcion}}
+
+La propuesta consiste en implementar un Sistema de Recuperación de Información para extraer datos estructurados de los trabajos disponibles en Saber UCV. Utilizando técnicas de extracción de datos de archivos HTML, se obtienen detalles como el título, el nombre del investigador, palabras clave, fecha de publicación y el resumen de cada investigación.
+
+Posteriormente, el sistema descarga los documentos anexos en formato Word o PDF, que contienen la investigación, da lectura y extráe de la información sobre la facultad, escuela o postgrado, así como el nombre del tutor.
+
+Todos los datos obtenidos se integran en un corpus, el cual es sometido a técnicas avanzadas de Procesamiento del Lenguaje Natural y Minería de Texto. Esto incluye la creación de un corpus anotado y un índice invertido y una tabla con los vectores de \emph{embeddings} (vector database), esenciales para un eficiente manejo de la base de datos.
+
+La aplicación resultante es una solución web distribuida, basada en una arquitectura cliente-servidor la cual permite a los usuarios explorar extensivamente el corpus anotado, realizando consultas de texto y aplicando varios filtros como área académica, rango de fechas y palabras clave. La relevancia de los resultados recuperados se determina mediante funciones de ponderación, y se presenta de manera priorizada para mejorar la experiencia del usuario.
+
+Adicionalmente, el sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También presenta una herramienta interactiva de visualización, que permite la representación gráfica de ``mapas del conocimiento''. Estos mapas, basados en técnicas adaptadas de minería de texto, proporcionan una representación visual intuitiva de las palabras coocurrentes en los resultados de búsqueda.
+
+La solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV.
 
 \hypertarget{desarrolloarquitectura}{%
 \section{Arquitectura de la Solución:}\label{desarrolloarquitectura}}
 
-\hypertarget{desarrolloanalisis}{%
-\section{Análisis y diseño:}\label{desarrolloanalisis}}
+La arquitectura ``Modelo-Vista-Controlador'' se muestra en la figura \ref{fig:arquitecturamvc} y posteriormente se describe el comportamiento y las interacciones de los componentes.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{images/05-desarrollo/MVC3} 
+
+}
+
+\caption{Modelo de Arquitectura MVC}\label{fig:arquitecturamvc}
+\end{figure}
+
+\hypertarget{modelo}{%
+\subsection{\texorpdfstring{\textbf{1. Modelo:}}{1. Modelo:}}\label{modelo}}
+
+El Modelo en el contexto de esta propuesta es la parte del Sistema que se ocupa de la manipulación y gestión de los datos mediante el gestor de base de datos PostgreSQL. Esto incluye el Procesamiento del Lenguaje Natural, la Minería de Texto y la creación del índice invertido. Además, el Modelo se encarga de hacer la lectura de los datos en html que se encuentran en el repositorio Saber UCV y extrae datos como el título, nombre del investigador, palabras clave, fecha de publicación y resumen. También gestiona la lectura y la extracción de datos de los documentos descargados en formatos word o PDF. Esta parte del Sistema también incluye la lógica para generar los \emph{embeddings} y manejar el corpus anotado. Es el encargado de realizar las tareas de actualizar el corpus periódicamente y actualizar las recomendaciones de documentos a medida que se agreguen nuevos textos. En \ref{desarrollociclos4} el cuarto y \ref{desasarrollociclos5} y quinto ciclo de iteración se expondrán con detalle los componentes del Modelo.
+
+Estos son los principales procesos que contiene el Modelo:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Procesamiento de Texto:}
+
+  \begin{itemize}
+  \item
+    Tokenización: Dividir el texto en palabras o frases significativas.
+  \item
+    Lematización: Reducir las palabras a su forma base para un análisis más preciso.
+  \end{itemize}
+\item
+  \textbf{Minería de Texto:}
+
+  \begin{itemize}
+  \item
+    POS: etiquetado del Part of Speach.
+  \item
+    Análisis de Frecuencia: Determinar la frecuencia de ocurrencia de palabras o frases.
+  \end{itemize}
+\item
+  \textbf{Generación de Embeddings:}
+
+  \begin{itemize}
+  \item
+    Utilización de modelo preentrenado para convertir palabras o frases en vectores numéricos.
+  \item
+    Convertir en vectores las palabras que componen el query para realizar comparaciones semánticas y determinar similitudes entre palabras o documentos.
+  \end{itemize}
+\item
+  \textbf{Creación del Índice Invertido:}
+
+  \begin{itemize}
+  \item
+    Organizar los términos y sus ubicaciones en los documentos para permitir búsquedas eficientes.
+  \item
+    Asociar cada término con la lista de documentos en los que aparece.
+  \end{itemize}
+\item
+  \textbf{Gestión de la Base de Datos:}
+
+  \begin{itemize}
+  \item
+    Almacenar y recuperar datos estructurados para su posterior consulta.
+  \item
+    Actualizar el corpus con nuevos datos.
+  \end{itemize}
+\item
+  \textbf{Cálculo de Relevancia:}
+
+  \begin{itemize}
+  \item
+    Aplicar algoritmos para calcular la relevancia de los documentos en función de las consultas del usuario.
+  \item
+    Ordenar los resultados en función de su relevancia para presentar los documentos más relevantes primero.
+  \end{itemize}
+\item
+  \textbf{Actualización de datos:}
+
+  \begin{itemize}
+  \item
+    Los procesos descritos anteriormente son ejecutados y/o actualizados periódicamente.
+  \item
+    Se realiza la validación de la integridad de datose para asegurar que los nuevos datos se integren correctamente sin errores o inconsistencias, eliminando posibles duplicados o datos incorrectos.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{vista}{%
+\subsection{\texorpdfstring{\textbf{2. Vista:}}{2. Vista:}}\label{vista}}
+
+La Vista se implementa mediante el framework para crear aplicaciones web interactivas Shiny \citep{shiny} \footnote{El framework Shiny incluye dos componentes principales. El primero es la UI (Interface de Usuario), que corresponde a la ``Vista''. El otro componente es el ``Server'' que en la representación actual es el Controlador.} que tiene un componente de Interface de Usuario (UI) donse se puede indicar el texto con el que se hará la bíusqueda y también permite a los usuarios aplicar filtros como área académica y rango de fechas durante. Posterior a la definición de los criterios del query, la Vista muestra las tablas con los resultados de las búsqueda, las representaciones visuales como los ``mapas del conocimiento'', así como las recomendaciones de documentos similares.
+
+\hypertarget{controlador}{%
+\subsection{\texorpdfstring{\textbf{3. Controlador:}}{3. Controlador:}}\label{controlador}}
+
+El Controlador se implementa mediante el el framework para crear aplicaciones web interactivas Shiny \citep{shiny} que tiene un componente denominado Server que es el responsable de manejar las interacciones del usuario, procesar las consultas de texto y aplicar los filtros seleccionados. También se encarga de orquestar las operaciones entre el Modelo y la Vista, asegurando que los datos se presenten correctamente y que las consultas se procesen de manera eficiente. Desde el Controlador hace el llamado a la API donde se genera el embedding del query y se determina la relevancia de los documentos recuperados y en paralelo remite el query a la base de datos. El Controlador se encarga de aplicar el re ordenamiento para mostrar primero los resultados más relevantes. En el Controlador se genera la estructura de datos necesaria para representar los mapas del conocimiento.
 
 \hypertarget{desarrollociclos}{%
 \section{Ciclos de Desarrollo:}\label{desarrollociclos}}
@@ -978,6 +1179,9 @@ Extracción y clasificación
 
 \hypertarget{desarrollociclos4}{%
 \subsection{Integración de componentes del software:}\label{desarrollociclos4}}
+
+\hypertarget{desasarrollociclos5}{%
+\subsection{Buscador semántico:}\label{desasarrollociclos5}}
 
 \hypertarget{pruebas}{%
 \section{Pruebas:}\label{pruebas}}

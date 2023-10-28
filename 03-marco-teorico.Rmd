@@ -80,7 +80,7 @@ Profundizando en el tema de esta Investigación se mencionan un par de páginas 
 
 2.  Portal de la *Asociation Computery Machine* (ACM) alojado en <https://dl.acm.org> incorpora un motor de búsqueda con particulares características ya que los resultados de una búsqueda son acompañados de distintas representaciones gráficas que le dan un valor adicional a la representación de los resultados. En la figura \@ref(fig:busquedasacm) se ve una de estas representaciones que incluye la frecuencia de aparición del *query* en el tiempo.
 
-```{r, busquedasacm, echo=FALSE, out.width='30%',fig.cap='Gráfico que acompaña resultados de búsqueda de un término en la biblioteca digital de la Association for Computing Machinery (https://dl.acm.org/)',fig.align='left'}
+```{r, busquedasacm, echo=FALSE, out.width='30%',fig.cap='Gráfico que acompaña resultados de búsqueda de un término en la biblioteca digital de la Association for Computing Machinery (https://dl.acm.org/)',fig.align='center'}
 knitr::include_graphics("images/03-marco-teorico/busquedaacm.png")
 ```
 
@@ -358,7 +358,8 @@ Son los "***embeddings***" la representación que hoy constituye el Estado del A
 En el siguiente ejemplo \@ref(tab:tblembedding) que se obtiene del trabajo *Distributional Semantics and Linguistic Theory* [@boleda2020], se muestra una versión simplificada de un espacio semántico de dos dimensiones donde están los vectores que se corresponden con tres palabras que son "*postdoc", "estudent"* y"*wealth"*:
 
 ```{r,tblembedding, echo=FALSE, out.width='40%'}
-df_embed <- data.frame(`Dimensión 1`= c(0.71038,0.43679,1.77337),
+df_embed <- data.frame(Palabra= c("postdoc", "estudent","wealth") ,
+                       `Dimensión 1`= c(0.71038,0.43679,1.77337),
                        `Dimensión 2`= c(1.76058,1.93841,0.00012 ))
 
 knitr::kable(
@@ -370,7 +371,7 @@ knitr::kable(
 
 Al tener cada palabra un vector de dos componentes, se puede hacer una representación gráfica en un plano, que sería la que se aprecia en la figura \@ref(fig:embeddingimg), donde al aplicar la medición de similitud coseno, revisada en \@ref(similitud), las palabras *postdoc* y *student* se encuentran más próximas y tienen una mayor similitud, que por ejemplo, *postdoc* y *wealth*.
 
-```{r,embeddingimg, echo=FALSE, out.width='55%',fig.cap='Representación de palabras en un plano'}
+```{r,embeddingimg, echo=FALSE, out.width='55%',fig.cap='Representación de palabras en un plano', fig.align='center'}
 knitr::include_graphics("images/03-marco-teorico/word_vec.png")
 
 king= c( 0.50451 , 0.68607 , -0.59517 , -0.022801, 0.60046 , -0.13498 , -0.08813 , 0.47377 , -0.61798 , -0.31012 , -0.076666, 1.493 , -0.034189, -0.98173 , 0.68229 , 0.81722 , -0.51874 , -0.31503 , -0.55809 , 0.66421 , 0.1961 , -0.13495 , -0.11476 , -0.30344 , 0.41177 , -2.223 , -1.0756 , -1.0783 , -0.34354 , 0.33505 , 1.9927 , -0.04234 , -0.64319 , 0.71125 , 0.49159 , 0.16754 , 0.34344 , -0.25663 , -0.8523 , 0.1661 , 0.40102 , 1.1685 , -1.0137 , -0.21585 , -0.15155 , 0.78321 , -0.91241 , -1.6106 , -0.64426 , -0.51042 )

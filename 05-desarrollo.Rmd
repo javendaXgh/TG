@@ -4,27 +4,150 @@ bibliography: references.bib
 
 # Desarrollo de la Solución: {#desarrollo}
 
-Este es el capítulo del desarrollo
+En este Capítulo en \@ref(desarollodescripcion) se presenta la **Descripción General de la Solución**. Posteriormente se muestra la \@ref(desarrolloarquitectura) **Arquitectura de la Solución** con el "Modelo-Vista-Controlador". En \@ref(desarrollociclos) se exponen los cuatro **Ciclos de Desarrollo** que se efectuaron, mientras que en \@ref(pruebas) **Pruebas** se muestran las distintas pruebas que fueron ejecutadas para medir el comportamiento del software desarrollado.
 
-## Descripción general de la Solución: {#desarollodescripcion}
+## Descripción General de la Solución: {#desarollodescripcion}
+
+La propuesta consiste en implementar un Sistema de Recuperación de Información para extraer datos estructurados de los trabajos disponibles en Saber UCV. Utilizando técnicas de extracción de datos de archivos HTML, se obtienen detalles como el título, el nombre del investigador, palabras clave, fecha de publicación y el resumen de cada investigación.
+
+Posteriormente, el sistema descarga los documentos anexos en formato Word o PDF, que contienen la investigación, da lectura y extráe de la información sobre la facultad, escuela o postgrado, así como el nombre del tutor.
+
+Todos los datos obtenidos se integran en un corpus, el cual es sometido a técnicas avanzadas de Procesamiento del Lenguaje Natural y Minería de Texto. Esto incluye la creación de un corpus anotado y un índice invertido y una tabla con los vectores de *embeddings* (vector database), esenciales para un eficiente manejo de la base de datos.
+
+La aplicación resultante es una solución web distribuida, basada en una arquitectura cliente-servidor la cual permite a los usuarios explorar extensivamente el corpus anotado, realizando consultas de texto y aplicando varios filtros como área académica, rango de fechas y palabras clave. La relevancia de los resultados recuperados se determina mediante funciones de ponderación, y se presenta de manera priorizada para mejorar la experiencia del usuario.
+
+Adicionalmente, el sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También muestra una herramienta interactiva de visualización, que permite la representación gráfica de "mapas del conocimiento". Estos mapas, basados en técnicas adaptadas de minería de texto, proporcionan una representación visual intuitiva de las palabras coocurrentes en los resultados de búsqueda.
+
+La solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV.
 
 ## Arquitectura de la Solución: {#desarrolloarquitectura}
 
-## Análisis y diseño: {#desarrolloanalisis}
+La arquitectura "Modelo-Vista-Controlador" se muestra en la figura \@ref(fig:arquitecturamvc) y posteriormente se describe el comportamiento y las interacciones de los componentes.
+
+```{r, arquitecturamvc, echo=FALSE, out.width='90%',fig.cap='Modelo de Arquitectura MVC',fig.align='center'}
+knitr::include_graphics("images/05-desarrollo/MVC9.png")
+
+```
+
+### **Modelo:**
+
+El *Modelo,* en el contexto de esta propuesta, es la parte del Sistema que se ocupa de la manipulación y gestión de los datos mediante el gestor de base de datos PostgreSQL. Esto incluye el Procesamiento del Lenguaje Natural, la Minería de Texto y la creación del índice invertido. Además, el *Modelo* se encarga de hacer la lectura de los datos en html que se encuentran en el repositorio Saber UCV y extrae el título, nombre del investigador, palabras clave, fecha de publicación y resumen. También gestiona la lectura y la extracción de datos de los documentos descargados en formatos word o PDF. Esta parte del Sistema también incluye la lógica para generar los *embeddings* y manejar el corpus anotado. Es el encargado de realizar las tareas de actualizar el corpus periódicamente y actualizar las recomendaciones de documentos a medida que se agreguen nuevos textos. En \@ref(desarrollociclos4) el tercer ciclo de desarrollo se expondrán con detalle los componentes del Modelo.
+
+Estos son los principales procesos contenidos en el *Modelo*:
+
+1.  **Procesamiento de Texto:**
+
+    -   Tokenización: Dividir el texto en palabras o frases significativas.
+
+    -   Lematización: Reducir las palabras a su forma base para un análisis más preciso.
+
+2.  **Minería de Texto:**
+
+    -   POS: etiquetado de partes del discurso.
+
+    -   Análisis de Frecuencia: Determinar la frecuencia de ocurrencia de palabras o frases.
+
+3.  **Generación de Embeddings:**
+
+    -   Utilización de modelo preentrenado para convertir palabras o frases en vectores numéricos.
+
+    -   Convertir en vectores las palabras que componen el query para realizar comparaciones semánticas y determinar similitudes entre palabras o documentos.
+
+4.  **Creación del Índice Invertido:**
+
+    -   Organizar los términos y sus ubicaciones en los documentos para permitir búsquedas eficientes.
+
+    -   Asociar cada término con la lista de documentos en los que aparece.
+
+5.  **Gestión de la Base de Datos:**
+
+    -   Almacenar y recuperar datos estructurados para su posterior consulta.
+
+    -   Actualizar el corpus con nuevos datos.
+
+6.  **Cálculo de Relevancia:**
+
+    -   Aplicar algoritmos para calcular la relevancia de los documentos en función de las consultas del usuario.
+
+    -   Ordenar los resultados en función de su relevancia para presentar los documentos más relevantes primero.
+
+7.  **Actualización de datos:**
+
+    -   Los procesos descritos anteriormente son ejecutados y/o actualizados periódicamente.
+
+    -   Se realiza la validación de la integridad de datose para asegurar que los nuevos datos se integren correctamente sin errores o inconsistencias, eliminando posibles duplicados o datos incorrectos.
+
+### **Vista:**
+
+La *Vista* se implementa mediante el *framework* ***Shiny*** [@shiny] [^05-desarrollo-1] que permite crear aplicaciones web interactivas y tiene un componente de Interface de Usuario (UI) donde el usuario introduce el texto con el que se hará la búsqueda y aplica filtros como área académica y rango de fechas. Posterior a la definición de los criterios del query, se genera la acción y al recibir la respuesta desde el Controlador, la *Vista* se actualiza y muestra las tablas con los resultados de las búsqueda, las representaciones visuales como los "mapas del conocimiento", así como las recomendaciones de documentos similares.
+
+[^05-desarrollo-1]: El framework Shiny incluye dos componentes principales. El primero es la UI (Interface de Usuario), que corresponde a la "Vista". El otro componente es el "Server" que en la representación actual es el Controlador.
+
+### **Controlador:**
+
+El *Controlador* se implementa mediante el el *framework* ***Shiny*** que tiene un componente denominado Server que es el responsable de manejar las interacciones del usuario, procesar las consultas de texto y aplicar los filtros seleccionados. También se encarga de orquestar las operaciones entre el *Modelo* y la *Vista*, asegurando que los datos se presenten correctamente y que las consultas se procesen de manera eficiente. Desde el *Controlador* se hace el llamado a la API donde se genera el *embedding* del query y se determina la relevancia de los documentos recuperados y en paralelo remite el query al *Modelo*. El *Controlador* se encarga de aplicar el re ordenamiento para mostrar primero los resultados más relevantes. En el *Controlador* se genera la estructura de datos necesaria para representar los mapas del conocimiento.
 
 ## Ciclos de Desarrollo: {#desarrollociclos}
 
-### Obtención del Conjunto de Datos: {#desarrollociclos1}
+Los Ciclos de Desarrollo \@ref(mm) se constituyen en fases críticas del proceso, donde se conciben, diseñan y perfeccionan las funcionalidades del Sistema . Cada uno de estos ciclos está estructurado en tres etapas fundamentales: la etapa de especulación, donde se plantean las ideas y se exploran posibles soluciones; la etapa de colaboración, donde se trabaja en equipo para implementar estas ideas y se evalúan los resultados; y la etapa de aprendizaje, donde se analizan las experiencias pasadas y se ajustan las estrategias para futuras iteraciones.
 
-Recuperación
+Para el desarrollo del SCSU se hizo un proceso iterativo donde en cada ciclo se abordó cada una de las fases descritas y así se fueron añadiendo funcionalidades al Sistema, y también en otros casos desechándolas, ya que no se adaptaban de forma correcta a los objetivos propuestos. Como esta metodología se enfoca en construir el software en pequeñas y frecuentes partes incrementales, añadiendo funcionalidades con cada iteración, es válido asumir que este modelo es representativo para la aproximación de desarrollo realizada.
 
-### Extracción y Clasificación de Información del Conjunto de Datos: {#desarrollociclos2}
+La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evolucionan. Esto fue lo que se hizo en reuniones continuas en la materia *Tópicos Especiales en Sistemas de Información y Gerencia* que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis, se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados usados para los procesamiento de los textos.
 
-Extracción y clasificación
+Los Ciclos que se van a exponer son los siguientes: en \@ref(desarrollociclos1) se exponen las tres iteraciones realizadas para la **Conformación del Conjunto de Datos**. En \@ref(desarrollociclos3) se revisa el **Prototipo del SCSU**, mientras que en \@ref(desarrollociclos4) se hace la **Integración de los Componentes del Software** y en \@ref(desarrollociclos5) se hace una versión del Sistema que incluye un **Buscador Semántico**.
 
-### Prototipo de buscador: {#desarrollociclos3}
+### Conformación del Conjunto de Datos: {#desarrollociclos1}
 
-### Integración de componentes del software: {#desarrollociclos4}
+En este ciclo se conformó el conjunto de datos con el que va a trabajar el software.
+
+#### Iteración Scraping de Datos:
+
+##### Especulación: 
+
+##### Colaboración:
+
+##### Aprender:
+
+#### Iteración Levantamiento de Categorías:
+
+##### Especulación: 
+
+##### Colaboración:
+
+##### Aprender:
+
+#### Iteración Extracción y Clasificación de Documentos :
+
+##### Especulación: 
+
+##### Colaboración:
+
+##### Aprender:
+
+### Prototipo del SCSU: {#desarrollociclos3}
+
+##### Especulación: 
+
+##### Colaboración:
+
+##### Aprender:
+
+### Integración de Componentes del software: {#desarrollociclos4}
+
+##### Especulación: 
+
+##### Colaboración:
+
+##### Aprender:
+
+### Buscador semántico:  {#desasarrollociclos5}
+
+##### Especulación: 
+
+##### Colaboración:
+
+##### Aprender:
 
 ## Pruebas: {#pruebas}
 
