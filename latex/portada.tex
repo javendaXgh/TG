@@ -30,19 +30,19 @@
 \thispagestyle{empty}
 \large{\textbf{Resumen:}}
 
-Se presenta la investigación e implementación de un sistema para hacer la \emph{Recuperación, Extracción y Clasificación de Información de SABER UCV}. El sistema ejecuta procesos de clasificación, almacenamiento y recuperación de información sobre los Resúmenes, tanto de las tesis como de los trabajos especiales de grado (TEG) que se encuentran publicados en el repositorio institucional Saber UCV y permite al usuario hacer procesos de búsqueda mediante una aplicación web.
+Se presenta la investigación \emph{Recuperación, Extracción y Clasificación de Información de Saber UCV} donde se ejecutan procesos de clasificación, almacenamiento y recuperación de información sobre las tesis y trabajos de grado que se encuentran publicados en el repositorio institucional Saber UCV.
 
-A los Resúmenes con los cuales se conforma el corpus, se le aplican técnicas de Procesamiento de Lenguaje Natural (PLN), de Minería de Texto, de indexación en base de datos y se usan modelos preentrenados de inteligencia artificial para generar \textit{embeddings} y soportar procesos de búsqueda semántica.
+Se implementa un Sistema que permite clasificar los documentos mencionados, según el área académica donde cursó estudios el autor de la investigación.
 
-Mediante la búsqueda de palabras o frases, aplicando filtros como fechas de publicación, área en la cual se generó la investigación y/o el nivel académico, el usuario genera un \textit{query} con el que se pueden recuperar los trabajos de mayor relevancia en que se encuentran contenidas tales palabras, o palabras similares y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información extraída en tablas interactivas, gráficos, grafos de coocurrencia de palabras y recomendaciones de textos que puedan ser de interés para el investigador.
+Se extráen los resúmenes de los trabajos y con las clasificaciones obtenidas se conforma un corpus sobre el cual se genera un índice invertido. Al corpus se le aplican técnicas de Procesamiento de Lenguaje Natural, de Minería de Datos y con modelos preentrenados de inteligencia artificial se crean  \textit{embeddings} de textos. Con toda la información procesada se alimenta una base de datos indexada.
 
-La aplicación se implementa como un sistema distribuido bajo la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.
+El Sistema adicionalmente cuenta con una aplicación web para hacer procesos de Recuperación de Información donde el usuario puede hacer la exploración del corpus, incluida la búsqueda semántica, indicando el: texto a buscar, rango de fechas, área en la cual se generó la investigación, el nivel académico; posteriormente se recuperan los trabajos de mayor relevancia, enriqueciendo la experiencia con la presentación de los resultados en tablas interactivas, Mapas de Conocimiento y recomendaciones de documentos que puedan ser de interés.
 
-También se implementa una rutina que permite clasificar las tesis y los TEG, según el área académica donde cursó estudios el autor del correspondiente trabajo y así se solventa la carencia que actualmente presenta Saber UCV, donde no están disponibles estas clasificaciones.
+La aplicación se implementa bajo un sistema distribuido con la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.
 
 \vspace*{2cm}
 
-\textbf{Palabras Clave::} Recuperación de Información, Procesamiento del Lenguaje Natural,  Minería de Texto, Relevancia, Búsqueda de Texto Completo, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas del Conocimiento.
+\textbf{Palabras Clave::} Recuperación de Información, Corpus, Procesamiento del Lenguaje Natural, Relevancia, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas de Conocimiento.
 
 
 
@@ -50,20 +50,19 @@ También se implementa una rutina que permite clasificar las tesis y los TEG, se
 \thispagestyle{empty}
 \large{\textbf{Abstract:}}
 
-The research and implementation of a system for the Retrieval, Extraction, and Classification of Information from SABER UCV (UCV's Institutional Repository) is presented. The system performs processes of classification, storage, and retrieval of information about Abstracts, both from Theses and Special Degree Works (TEG), that are published in the institutional repository Saber UCV, allowing users to perform search processes through a web application.
+The research \emph{Recovery, Extraction and Classification of Information from Saber UCV} is presented, where processes of classification, storage and retrieval of information on theses and degree works published in the institutional repository Saber UCV are executed.
 
-Natural Language Processing (NLP) techniques, Text Mining, database indexing, and pre-trained artificial intelligence models are applied to the Abstracts forming the corpus. These techniques are used to generate embeddings and support semantic search processes.
+A system is implemented that allows classifying the mentioned documents, according to the academic area where the author of the research studied.
 
-By searching for words or phrases and applying filters such as publication dates, research area, and/or academic level, the user generates a query with which the most relevant works containing those words or similar words can be retrieved. From there, the user experience is enhanced by presenting the extracted information in interactive tables, graphs, word co-occurrence graphs, and recommendations of texts that might be of interest to the researcher.
+The abstracts of the works are extracted and with the obtained classifications a corpus is formed on which an inverted index is generated. Natural Language Processing and Data Mining techniques are applied to the corpus, and with pre-trained artificial intelligence models, text \textit{embeddings} are created. With all the processed information an indexed database is fed.
 
-The application is implemented as a distributed system under the client-server architecture and relies on the use of orchestrated containers.
+The system also has a web application for Information Retrieval processes where the user can explore the corpus, including the semantic search, indicating the: text to search, date range, area in which the research was generated, academic level; subsequently the most relevant works are retrieved, enriching the experience with the presentation of the results in interactive tables, Knowledge Maps and recommendations of documents that may be of interest.
 
-Additionally, a routine is implemented that allows the classification of Theses and TEGs based on the academic area where the corresponding work's author studied, thus addressing the current deficiency of Saber UCV, where these classifications are not available.
+The application is implemented under a distributed system with client-server architecture and is supported by the use of orchestrated containers.
 
 \vspace*{2cm}
 
-\textbf{Keywords:} Information Retrieval, Natural Language Processing, Text Mining, Relevance, Full Text Search, Artificial Intelligence, Embeddings, Semantic Search, Knowledge Maps.
-
+\textbf{Keywords:} Information Retrieval, Corpus, Natural Language Processing, Relevance,  Artificial Intelligence, Embeddings, Semantic Search, Knowledge Maps.
 
 \thispagestyle{empty}
 

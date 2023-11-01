@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  10,
+  12pt,
   openany]{book}
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
@@ -112,6 +112,12 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{multicol}
+\usepackage{hhline}
+\newlength\Oldarrayrulewidth
+\newlength\Oldtabcolsep
+\usepackage{hyperref}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -136,7 +142,7 @@
 \makeatother
 \subtitle{Caso de Estudio Repositorio www.saber.ucv.ve}
 \author{José Miguel Avendaño Infante}
-\date{2023-10-27}
+\date{2023-11-01}
 
 \begin{document}
 \maketitle
@@ -173,19 +179,19 @@
 \thispagestyle{empty}
 \large{\textbf{Resumen:}}
 
-Se presenta la investigación e implementación de un sistema para hacer la \emph{Recuperación, Extracción y Clasificación de Información de SABER UCV}. El sistema ejecuta procesos de clasificación, almacenamiento y recuperación de información sobre los Resúmenes, tanto de las tesis como de los trabajos especiales de grado (TEG) que se encuentran publicados en el repositorio institucional Saber UCV y permite al usuario hacer procesos de búsqueda mediante una aplicación web.
+Se presenta la investigación \emph{Recuperación, Extracción y Clasificación de Información de Saber UCV} donde se ejecutan procesos de clasificación, almacenamiento y recuperación de información sobre las tesis y trabajos de grado que se encuentran publicados en el repositorio institucional Saber UCV.
 
-A los Resúmenes con los cuales se conforma el corpus, se le aplican técnicas de Procesamiento de Lenguaje Natural (PLN), de Minería de Texto, de indexación en base de datos y se usan modelos preentrenados de inteligencia artificial para generar \textit{embeddings} y soportar procesos de búsqueda semántica.
+Se implementa un Sistema que permite clasificar los documentos mencionados, según el área académica donde cursó estudios el autor de la investigación.
 
-Mediante la búsqueda de palabras o frases, aplicando filtros como fechas de publicación, área en la cual se generó la investigación y/o el nivel académico, el usuario genera un \textit{query} con el que se pueden recuperar los trabajos de mayor relevancia en que se encuentran contenidas tales palabras, o palabras similares y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información extraída en tablas interactivas, gráficos, grafos de coocurrencia de palabras y recomendaciones de textos que puedan ser de interés para el investigador.
+Se extráen los resúmenes de los trabajos y con las clasificaciones obtenidas se conforma un corpus sobre el cual se genera un índice invertido. Al corpus se le aplican técnicas de Procesamiento de Lenguaje Natural, de Minería de Datos y con modelos preentrenados de inteligencia artificial se crean  \textit{embeddings} de textos. Con toda la información procesada se alimenta una base de datos indexada.
 
-La aplicación se implementa como un sistema distribuido bajo la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.
+El Sistema adicionalmente cuenta con una aplicación web para hacer procesos de Recuperación de Información donde el usuario puede hacer la exploración del corpus, incluida la búsqueda semántica, indicando el: texto a buscar, rango de fechas, área en la cual se generó la investigación, el nivel académico; posteriormente se recuperan los trabajos de mayor relevancia, enriqueciendo la experiencia con la presentación de los resultados en tablas interactivas, Mapas de Conocimiento y recomendaciones de documentos que puedan ser de interés.
 
-También se implementa una rutina que permite clasificar las tesis y los TEG, según el área académica donde cursó estudios el autor del correspondiente trabajo y así se solventa la carencia que actualmente presenta Saber UCV, donde no están disponibles estas clasificaciones.
+La aplicación se implementa bajo un sistema distribuido con la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.
 
 \vspace*{2cm}
 
-\textbf{Palabras Clave::} Recuperación de Información, Procesamiento del Lenguaje Natural,  Minería de Texto, Relevancia, Búsqueda de Texto Completo, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas del Conocimiento.
+\textbf{Palabras Clave::} Recuperación de Información, Corpus, Procesamiento del Lenguaje Natural, Relevancia, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas de Conocimiento.
 
 
 
@@ -193,20 +199,19 @@ También se implementa una rutina que permite clasificar las tesis y los TEG, se
 \thispagestyle{empty}
 \large{\textbf{Abstract:}}
 
-The research and implementation of a system for the Retrieval, Extraction, and Classification of Information from SABER UCV (UCV's Institutional Repository) is presented. The system performs processes of classification, storage, and retrieval of information about Abstracts, both from Theses and Special Degree Works (TEG), that are published in the institutional repository Saber UCV, allowing users to perform search processes through a web application.
+The research \emph{Recovery, Extraction and Classification of Information from Saber UCV} is presented, where processes of classification, storage and retrieval of information on theses and degree works published in the institutional repository Saber UCV are executed.
 
-Natural Language Processing (NLP) techniques, Text Mining, database indexing, and pre-trained artificial intelligence models are applied to the Abstracts forming the corpus. These techniques are used to generate embeddings and support semantic search processes.
+A system is implemented that allows classifying the mentioned documents, according to the academic area where the author of the research studied.
 
-By searching for words or phrases and applying filters such as publication dates, research area, and/or academic level, the user generates a query with which the most relevant works containing those words or similar words can be retrieved. From there, the user experience is enhanced by presenting the extracted information in interactive tables, graphs, word co-occurrence graphs, and recommendations of texts that might be of interest to the researcher.
+The abstracts of the works are extracted and with the obtained classifications a corpus is formed on which an inverted index is generated. Natural Language Processing and Data Mining techniques are applied to the corpus, and with pre-trained artificial intelligence models, text \textit{embeddings} are created. With all the processed information an indexed database is fed.
 
-The application is implemented as a distributed system under the client-server architecture and relies on the use of orchestrated containers.
+The system also has a web application for Information Retrieval processes where the user can explore the corpus, including the semantic search, indicating the: text to search, date range, area in which the research was generated, academic level; subsequently the most relevant works are retrieved, enriching the experience with the presentation of the results in interactive tables, Knowledge Maps and recommendations of documents that may be of interest.
 
-Additionally, a routine is implemented that allows the classification of Theses and TEGs based on the academic area where the corresponding work's author studied, thus addressing the current deficiency of Saber UCV, where these classifications are not available.
+The application is implemented under a distributed system with client-server architecture and is supported by the use of orchestrated containers.
 
 \vspace*{2cm}
 
-\textbf{Keywords:} Information Retrieval, Natural Language Processing, Text Mining, Relevance, Full Text Search, Artificial Intelligence, Embeddings, Semantic Search, Knowledge Maps.
-
+\textbf{Keywords:} Information Retrieval, Corpus, Natural Language Processing, Relevance,  Artificial Intelligence, Embeddings, Semantic Search, Knowledge Maps.
 
 \thispagestyle{empty}
 
@@ -284,7 +289,7 @@ Every important aspect of programming arises somewhere in the context of sorting
 
 
 {
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{4}
 \tableofcontents
 }
 \listoffigures
@@ -295,126 +300,90 @@ Every important aspect of programming arises somewhere in the context of sorting
 \hypertarget{introduccion}{%
 \chapter{Introducción:}\label{introduccion}}
 
-Es conocida la gran disponibilidad de información en distintos formatos que tienen a su disposición los investigadores. Ejemplo de esto son libros en las bibliotecas, o la variedad de documentos que se encuentran accesibles en formatos digitales como artículos publicados en revistas arbitradas, libros, páginas de internet especializadas en algún tema o los repositorios digitales de documentos. Es en esta abundancia donde recaen varios de los problemas a los cuales se enfrenta la labor investigativa, en particular, cuando se realiza la fase exploratoria de selección de aquellos documentos que puedan resultar de mayor relevancia.
+Es conocida la gran disponibilidad de información en distintos formatos que tienen a su disposición los investigadores. Ejemplo de esto son libros en las bibliotecas o la variedad de documentos que se encuentran accesibles en formatos digitales como artículos publicados en revistas arbitradas o investigaciones alojadas en repositorios digitales. Es en esta abundancia donde recaen varios de los problemas a los cuales se enfrenta la labor investigativa, en particular, cuando se realiza la fase exploratoria de selección de aquellos textos que puedan resultar de mayor importancia.
 
-Una de las herramientas con que cuentan los investigadores, para la búsqueda de documentos que se encuentran en formato digital, son los Sistemas de Recuperación de Información, donde ante una búsqueda, a la cual denominaremos el \textbf{\emph{query}}, serán recuperados del conjunto de documentos, conjunto al que denominaremos \textbf{\emph{Corpus}}, aquellos que cumplan ciertos parámetros \citep{manning2008}. Los documentos que el Sistema logre recuperar se deben adaptar a las necesidades del investigador y en caso de existir múltiples documentos, el sistema debe poder jerarquizar aquellos que puedan resultar de mayor relevancia.
+Una de las herramientas que tienen a su disposición los investigadores, para la búsqueda de información que se encuentra en formato digital, son los Sistemas de Recuperación de Información. En ellos, ante un texto que representa una necesidad, son recuperados los documentos que cumplen ciertos criterios y en la representación del resultado se deben jerarquizar los que poseen mayor relevancia \citep{manning2008}.
 
-En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos denominado SABER.UCV al cual se puede acceder desde la dirección web \href{http://saber.ucv.ve/}{saber.ucv.ve} el cual permite realizar búsquedas de información sobre documentos generados dentro de la comunidad de investigadores de la Universidad.
+En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos académicos denominado Saber UCV al que se puede acceder desde la dirección web \href{http://saber.ucv.ve/}{saber.ucv.ve}. Dentro de él se cuenta con un sistema que permite realizar búsquedas sobre las investigaciones generadas en la comunidad universitaria.
 
-En este Trabajo de Grado se presenta la propuesta para la \textbf{Recuperación, Extracción y Clasificación de Información de SABER UCV}, mediante el desarrollo de un sistema informático que se denomina \textbf{Sistema Complementario Saber UCV (SCSU)}, el cual complementa las funcionalidades de búsqueda de información que actualmente tiene el repositorio oficial de la Universidad Central de Venezuela.
+En este Trabajo de Grado se presenta la propuesta para la \textbf{Recuperación, Extracción y Clasificación de Información de Saber UCV}, mediante el desarrollo de un sistema informático que se denomina \textbf{Sistema Complementario Saber UCV (SCSU)}.
 
-La implementación del SCSU hace un aporte a los investigadores que necesitan realizar búsquedas de información sobre el subconjunto de tesis doctorales, de trabajos de grado de maestría y de pregrado, que se encuentran disponibles en SABER.UCV . Adicionalmente, la representación de los resultados de los \emph{querys} son enriquecidas con gráficos interactivos que muestran ``mapas del conocimiento'' \citep{dueñas2011}.
+La implementación del SCSU es de utilidad para los investigadores que necesitan encontrar información sobre el conjunto de: tesis doctorales, trabajos de grado de maestría, trabajos especiales de grado, trabajos de ascenso y trabajos de grado; al ofrecer una mayor cantidad de parametros que permiten refinar la búsqueda.
 
-Gran parte de las funcionalidades que incorpora el SCSU se sustentan en los procesos de extracción y clasificación de información de datos que originalmente no se encuentran estructurados en el repositorio oficial, como lo son los nombres de las carreras de pregrado o del postrgrado donde fue generada cada una de las investigaciones o el nombre del tutor que acompañó el desarrollo de cada investigación, así que el Sistema acá descrito contribuye efectivamente a que estos datos puedan estar disponibles y afinar con una mayor cantidad de parámetros las búsquedas de información que se deban realizar y se incorporan técnicas de búsqueda indexada mediante un índice inverso que establece los criterios de relevancia al momento de jerarquizar y mostrar los resultados de una búsqueda.
+Las funcionalidades que incorpora el SCSU se sustentan en procesos de extracción y clasificación de datos que originalmente no se encuentran estructurados en el repositorio oficial, como el nombre de la carrera de pregrado o el postrgrado donde fue generada la investigación y el nombre del tutor correspondiente.
+
+Igualmente se aplican métodos para el Procesamiento del Lenguaje Natural y Minería de Texto para representar ``Mapas de Conocimiento'' \citep{dueñas2011}. Adicionalmente los resultados de la búsqueda son enriquecidos con recomendaciones de documentos similares.
+
+Otra funcionalidad disponible en el SCSU es la ``búsqueda semántica'' la cual permite recuperar información relevante basada en el significado contextual y la relación semántica de los términos.
 
 \hypertarget{estructura}{%
 \section{Estructura:}\label{estructura}}
 
-En el Capítulo \ref{capproblema} \textbf{El Problema} se hace una exposición de cuáles son las funcionalidades de SABER.UCV que pueden ser complementadas por el Sistema Complementario Saber UCV mientras que en \ref{delimitacion} se establecen las delimitaciones en el proceso de investigación abordado. En \ref{justificacion} se justifica la necesidad de realizar este estudio y en \ref{descripcion} se presenta la Solución propuesta junto con el \ref{objegeneral} Objetivo General y los \ref{objeespe} Objetivos Específicos . En \ref{alcance} se enuncia el alcance del proceso de recuperación, extracción y clasificación de Información de SABER UCV y en \ref{aporte} se enumeran los aportes que brinda esta investigación.
+En el Capítulo \ref{capproblema} \textbf{El Problema} se hace una ``Descripción del Problema'' enfrentado, mientras que en \ref{delimitacion} se hace la ``Delimitación del Problema''. En \ref{justificacion} se expone la ``Justificación e Importancia'' de realizar este estudio y en \ref{descripcion} ``Descripción de la Solución'' se presenta la Solución junto con el \ref{objegeneral} ``Objetivo General'' y los \ref{objeespe} ``Objetivos Específicos''. En \ref{aporte} se enumeran los ``Aportes'' que hace esta investigación.
 
-En el Capítulo \ref{teorico} \textbf{Marco Teórico} se hace una reseña histórica \ref{alghist} sobre el problema computacional que es la ``búsqueda'', entendido de manera genérica. En la sección \ref{infret} ``Recuperación de Información'' se mencionan los conceptos para comprender los procesos de búsqueda de texto dentro de un Corpus y también se introducen a los ``Sistemas'' que permiten ejecutar dicha tarea. Luego en \ref{MRI} se describen algunos ``Modelos de Recuperación de Información'' que se usan en la implementación del SCSU. Para representar los resultados de las búsquedas, el Sistema implementado necesita que los textos sean procesados mediante diversos métodos que son descritos en en \ref{PT} Procesamiento de Texto, como los son el \ref{nlproc} Procesamiento del Lenguaje Natural y \ref{textmin} la Minería de Texto . Seguidamente en \ref{SD} se conceptualiza a los ``Sistemas Distribuidos'', motivado a que la implementación realizada del Software se hace mediante este tipo de sistemas.Al finalizar este Capítulo en \ref{sota} se presentan el Estado del Arte en lo relativo a los procesos de Recuperación de Información.
+En el Capítulo \ref{teorico} \textbf{Marco Teórico} se hace una ``Reseña Histórica'' \ref{alghist} sobre el problema computacional que representa la ``búsqueda''. En la sección \ref{infret} ``Recuperación de Información'' se mencionan los conceptos claves para comprender los procesos de búsqueda de texto dentro de un Corpus y se introducen a los ``Sistemas de Recuperación de Información'' que permiten ejecutar dicha tarea. Luego en \ref{MRI} se describen algunos ``Modelos de Recuperación de Información'' que se usan en la implementación del SCSU. Para representar los resultados de las búsquedas, el Sistema implementado necesita que los textos sean procesados mediante diversos métodos que son descritos en \ref{PT} ``Procesamiento a los Textos''. Seguidamente en \ref{SD} se definen a los ``Sistemas Distribuidos'', motivado a que la implementación realizada se hace mediante este tipo de sistemas. Al finalizar este Capítulo en \ref{sota} se presentan el ``Estado del Arte'' en lo relativo a los procesos de Recuperación de Información.
 
-En el Capítulo \citet{ref}(mm) \textbf{Marco Metodológico} se presenta la metodología de trabajo Kanban \ref{mmmetodologia} que sirvió para realizar la planificación de la investigación así como también el Desarrollo Adaptable de Software --Adaptive Software Development (ASD)- \ref{mmasd} que fue la metodología adaptada para realizar los ciclos de desarrollo del SCSU.
+En el Capítulo \ref{mm} \textbf{Marco Metodológico} se presenta la ``Metodología de Trabajo Kanban'' \ref{mmmetodologia} que sirvió para realizar la planificación de la investigación y el ``Desarrollo Adaptable de Software --Adaptive Software Development (ASD)''- \ref{mmasd} que fue la metodología adoptada para realizar los Ciclos de Desarrollo del SCSU.
 
-En el Capítulo \ref{desarrollo} \textbf{Desarrollo} se presenta la \ref{desarollodescripcion} Descripción general de la Solución y en \ref{desarrolloarquitectura} se presenta la Arquitectura de la misma. Luego en \ref{desarrolloanalisis} Análisis y Diseño se muestran las consideraciones adoptadas para dicho proceso. En \ref{desarrollociclos} Ciclos de Desarrollo se muestran las iteraciones que se hicieron para crear el SCSU; en un primer ciclo para la \ref{desarrollociclos1} Obtención del Conjunto de Datos , en un segundo ciclo \ref{desarrollociclos2} para la Extracción y Clasificación de Información del Conjunto de Datos , en el tercero \ref{desarrollociclos3} para crear el Prototipo de Buscador y en el cuarto \ref{desarrollociclos4} se realizó la Integración de Componentes del Software . En este Capítulo adicionalmente se realizan las distintas \ref{pruebas} Pruebas tanto \ref{pruebas1} Funcionales, \ref{pruebas2} de Rendimiento y en \ref{pruebas3} las pruebas de Relevancia sobre la información recuperada al momento de hacer una búsqueda.
+En el Capítulo \ref{desarrollo} \textbf{Desarrollo de la Solución} se presenta la \ref{desarollodescripcion} ``Descripción General de la Solución''. En \ref{desarrolloarquitectura} se presenta la ``Arquitectura'' mientras que \ref{desarrollociclos} se muestran los ``Ciclos de Desarrollo'' y sus correspondientes iteraciones.
 
-Para concluir esta investigación, en el Capítulo \ref{conclusiones} \textbf{Conclusiones} se exponen las \ref{conclusionescontri} Contribuciones y los \ref{conclusionestrabafutu} Trabajos Futuros que se pueden derivar del proceso expuesto a lo largo del contenido de los capítulos anteriormente citados.
+Para concluir esta investigación, en el Capítulo \ref{conclusiones} \textbf{Conclusiones} se exponen en \ref{conclusionescontri} las ``Contribuciones'' y en \ref{conclusionestrabafutu} los ``Trabajos Futuros''que se pueden derivar del proceso expuesto a lo largo del contenido de los capítulos anteriormente citados.
 
 \hypertarget{capproblema}{%
 \chapter{El Problema:}\label{capproblema}}
 
-En el presente Capítulo se introduce la \ref{desproblema} \textbf{Descripción del Problema} que se intenta solucionar con esta Investigación. En \ref{delimitacion} se hace la \textbf{Delimitación del Problema} se hacen algunas consideraciones al respecto. En \ref{justificacion} \textbf{Justificación e Importancia} se menciona la razón principal para haber llevado a cabo este trabajo. En \ref{aportes} se listan los \textbf{Aportes} que se logró hacer en el transcurso de la investigación. En \ref{descripcion} \textbf{Descripción de la Solución} se hace una aproximación a una descripción con algún nivel de detalle.
+En el presente Capítulo en \ref{desproblema} se hace la \textbf{Descripción del Problema}. En \ref{delimitacion} se hace la \textbf{Delimitación del Problema}. En \ref{justificacion} \textbf{Justificación e Importancia} se mencionan la razones principales que motivan haber llevado a cabo esta investigación. En \ref{descripcion} \textbf{Descripción de la Solución} se hace una aproximación a la propuesta general.
 
-En \ref{objegeneral} se menciona el \textbf{Objetivo Principal} que se trazó, mientras que en \ref{objeespe} se enumeran los \textbf{Objetivos Específicos}.
+En \ref{objegeneral} se menciona el \textbf{Objetivo Principal} que se trazó, mientras que en \ref{objeespe} se enumeran los \textbf{Objetivos Específicos} y en \ref{aporte} se listan los \textbf{Aportes} efectuados.
 
 \hypertarget{desproblema}{%
 \section{Descripción del Problema:}\label{desproblema}}
 
-La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad de la Universidad. Ingresando a la dirección web \url{http://saber.ucv.ve/} se permite ``el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV.'' ¿Qué es Saber UCV?. (2023). Saber UCV.\href{http://saber.ucv.ve/}{http://saber.ucv.ve}.
+La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad de la Universidad. Ingresando a la dirección web \url{http://saber.ucv.ve/} se permite ``el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV''. ¿Qué es Saber UCV?. (2023). Saber UCV. \href{http://saber.ucv.ve/}{http://saber.ucv.ve}.
 
-Los usuarios interesados en hacer búsquedas sobre la información académica alojada en el repositorio, pueden efectuarlas aplicando filtros sobre distintas categorías como:
+Los usuarios interesados en hacer búsquedas sobre la información académica alojada en el repositorio, pueden efectuarlas introduciendo un texto y aplicando filtros sobre distintas categorías como:
 
 \begin{itemize}
 \item
   Seleccionar ``comunidades'': artículos de investigación, tesis (doctorales, maestrías, otras y pregrado), guías de estudio, revistas entre otras categorías.
 \item
-  Seleccionar la fecha de inicio (referente al año en que se efectuó la publicación).
+  Seleccionar la ``fecha de inicio'' referente al año en que se efectuó la publicación.
 \end{itemize}
 
-También pueden realizar la búsqueda en el texto que incluye el nombre del documento, el nombre del autor o el texto del resumen.
+Igualmente pueden realizar la búsqueda sobre atributos específicos como el título del documento, el nombre del autor o el texto del resumen.
 
-Dadas estas funcionalidades, en algunos casos el investigador que acuda a este repositorio puede necesitar filtrar información por algunos criterios adicionales, como lo es el área de académica donde fue realizada la investigación, en particular, si fue hecha en una escuela determinada, o en una facultad, o postgrado.
+Dadas estas funcionalidades, en algunos casos el investigador que acuda a este repositorio puede necesitar filtrar información por algunos criterios adicionales, como lo es el área de académica donde fue realizada la investigación, en particular, si fue hecha en una escuela, facultad o determinado postgrado.
 
-Aplicar el filtrado descrito en el párrafo anterior es donde se presenta una de las limitaciones principales al hacer búsquedas en Saber UCV, ya que el sistema no dispone de esos criterios para la recuperación de información.
-
-De manera similar ocurre con el nombre del tutor de los trabajos de grado y tesis, al no encontrarse registro de esta información.
-
-Motivado a que es viable realizar procesos para extraer y clasificar la información faltante, se realiza esta Investigación que mediante la implementación de un software denominado \textbf{Sistema Complementario Saber UCV (SCSU)}, extrae y clasifica los datos del área académica donde se realizaron las distintas investigaciones de tesis y trabajos de grado que están alojadas en la página precitada.
-
-Adicionalmente, se detectó que es posible generar una propuesta alterna de implementación de criterios de relevancia para realizar la recuperación de información. Este problema será descrito con mayor detalle en \ref{desarrollociclos3} correspondiente al tercer ciclo de desarrollo de la Solución.
+Aplicar el filtrado descrito en el párrafo anterior es donde se presenta una de las limitaciones principales al hacer búsquedas en Saber UCV, ya que el sistema no dispone de esos criterios para la recuperación de información, así como tampoco cuenta con los datos estructurados del nombre del tutor.
 
 \hypertarget{delimitacion}{%
 \section{Delimitación del Problema:}\label{delimitacion}}
 
-El corpus con el que se trabajará sólo es el subconjunto de los trabajos de grado de pregrado y maestría junto con las tesis doctorales, no abarcando otro tipo de documentos que se encuentran registrados en el repositorio. No obstante en la implementación del ciclo final \ref{desarrollociclos4} se incluyen dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes Saber U.L.A. para mostrar posibles ampliaciones en la ingesta de distintos tipos de publicaciones y fuentes dentro del SCSU.
+El corpus con el que se trabajará es el subconjunto de los trabajos de grado de pregrado, trabajos especiales de grado de especialización, trabajos de grado de maestría, tesis doctorales y trabajos de ascenso, no abarcando otro tipo de documentos que se encuentran registrados en el repositorio. No obstante en la implementación del ciclo de desarrollo \ref{desarrollociclos4} se incluyen dos revistas publicadas por la Universidad Central de Venezuela que son Gestión I+D y Episteme y una publicación del repositorio Saber U.L.A. de la Universidad de los Andes, para mostrar posibles ampliaciones en la ingesta de distintos tipos de publicaciones y fuentes dentro del SCSU.
 
-Sin embargo, posibles incorporaciones de otras fuentes de datos implican procesos de revisión en las estructuras de los datos, ya que por los momentos el Sistema no está diseñado para incorporaciones de datos adicionales, sin la modificación de los códigos con los que se extraen los datos desde las páginas web donde se alojan los documentos.
+Estas posibles incorporaciones implican procesos de revisión en las estructuras de los datos, ya que por los momentos el Sistema no está diseñado para automatizar tales procesos, sin la modificación de los códigos con los que se extraen los datos desde los sitios web donde se alojan los documentos.
 
 \hypertarget{justificacion}{%
 \section{Justificación e Importancia:}\label{justificacion}}
 
-Con esta Investigación se implementa un método que permite subsanar la falta de clasificaciones por áreas académica que tiene el repositorio Saber UCV y mediante la aplicación web se amplian los criterios de búsqueda disponibles para investigadores que necesiten realizar consultas sobre los documentos disponibles en el repositorio.
-
-\hypertarget{aportes}{%
-\section{Aportes:}\label{aportes}}
-
-Algunos de los aportes que se generaron al realizar esta investigación son los siguientes:
-
-\begin{itemize}
-\item
-  Se mejora y flexibilizan los criterios de búsqueda en comparación a los que tiene el repositorio Saber UCV.
-\item
-  Se crean visualizaciones y representaciones de Mapas del Conocimiento.
-\item
-  Se implementa la búsqueda de texto completo con una función de relevancia distinta.
-\item
-  Se implementa un ``sistema de recomendación'' de documentos que presenten similitudes con los textos recuperados.
-\item
-  Se obtiene mejores métricas de desempeño en la recuperación de información.
-\item
-  La experiencia del usuario se enriquece mediante gráficos que muestran la evolución de aparición de los términos buscados en el período establecido para la búsqueda de la información.
-\item
-  El Sistema fue diseñado para estar en producción y todos los componentes son de código abierto, libres de algún pago de licencia.
-\item
-  Se puede implementar fácilmente el Sistema en un servidor ya que está diseñado de manera que con los archivos ``docker compose'' y ``dockerfiles'', se puedan desplegar la aplicación, adicionalmente alcanzando elevados niveles de reproducibilidad en todos los procesos que conforman la Solución.
-\item
-  El tipo de componentes hace que el Sistema sea escalable y adaptable a la demanda de accesos.
-\item
-  El Sistema está diseñado para poder actualizarse cada vez que sea necesario o con la periodicidad que se defina.
-\item
-  El Sistema puede servir de prototipo para integrar publicaciones de otros repositorios de documentos que pertenecen a instituciones nacionales de investigación.
-\item
-  Se realiza una aproximación a la implementación de ``búsquedas semánticas''.
-\end{itemize}
+Con esta Investigación se implementa un método que permite subsanar la falta de clasificaciones por áreas académica que tiene el repositorio Saber UCV y mediante la aplicación web se amplían los criterios de búsqueda disponibles para investigadores que necesiten realizar consultas sobre los documentos disponibles en el repositorio.
 
 \hypertarget{descripcion}{%
 \section{Descripción de la Solución:}\label{descripcion}}
 
-La Solución que se propone es un Sistema de Recuperación de Información implementado para que mediante técnicas de extracción de datos de archivos html´s se puedan obtener datos estructurados de los trabajos mencionados en \ref{delimitacion} que están disponibles en Saber UCV. Los datos que se extraen de cada documento son el título de la investigación, el nombre del investigador, las palabras claves, la fecha de publicación y el resumen.
+La Solución que se propone es un Sistema de Recuperación de Información implementado para que mediante técnicas de extracción de nodos de archivos HTML´s se puedan obtener datos estructurados de los trabajos mencionados en \ref{delimitacion}. La información que se extrae de cada documento es el título de la investigación, el nombre del investigador, las palabras claves, la fecha de publicación y el resumen.
 
-Posteriormente se descarga el documento en formato word o pdf, anexo a la investigación, que es donde se encuentran, generalmente en las primeras páginas, los datos de la facultad, escuela y/o postgrado donde se generó la investigación así como el nombre del tutor.
+Posteriormente el Sistema descarga el documento refenciado en cada ficha, el cual contiene el texto completo de la investigación, da lectura y clasifica información sobre el nombre de la facultad, la escuela o postgrado donde fue realizado el trabajo e igualmente extrae el nombre del tutor.
 
-Con todos los datos recopilados se conforma un corpus, al cual se le aplican distintas técnicas de procesamiento del lenguaje natural y de minería de texto, que permiten obtener un corpus anotado y un índice invertido sobre los textos, que posteriormente alimentan a un sistema gestor de base de datos.
+Todos los datos obtenidos son sometidos a técnicas del estado del arte en el Procesamiento del Lenguaje Natural y la Minería de Texto para conformar un corpus anotado, un índice invertido y una tabla con los vectores de \emph{embeddings} (vector database), esenciales para un eficiente manejo de la base de datos.
 
-Una vez que se tienen estructurados los datos, se cuenta con una aplicación web que se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador.
+La solución resultante es una aplicación web que se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura ``modelo-vista-controlador'', permitiendo a los usuarios desde un navegador web explorar extensivamente el corpus anotado, realizando consultas de texto y aplicando varios filtros como la selección de la jerarquía, el área académica y el rango de fechas.
 
-A esta aplicación web está diseñada para permitir la exploración exhaustiva. El usuario puede ingresar para realizar consultas de texto, aplicando distintos filtros como la selección del área académica donde se generó la investigación, bien sea en la escuela, postgrado o facultad, así como la selección de un rango de fechas y las palabras a buscar. La aplicación funciona bajo la arquitectura cliente servidor.
+La relevancia de los resultados recuperados se determina mediante una función de ponderación y los documentos se presentan de manera priorizada para mejorar la experiencia del usuario.
 
-Posterior a realizar la búsqueda el sistema recuperará los documentos que cumplan con las condiciones establecidas y les será aplicada una función de relevancia para mostrar de primero aquellos que puedan resultar de mayor interés para el usuario.
+Adicionalmente, el Sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También muestra una herramienta interactiva de visualización, que permite la representación gráfica de ``Mapas de Conocimiento'', según una adaptación \emph{ad-hoc} hecha para la implementación del SCSU basada en el trabajo de \citep{dueñas2011}.
 
-Adicionalmente para cada texto que se muestre en los resultados, se incluirán recomendaciones de otros documentos que sean similares. Igualmente se presentará un selector, que al estar activado, hará que se generé una representación de ``mapas del conocimiento'' según una adaptación \emph{ad-hoc} hecha para la implementación del SCSU basada en el trabajo de \citep{dueñas2011} donde mediante una representación en grafos en formato interactivo, se podrán aplicar filtros sobre palabras coocurrentes en los resultados de la búsqueda.
-
-La Solución contempla procesos de actualización de los datos ante la incorporación de nuevas investigaciones en el repositorio Saber UCV.
+La solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV.
 
 En la figura \ref{fig:arquitecturasri} se muestra un diagrama con la arquitectura del SCSU. (falta adaptarlo-pequeños cambios).
 
@@ -430,7 +399,7 @@ En la figura \ref{fig:arquitecturasri} se muestra un diagrama con la arquitectur
 \hypertarget{objegeneral}{%
 \subsection{Objetivo General:}\label{objegeneral}}
 
-Implementar un Sistema que pueda realizar procesos de recuperación de información (\emph{information retrieval}), extracción y clasificación de los textos académicos alojados en el Repositorio SABER.UCV empleando técnicas de procesamiento de lenguaje natural, de minería de texto y usando modelos de lenguaje preentrenados de inteligencia artificial.
+Implementar un Sistema en el que se puedan realizar procesos de recuperación de información (\emph{information retrieval}), extracción y clasificación de los textos académicos alojados en el Repositorio Saber UCV, empleando técnicas de procesamiento de lenguaje natural, de minería de texto y usando modelos de lenguaje preentrenados de inteligencia artificial.
 
 \hypertarget{objeespe}{%
 \subsection{Objetivos Específicos:}\label{objeespe}}
@@ -438,27 +407,63 @@ Implementar un Sistema que pueda realizar procesos de recuperación de informaci
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Conformar un corpus con los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado y maestría alojados en SABER.UCV.
+  Conformar un corpus con los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado y maestría alojados en Saber UCV.
 \item
-  Clasificar los trabajos de grado alojados en SABER.UCV por área académica donde se haya realizado la investigación y extraer el nombre completo del tutor. (nota para el Prof.~Mirabal: en este punto se puede separar, o colocar un nombre genérico para el objetivo como: creación de metadata a partir del texto contenido en los documentos de cada trabajo de grado).
+  Clasificar los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer el nombre completo del tutor. (nota para el Prof.~Mirabal: en este punto se puede separar, o colocar un nombre genérico para el objetivo como: creación de metadata a partir del texto contenido en los documentos de cada trabajo de grado).
 \item
-  Crear una aplicación web que permita realizar las ``búsquedas de texto completo'' sobre el corpus conformado.
+  Crear una aplicación web con una interface de navegación de corpus que facilite realizar ``búsquedas de texto completo'' o ``búsqueda semántica'' con acceso a información de relevancia que permita generar ``Mapas de Conocimiento''.
 \item
   Generar recomendaciones de investigaciones que presenten similitud con los documentos recuperados por el Sistema.
 \end{enumerate}
 
+\hypertarget{aporte}{%
+\section{Aportes:}\label{aporte}}
+
+Algunos de los aportes que se generaron al realizar esta investigación son los siguientes:
+
+\begin{itemize}
+\item
+  Se mejora y flexibilizan los criterios de búsqueda en comparación a los que tiene el repositorio Saber UCV al clasificar por área académica un total de 9.325 investigaciones de 9.705 potenciales documentos a categorizar.
+\item
+  Se crea un listado con 425 categorías de carreras de pregrado, especializaciones, maestrías y doctorados que se imparten en la Universidad.
+\item
+  Se obtiene un listado de potenciales tutores de las investigaciones realizadas con 7.942 nombres y una cantidad de 3.649 nombres únicos.
+\item
+  Se crean visualizaciones y representaciones de Mapas del Conocimiento.
+\item
+  Se implementa la búsqueda de texto completo con una función de relevancia distinta a la de Saber UCV.
+\item
+  Se implementa un ``sistema de recomendación'' de documentos que presenten similitudes con los textos recuperados.
+\item
+  Se obtienen mejores métricas de desempeño en la recuperación de información.
+\item
+  La experiencia del usuario se enriquece mediante gráficos que muestran la evolución de aparición de los términos buscados en el período establecido para la recuperación de información.
+\item
+  El Sistema puede fácilmente ponerse en producción y todos los componentes son de código abierto, libres de algún pago de licencia.
+\item
+  La implementación se hace mediante un orquestador de contenedores, teniendo asociados los archivos ``docker compose'' y ``dockerfiles'', que facilitan que pueda estar en producción el Sistema con un mínimo de configuraciones y se garantiza la reproducibilidad de los códigos que conforman la Solución.
+\item
+  El tipo de componentes hace que el Sistema sea escalable y adaptable a la demanda de accesos.
+\item
+  El Sistema está diseñado para poder actualizarse con la periodicidad que se defina.
+\item
+  El Sistema puede servir de prototipo para integrar publicaciones de otros repositorios de documentos que pertenecen a instituciones nacionales de investigación.
+\item
+  Se realiza la implementación de ``búsquedas semánticas''.
+\end{itemize}
+
 \hypertarget{teorico}{%
 \chapter{Marco Teórico-Referencial:}\label{teorico}}
 
-En este capítulo se exponen los fundamentos teóricos para los procesos y métodos que sustentan la investigación \ref{introduccion} \textbf{Recuperación, Extracción y Clasificación de Información de SABER UCV}.
+En este capítulo se exponen los fundamentos teóricos en que se sustentan los procesos y métodos aplicados en la investigación \textbf{Recuperación, Extracción y Clasificación de Información de SABER UCV}.
 
 En \ref{alghist} se hace una \textbf{Reseña histórica} sobre los procesos de búsqueda, en \ref{infret} se examina qué es la \textbf{Recuperación de Información} (RI), en \ref{SRI} se indica qué son los \textbf{Sistemas de Recuperación de Información (SRI}) y en \ref{ejemplos-de-irs} se muestran un par de ejemplos de SRI. Adicionalmente en \ref{MRI} \textbf{Modelos de Recuperación de Información} se exploran modelos como el \ref{MRIbol} \textbf{Boleano} y el \ref{invind} de \textbf{Índices Invertidos}. En la sección \ref{relevancia} se introduce el concepto de \textbf{Relevancia} que es clave para comprender cuál es uno de los principales objetivos que tiene cualquier SRI. En \ref{ranking} \textbf{Re Ordenamiento} se exponen dos algoritmos usados para jerarquizar los documentos que sean más relevantes en un proceso de RI y en \ref{evaluacion} \textbf{Métodos de Evaluación} se muestran algunas técnicas usadas para medir la precisión que se obtiene en los procesos de recuperación de información.
 
-Para indicar los métodos con los =que es tratado el corpus de esta Investigación en \ref{PT} \textbf{Procesamiento de Texto} se muestran las técnicas del \ref{nlproc} \textbf{Procesamiento de Lenguaje Natura}l y de \ref{textmin} \textbf{Minería de Texto}. En \ref{similitud} \textbf{Similitud de Documentos} se indica cómo se puede comparar la similitud de los textos y su aplicación.
+Para indicar los métodos con los que es tratado el Corpus de esta Investigación en \ref{PT} \textbf{Procesamiento de Texto} se muestran las técnicas del \ref{nlproc} \textbf{Procesamiento de Lenguaje Natura}l y de \ref{textmin} \textbf{Minería de Texto}. En \ref{similitud} \textbf{Similitud de Documentos} se indica cómo se puede comparar la similitud de los textos y su aplicación.
 
 Adicionalmente, al formar parte de este Investigación, el desarrollo e implementación del software denominado \textbf{Sistema Complementario Saber UCV (SCSU)}, se exponen definiciones asociadas a los \ref{SD} \textbf{Sistemas Distribuidos}, sentando las bases para el desarrollo e implementación del \textbf{SCSU}.
 
-Se finaliza este Capítulo haciendo una inspección en \ref{sota} a lo que constituye el \textbf{Estado del Arte} en la materia, haciendo énfasis en la representación de textos mediante \ref{embed} \textbf{Embeddings}, en \ref{trans} se introduce la \textbf{Arquitectura de} \textbf{Redes Neuronales Transformers} con que se logran generar los embeddings de mayor calidad para el IR y brevemente se muestra en \ref{LLM} los \textbf{Largos Modelos de Lenguaje (LLM´s)} y en \ref{int} \textbf{Integración} se comentan los distintos avances y tendencias que se presentan en los Sistemas de Recuperación de Información.
+Se finaliza este Capítulo haciendo una inspección en \ref{sota} a lo que constituye el \textbf{Estado del Arte} en la materia, haciendo énfasis en la representación de textos mediante \ref{embed} \textbf{Embeddings}, en \ref{trans} se introduce la \textbf{Arquitectura de} \textbf{Redes Neuronales Transformers} con que se logran generar los embeddings de mayor calidad para el IR y brevemente se muestra en \ref{LLM} los \textbf{Largos Modelos de Lenguaje (LLM´s)}, mientras en \ref{int} \textbf{Integración} se comentan los distintos avances y tendencias que se presentan en los Sistemas de Recuperación de Información.
 
 \hypertarget{alghist}{%
 \section{Reseña histórica:}\label{alghist}}
@@ -477,11 +482,11 @@ El algoritmo ``\emph{Knuth-Morris-Pratt''} que se introdujo en 1976 tenía como 
 
 Posteriormente en 1977 el problema se enfrenta con un nuevo algoritmo que es el de \emph{Boyer-Moore} en el cual se implementan dos heurísticas (\emph{looking-glass y} \emph{character-Jump)} que permiten ir realizando algunos saltos en la búsqueda, ante la no coincidencia de la subcadena con la cadena y adicionalmente, el orden en el que se va realizando la comparación se invierte. Estas modificaciones permitieron obtener un mejor desempeño.
 
-Sobre una modificación al algoritmo \emph{Boyer-Moore} se sustenta la utilidad \emph{grep} de la línea de comandos UNIX que también da soporte a diversos lenguajes que la usan para ejecutar búsquedas de texto, con un proceso que comúnmente es conocido como \emph{grepping}. Esta utilidad fue ampliamente usada para resolver parcialmente lo expuesto en \ref{desarrollociclos2}.
+Sobre una modificación al algoritmo \emph{Boyer-Moore} se sustenta la utilidad \emph{grep} de la línea de comandos UNIX que también da soporte a diversos lenguajes que la usan para ejecutar búsquedas de texto, con un proceso que comúnmente es conocido como \emph{grepping}. Esta utilidad fue ampliamente usada para resolver parcialmente lo que se expondrá en \ref{desarrollociclos1}.
 
-Otra de las estrategias que surgió para enfrentar las búsquedas de texto, fue el uso de la programación lineal, donde bajo la premisa ``\emph{divida et impera'',} los problemas que requieren tiempo exponencial para ser resueltos son descompuestos en polinomios y por lo tanto se disminuye la complejidad en tiempo para ser resueltos.
+Otra de las estrategias que surgió para enfrentar las búsquedas de texto, fue el uso de la programación lineal, donde bajo la premisa ``\emph{divida et impera'',} los problemas que requieren tiempo exponencial para ser resueltos son descompuestos en polinomios y por lo tanto se disminuye la complejidad en tiempo para encontrar la solución.
 
-Entre este tipo de algoritmos se puede mencionar los de \emph{alineación de cadenas del ADN} de forma parcial o total dentro de una cadena mayor, siendo una versión de estos el algoritmo \textbf{\emph{Smith-Waterman}} \citep{smith1981}. Posteriormente se identificó que este tipo de solución era extrapolable a las subcadenas de texto. Un algoritmo que se usó para resolver el problema de hacer coincidir una etiqueta de clasificación con los textos del \emph{Corpus} en \ref{desarrollociclos2} fue el algoritmo precitado.
+Entre este tipo de algoritmos se puede mencionar los de \emph{alineación de cadenas del ADN} de forma parcial o total dentro de una cadena mayor, siendo una versión de estos el algoritmo \textbf{\emph{Smith-Waterman}} \citep{smith1981}. Posteriormente se identificó que este tipo de solución era extrapolable a las subcadenas de texto. Un algoritmo que se usó para resolver el problema de hacer coincidir una etiqueta de clasificación con los textos del \emph{Corpus} en \ref{desarrollociclos1} fue el algoritmo precitado.
 
 Un gran paso para aproximarnos a la aparición de los Sistemas de Recuperación de Información \ref{SRI} lo representó el enfoque que presentan los algoritmos \emph{Tries}. Este nombre proviene del proceso de \emph{Information Retrieval} y principalmente se basa en hacer una serie de preprocesamientos a los textos para que al momento de ejecutar la búsqueda de texto, es decir, de la subcadena dentro de la cadena, ya tengamos una parte del trabajo realizado previamente y no tener que ejecutarlo todo \emph{``on the fly''}, es decir, sobre la marcha.
 
@@ -490,17 +495,17 @@ Un \emph{Trie} \citep{fredkin1960} es una estructura de datos que se crea para a
 \hypertarget{infret}{%
 \section{Recuperación de Información:}\label{infret}}
 
-El eje central sobre el cual gira el proceso de recuperación de información (RI) es satisfacer las necesidades de información relevante que sean expresadas por un usuario mediante una consulta (\textbf{\emph{query}}) de texto. El investigador Charu Aggarwal en su libro sobre Minería de Texto \citep{miningt2012} menciona que el objetivo del proceso de RI es conectar la información correcta, con los usuarios correctos en el momento correcto, mientras que otro de los autores con mayor dominio sobre el tema, Christopher Manning en su libro \emph{Information Retrieval} indica que ``es el proceso de encontrar materiales (generalmente documentos) de una naturaleza no estructurada (generalmente texto) que satisface una necesidad de información dentro de grandes colecciones (normalmente almacenada en computadores)'' \citep{manning2008}.
+El eje central sobre el cual gira el proceso de recuperación de información (RI) es satisfacer las necesidades de información relevante que sean expresadas por un usuario mediante una consulta de texto, lo que también se denomina el \textbf{\emph{query}}. El investigador Charu Aggarwal en su libro sobre Minería de Texto \citep{miningt2012} menciona que el objetivo del proceso de RI es conectar la información correcta, con los usuarios correctos en el momento correcto, mientras que otro de los autores con mayor dominio sobre el tema, Christopher Manning en su libro \emph{Information Retrieval} indica que ``es el proceso de encontrar materiales (generalmente documentos) de una naturaleza no estructurada (generalmente texto) que satisface una necesidad de información dentro de grandes colecciones (normalmente almacenada en computadores)'' \citep{manning2008}.
 
-A los efectos de delimitar el espacio de búsqueda que se realiza ante la acción de la consulta, el \emph{query}, se define al \textbf{Corpus} como el conjunto cerrado de documentos codificados electrónicamente que se encuentra integrado en un sistema de almacenamiento y conformará el agregado \citep{martiaurora} sobre el cual se realizará el proceso de recuperación de información. Entendido desde otra perspectiva, es el conjunto de datos sobre el cuál se hará la búsqueda.
+A los efectos de delimitar el espacio de búsqueda sobre el que se realiza la acción de la consulta, se define al \textbf{Corpus} como el conjunto cerrado de documentos codificados electrónicamente que se encuentra integrado en un sistema de almacenamiento \citep{martiaurora} o entendido desde otra perspectiva, es el conjunto de datos sobre el cuál se hará la búsqueda generando el proceso de recuperación de información.
 
-Satisfacer una necesidad de recuperación de información no sólo se circunscribe a un problema \textbf{búsqueda} de un texto dentro de un \emph{corpus}. En la mayoría de los casos se deberá cumplir con ciertos criterios, o restricciones, como por ejemplo que el \emph{query} esté dentro de un período de fechas, o que se encuentre comprendido en un subconjunto del corpus, que es a lo que se denomina \textbf{búsqueda múlti atributo}.
+Satisfacer una necesidad de recuperación de información no sólo se circunscribe a un problema búsqueda de un texto dentro de un \emph{corpus}. En la mayoría de los casos se deberá cumplir con ciertos criterios, o restricciones, como por ejemplo que el \emph{query} esté dentro de un período de fechas, o que se encuentre limitado a ciertas restricciones, siendo esto a lo que se le denomina ``búsqueda múlti atributo''.
 
-La información que se recolecte en una búsqueda tendrá distintos aspectos que aportarán peso en el orden en que sea presentada al usuario y no sólo vendrá dado por la aparición de las palabras sino también por otros elementos como lo puede ser la aparición de la frase del \textbf{\emph{query}} dentro del título, la proximidad (la cercanía entre dos palabras) que tengan los términos que conforman el \textbf{\emph{query}} o por otra parte la frecuencia que una palabra, o varias, se repitan dentro un determinado documento que compone el \emph{corpus}. En \ref{relevancia} \textbf{Relevancia} se darán más detalles sobre este particular.
+La información que se recolecte en una búsqueda y el orden en que sea presentado el resultado al usuario, dependerá de varios factores como: la aparición, parcial o total, de las palabras del query en el documento; se puede dar un mayor peso a la aparición de la frase del \emph{query} dentro del título o palabras claves; la proximidad (la cercanía entre dos palabras) dentro del documento con las que se introducen en el \emph{query}; o por la frecuencia de aparición de una palabra, o varias, dentro del documento. En \ref{relevancia} \textbf{Relevancia} se darán más detalles sobre este particular.
 
-Igual puede aportar un peso mayor a la recuperación de un documento, las referencias (citas) que contengan otros documentos a ese determinado documento, similar a la propuesta del algoritmo \textbf{\emph{PageRank}} \citep{brin1998}, siendo el fin último, la extracción de los documentos que resulten de mayor relevancia para el usuario. Esta aproximación también puede usarse para la detección de comunidades dentro del \emph{Corpus} \citep{heydari2020analysis}.
+Igual puede aportar un peso mayor a la recuperación de un documento, las referencias (citas) que contengan otros documentos a ese determinado escrito, similar a la propuesta del algoritmo \textbf{\emph{PageRank}} \citep{brin1998}, siendo el fin último, la extracción de los documentos que resulten de mayor relevancia para el usuario. Esta aproximación también puede usarse para la detección de comunidades dentro del \emph{Corpus} \citep{heydari2020analysis}.
 
-Incluso es válido incorporar documentos, en los resultados que arroje la búsqueda, que propiamente no coincidan exactamente con los términos buscados sino que contengan palabras que sean sinónimos o también añadiendo a los resultados, documentos que presenten alguna similitud con el texto del \textbf{\emph{query}}. Lo que acabamos de mencionar incorporará formalmente dentro del proceso de extracción de información algo de imprecisión con la intención última de enriquecer el proceso de \textbf{\emph{Information Retrieval}} \citep{kraft2017}. En \ref{similitud} \textbf{Similitud de Documentos} y en \ref{embed} \textbf{Embeddings,} igualmente se mencionan y especifican algunas de las técnicas con las cuales se incorpora este otro lote de documentos en los resultados de búsqueda.
+Incluso es válido incorporar documentos, en los resultados que arroje la búsqueda, que propiamente no coincidan exactamente con los términos buscados sino que contengan palabras que sean sinónimos o que presenten alguna similitud con el texto del \emph{query}. Lo que acabamos de mencionar incorporará formalmente dentro del proceso de extracción de información algo de imprecisión con la intención última de enriquecer el proceso de \textbf{\emph{Information Retrieval}} \citep{kraft2017}. En \ref{similitud} \textbf{Similitud de Documentos} y en \ref{embed} \textbf{Embeddings,} se mencionan y especifican algunas de las técnicas con las cuales se incorporan este lote de documentos en los resultados de una búsqueda.
 
 Evaluando el proceso con cierto nivel de abstracción se tiene que el proceso de recuperación de información está compuesto principalmente:
 
@@ -534,12 +539,14 @@ Profundizando en el tema de esta Investigación se mencionan un par de páginas 
 \item
   Arvix alojado en \url{https://arxiv.org/}, que es un repositorio de trabajos de investigación. Al momento del usuario hacer un requerimiento de información, adicional al texto de la búsqueda, se pueden indicar distintos filtros a aplicar como puede ser el área del conocimiento (física, matemática, computación, etc.), si se quiere buscar sólo dentro del título de una investigación, o el nombre autor, en el \emph{abstract, o} en las referencias.
 \item
-  Portal de la \emph{Asociation Computery Machine} (ACM) alojado en \url{https://dl.acm.org} incorpora un motor de búsqueda con particulares características ya que los resultados de una búsqueda son acompañados de distintas representaciones gráficas que le dan un valor adicional a la representación de los resultados. En la figura \ref{fig:busquedasacm} se ve una de estas representaciones que incluye la frecuencia de aparición del \emph{query} en el tiempo.
+  Portal de la \emph{Asociation Computery Machine} (ACM) alojado en \url{https://dl.acm.org} incorpora un motor de búsqueda con particulares características ya que los resultados son acompañado por distintas representaciones gráficas que le dan un valor agregado. En la figura \ref{fig:busquedasacm} se ve una de estas representaciones que incluye la frecuencia de aparición del \emph{query} en el tiempo.
 \end{enumerate}
 
 \begin{figure}
 
-\includegraphics[width=0.3\linewidth]{images/03-marco-teorico/busquedaacm} \hfill{}
+{\centering \includegraphics[width=0.3\linewidth]{images/03-marco-teorico/busquedaacm} 
+
+}
 
 \caption{Gráfico que acompaña resultados de búsqueda de un término en la biblioteca digital de la Association for Computing Machinery (https://dl.acm.org/)}\label{fig:busquedasacm}
 \end{figure}
@@ -560,14 +567,14 @@ Los documentos y los \emph{querys} son vistos como conjuntos de términos indexa
 
 Otra de las desventajas es que no se registra el contexto semántico de las palabras e incluso se pierde el orden en que aparecen las palabras en cada texto.
 
-Este modelo se presume que es el cual se basa la implementación de Saber UCV y por eso es que en general, se termina presentando el problema de que al usar el operador OR en las búsquedas exactas, se obtiene un gran \textbf{\emph{recall}} \footnote{Precision: la fracción, o porcentaje, de los documentos recuperados que son relevantes en la búsqueda efectuada.} en los resultados.
+Este modelo se presume que es el cual se basa la implementación de Saber UCV y por eso es que en general, se termina presentando el problema de que al usar el operador OR en las búsquedas exactas, se obtiene un gran \textbf{\emph{recall}} \footnote{Precision: la fracción, o porcentaje, de los documentos recuperados que son relevantes en la búsqueda efectuada. Recall, también denominado es español como ``exhaustividad'' mide la fracción de documentos relevantes que fueron recuperados con respecto a la totalidad de los documentos relevantes presentes en la base de datos.} en los resultados.
 
 Con la propuesta del \ref{desarrollociclos3} Prototipo de Buscador del \textbf{SCSU} se obtiene una versión de recuperación de información que aplica métodos de mayor eficiencia y genera una mayor \emph{``precision''} con un menor ``\emph{recall''} , mejorando la relevancia de los resultados. En \ref{evaluacion} \textbf{Evaluación} se indicarán qué son estas métricas y algunos métodos para medirlas.
 
 \hypertarget{invind}{%
 \subsubsection{Índices Invertidos:}\label{invind}}
 
-Se denominan índices invertidos porque en vez de guardar los documentos con las palabras que en ellos aparecen, en estos se procede a guardar cada palabra y se indica los documentos en los cuales se encuentra y adicionalmente se puede registrar la posición en que aparece cada palabra con distintas granularidades, pudiendo ser estas: dentro del documento, del capítulo, del párrafo o de la oración. También pueden contener la frecuencia con que se presenta determinada palabra. Toda esta información nos permite mejorar los tiempos de búsqueda pero con ciertos costos.
+Se denominan índices invertidos porque en vez de guardar los documentos con las palabras que en ellos aparecen, en estos se procede a guardar cada palabra y se indica los documentos en los cuales se encuentra y adicionalmente se puede registrar la posición en que aparece cada palabra con distintas granularidades, pudiendo ser estas: dentro del documento, del capítulo, del párrafo o de la oración. También pueden contener la frecuencia con que se presenta determinada cada palabra. Toda esta información nos permite mejorar los tiempos de búsqueda pero con ciertos costos.
 
 El primero es el espacio en disco que implica guardar estos datos adicionales, que puede oscilar del 5\% al 100\% del valor inicial de almacenamiento, mientras que el segundo costo lo representa el esfuerzo computacional de actualizarlos una vez que se incorporan nuevos documentos \citep{Mahapatra2011}.
 
@@ -575,7 +582,7 @@ Existen diversos tipos de \textbf{Índices Invertidos} y constantemente se está
 
 El espacio que ocupa la implementación de estos índices se puede ver reducido, por un lado mediante el preprocesamiento que hagamos a las palabras buscando su raíz con el \emph{stemming} \ref{steaming} o removiendo las \emph{stop words} (las palabras que no generan mayor valor semántico como: la, el, tu, son, etc.).
 
-Por otra parte el peso total se puede incrementar a medida que decidamos tener una granularidad más fina en el registro de las palabras y su ubicación dentro de los documentos. En el transcurso del desarrollo de nuestra investigación se indicará en cuánto se incremento el espacio de almacenamiento en disco con la aplicación de este índice y la granularidad que se adoptó junto con el valor del costo en espacio de almacenamiento.
+Por otra parte el peso total se puede incrementar a medida que decidamos tener una granularidad más fina en el registro de las palabras y su ubicación dentro de los documentos. En el transcurso del desarrollo de nuestra investigación se indicará en cuánto se incremento el espacio de almacenamiento en disco con la aplicación de este índice y la granularidad que se adoptó.
 
 Continuando con los índices inversos, existen estrategias que significan la adopción de generar dos índices inversos para un sistema, conteniendo uno de estos la lista de documentos y la frecuencia de la palabra, mientras que el otro registra la lista con las posiciones de la palabra.
 
@@ -592,8 +599,6 @@ En \ref{sota} se muestra el \textbf{Estado del Arte} en los Sistemas de Recupera
 
 Refiere la medida en que un documento o recurso recuperado satisface las necesidades de información del usuario. En otras palabras, un documento es relevante si contiene información que es útil y está relacionada con el \emph{query} realizado por el usuario \citep{büttcher2010a}. La relevancia no es una propiedad intrínseca del documento, sino que depende del contexto y de las necesidades de información del usuario en un momento específico.
 
-a.~~~~ Incluir tema de relevancia. Trecs. Métodos- recorrido histórico. Subjetividad.
-
 \hypertarget{ranking}{%
 \subsection{Re Ordenamiento (re-ranking):}\label{ranking}}
 
@@ -602,57 +607,61 @@ Es una técnica utilizada para mejorar la precisión y lograr extraer los docume
 \hypertarget{learning-to-rank-ltr}{%
 \subsubsection{Learning to Rank (LTR):}\label{learning-to-rank-ltr}}
 
-Los algoritmos de aprendizaje para la clasificación (LTR, por sus siglas en inglés) son comúnmente utilizados para el re-ranking. Estos algoritmos utilizan técnicas de aprendizaje automático para modelar la relevancia de los documentos basándose en características específicas \citep{büttcher2010}. Los atributos pueden incluir la frecuencia de palabras clave, la proximidad de términos en el documento y otros factores que indican la relevancia. Los modelos LTR pueden ser entrenados con conjuntos de datos que contienen consultas y documentos etiquetados con su relevancia, y luego aplicados para re-ordenar los resultados de búsqueda en función de las características aprendidas.
+Los algoritmos de aprendizaje para la clasificación (LTR, por sus siglas en inglés) son comúnmente utilizados para el re-ranking. En ellos se utilizan técnicas de aprendizaje automático para modelar la relevancia de los documentos basándose en características específicas \citep{büttcher2010}. Los atributos pueden incluir la frecuencia de palabras clave, la proximidad de términos en el documento y otros factores que indican la relevancia. Los modelos LTR pueden ser entrenados con conjuntos de datos que contienen consultas y documentos etiquetados con su relevancia, y luego aplicados para re-ordenar los resultados de búsqueda en función de las características aprendidas.
 
 \hypertarget{bm25}{%
 \subsubsection{BM25:}\label{bm25}}
 
-Es un algoritmo que apareció a mediados de la década de 1990 el cual contiene una función de puntuación basada en un modelo probabilístico que es utilizada para calcular la relevancia de un documento con respecto a una consulta de búsqueda \citep{robertson2009} y ha demostrado ser efectivo en la práctica para clasificar documentos según su relevancia con las consultas de los usuarios, llegando en su momento a compararse a que obtenía un rendimiento similar al humano al hacer los procesos de ranking sobre las colecciones \citep{trotman2014} de documentos TREC \citep{trec:ex2005}. Se basa en la frecuencia de los términos de búsqueda y la longitud del documento. A diferencia de los modelos clásicos como TF-IDF, BM25 ajusta la importancia de la frecuencia del término y la longitud del documento mediante una fórmula matemática compleja \citep{zhai2016}, lo que lo hace más eficaz para lidiar con variaciones en la longitud del documento y mejorar la precisión en los resultados de búsqueda.
+Es un algoritmo que apareció a mediados de la década de 1990 el cual contiene una función de puntuación basada en un modelo probabilístico que es utilizada para calcular la relevancia de un documento con respecto a una consulta \citep{robertson2009} y ha demostrado ser efectivo en la práctica para clasificar documentos según su relevancia con las consultas de los usuarios, llegando en su momento a compararse a que obtenía un rendimiento similar al humano, al hacer los procesos de ranking sobre las colecciones \citep{trotman2014} de documentos TREC \citep{trec:ex2005}. Se basa en la frecuencia de los términos de búsqueda y la longitud del documento. A diferencia de los modelos clásicos como TF-IDF, BM25 ajusta la importancia de la frecuencia del término y la longitud del documento mediante una fórmula matemática compleja \citep{zhai2016}, lo que lo hace más eficaz para lidiar con variaciones en la longitud del documento y mejorar la precisión en los resultados de búsqueda.
 
 \hypertarget{evaluacion}{%
 \subsection{Medidas y Métodos de Evaluación:}\label{evaluacion}}
 
-Teniendo las siguientes medidas en el campo de la recuperación de información:
+Las siguientes métricas son usadas en el campo de la recuperación de información:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
   \textbf{\emph{Precision}} \textbf{(Precisión) :} Es la proporción de documentos relevantes recuperados por el sistema con respecto a todos los documentos recuperados. Cuanto mayor es la precisión, menos documentos irrelevantes se recuperan.
 \item
-  \textbf{\emph{Recall}} \textbf{(Recuperación):} Es la proporción de documentos relevantes recuperados por el sistema con respecto a todos los documentos relevantes presentes en la base de datos. Un alto recall indica que el sistema encuentra la mayoría de los documentos relevantes.
+  \textbf{\emph{Recall}} \textbf{(Recuperación):} Es la proporción de documentos relevantes recuperados por el sistema con respecto a todos los documentos relevantes presentes en la base de datos. Un alto ``recall'' indica que el sistema encuentra la mayoría de los documentos relevantes.
 \item
   \textbf{\emph{F1 Score}:} Es la media armónica de precisión y recall. Proporciona un equilibrio entre precisión y recall. Un F1 Score alto indica un buen equilibrio entre la precisión y la capacidad para encontrar todos los documentos relevantes.
 \end{enumerate}
 
-Enunciado el concepto de estas tres medidas es necesario determinar el proceso con que se puede determinar la relevancia de los documentos recuperados y para esto se expone brevemente cómo fue que se crearon.
+Una vez enunciado el concepto de estas tres medidas es necesario determinar el proceso con que se puede determinar la ``relevancia'' de los documentos recuperados. Para explicar esto se expone el origen de este método.
 
-Posterior a la segunda guerra mundial se incrementó considerablemente la publicación de investigaciones en el ámbito científico y se hizo necesario contar con sistemas analógicos que fuesen eficientes para la indexación de los documentos. En el estudio denominado ``Cranfield Tests''\citep{harman2011}, que fue conducido por Cyril Cleverdon a partir de 1958 se empezaron a definir los estándares para evaluar la efectividad de los índices disponibles para aquel momento.
+Posterior a la segunda guerra mundial se incrementó considerablemente la publicación de investigaciones en el ámbito científico y se hizo necesario contar con sistemas analógicos que fuesen eficientes para la indexación de los documentos. En el estudio denominado ``Cranfield Tests''\citep{harman2011}, que fue conducido por Cyril Cleverdon, a partir de 1958 se empezaron a definir los estándares para evaluar la efectividad de los índices disponibles para aquel momento.
 
-Desde ese entonces quedó definido el concepto de ``relevancia'' ante los resultados obtenidos en un proceso de búsqueda documental y el concepto para ese momento es similar al de precisión que recién definimos.
+Desde ese entonces quedó definido el concepto de ``relevancia'' ante los resultados obtenidos en un proceso de búsqueda documental, siendo bastante similar al que actualmente se denomina ``precisión'' .
 
 Una de las estrategias que se llevó a cabo en el proyecto fue usar el \emph{``known-item searching''} (búsqueda del elemento conocido), que consistía en encontrar un documento que garantizara ser relevante ante una determinada pregunta. Para obtener la dupla ``pregunta-nombre documento'' más relevante, acudieron a los autores de 1500 documentos y les pidieron que formulasen una pregunta que satisfactoriamente iba a ser respondida en el documento de su autoría \citep{harman2011}.
 
-Hoy en día se han construido distintos conjuntos de datos constituidos por la dupla ``pregunta- documento'', o índice del documento más relevante, para evaluar mediante las métricas precisión y recall, la efectividad que tiene un sistema de recuperación de información. Este tipo de conjuntos de datos se denominan las ``Standard test collections'', que es un conjunto de juicios de relevancia por parte de expertos, dados como una expression binaria: ``relevante'' o ``no relevante'' para la dupla query- documento. Con esto podremos conformar una aproximación a una ``gold standard'' o ``ground truth judgment of relevance'' (juicio de pertinencia basado en la verdad).
+Hoy en día se han construido distintos conjuntos de datos constituidos por la dupla ``pregunta - identificación de documento con respuesta correcta'', para evaluar mediante las métricas ``precisión'' y ``recall'', la efectividad que tiene un sistema de recuperación de información. Este tipo de conjuntos de datos se denominan las ``Standard Test Collections'', que es un conjunto de juicios de relevancia por parte de expertos, dados como una expression binaria: ``relevante'' o ``no relevante'' para la dupla ``query- documento''.
 
-Desde inicios de la década de los 90, con las reuniones periódicas de la denominada ``Text REtrieval Evaluation Conference-TREC'' se crean distintos conjuntos de datos con distintos documentos y temas donde expertos anotaron juicios de relevancia para indicar cuáles eran los documentos más relevantes para cada uno de los temas. Así se introdujo una de las metodologías que es usada para evaluar la relevancia obtenida, al comparar la que ejecuta el sistema de recuperación de información con la que fue realizada por expertos.
+Con esto se puede conformar una aproximación a una ``gold standard'' o ``ground truth judgment of relevance'' (juicio de pertinencia basado en la verdad).
 
-El problema que presenta este enfoque es que ante métodos de recuperación de documentos más avanzados como la búsqueda semántica, que será presentado más adelante, y ante el incremento de documentos digitales, cada vez de temas de investigación más específicos, este tipo de mediciones se queda un tanto rezagada y no muestra la real efectividad de los sistemas.
+Desde inicios de la década de los 90, con las reuniones periódicas de la denominada ``Text REtrieval Evaluation Conference-TREC'' se crean distintos conjuntos de datos con diversos documentos agrupados por temas, donde expertos anotan juicios de relevancia para indicar cuáles son los documentos más relevantes para cada uno de los temas.
 
-También hay que indicar es que las medidas \emph{precisión} y \emph{recall} pueden no necesariamente reflejar la satisfacción del usuario, ya que esta en muchos casos se ve afectada es por el grado de satisfacción con la interface de usuario que presente el Sistema de Recuperación de Información \citep{manning2008}.
+Así se introdujo una de las metodologías que es usada para evaluar la ``relevancia'' obtenida, al comparar la que ejecuta el sistema de recuperación de información con la que fue realizada por expertos.
+
+El problema que presenta este enfoque es que ante métodos de recuperación de documentos más avanzados, como la búsqueda semántica, que será presentada más adelante, y ante el incremento de documentos digitales y también de temas de investigación más específicos, este tipo de mediciones se queda un tanto rezagada y no muestra la real efectividad de los sistemas.
+
+También hay que indicar es que las medidas ``\emph{precisión}''y ``\emph{recall''} pueden no necesariamente reflejar la satisfacción del usuario, ya que esta en muchos casos se ve afectada es por el grado de satisfacción con la interface de usuario que presente el Sistema de Recuperación de Información \citep{manning2008}.
 
 \hypertarget{PT}{%
-\section{Procesamientos de texto:}\label{PT}}
+\section{Procesamientos a los textos:}\label{PT}}
 
-En esta sección mostramos métodos de manipulación y tratamiento de los textos. Lo primero que se indica es que hasta el año 2016 eran escasas las herramientas computacionales para el procesamiento de los textos \ref{nlproc} en el idioma español. Sabiendo que son justamente los textos, el insumo que recibe nuestro sistema de recuperación de información, la calidad en los procesamientos que sobre ellos se hagan, marcarán en gran medida la propia calidad del sistema que se obtenga.
+En esta sección mostramos métodos de manipulación y tratamiento de los textos. Lo primero que se indica es que hasta el año 2016 eran escasas las herramientas computacionales para el procesamiento de los textos \ref{nlproc} en el idioma español. Sabiendo que son justamente los textos, el insumo que recibe el Sistema propuesto en este Investigación, la calidad en los procesamientos que sobre ellos se hagan, marcarán en gran medida la propia calidad del Sistema que se obtenga.
 
 \emph{Frameworks} para tareas de procesamientos de texto se basan en los proyectos de \emph{``Universal Dependencies''} \citep{demarneffe2021}, como es el caso del ``coreNLP'' de la Universidad de Stanford \citep{manning-etal-2014-stanford} que fue uno de los primeros sistemas en incluir procesamientos para el idioma español, sin disponer todas las utilidades que sí era viable realizar con textos en el idioma inglés, como la identificación de parte del discurso \emph{(Part of Speech Tagging)} \ref{pos}\emph{,} ni el análisis morfológico (\emph{Morphological Analysis)} \citep{straka2017} o el reconocimiento de entidades nombradas (\emph{Named Entity Recognigtion)}, sino algunas pocas como el tokenizador \ref{token} y el separador de oraciones (\emph{Sentences Splitting}).
 
-Casos similares se presentaban con otras herramientas, siendo un caso aparte el esfuerzo del ``CLiC- Centre de Llenguatge i Computación'' quienes hicieron la anotación del Corpus AnCora \footnote{\textbf{AnCora} es un corpus del \textbf{catalán (AnCora-CA)} y del \textbf{español (AnCora-ES)} con diferentes niveles de anotación como lema y categoría morfológica, constituyentes y funciones sintácticas, estructura argumental y papeles temáticos, clase semántica verbal, tipo denotativo de los nombres deverbales, sentidos de WordNet nominales, entidades nombradas (NER), relaciones de correferencia (\url{http://clic.ub.edu/corpus/es/ancora})} . También la Universidad Politécnica de Cataluña creó la herramienta FreeLing \footnote{\url{https://nlp.lsi.upc.edu/freeling/node/1}} que implementó para el español, y catalán, algunas de las funcionalidades con que sí contaba para el idioma inglés el ``coreNLP'' descritas en el párrafo anterior. No obstante, su integración en cadenas de trabajo y la actualización de sus modelos de entrenamiento, presentan rezagos en comparación a otros modelos que actualmente se están usando, basados en el uso del aprendizaje mediante redes neuronales \citep{chen2014fast} y que serán indicados con mayor detalle en la sección \textbf{Estado del Arte} \ref{sota} .
+Casos similares se presentaban con otras herramientas, siendo un caso aparte el esfuerzo del ``CLiC- Centre de Llenguatge i Computación'' quienes hicieron la anotación del Corpus AnCora \footnote{\textbf{AnCora} es un corpus del \textbf{catalán (AnCora-CA)} y del \textbf{español (AnCora-ES)} con diferentes niveles de anotación como lema y categoría morfológica, constituyentes y funciones sintácticas, estructura argumental y papeles temáticos, clase semántica verbal, tipo denotativo de los nombres deverbales, sentidos de WordNet nominales, entidades nombradas (NER), relaciones de correferencia (\url{http://clic.ub.edu/corpus/es/ancora})} . También la Universidad Politécnica de Cataluña creó la herramienta FreeLing \footnote{\url{https://nlp.lsi.upc.edu/freeling/node/1}} que implementó para el español, y catalán, algunas de las funcionalidades con que sí disponía para el idioma inglés el ``coreNLP''. No obstante, su integración en cadenas de trabajo y la actualización de sus modelos de entrenamiento, presentaron rezagos en comparación a otros modelos que actualmente se están usando, basados en el uso del aprendizaje mediante redes neuronales \citep{chen2014fast} y que serán indicados con mayor detalle en la sección \textbf{Estado del Arte} \ref{sota} .
 
 \hypertarget{nlproc}{%
 \subsection{Procesamiento del Lenguaje Natural (Natural Language Processing- NLP):}\label{nlproc}}
 
-Son las técnicas computacionales desarrolladas para permitir al computador representar e interactuar de una forma más efectiva con el ``significado'' de los textos . Al aplicar la tokenización \ref{token} , el Etiquetado de Partes del Discurso \ref{pos}, el stemming \ref{steaming}, la lematización \ref{lemma} , entre otros métodos, se desea obtener un Corpus Anotado \citep{desagulier2017}. Los métodos que se detallan a continuación fueron aplicados sobre el Corpus del \textbf{SCSU}.
+El Procesamiento del Lenguaje Natural (PNL), son el conjunto de técnicas computacionales desarrolladas para permitir al computador representar e interactuar de una forma más efectiva con el ``significado'' de los textos . Al aplicar la \emph{tokenización} \ref{token} , el Etiquetado de Partes del Discurso \ref{pos}, el \emph{stemming} \ref{steaming}, la \emph{lematización} \ref{lemma} , entre otros métodos, se desea obtener un Corpus Anotado \citep{desagulier2017}. Los métodos que se detallan a continuación fueron aplicados sobre el Corpus del \textbf{SCSU}.
 
 \hypertarget{token}{%
 \subsubsection{Tokenizador:}\label{token}}
@@ -662,6 +671,8 @@ Básicamente es separar el documento en palabras, o unidades semánticas que ten
 Al obtener las palabras como entidades separadas de un texto nos permite, por ejemplo, calcular la frecuencia de uso de las mismas.
 
 Es común que las librerías de procesamiento de lenguaje natural contengan tokenizadores que presentan un 100\% como métrica de precisión en el idioma español.
+
+Hay que destacar que los tokenizadores para generar ``embeddings'', ver \ref{embed}, se comportan en algunos casos de forma distinta al hacer la separación de las unidades que conforman el texto.
 
 \hypertarget{pos}{%
 \subsubsection{\texorpdfstring{Etiquetado de Partes del Discurso \emph{(Part of speech tagging-POS)}:}{Etiquetado de Partes del Discurso (Part of speech tagging-POS):}}\label{pos}}
@@ -681,14 +692,14 @@ Los roles sintácticos principales de interés en la elaboración de esta Invest
 
 Igualmente dentro del POS se identifican otros roles sintácticos como los adverbios, nombres propios, interjecciones entre otros.
 
-El POS es un procesamiento que sirve de insumo para la coocurrencia de palabras, que es una de las formas en que se representan los resultados de los \emph{querys} en el \textbf{SCSU}.
+El POS es un procesamiento que sirve de insumo para determinar la coocurrencia de palabras, que es una de las formas en que se representan los resultados de los \emph{querys} en el \textbf{SCSU}.
 
 En el estado del arte este etiquetado alcanza un 98\% de precisión.
 
 \hypertarget{steaming}{%
 \subsubsection{Stemming:}\label{steaming}}
 
-Stemming es un algoritmo que persigue encontrar la raíz de una palabra, teniendo como el de mayor uso el Algoritmo de Porter \citep{willett2006}. Al ser usado se puede reducir considerablemente el número de palabras que conforman el vocabulario del \emph{Corpus} y así se mejoran los tiempos en que se ejecuta la búsqueda de un texto, ya que se disminuye el espacio de búsqueda. La aplicación de este tipo de algoritmos no toma en consideración el contexto en el que aparece la palabra a la que se le extrae la raíz. Como ejemplo se muestra que ``yo canto, tú cantas, ella canta, nosotros cantamos, ellos cantan'' donde todas las palabras tendrán como raíz ``cant\textbf{``}.
+Stemming es un algoritmo que persigue encontrar la raíz de una palabra, teniendo como el de mayor uso el Algoritmo de Porter \citep{willett2006}. Al ser usado se puede reducir considerablemente el número de palabras que conforman el vocabulario del \emph{corpus} y así se mejoran los tiempos en que se ejecuta la búsqueda de un texto, ya que se disminuye el espacio de búsqueda. La aplicación de este tipo de algoritmos no toma en consideración el contexto en el que aparece la palabra a la que se le extrae la raíz. Como ejemplo se muestra que ``yo canto, tú cantas, ella canta, nosotros cantamos, ellos cantan'' donde todas las palabras tendrán como raíz ``cant\textbf{``}.
 
 Es necesario considerar que al crear el \textbf{índice invertido} \ref{invind} son las raíces las que se guardarán y no propiamente la palabra que aparece en el texto.
 
@@ -697,11 +708,11 @@ Es necesario considerar que al crear el \textbf{índice invertido} \ref{invind} 
 
 Es el proceso en que se consigue el \emph{lema} de una palabra, entendiendo que el \emph{lema} es la forma que por convenio se acepta como representante de todas las formas flexionadas de una misma palabra \citep{demarneffe2021}. Los lemas, o lexemas, constituyen la parte principal de la palabra, la que transmite el significado. Los morfemas son el elemento variable de la palabra y son los que se busca desechar en el proceso de lematización.
 
-Al buscar el \emph{lema} se tiene presente la función sintáctica que tiene la palabra, es decir que se evalúa el contexto en el que ocurre. Una de las ventajas de aplicar esta técnica es que se reduce el vocabulario del Corpus y eso conlleva a que también se reduce el espacio de búsqueda en los documentos.
+Al buscar el \emph{lema} se tiene presente la función sintáctica que tiene la palabra, es decir que se evalúa el contexto en el que ocurre. Una de las ventajas de aplicar esta técnica es que se reduce el vocabulario del Corpus y eso conlleva a que también se reduzca el espacio de búsqueda.
 
 Un ejemplo de lematización se puede representar con estas tres palabras: ``bailaré, bailamos, bailando'' que tienen el mismo \emph{lema} que es ``bailar''.
 
-En el estado del arte este etiquetado alcanza un 96\% de precisión en esta tarea en varios de los modelos de aprendizaje automático preentrenados para realizarla, no obstante no se disponen datos puntuales para la precisión que se alcanza en el idioma español.
+En el estado del arte este etiquetado alcanza un 96\% de precisión en varios de los modelos de aprendizaje automático preentrenados, no obstante no se disponen datos puntuales de esta métrica para el idioma español.
 
 \hypertarget{textmin}{%
 \subsection{Minería de Texto:}\label{textmin}}
@@ -745,7 +756,10 @@ En la figura \ref{fig:coocejem} se visualiza lo expuesto de una manera gráfica 
 \caption{Coocurrencia de Palabras}\label{fig:coocejem}
 \end{figure}
 
-La representación gráfica y el método de extracción de sustantivos y adjetivos, resulta similar a la propuesta metodológica realizada por \citep{dueñas2011} para crear Mapas del Conocimiento con ``las palabras claves obtenidas a través de búsquedas recurrentes y relacionadas''. En esta Investigación se simplificará la obtención y representación de los Mapas del Conocimiento, asumiendo que las palabras claves son los sustantivos adjetivizados, equivalente a visualizar las personas, cosas o ideas que se mencionan y que son modificados por los adjetivos, al cambiar sus propiedades o atributos; seleccionando aquellas palabras que muestran una mayor aparición en el query realizado y que se interconectan mediante arcos.
+\hypertarget{mapacon}{%
+\paragraph{Mapas de Conocimiento:}\label{mapacon}}
+
+La representación gráfica y el método de extracción de sustantivos y adjetivos, resulta similar a la propuesta metodológica realizada por \citep{dueñas2011} para crear ``Mapas de Conocimiento'' con ``las palabras claves obtenidas a través de búsquedas recurrentes y relacionadas''. En esta Investigación se simplificará la obtención y representación de estos Mapas, asumiendo que las palabras claves son los sustantivos adjetivizados, equivalente a visualizar las personas, cosas o ideas que se mencionan y que son modificados por los adjetivos, al cambiar sus propiedades o atributos; seleccionando aquellas palabras que muestran una mayor aparición en el \emph{query} realizado y que se interconectan mediante arcos.
 
 \hypertarget{similitud}{%
 \subsection{Similitud de documentos:}\label{similitud}}
@@ -758,7 +772,7 @@ Para poder realizar la recomendación de documentos, una de las técnicas que se
 
 En la fórmula \emph{t} representa un documento y \emph{e} representa otro documento. Ambos documentos se asumen que están en un espacio con \emph{i} atributos, o dimensiones, y la intención es calcular un índice de similitud entre ambos documentos.
 
-Este es uno de los métodos más usados para detectar similitudes en los textos, aunque existen otras fórmulas para el cálculo de la similitud como es el índice de jaccard.
+Este es uno de los métodos más usados para detectar similitudes en los textos, aunque existen otras fórmulas para el cálculo de la similitud como los es el índice de Jaccard.
 
 Al hacer la comparación de un documento i del Corpus que contiene n documentos, en un proceso iterativo con otra cantidad de (\emph{n-1)} documentos, se obtendrán (\emph{n-}1) índices de similitud. Aquel que obtenga un mayor valor se puede inferir que presenta una mayor similitud con el documento \emph{i.}
 
@@ -766,7 +780,7 @@ El otro elemento de gran importancia en el resultado que se obtenga de esta medi
 
 La aplicación de realizar este tipo de comparaciones mediante la estimación de la similitud, es que ante un proceso de \emph{query} también pueden ser recuperados, o sugerir al investigador, en la entrega de los documentos recuperados, aquellos documentos que también presenten alguna similitud, a manera de que el propio sistema tenga la capacidad de realizar recomendaciones.
 
-Recientemente se han creado formas más complejas para la representación de los documentos, como lo son los \emph{word embeddings} que son obtenidos mediante el entrenamiento de redes neuronales de aprendizaje profundo lo cual será expuesto en \ref{embed}.
+Recientemente se han creado formas más complejas para la representación de los documentos, como lo son los \emph{word embeddings} que son obtenidos mediante el entrenamiento de redes neuronales de aprendizaje profundo, lo que será expuesto en \ref{embed}.
 
 \hypertarget{SD}{%
 \section{Sistemas Distribuidos:}\label{SD}}
@@ -805,7 +819,7 @@ Para cada contenedor es necesario usar una imagen donde previamente se definen l
 
 Al tener diversos contenedores, donde cada uno aloja una aplicación distinta, puede resultar necesario que todos se integren en un sistema. Para que esta integración sea viable es necesario contar con un orquestador \citep{cook2017}. Su uso permitirá lograr altos grados de portabilidad y reproducibilidad, pudiendo colocarlos en la nube o en centros de datos, garantizando que se pueda hacer el \emph{deploy} de forma sencilla y fiel a lo que se implementó en el ambiente de desarrollo.
 
-En el caso de la Solución propuesta se adoptará el uso de \emph{Docker Compose} como orquestador y en el Capítulo que contiene la Propuesta Técnica \ref{desarrollociclos4} serán expuestas las funcionalidades de cada contenedor y se apreciará la integración que brindará el orquestador.
+En el caso de la Solución propuesta se adoptará el uso de \emph{Docker Compose} como orquestador y en el Capítulo que contiene los Ciclos de Desarrollo \ref{desarrollociclos4} serán expuestas las funcionalidades de cada contenedor y se apreciará la integración que proporciona contar con un orquestador.
 
 \hypertarget{sota}{%
 \section{Estado del Arte:}\label{sota}}
@@ -819,7 +833,7 @@ Para hablar sobre el Estado del Arte tanto en los Sistemas de Recuperación de I
 
 Para comprender qué son los \emph{embeddings} se debe partir de estudiar la Hipótesis~ Distribucional, la cual se enmarca en al área de la lingüística y enuncia que la similaridad en significados, resulta en que también se presente una similaridad en la distribución lingüística. Dos palabras que sean próximas en significado, entendido como que sean intercambiables en un texto, es un fenómeno que también se detectará en la distribución que presentan dichas palabras dentro de un corpus. Más adelante se mostrará un ejemplo de esto.
 
-De esta Hipótesis surge la propuesta de crear la ``Distribución Semántica'', donde se representa el significado de una palabra, mediante el proceso en que se toma como entrada grandes cantidades de texto, el corpus, y se construye un modelo de distribución, también llamado ``espacio semántico'', que logra extraer la representación semántica del vocabulario en un espacio \emph{n}-dimensional, haciendo que una palabra se muestre como un vector en dicho espacio.
+De esta Hipótesis surge la propuesta de crear la ``Distribución Semántica'', donde se representa el significado de una palabra, mediante el proceso en que se toma como entrada grandes cantidades de texto y se construye un modelo de distribución, también llamado ``espacio semántico'', que logra extraer la representación semántica del vocabulario en un espacio \emph{n}-dimensional, haciendo que una palabra se muestre como un vector en dicho espacio.
 
 ``Semántica'' se entiende como el significado específico que puede tener una palabra en una oración. Al evaluar las siguientes dos frases:
 
@@ -829,7 +843,7 @@ De esta Hipótesis surge la propuesta de crear la ``Distribución Semántica'', 
 
 el significado de la palabra ``banco'' en los ejemplos tiene dos acepciones. Claramente el lingüista Firth J.R. enfrentó este problema en su famosa frase: ``entenderás una palabra por aquellas que la acompañan'', donde hace entrever que para comprender el significado de una palabra hay que revisar el contexto en el que ocurre.
 
-Al recordar \ref{tdm} el modelo Term Document Frecuency (TDF), para representar en un documento la aparición de una determinada palabra, se colocaba en la matríz el valor ``1'' en la posición \emph{i,j} , o se colocaba un ``0'' en su ausencia, correspondo la \emph{i} al índice del documento y \emph{j} al índicede la palabra dentro del vocabulario; no obstante, en este método de representación no se puede lograr inferir la semántica de la palabra, sino simplemente la aparición, o no, dentro del texto o corpus, independientemente de la acepción que tenga la palabra ``banco'', que siempre se representaría con un valor ``1'', tanto en un documento que contenga ``El modelo de banco de tres asientos está en oferta'', como en el otro ``Voy a depositar dinero al banco''.
+Al recordar \ref{tdm} el modelo Term Document Frecuency (TDF), para representar en un documento la aparición de una determinada palabra, se colocaba en la matríz el valor ``1'' en la posición \emph{i,j} , o se colocaba un ``0'' en su ausencia, correspondiendo la \emph{i} al índice del documento y la \emph{j} al índice de la palabra dentro del vocabulario; no obstante, en este método de representación no se puede lograr inferir la semántica de la palabra, sino simplemente la aparición, o no, dentro del texto, independientemente de la acepción que tenga la palabra ``banco'', que siempre se representaría con un valor ``1'', tanto en un documento que contenga ``El modelo de banco de tres asientos está en oferta'', como en el otro ``Voy a depositar dinero al banco''.
 
 \hfill\break
 Lo anterior constituye un problema clave para los procesos de Recuperación de Información ya que si estuviésemos usando el modelo \ref{invind} de Índices Invertidos, que comparte algunos fundamentos del modelo \ref{tdm} \emph{Term Document Frecuency (TDF)}, retomando el ejemplo en que usamos la palabra ``banco'', al intentar encontrar aquellos documentos que mencionen a los ``bancos'' en su acepción de ``Asiento, con respaldo o sin él\ldots{}'', también se recuperaría el documento que habla de la ``empresa que se dedica a realizar transacciones financieras''.
@@ -844,30 +858,37 @@ En el siguiente ejemplo \ref{tab:tblembedding} que se obtiene del trabajo \emph{
 
 \caption{\label{tab:tblembedding}Embedding bidimensional para representar palabras}
 \centering
-\begin{tabular}[t]{rr}
+\begin{tabular}[t]{lrr}
 \toprule
-Dimensión.1 & Dimensión.2\\
+Palabra & Dimensión.1 & Dimensión.2\\
 \midrule
-0.71038 & 1.76058\\
-0.43679 & 1.93841\\
-1.77337 & 0.00012\\
+postdoc & 0.71038 & 1.76058\\
+estudent & 0.43679 & 1.93841\\
+wealth & 1.77337 & 0.00012\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Al tener cada palabra un vector de dos componentes, se puede hacer una representación gráfica en un plano, que sería la que se aprecia en la figura \ref{fig:embeddingimg}, donde al aplicar la medición de similitud coseno, revisada en \ref{similitud}, las palabras \emph{postdoc} y \emph{student} se encuentran más próximas y tienen una mayor similitud, que por ejemplo, \emph{postdoc} y \emph{wealth}.
+Al tener cada palabra un vector de dos componentes, se puede hacer una representación gráfica en un plano, ver figura \ref{fig:embeddingimg}, donde al aplicar la medición de similitud coseno, revisada en \ref{similitud}, se determina que las palabras \emph{postdoc} y \emph{student} se encuentran más próximas y tienen una mayor similitud, que por ejemplo, \emph{postdoc} y \emph{wealth}.
 
 \begin{figure}
-\includegraphics[width=0.55\linewidth]{images/03-marco-teorico/word_vec} \caption{Representación de palabras en un plano}\label{fig:embeddingimg}
+
+{\centering \includegraphics[width=0.55\linewidth]{images/03-marco-teorico/word_vec} 
+
+}
+
+\caption{Representación de palabras en un plano}\label{fig:embeddingimg}
 \end{figure}
 
-Al generar la representación completa de un espacio semántico, haciendo la búsqueda de una palabra, podemos encontrar también aquellas que son cercanas y no limitar la búsqueda al \emph{match} que los modelos anteriormente estudiados sí imponían. Más adelante también veremos que el modelo semántico puede ser expandido y representar mediante un \emph{embedding} oraciones (\emph{sentences}), siendo esto el sustento de que al hacer una pregunta, o query, a un sistema de Recuperación de Información, este sea capaz de encontrar la respuesta dentro del corpus, ya que la pregunta o query se transforma en un \emph{embedding} y luego se determina en el espacio semántico cuál es la oración que más se aproxima, o guarda algún tipo de proximidad o relación de distancia vectorial con la pregunta formulada, expandiendo su capacidad y llegando a ser un motor de respuestas (\emph{answering engines}).~
+Al generar la representación completa de un espacio semántico, haciendo la búsqueda de una palabra, podemos encontrar también aquellas que son cercanas y no limitar la búsqueda al \emph{match} que los modelos anteriormente estudiados sí imponían. Más adelante también veremos que el modelo semántico puede ser expandido y representar mediante un \emph{embedding} oraciones (\emph{sentences}), siendo esto el sustento de que al hacer una pregunta, o \emph{query}, a un sistema de Recuperación de Información, este sea capaz de encontrar la respuesta dentro del corpus, ya que la pregunta o \emph{query} se transforma en un \emph{embedding} y luego se determina en el espacio semántico cuál es la oración que más se aproxima, o guarda algún tipo de proximidad o relación de distancia vectorial con la pregunta formulada.~
 
 Los \emph{embeddings} son representaciones numéricas densas de las palabras contenidas en un vocabulario. A diferencia de los modelos de tipo ``one hot encodding (OHE)'' de representación binaria, donde en un vector se usa un ``1'' para representar la aparición de una palabra dentro de un vocabulario y ``0'' para representar su ausencia, teniendo que la dimensionalidad del vector será la cantidad de \emph{n} palabras que tenga el vocabulario. Es común que un corpus se puedan disponer de unas 20 mil o más palabras distintas, es decir un vocabulario con \emph{n} igual a 20 mil, así sea para representar una sola palabra se requerirá en el OHE de unos 20 mil componentes con 19.999 ceros y un solo ``1'', lo cual es una representación bastante dispersa que dificulta cálculos computacionales. Retornando al \emph{embedding}, lo que ellos captan es una representación vectorial de las palabras pero con un número menor de componentes.
 
-En algunas de la primeras representaciones realizadas, por ejemplo con el modelo ``GloVe: Global Vectors for Word Representation'' \citep{pennington2014}, se tenían 100 componentes, cifra considerablemente menor a las 20 mil que del modelo de ``one hot encodding'', evitando así la alta esparcidad. Otro cambio sustancial que se introdujo con este tipo de representación es que los los componentes no son valores binarios de unos o ceros, sino se hace con números reales que pueden tener más de ocho decimales (floating point numbers). Bajo este modelo la representación específica de la palabra ``king'' es el siguiente vector
+En algunas de la primeras representaciones realizadas, por ejemplo con el modelo ``GloVe: Global Vectors for Word Representation'' \citep{pennington2014}, se tenían 100 componentes, cifra considerablemente menor a las 20 mil que del modelo de ``one hot encodding'', evitando así la alta esparcidad. Otro cambio sustancial que se introdujo con este tipo de representación es que los los componentes no son valores binarios de unos o ceros, sino se hace con números reales que pueden tener más de ocho decimales (floating point numbers). Bajo este modelo, la representación específica de la palabra ``king'' es el siguiente vector:
 
-``0.50451, 0.68607, -0.59517, -0.022801, 0.60046, -0.13498, -0.08813, 0.47377, -0.61798, -0.31012, -0.076666, 1.493, -0.034189, -0.98173, 0.68229, 0.81722, -0.51874, -0.31503, -0.55809, 0.66421, 0.1961, -0.13495, -0.11476, -0.30344, 0.41177, -2.223, -1.0756, -1.0783, -0.34354, 0.33505, 1.9927, -0.04234, -0.64319, 0.71125, 0.49159, 0.16754, 0.34344, -0.25663, -0.8523, 0.1661, 0.40102, 1.1685, -1.0137, -0.21585, -0.15155, 0.78321, -0.91241, -1.6106, -0.64426, -0.51042'' el cual se puede representar graficamente como se observa el la figura \ref{fig:embking} donde se mapean los números a una paleta de colores.
+``0.50451, 0.68607, -0.59517, -0.022801, 0.60046, -0.13498, -0.08813, 0.47377, -0.61798, -0.31012, -0.076666, 1.493, -0.034189, -0.98173, 0.68229, 0.81722, -0.51874, -0.31503, -0.55809, 0.66421, 0.1961, -0.13495, -0.11476, -0.30344, 0.41177, -2.223, -1.0756, -1.0783, -0.34354, 0.33505, 1.9927, -0.04234, -0.64319, 0.71125, 0.49159, 0.16754, 0.34344, -0.25663, -0.8523, 0.1661, 0.40102, 1.1685, -1.0137, -0.21585, -0.15155, 0.78321, -0.91241, -1.6106, -0.64426, -0.51042''
+
+el cual se puede representar graficamente como se observa el la figura \ref{fig:embking} donde se mapean los números a una paleta de colores.
 
 \begin{figure}
 
@@ -891,32 +912,32 @@ Usando el mismo modelo GloVe, una representación gráfica de las palabras ``Kin
 
 El crédito a la visualización \ref{fig:GloVeEmbedd} corresponde al divulgador Alammar,J. (2019). The Illustrated Word2vec. Blog. \url{https://jalammar.github.io/illustrated-word2vec/} (acceso 18 el octubre,2023). ~La representación muestra gráficamente que las palabras ``man'' y ``woman'' son más ``parecidas'' visualmente que ``king'' y ``man'' y esto es lo que se puede generalizar para entender como las distintas palabras que se representan en un espacio semántico pueden presentar proximidades, similitudes o diferencias entre si, obteniendo de esta forma un significado semántico según la posición relativa que cada una tenga con respecto a la otra en el espacio indicado.
 
-No obstante, en los puntos expuestos aún no ha explicado cómo se generan los \emph{embeddings}, lo cual es indispensable para entender sus capacidades. En el año 2003 mediante el entrenamiento de redes neuronales logran modelar la probabilidad de las secuencias de palabras demostrando la capacidad de las redes neuronales para capturar patrones complejos en datos textuales. Otro hito fue la investigación ``Semantic Hashing'' \citep{salakhutdinov2009} donde usaron redes neuronales para transformar datos de alta dimensionalidad en representaciones binarias de baja dimensionalidad. Esa investigación añadió como aporte que se empiezarán a usar técnicas de aprendizaje no supervisado para entrenar las redes neuronales, deshaciéndose de los cuellos de botella que introducían previamente los procesos de etiquetado, necesarios en métodos supervisados.
+No obstante, en los puntos expuestos aún no ha explicado cómo se generan los \emph{embeddings}, lo cual es indispensable para entender sus capacidades. En el año 2003 mediante el entrenamiento de redes neuronales logran modelar la probabilidad de las secuencias de palabras demostrando la capacidad de las redes neuronales para capturar patrones complejos en datos textuales \citep{Bengio:2003:NPL:944919.944966} . Otro hito fue la investigación ``Semantic Hashing'' \citep{salakhutdinov2009} donde usaron redes neuronales para transformar datos de alta dimensionalidad en representaciones binarias de baja dimensionalidad. Esa investigación añadió como aporte que se empezarán a usar técnicas de aprendizaje no supervisado para entrenar las redes neuronales, deshaciéndose de los cuellos de botella que previamente introducían los procesos de etiquetado, necesarios en métodos supervisados.
 
 Ante la ampliación de capacidades de computo en sistemas distribuidos compuestos por tarjetas gráficas (Graphics Processing Unit - GPU), empieza a incrementarse el uso de redes neuronales de aprendizaje profundo y es cuando se presenta la investigación ``Word2Vec: Efficient Estimation of Word Representations in Vector Space'' \citep{mikolov2013} que implementa la técnica \emph{Skip-gram} y \emph{Continuous Bag of Words (CBOW)} que permitieron a las redes neuronales el aprendizaje de representaciones semánticas de palabras a partir de grandes volúmenes de texto. Word2Vec no solo era eficiente computacionalmente, sino que también producía \emph{embeddings} que capturaban relaciones semánticas y sintácticas, transformando cómo se abordaban las tareas de NLP y las aplicaciones de recuperación de información.
 
-Una vez que se empezó a tener un método para capturar la semántica de las palabras debió seguir el paso de lograr representar el sentido semántico de frases (sentences) y expresiones más complejas. Esto se introdujo en la investigación ``Distributed Representations of Words and Phrases and their Compositionality'' (2013) \citep{mikolov2013a} donde se hicieron representaciones vectoriales distribuidas para frases, mejorando la capacidad de capturar significados contextuales y relaciones sintácticas en un nivel más alto, siendo esto un avance importante hacia la comprensión de la semántica en un contexto más amplio, lo cual resultó crucial para aplicaciones como la recuperación de información y también para la traducción automática.
+Una vez que se empezó a tener un método para capturar la semántica de las palabras debió seguir el paso de lograr representar el sentido semántico de frases (sentences) y expresiones más complejas. Esto se introdujo en la investigación ``Distributed Representations of Words and Phrases and their Compositionality'' (2013) \citep{mikolov2013a} donde se hicieron representaciones vectoriales distribuidas para frases, mejorando la capacidad de capturar significados contextuales y relaciones sintácticas en un nivel más alto, lo cual resultó crucial para mejorar los sistemas de recuperación de información y también para la traducción automática.
 
 La investigación GloVe \citep{pennington2014} también implicó grandes avances ya que superó limitaciones que presentaban investigaciones anteriores, al permitir generar analogías del tipo: (vector de embedding para la palabra Rey) menos (vector de embedding para la palabra hombre) más (embedding para la palabra mujer) es igual, o muy aproximado en el espacio semántico, al (vector de embedding de la palabra reina) o simplificado como ``rey-hombre+mujer=reina''.
 
-Igualmente con esta investigación se intensificó el uso de este modelo en tareas de clasificación de texto como las revisadas en \ref{nlproc}, ya que las redes neuronales empezaron a entrenarse con representaciones de vectores de gran densidad que contenían las palabras, el POS y el etiquetado de las dependencias conteniendo cada vector 200 componentes, alcanzando mejores indicadores de desempeño en el etiquetado \citep{chen2014}.
+Igualmente con esta investigación se intensificó el uso de este modelo en tareas de clasificación de texto como las revisadas en \ref{nlproc}, ya que las redes neuronales empezaron a entrenarse con representaciones de vectores de gran densidad que contenían las palabras, el POS y el etiquetado de las dependencias conteniendo cada vector 200 componentes, alcanzando mejores indicadores de desempeño en el etiquetado \citep{chen2014}. Este trabajo fue el que dio soporte a la librería revisada anteriormente de nombre ``coreNLP'' de la Universidad de Stanford.
 
 \hypertarget{trans}{%
 \subsection{\texorpdfstring{Arquitectura de Redes Neuronales \emph{Transformers}:}{Arquitectura de Redes Neuronales Transformers:}}\label{trans}}
 
 En el año 2017 se publica ``Attention Is All You Need'' \citep{vaswani2017} el cual fue una investigación donde se introdujo una nueva arquitectura de redes neuronales que eliminó ciertas limitaciones que venían presentando los modelos de redes neuronales recurrentes y las convolucionales en poder trabajar con largas cadenas de texto. La solución introdujo los llamados ``mecanismos de atención'' \footnote{Los mecanismos de atención permiten al modelo asignar ponderaciones dinámicas a diferentes partes de la entrada, lo que resulta en una comprensión más profunda y contextualizada del texto.} que abrieron el camino para la creación de nuevos modelos de lenguaje como BERT \citep{devlin2018} que capturaban la riqueza de significados y las relaciones complejas del lenguaje mejorando la comprensión de textos, traducción automática y la generación de texto.
 
-``RoBERTa: A Robustly Optimized BERT Pretraining Approach'' \citep{liu2019} optimizó el entrenamiento preexistente de BERT al desvincular la tarea de pre-entrenamiento del tamaño de la cantidad de ejemplos de entrenamiento (\emph{batch size}) y la duración del entrenamiento. Al escalar el tamaño del lote y la cantidad de datos, RoBERTa mejoró la comprensión del modelo sobre el lenguaje, logrando una capacidad de generalización excepcional. Estos métodos que venían innovando e incrementando las capacidades por otra parte también hacían que el tamaño de los conjuntos de datos usados para el entrenamiento fuese creciendo exponencialmente como se analizará en \{\#LLM\} la sección referida a los Largos Modelos del Lenguaje.
+``RoBERTa: A Robustly Optimized BERT Pretraining Approach'' \citep{liu2019} optimizó el entrenamiento preexistente de BERT al desvincular la tarea de pre-entrenamiento del tamaño de la cantidad de ejemplos de entrenamiento (\emph{batch size}) y la duración del entrenamiento. Al escalar el tamaño del lote y la cantidad de datos, RoBERTa mejoró la comprensión del modelo sobre el lenguaje, logrando una capacidad de generalización excepcional. Estos métodos que venían innovando e incrementando las capacidades, por otra parte también hacían que el tamaño de los conjuntos de datos usados para el entrenamiento fuese creciendo exponencialmente, como se analizará en \ref{LLM} la sección referida a los Largos Modelos del Lenguaje.
 
-Otro modelo basado en la arquitectura de Transformers, necesario referir, ya que a un componente del SCSU le da soporte, es el que se publicó bajo el título ``Sentence-BERT: Sentence Embeddings'' \citep{reimers2019a} que a diferencia de los modelos anteriormente expuestos, que trabajaban con la codificación de palabras, en él se logra la codificación de oraciones usando una variante de BERT \citep{devlin2018}. Al entrenar el modelo para entender la similitud semántica entre pares de oraciones, Sentence-BERT aprende representaciones de oraciones que capturan mejor las relaciones semánticas.
+Otro modelo basado en la arquitectura de Transformers, que es necesario referir, ya que a un componente del SCSU le da soporte, es el que se publicó bajo el título ``Sentence-BERT: Sentence Embeddings'' \citep{reimers2019a} que a diferencia de los modelos anteriormente expuestos, que trabajaban con la codificación de palabras, en él se logra la codificación de oraciones usando una variante de BERT \citep{devlin2018}. Al entrenar el modelo para entender la similitud semántica entre pares de oraciones, Sentence-BERT aprende representaciones de oraciones que capturan mejor las relaciones semánticas.
 
-Un punto que era necesario resolver era el lograr tener representaciones de embeddings para distintos idiomas, ya que inicialmente estaban entrenados con textos en idioma ingles y uno de las investigaciones que permitió avanzar en hacia modelos multilingües fue ``Making Monolingual Sentence Embeddings Multilingual'' \citep{reimers2020}, usando la técnica ``Knowledge Distillation'', en lugar de entrenar modelos para cada idioma, este método utiliza un único modelo de referencia monolingüe para guiar el entrenamiento de modelos en múltiples idiomas, basándose en la idea de que ``una frase traducida debe situarse en el mismo lugar del espacio vectorial que la frase original''.
+Un punto que fue necesario resolver, era lograr contar con representaciones de embeddings para distintos idiomas, ya que inicialmente estaban entrenados con textos en idioma ingles y uno de las investigaciones que permitió avanzar hacia modelos multilingües fue ``Making Monolingual Sentence Embeddings Multilingual'' \citep{reimers2020}, usando la técnica ``Knowledge Distillation'', en lugar de entrenar modelos para cada idioma, este método utiliza un único modelo de referencia monolingüe para guiar el entrenamiento de modelos en múltiples idiomas, basándose en la idea de que ``una frase traducida debe situarse en el mismo lugar del espacio vectorial que la frase original''.
 
 Este recorrido por el desarrollo de los embeddings lleva finalmente al modelo ``BETO: Spanish BERT'' \citep{CaneteCFP2020}, que bajo la arquitectura BERT fue entrenado por el Departamento de Ciencias de la Computación Universidad de Chile, disponible en el enlace \url{https://github.com/dccuchile/beto} . Este modelo para la fecha está considerado como el estado del arte para el idioma español, alcanzando una precisión del 98,97\% en tareas como el POS \ref{pos}.
 
 Las investigaciones citadas se hicieron de dominio público y en muchos casos también se colocó a disposición de la comunidad científica los propios modelos preentrenados, lo que hizo que fuesen reproducibles tantos los modelos, como la evaluación de ellos.
 
-Para obtener información sobre los modelos de \emph{embeddings} que presentan una elevada precision y son de alta demanda por la comunidad open source, siendo parte del estado del arte, se tienen herramientas como el ``MTEB: Massive Text Embedding Benchmark'' \citep{muennighoff2022} al que se puede acceder en el enlace \url{https://huggingface.co/spaces/mteb/leaderboard} y muestra información sobre 140 modelos preentrenados en el área del lenguaje.
+Para obtener información sobre los modelos de \emph{embeddings} que presentan una elevada precision y son de alta demanda por la comunidad open source, siendo parte del estado del arte, se tienen herramientas como el ``MTEB: Massive Text Embedding Benchmark'' \citep{muennighoff2022} al que se puede acceder en el enlace \url{https://huggingface.co/spaces/mteb/leaderboard} donde muestra métricas de 140 modelos preentrenados en el área del lenguaje disponibles para el uso público.
 
 \hypertarget{LLM}{%
 \subsection{Largos Modelos de Lenguaje:}\label{LLM}}
@@ -936,9 +957,9 @@ Según lo revisado en la sección de \emph{embeddings} \ref{embed}, la tendencia
 
 El crédito a la visualización \ref{fig:llm} corresponde a Harishdatala (2023). Unveiling the Power of Large Language Models (LLMs). \url{https://medium.com/@harishdatalab/unveiling-the-power-of-large-language-models-llms-e235c4eba8a9} (acceso 23 el octubre, 2023).
 
-Sin entrar en mayores consideraciones sobre este crecimiento y los costos asociados, que imposibilitan a instituciones educativas, empresas de mediano tamaño, investigadores independientes, poder acceder a los sistemas de computadores necesarios para entrenar modelos de estas características, a finales del año 2022 a uno de los modelos llamado ``Generative Pre-trained Transformer 3'' de la empresa OpenAI, del cual no se dispone mayor documentación sobre su arquitectura ni precisión sobre el método de entrenamiento, le es realizado un proceso de ``fine tunning'', que es un ajuste a los parámetros mediante un reentrenamiento, y se creó lo que hoy se conoce comercialmente como ChatGPT 3.5, introduciendo mediante una interface de usuario, la capacidad de que un usuario pueda interactuar con el modelo a manera de conversación a modo de \emph{chat}. Abstrayendo los procesos de entrenamiento, la magnitud de los parámetros y la innovación que representó crear el modelo de chat, lo que se tiene es un usuario interactuando con un modelo semántico de gigantes características.
+Sin entrar en mayores consideraciones sobre este crecimiento y los costos asociados, que imposibilitan a instituciones educativas, empresas de mediano tamaño, investigadores independientes, poder acceder a los sistemas de computadores necesarios para entrenar modelos de estas características, a finales del año 2022 a uno de los modelos llamado ``Generative Pre-trained Transformer 3'' de la empresa OpenAI, del cual no se dispone mayor documentación sobre su arquitectura ni precisión sobre el método de entrenamiento, le es realizado un proceso de ``fine tunning'', que es un ajuste a los parámetros mediante un reentrenamiento, y se creó lo que hoy se conoce comercialmente como ChatGPT 3.5, introduciendo mediante una interface de usuario, la capacidad de que un usuario pueda interactuar con el modelo simulando una conversación. Abstrayendo los procesos de entrenamiento, la magnitud de los parámetros y la innovación que representó crear el modelo de chat, lo que se tiene es un usuario interactuando con un modelo semántico de una magnitud gigante.
 
-En general los Largos Modelos de Lenguaje son entrenados con enormes corpus de textos recopilados de foros de internet, de páginas web, de libros digitalizados y de un basto cúmulo de textos. Si hacemos otra abstracción de un nivel más alto, lo que se tiene es un usuario haciendo un query ante un enorme Corpus que excede y se organiza de una forma distinta a lo que habíamos revisado en los Sistemas de Recuperación de Información \ref{SRI} clásicos donde se tenía una base de dato con documentos indexados. Ahora son distintos tanto el proceso de interacción usuario-computador y más importante aún es que también cambia la representación de la información, ya que cada vez que se coloca un query, este es transformado en un \emph{embedding}, y mediante un proceso estocástico, el LLM va prediciendo la siguiente palabra, de una en una, y se van construyendo respuestas, que pueden llegar a ser fidedignas, o no tanto, dependiendo de la calidad del modelo y de las previsiones que se hayan tomado para mitigar sesgos o entradas de datos incorrectas en la fase de entrenamiento del modelo.
+En general los Largos Modelos de Lenguaje son entrenados con enormes corpus de textos recopilados de foros de internet, de páginas web, de libros digitalizados y de un basto cúmulo de textos. Si hacemos otra abstracción de un nivel más alto, lo que se tiene es un usuario haciendo un \emph{query} ante un enorme Corpus que excede y se organiza de una forma distinta a lo que habíamos revisado en los Sistemas de Recuperación de Información \ref{SRI} clásicos donde se tenía una base de dato con documentos indexados. Ahora son distintos tanto el proceso de interacción usuario-computador y más importante aún es que también cambia la representación de la información, ya que cada vez que se coloca un \emph{query}, este es transformado en un \emph{embedding}, y mediante un proceso estocástico, el LLM va prediciendo la siguiente palabra, de una en una, y se van construyendo respuestas, que pueden llegar a ser fidedignas, o no tanto, dependiendo de la calidad del modelo y de las previsiones que se hayan tomado para mitigar sesgos o entradas de datos incorrectas en la fase de entrenamiento del modelo.
 
 Como queda fuera del alcance de este trabajo explicar como funcionan los modelos del lenguaje, lo que sí se quiere indicar es que en el año 2023 algunas compañías e institutos de investigación privada, empezaron a liberar ciertos modelos, con distintos pesos y versiones, para la comunidad open source, como lo es el modelo Falcon \citep{penedo2023} o el modelo OpenLlama2 \citep{touvron2023} \footnote{la compañía que entrenó el modelo y lo liberó que es Meta indicó que es OpenSource, pero revisiones técnicas hechas a la licencia cuestionan que se pueda considerar que realmente cumpla las especificaciones para que sea considerado plenamente ``open source''. En el enlace \href{https://opensourceconnections.com/blog/2023/07/19/is-llama-2-open-source-no-and-perhaps-we-need-a-new-definition-of-open/}{Is Llama 2 open source?} se encuentra un análisis sobre el tema.}. Con las facilidades para el desarrollo que aportan plataformas como \url{huggingface.com} para la implementación de aplicaciones de inteligencia artificial, mediante el almacenamiento de modelos preentrenados, conjuntos de datos para entrenamiento o sobre entrenamiento, así como librerías con \emph{pipelines} de fácil integración mediante API´s unificadas \citep{wolf2019}, estos LLM´s dejaron de tener un uso limitado sólo para grandes empresas o consorcios tecnológicos y para la fecha es viable que corran en computadoras con capacidades limitadas mediante métodos como la aplicación del quantized que se presenta en la investigación \citep{dettmers2023} que permite que un LLM que por ejemplo necesite unos 16 gb de memoria ram en GPU para ser desplegado, pueda disminuir una cuarta parte hasta los 4 gb.
 
@@ -970,7 +991,7 @@ Finalmente se mencionan algunos puntos de lo que hoy constituye el estado del ar
 \item
   Se están proponiendo nuevos métodos para evaluar la eficacia en los sistemas de ``preguntas-respuestas'' basados en similaridad semántica dadas las limitaciones que presentan las métricas tradicionales que no reflejan el desempeño de estos nuevos modelos \citep{risch2021}.
 \item
-  Mediante técnicas de aprendizaje profundo se están creando conjuntos de datos sintéticos de dominio público que permitan evaluar el desempeño de los sistemas de recuperación de información, usando como entrada las publicaciones de Wikipedia y creando con los modelos los querys, que permitan medir el grado de precisión que alcanza un determinado sistema \citep{frej-etal-2020-wikir}.
+  Mediante técnicas de aprendizaje profundo se están creando conjuntos de datos sintéticos de dominio público que permitan evaluar el desempeño de los sistemas de recuperación de información, usando como entrada las publicaciones de Wikipedia y creando con los modelos los \emph{querys}, que permitan medir el grado de precisión que alcanza un determinado sistema \citep{frej-etal-2020-wikir}.
 \end{enumerate}
 
 Así culmina el recorrido por lo que es el Marco Teórico-Referencial \ref{teorico} que soporta la investigación ``Recuperación, Extracción y Clasificación de Información de SABER UCV''.
@@ -981,9 +1002,9 @@ Así culmina el recorrido por lo que es el Marco Teórico-Referencial \ref{teori
 En este capítulo, se presenta el enfoque metodológico adoptado para este estudio. La metodología Kanban \ref{mmmetodologia} se empleó para gestionar el proceso general, mientras que la metodología de Desarrollo Adaptable de Software \ref{mmasd} guió la creación del software, permitiendo una implementación eficiente y adaptable a las necesidades cambiantes del proyecto \textbf{Recuperación, Extracción y Clasificación de Información de SABER UCV}.
 
 \hypertarget{mmmetodologia}{%
-\section{Metodología de Trabajo:}\label{mmmetodologia}}
+\section{Metodología de Trabajo Kanban:}\label{mmmetodologia}}
 
-Para el desarrollo del Sistema se adoptó la metodología Kanban por considerarse idónea ante los retos propuestos. En ella se fomenta una cultura de mejora continua, incremental, al identificar cuellos de botella, la limitación del trabajo en curso y la mejora continua para aumentar la eficiencia y la productividad. Gracias a su enfoque basado en la colaboración, flexibilidad y respuesta rápida a los cambios puede considerarse que está dentro de las metodologías ``Ágiles'' y se basa en la visualización del flujo de trabajo mediante un tablero, que en el caso de los proyectos de desarrollo de software, facilita la toma de decisiones informadas y promueve la transparencia al proporcionar una visualización clara de las tareas y actividades involucradas \citep{stephens2015}.
+En ella se fomenta una cultura de mejora continua, incremental, al identificar cuellos de botella, la limitación del trabajo en curso para aumentar la eficiencia y la productividad. Gracias a su enfoque basado en la colaboración, flexibilidad y respuesta rápida a los cambios, puede considerarse que está dentro de las metodologías ``Ágiles'' y se basa en la visualización del flujo de trabajo mediante un tablero, que en el caso de los proyectos de desarrollo de software, facilita la toma de decisiones informadas y promueve la transparencia al proporcionar una visualización clara de las tareas y actividades involucradas \citep{stephens2015}.
 
 En el tablero que se aprecia en la figura \ref{fig:metkanban} se puede visualizar y facilitar la gestión del flujo de trabajo, desde la concepción de una idea, hasta su implementación y entrega. Durante el desarrollo de este Sistema se necesitaba contar con la flexibilidad que ofrece esta metodología, ya que en ella no se tienen que definir roles específicos en el equipo desarrollador, ni tampoco se querían definir períodos fijos para alguna fase en particular sino más bien para el desarrollo general.
 
@@ -999,7 +1020,7 @@ En el tablero que se aprecia en la figura \ref{fig:metkanban} se puede visualiza
 \hypertarget{mmasd}{%
 \section{Desarrollo Adaptable de Software:}\label{mmasd}}
 
-El \textbf{Adaptive Software Development (ASD)} \citep{highsmith2000} es una metodología ágil de desarrollo de software que se centra en la adaptabilidad y capacidad para adaptarse a los cambios, proporcionando una retroalimentación temprana y frecuente, dando la flexibilidad para abordar los desafíos cambiantes del desarrollo de software. A diferencia de los enfoques tradicionales, ASD reconoce la naturaleza impredecible del desarrollo de software y se adapta continuamente para satisfacer las necesidades del cliente en un entorno dinámico y complejo, haciendo énfasis en el principio ``Entregar el proyecto que se necesita al final, no el proyecto que se pidió al principio''.
+El \textbf{Adaptive Software Development (ASD)} \citep{highsmith2000} es una metodología ágil de desarrollo de software que se centra en la adaptabilidad y capacidad para adaptarse a los cambios, proporcionando una retroalimentación temprana y frecuente, dando flexibilidad para abordar los desafíos cambiantes del desarrollo de software. A diferencia de los enfoques tradicionales, el ASD reconoce la naturaleza impredecible del desarrollo de software y se adapta continuamente para satisfacer las necesidades del cliente en un entorno dinámico y complejo, haciendo énfasis en el principio ``Entregar el proyecto que se necesita al final, no el proyecto que se pidió al principio''.
 
 \hypertarget{caracteruxedsticas}{%
 \subsection{Características:}\label{caracteruxedsticas}}
@@ -1013,7 +1034,11 @@ El \textbf{Adaptive Software Development (ASD)} \citep{highsmith2000} es una met
 \hypertarget{ciclos}{%
 \subsection{Ciclos:}\label{ciclos}}
 
-El desarrollo adaptable de software se basa en un proceso dinámico e iterativo donde cada ciclo contiene las siguientes fases: Especular-Colaborar-Aprender. El proceso se enfoca en el aprendizaje continuo y la colaboración intensiva entre desarrolladores y clientes, fundamental para enfrentar las cambiantes dinámicas empresariales.
+El desarrollo adaptable de software se basa en un proceso dinámico e iterativo donde cada ciclo contiene las siguientes fases: Especular-Colaborar-Aprender. El proceso se enfoca en el aprendizaje continuo y la colaboración intensiva entre desarrolladores y clientes, fundamental para enfrentar las cambiantes dinámicas empresariales. Es relevante destacar que, en algunas circunstancias, los ciclos pueden avanzar simultáneamente en ciertas iteraciones, permitiendo así una optimización del tiempo y recursos.
+
+En cada ciclo, se pueden realizar múltiples iteraciones con el objetivo de desarrollar exhaustivamente todos los requisitos contemplados en dicho ciclo.
+
+Estos ciclos representan un enfoque metodológico que asegura la coherencia y calidad del desarrollo del sistema. A través de la especulación, la colaboración y el aprendizaje continuo, se logra un refinamiento progresivo de las funcionalidades del sistema, garantizando así su robustez y adaptabilidad a las demandas del entorno. Este enfoque iterativo y colaborativo constituye una práctica fundamental en el proceso de desarrollo, facilitando la identificación temprana de posibles desafíos y fomentando la innovación constante en cada etapa del ciclo.
 
 \begin{figure}
 
@@ -1039,38 +1064,36 @@ Las aplicaciones complejas requieren la recopilación y el análisis de grandes 
 
 La evaluación continua del conocimiento a través de retroalimentaciones y reuniones grupales al final de cada ciclo iterativo es esencial. Este enfoque difiere de la evaluación al final del proyecto. Evaluar constantemente permite enfrentar y resolver de manera efectiva los cambios constantes del proyecto y su adaptación.
 
-Para el desarrollo del SCSU se hizo un proceso iterativo donde en cada ciclo se abordó cada una de las fases descritas y así se fueron añadiendo funcionalidades al Sistema, y también en otros casos desechándolas, ya que no se adaptaban de forma correcta a los objetivos propuestos. Como esta metodología se enfoca en construir el software en pequeñas y frecuentes partes incrementales, añadiendo funcionalidades con cada iteración, es válido asumir que este modelo es representativo para la aproximación de desarrollo realizada.
-
-La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evolucionan. Esto fue lo que se hizo en reuniones continuas en la materia Tópicos Especiales en Sistemas de Información y Gerencia que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis ,se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados usados para los procesamiento de los textos.
-
 \hypertarget{desarrollo}{%
 \chapter{Desarrollo de la Solución:}\label{desarrollo}}
 
-En este Capítulo en \ref{desarrollodescripcion} se presenta la \textbf{Descripción General de la Solución}. Posteriormente se muestra la \ref{desarrolloarquitectura} \textbf{Arquitectura de la Solución} con el ``Modelo-Vista-Controlador''. En \ref{desarrollociclos} se exponen los cinco \textbf{Ciclos de Desarrollo} que se efectuaron, mientras que en \ref{pruebas} \textbf{Pruebas} se muestran las distintas pruebas que fueron ejecutadas.
+En este Capítulo en \ref{desarollodescripcion} se presenta la \textbf{Descripción General de la Solución}. Posteriormente se muestra la \ref{desarrolloarquitectura} \textbf{Arquitectura de la Solución} con el ``Modelo-Vista-Controlador''. En \ref{desarrollociclos} se exponen los cuatro \textbf{Ciclos de Desarrollo} que se efectuaron, mientras que en \ref{pruebas} \textbf{Pruebas} se encuentran las distintas pruebas que fueron ejecutadas para medir el comportamiento y redindimiento del software desarrollado.
 
 \hypertarget{desarollodescripcion}{%
 \section{Descripción General de la Solución:}\label{desarollodescripcion}}
 
-La propuesta consiste en implementar un Sistema de Recuperación de Información para extraer datos estructurados de los trabajos disponibles en Saber UCV. Utilizando técnicas de extracción de datos de archivos HTML, se obtienen detalles como el título, el nombre del investigador, palabras clave, fecha de publicación y el resumen de cada investigación.
+La propuesta consiste en implementar un Sistema de Recuperación de Información sobre un corpus de documentos de tesis de grado y trabajos de grado que originalmente se encuentran alojados en el repositorio digital Saber UCV . Utilizando técnicas de extracción de datos de archivos HTML, desde la ficha de cada investigación, se obtienen detalles como el título, el nombre del autor, palabras clave, fecha de publicación y el resumen.
 
-Posteriormente, el sistema descarga los documentos anexos en formato Word o PDF, que contienen la investigación, da lectura y extráe de la información sobre la facultad, escuela o postgrado, así como el nombre del tutor.
+Posteriormente el Sistema descarga el documento refenciado en cada ficha, el cual contiene el texto completo de la investigación, da lectura y clasifica información sobre el nombre de la facultad, la escuela o postgrado donde fue realizado el trabajo e igualmente extrae el nombre del tutor.
 
-Todos los datos obtenidos se integran en un corpus, el cual es sometido a técnicas avanzadas de Procesamiento del Lenguaje Natural y Minería de Texto. Esto incluye la creación de un corpus anotado y un índice invertido y una tabla con los vectores de \emph{embeddings} (vector database), esenciales para un eficiente manejo de la base de datos.
+Todos los datos obtenidos son sometidos a técnicas del estado del arte en el Procesamiento del Lenguaje Natural y la Minería de Texto para conformar un corpus anotado, un índice invertido y una tabla con los vectores de \emph{embeddings} (vector database), esenciales para un eficiente manejo de la base de datos.
 
-La aplicación resultante es una solución web distribuida, basada en una arquitectura cliente-servidor la cual permite a los usuarios explorar extensivamente el corpus anotado, realizando consultas de texto y aplicando varios filtros como área académica, rango de fechas y palabras clave. La relevancia de los resultados recuperados se determina mediante funciones de ponderación, y se presenta de manera priorizada para mejorar la experiencia del usuario.
+La solución resultante es una aplicación web que se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura ``modelo-vista-controlador'', permitiendo a los usuarios desde un navegador web explorar extensivamente el corpus anotado, realizando consultas de texto y aplicando varios filtros como la selección de la jerarquía, el área académica y el rango de fechas.
 
-Adicionalmente, el sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También presenta una herramienta interactiva de visualización, que permite la representación gráfica de ``mapas del conocimiento''. Estos mapas, basados en técnicas adaptadas de minería de texto, proporcionan una representación visual intuitiva de las palabras coocurrentes en los resultados de búsqueda.
+La relevancia de los resultados recuperados se determina mediante una función de ponderación y los documentos se presentan de manera priorizada para mejorar la experiencia del usuario.
+
+Adicionalmente, el Sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También muestra una herramienta interactiva de visualización, que permite la representación gráfica de ``Mapas de Conocimiento''. Estos mapas, generados con técnicas de minería de texto, proporcionan una representación visual intuitiva de las palabras coocurrentes en los resultados de búsqueda.
 
 La solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV.
 
 \hypertarget{desarrolloarquitectura}{%
 \section{Arquitectura de la Solución:}\label{desarrolloarquitectura}}
 
-En la figura \ref{fig:arquitecturamvc} se muestra el modelo con la arquitectura ``Modelo-Vista-Controlador'' y posteriormente se describe el comportamiento
+La arquitectura ``Modelo-Vista-Controlador'' se muestra en la figura \ref{fig:arquitecturamvc} y posteriormente se describe el comportamiento y las interacciones de los componentes.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{images/05-desarrollo/MVC3} 
+{\centering \includegraphics[width=0.9\linewidth]{images/05-desarrollo/MVC9} 
 
 }
 
@@ -1078,11 +1101,11 @@ En la figura \ref{fig:arquitecturamvc} se muestra el modelo con la arquitectura 
 \end{figure}
 
 \hypertarget{modelo}{%
-\subsection{\texorpdfstring{\textbf{1. Modelo:}}{1. Modelo:}}\label{modelo}}
+\subsection{\texorpdfstring{\textbf{Modelo:}}{Modelo:}}\label{modelo}}
 
-El Modelo en el contexto de esta propuesta es la parte del Sistema que se ocupa de la manipulación y gestión de los datos mediante el gestor de base de datos PostgreSQL. Esto incluye el Procesamiento del Lenguaje Natural, la Minería de Texto y la creación del índice invertido. Además, el Modelo se encarga de hacer la lectura de los datos en html que se encuentran en el repositorio Saber UCV y extrae datos como el título, nombre del investigador, palabras clave, fecha de publicación y resumen. También gestiona la lectura y la extracción de datos de los documentos descargados en formatos word o PDF. Esta parte del Sistema también incluye la lógica para generar los \emph{embeddings} y manejar el corpus anotado. Es el encargado de realizar las tareas de actualizar el corpus periódicamente y actualizar las recomendaciones de documentos a medida que se agreguen nuevos textos. En \ref{desarrollociclos4} el cuarto y \ref{desasarrollociclos5} y quinto ciclo de iteración se expondrán con detalle los componentes del Modelo.
+El \emph{Modelo,} en el contexto de esta propuesta, es la parte del Sistema que se ocupa de la manipulación y gestión de los datos mediante el gestor de base de datos PostgreSQL. Esto incluye el Procesamiento del Lenguaje Natural, la Minería de Texto y la creación del índice invertido. Además, el \emph{Modelo} se encarga de hacer la lectura de los datos en html que se encuentran en el repositorio Saber UCV y extrae el título, nombre del investigador, palabras clave, fecha de publicación y resumen. También gestiona la lectura y la extracción de datos de los documentos descargados en formatos word o PDF. Esta parte del Sistema también incluye la lógica para generar los \emph{embeddings} y manejar el corpus anotado. Es el encargado de realizar las tareas de actualizar el corpus periódicamente y las recomendaciones de documentos a medida que se agreguen nuevos textos. En \ref{desarrollociclos4} el tercer ciclo de desarrollo se expondrán con detalle los componentes del \emph{Modelo}.
 
-Estos son los principales procesos que contiene el Modelo:
+Estos son los principales procesos contenidos en el \emph{Modelo}:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1094,13 +1117,14 @@ Estos son los principales procesos que contiene el Modelo:
     Tokenización: Dividir el texto en palabras o frases significativas.
   \item
     Lematización: Reducir las palabras a su forma base para un análisis más preciso.
+  \item
+    POS: etiquetado de partes del discurso.
   \end{itemize}
 \item
   \textbf{Minería de Texto:}
 
   \begin{itemize}
-  \item
-    POS: etiquetado del Part of Speach.
+  \tightlist
   \item
     Análisis de Frecuencia: Determinar la frecuencia de ocurrencia de palabras o frases.
   \end{itemize}
@@ -1111,7 +1135,7 @@ Estos son los principales procesos que contiene el Modelo:
   \item
     Utilización de modelo preentrenado para convertir palabras o frases en vectores numéricos.
   \item
-    Convertir en vectores las palabras que componen el query para realizar comparaciones semánticas y determinar similitudes entre palabras o documentos.
+    Convertir en vectores las palabras que componen el \emph{query} para realizar comparaciones semánticas y determinar similitudes entre palabras o documentos.
   \end{itemize}
 \item
   \textbf{Creación del Índice Invertido:}
@@ -1147,41 +1171,616 @@ Estos son los principales procesos que contiene el Modelo:
   \item
     Los procesos descritos anteriormente son ejecutados y/o actualizados periódicamente.
   \item
-    Se realiza la validación de la integridad de datose para asegurar que los nuevos datos se integren correctamente sin errores o inconsistencias, eliminando posibles duplicados o datos incorrectos.
+    Se realiza la validación de la integridad de datos para asegurar que los nuevos datos se integren correctamente sin errores o inconsistencias, eliminando posibles duplicados o valores incorrectos.
   \end{itemize}
 \end{enumerate}
 
 \hypertarget{vista}{%
-\subsection{\texorpdfstring{\textbf{2. Vista:}}{2. Vista:}}\label{vista}}
+\subsection{\texorpdfstring{\textbf{Vista:}}{Vista:}}\label{vista}}
 
-La Vista se implementa mediante el framework para crear aplicaciones web interactivas Shiny \citep{shiny} \footnote{El framework Shiny incluye dos componentes principales. El primero es la UI (Interface de Usuario), que corresponde a la ``Vista''. El otro componente es el ``Server'' que en la representación actual es el Controlador.} que tiene un componente de Interface de Usuario (UI) donse se puede indicar el texto con el que se hará la bíusqueda y también permite a los usuarios aplicar filtros como área académica y rango de fechas durante. Posterior a la definición de los criterios del query, la Vista muestra las tablas con los resultados de las búsqueda, las representaciones visuales como los ``mapas del conocimiento'', así como las recomendaciones de documentos similares.
+La \emph{Vista} se implementa mediante el \emph{framework} ``Shiny'' \citep{shiny} \footnote{El framework Shiny incluye dos componentes principales. El primero es la UI (Interface de Usuario), que corresponde a la ``Vista''. El otro componente es el ``Server'' que en la representación actual es el Controlador.} que permite crear aplicaciones web interactivas y tiene un componente de ``User Inferface (UI)'' donde el usuario introduce el texto con el que se hará la búsqueda y aplica filtros como jerarquía, área académica y rango de fechas. Posterior a la definición de los atributos del \emph{query}, se genera la acción y al recibir la respuesta desde el Controlador, la \emph{Vista} se actualiza y muestra las tablas con los resultados de las búsqueda, las representaciones visuales como los ``mapas del conocimiento'', así como las recomendaciones de documentos similares.
 
 \hypertarget{controlador}{%
-\subsection{\texorpdfstring{\textbf{3. Controlador:}}{3. Controlador:}}\label{controlador}}
+\subsection{\texorpdfstring{\textbf{Controlador:}}{Controlador:}}\label{controlador}}
 
-El Controlador se implementa mediante el el framework para crear aplicaciones web interactivas Shiny \citep{shiny} que tiene un componente denominado Server que es el responsable de manejar las interacciones del usuario, procesar las consultas de texto y aplicar los filtros seleccionados. También se encarga de orquestar las operaciones entre el Modelo y la Vista, asegurando que los datos se presenten correctamente y que las consultas se procesen de manera eficiente. Desde el Controlador hace el llamado a la API donde se genera el embedding del query y se determina la relevancia de los documentos recuperados y en paralelo remite el query a la base de datos. El Controlador se encarga de aplicar el re ordenamiento para mostrar primero los resultados más relevantes. En el Controlador se genera la estructura de datos necesaria para representar los mapas del conocimiento.
+El \emph{Controlador} se implementa mediante el el \emph{framework} ``Shiny'' que tiene un componente denominado ``Server'' que es el responsable de manejar las interacciones del usuario, procesar las consultas de texto y aplicar los filtros seleccionados. También se encarga de orquestar las operaciones entre el \emph{Modelo} y la \emph{Vista}, asegurando que los datos se presenten correctamente y que las consultas se procesen de manera eficiente. Desde el \emph{Controlador} se hace el llamado al componente del \emph{Modelo} donde se encuentra la API para generar el \emph{embedding} del \emph{query} y determinar la relevancia de los documentos recuperados. El \emph{Controlador} se encarga de aplicar el re ordenamiento para mostrar primero los resultados más relevantes. En él se genera la estructura de datos necesaria para representar los mapas del conocimiento con datos obtenidos del \emph{Modelo}.
 
 \hypertarget{desarrollociclos}{%
 \section{Ciclos de Desarrollo:}\label{desarrollociclos}}
 
+Los Ciclos de Desarrollo \ref{mm} constituyen en fases críticas del proceso, donde se conciben, diseñan y perfeccionan las funcionalidades del Sistema. Cada uno de estos ciclos está estructurado en tres etapas fundamentales: la etapa de especulación, donde se plantean las ideas y se exploran posibles soluciones; la etapa de colaboración, donde se trabaja en equipo para implementar estas ideas y se evalúan los resultados; y la etapa de aprendizaje, donde se analizan las experiencias pasadas y se ajustan las estrategias para futuras iteraciones.
+
+Para el desarrollo del SCSU se hizo un proceso iterativo donde en cada ciclo se abordó cada una de las fases descritas y así se fueron añadiendo funcionalidades al Sistema, y en otros casos se desecharon ya que no se adaptaban de forma correcta a los objetivos propuestos. Como esta metodología se enfoca en construir el software en pequeñas y frecuentes partes incrementales, añadiendo funcionalidades con cada iteración, es válido asumir que este modelo es representativo de la aproximación de desarrollo realizada.
+
+La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evoluciona. Esto fue lo que se hizo en reuniones continuas en la materia \emph{Tópicos Especiales en Sistemas de Información y Gerencia} que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis, se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados usados para los procesamiento de los textos.
+
+Los Ciclos que se van a exponer son los siguientes: en \ref{desarrollociclos1} se exponen las tres iteraciones realizadas para la \textbf{Conformación del Conjunto de Datos}. En \ref{desarrollociclos3} se revisa el \textbf{Prototipo del SCSU}, mientras que en \ref{desarrollociclos4} se hace la \textbf{Integración de los Componentes del Software} y en \ref{desasarrollociclos5} se hace una versión del Sistema que incluye un \textbf{Buscador Semántico}.
+
 \hypertarget{desarrollociclos1}{%
-\subsection{Obtención del Conjunto de Datos:}\label{desarrollociclos1}}
+\subsection{Ciclo - Conformación del Conjunto de Datos:}\label{desarrollociclos1}}
 
-Recuperación
+En este ciclo es donde se ejecutaron las tareas que permitieron conformar el conjunto de datos, proceso necesario para poder desarrollar el Sistema Complementario Saber UCV acorde a lo planteado en el \ref{objeespe} \textbf{Objetivo Específico} \textbf{1}.
 
-\hypertarget{desarrollociclos2}{%
-\subsection{Extracción y Clasificación de Información del Conjunto de Datos:}\label{desarrollociclos2}}
+Se realizaron tres iteraciones para lograr el objetivo. La primera \ref{scrapeo} fue la \textbf{Extracción de Datos web}, también conocidas como ``web scraping'', la segunda iteración \ref{labels} correspondió al \textbf{Levantamiento de las Categoría}s, que son los nombres de las carreras de pregrado y de los postgrados que se imparten en la Universidad Central de Venezuela, mientras que en la tercera \ref{asignacion} iteración se hizo la \textbf{Clasificación de los Trabajos} asociando a cada investigación el nombre de la carrera o del postgrado e igualmente se hizo la extracción del nombre del tutor, acorde a lo planteado en el \ref{objeespe} \textbf{Objetivo Específico 2}.
 
-Extracción y clasificación
+\hypertarget{scrapeo}{%
+\subsubsection{Iteración- ``Extracción de Datos web Saber UCV'':}\label{scrapeo}}
+
+\hypertarget{especulaciuxf3n-1}{%
+\paragraph{Especulación:}\label{especulaciuxf3n-1}}
+
+El repositorio Saber UCV en la sección ``Comunidades/Tesis'' aloja las cantidades de trabajos por nivel académico que se muestran en el cuadro \ref{tab:cantidadesteg} :
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{1.06in}|p{0.78in}|p{1.01in}|p{1.15in}}
+
+\caption{Cantidades\ de\ Trabajos\ por\ Categoría}\label{tab:cantidadesteg}\\
+
+\ascline{1.5pt}{666666}{1-4}
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 1.06in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Pregrado}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.78in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Otras}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.01in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Maestría}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Doctorado}}}}} \\
+
+\ascline{1.5pt}{666666}{1-4}\endfirsthead \caption[]{Cantidades\ de\ Trabajos\ por\ Categoría}\label{tab:cantidadesteg}\\
+
+\ascline{1.5pt}{666666}{1-4}
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 1.06in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Pregrado}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.78in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Otras}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.01in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Maestría}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Doctorado}}}}} \\
+
+\ascline{1.5pt}{666666}{1-4}\endhead
+
+
+
+\multicolumn{4}{>{\raggedleft}m{\dimexpr 3.99in+6\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{cifras\ de\ Saber.UCV\ a\ la\ fecha\ 01/11/2023}}}} \\
+
+\ascline{0.75pt}{666666}{1-4}\endfoot
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 1.06in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{8.305}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.78in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.477}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.01in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{743}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{318}}}} \\
+
+\ascline{1.5pt}{666666}{1-4}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+En la minería de datos con la extracción de datos web es posible ``recolectar, procesar, analizar y extraer útiles conocimientos a partir de los datos disponibles'' \citep{aggarwal2018}. Por esto se quiere replicar en un conjunto de datos alojado localmente, la información contenida en el repositorio Saber UCV, incluyendo: categoría (pregrado, otros, maestría, doctorado), el título, autor, fecha de publicación, palabras clave, \emph{url} de descarga \footnote{este \emph{url} correponde a el documento escrito del trabajo de grado o tesis que se encuentra alojado en word o pdf.} y el texto del resumen. Al obtener esta información se puede dar inicio a la conformación del corpus.
+
+\hypertarget{colaboraciuxf3n-1}{%
+\paragraph{Colaboración:}\label{colaboraciuxf3n-1}}
+
+En esta etapa se realizaron dos procesos de extracción de datos web usando el lenguaje de programación R version 4.3.1 (2023-06-16) \citep{R}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  El primero fue encontrar los \emph{url}´s de cada trabajo alojado en el repositorio Saber UCV, usando la extensión \emph{SelectorGadget} (\url{https://selectorgadget.com/}) del navegador \emph{Google Chrome}, con la que es viable mediante un \emph{click} sobre un elemento de la página donde se listan los trabajos, por ejemplo ``\protect\hyperlink{0}{http://saber.ucv.ve/handle/10872/1957/browse?type=dateissued\&sort\_by=2\&order=DESC\&rpp=1000}'', que se obtenga la etiqueta \emph{css}, en este caso ´\emph{evenRowOddCol´}, ver figura \ref{fig:nodosurl}, que identifica a los nodos dentro de la página que tienen los enlaces \emph{href} a las fichas de cada investigación.
+
+  Posteriormente con el paquete \emph{rvest} \citep{rvest} que permite la descarga de páginas web y la manipulación de nodos XML se pudieron extraer los 10.843 \emph{urls} a visitar.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/05-desarrollo/1_ciclo/Picture3} \includegraphics[width=0.5\linewidth]{images/05-desarrollo/1_ciclo/Picture2} 
+
+}
+
+\caption{Etiquetas nodos url´s}\label{fig:nodosurl}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  En una segunda fase se localizó en la ficha de un trabajo alojado en Saber UCV, mediante la misma técnica indicada en el punto anterior, la etiqueta \emph{css}, en este caso la \emph{`.metadataFieldValue' ,} que permite extraerlos datos: título, autor, fecha de publicación, palabras clave, url de descarga del documento y el texto del resumen. En la figura \ref{fig:nodosurl}-b se aprecia una imagen de una ficha. Contando con el listado de urls y la identificación de los datos a extraer, se hizo un bucle para visitar cada enlace y a una estructura de datos tabular se le fue añadiendo en una fila, cada colección de datos descargados.
+\end{enumerate}
+
+\hypertarget{aprender}{%
+\paragraph{Aprender:}\label{aprender}}
+
+Se enfrentaron las siguientes dificultades y se adoptaron en algunos casos las correspondientes soluciones:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Se realizaron varios intentos para la descarga y extracción de los valores. Para la obtención de cada campo, en principio se tomó de referencia la posición fija en que aparecía dentro de la ficha, porque se había asumido que las estas tenían la misma estructura para todos los trabajos no siendo así. En algunas aparecían otros valores, p.~ej. el de ``colección'', alterando la posición en que se encuentra el dato a extraer. La solución adoptada fue que primero se localizarán dentro la ficha los títulos de los campos, con esto se generó el listado de los valores posicionales y relativo a estos se extrajeron los valores propuestos.
+\item
+  Algunos valores de las fechas contenían información parcial faltando el mes y/o el día. Se adoptó un método de imputar el valor ``1'' tanto el mes como el día faltante.
+\item
+  Adoptar previsiones para caídas del servidor de Saber UCV y resguardar en cada vuelta del bucle la información extraída, para no perder el trabajo de extracción acumulado en caso de una falla remota o local en el acceso al servidor.
+\item
+  La revisión del conjunto de datos obtenido mostró que existen valores duplicados en el título de los trabajos y en los resúmenes, algunas veces por la introducción de algún carácter adicional o mínimas alteraciones . Para descartar registros repetidos se aplicó una función de limpieza al texto (convertir a minúscula, remover signos puntuación, acentos, etc.). Posteriormente se obtuvieron sendos valores \emph{hash} sobre el título y el resumen, y luego se descartaron los \emph{hashes} duplicados. Adicionalmente se decidió usar el \emph{hash} obtenido del ``título''como el identificador único de cada documento. En el cuadro \ref{tab:cantidadesduplicados} se muestra la cantidad de valores duplicados que se encontraron según el método descrito.
+
+  \global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+  \global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+  \setlength{\tabcolsep}{0pt}
+
+  \renewcommand*{\arraystretch}{1.5}
+
+
+
+  \providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+  \begin{longtable}[c]{|p{1.07in}|p{1.25in}|p{0.89in}|p{1.21in}}
+
+  \caption{Cantidades\ de\ Trabajos\ Duplicados}\label{tab:cantidadesduplicados}\\
+
+  \ascline{1.5pt}{666666}{1-4}
+
+  \multicolumn{1}{>{\raggedright}m{\dimexpr 1.07in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Jerarquía}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Disponibles}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.89in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Únicos}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.21in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Duplicados}}}}} \\
+
+  \ascline{1.5pt}{666666}{1-4}\endfirsthead \caption[]{Cantidades\ de\ Trabajos\ Duplicados}\label{tab:cantidadesduplicados}\\
+
+  \ascline{1.5pt}{666666}{1-4}
+
+  \multicolumn{1}{>{\raggedright}m{\dimexpr 1.07in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Jerarquía}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Disponibles}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.89in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Únicos}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.21in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Duplicados}}}}} \\
+
+  \ascline{1.5pt}{666666}{1-4}\endhead
+
+
+
+  \multicolumn{4}{>{\raggedright}m{\dimexpr 4.43in+6\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{cifras\ de\ Saber.UCV\ a\ la\ fecha\ 01/11/2023}}}} \\
+
+  \ascline{0.75pt}{666666}{1-4}\endfoot
+
+
+
+  \multicolumn{1}{>{\raggedright}m{\dimexpr 1.07in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{pregrado}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{8.305}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.89in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{7.539}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.21in+0\tabcolsep}}{\textcolor[HTML]{FF0000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{766}}}} \\
+
+  \ascline{0.75pt}{666666}{1-4}
+
+
+
+  \multicolumn{1}{>{\raggedright}m{\dimexpr 1.07in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{otras}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.477}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.89in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.184}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.21in+0\tabcolsep}}{\textcolor[HTML]{FF0000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{293}}}} \\
+
+  \ascline{0.75pt}{666666}{1-4}
+
+
+
+  \multicolumn{1}{>{\raggedright}m{\dimexpr 1.07in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{maestría}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{743}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.89in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{683}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.21in+0\tabcolsep}}{\textcolor[HTML]{FF0000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{60}}}} \\
+
+  \ascline{0.75pt}{666666}{1-4}
+
+
+
+  \multicolumn{1}{>{\raggedright}m{\dimexpr 1.07in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{doctorado}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{318}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.89in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{299}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.21in+0\tabcolsep}}{\textcolor[HTML]{FF0000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{19}}}} \\
+
+  \ascline{1.5pt}{666666}{1-4}
+
+
+
+  \end{longtable}
+
+
+
+  \arrayrulecolor[HTML]{000000}
+
+  \global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+  \global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+  \renewcommand*{\arraystretch}{1}
+\end{enumerate}
+
+\hypertarget{labels}{%
+\subsubsection{Iteración- Levantamiento de Categorías:}\label{labels}}
+
+\hypertarget{especulaciuxf3n-2}{%
+\paragraph{Especulación:}\label{especulaciuxf3n-2}}
+
+Para poder clasificar cada investigación es necesario contar con las categorías que serán asignadas. Se entiende por ``categoría'' el nombre de la carrera de pregrado o el postgrado, junto con la facultad, que constituyen la oferta de la Universidad Central de Venezuela en educación universitaria.
+
+Al no encontrarse el listado de categorías disponible en el propio repositorio Saber UCV fue necesario realizar una búsqueda web de esta información, extraerla y estructurarla, para así contar con el conjunto de datos de categorías que permita ejecutar la siguiente iteración que es la de \textbf{Extracción y Clasificación de las Investigaciones} \ref{asignacion}.
+
+\hypertarget{colaboraciuxf3n-2}{%
+\paragraph{Colaboración:}\label{colaboraciuxf3n-2}}
+
+Se visitó al sitio oficial de la Universidad Central de Venezuela para revisar la oferta de pregrados y postgrados. Para los postgrados se encontró para cada categoría (especialización, maestría y doctorado) una página con el listado, p.~ej.
+
+\url{http://www.ucv.ve/organizacion/vrac/gerencia-de-investigacion-cientifica-y-humanistica/gerencia-de-estudios-de-postgrado/programas-de-postgrado-ucv/maestria.html} \footnote{previendo posibles modificacions en las páginas que contienen los listado de postgrados, se procedió a respaldarlas y forman parte del contenido del repositorio asociado a esta Investigación para garantizar la reproducibilidad de los resultados obtenidos. Para la fecha de redacción de este documento el contenido de los \emph{urls} indicados fue modificado}. En la figura \ref{fig:maestrias} se aprecian las potenciales etiquetas para las maestrías.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.4\linewidth]{images/05-desarrollo/1_ciclo/maestrias} 
+
+}
+
+\caption{Listado de Maestrías}\label{fig:maestrias}
+\end{figure}
+
+Mediante la técnica de recuperación de datos web la información descrita en \ref{scrapeo} se procedió a extraer el nombre de cada postgrado, añadir el nivel académico y asociar la facultad a la cual está adscrito. La cantidad de postgrados agrupados por nivel académico se muestran en el cuadro \ref{tab:resultpostgrado}.
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{1.52in}|p{1.01in}|p{1.15in}}
+
+\caption{Cantidades\ de\ Postgrados\ por\ Categoría}\label{tab:resultpostgrado}\\
+
+\ascline{1.5pt}{666666}{1-3}
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 1.52in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Especialización}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.01in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Maestría}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Doctorado}}}}} \\
+
+\ascline{1.5pt}{666666}{1-3}\endfirsthead \caption[]{Cantidades\ de\ Postgrados\ por\ Categoría}\label{tab:resultpostgrado}\\
+
+\ascline{1.5pt}{666666}{1-3}
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 1.52in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Especialización}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.01in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Maestría}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Doctorado}}}}} \\
+
+\ascline{1.5pt}{666666}{1-3}\endhead
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 1.52in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{228}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.01in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{101}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{46}}}} \\
+
+\ascline{1.5pt}{666666}{1-3}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+En cuanto a los pregrados no se encontró en el sitio de la Universidad en una página centralizada la información y se procedió a obtenerla de la página \href{https://es.wikipedia.org/wiki/Anexo:Facultades_de_la_Universidad_Central_de_Venezuela}{wikipedia} asociada a la U.C.V. recuperando un total del 50 nombres de escuelas de pregrado junto con la facultad de dependencia.
+
+\hypertarget{aprender-1}{%
+\paragraph{Aprender:}\label{aprender-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  En el caso de los postgrados, inicialmente se esperaba que sólo estuvieran asociados a Facultades pero también se encontró que el Centro de Estudios del Desarrollo y el Centro de Estudios Integrales del Ambiente dictan este tipo de estudios.
+\item
+  Se evaluó que existen nombres postgrados duplicados con la misma categoría, lo que puede generar problemas en la clasificación de las investigaciones teniendo como ejemplo la ``Maestría en Estadística'' que se dicta en la Facultad de Agronomía y en la Facultad de Ciencias Económicas y Sociales.
+\item
+  Se detectó que en pregrado existen escuelas que otorgan distintos títulos, p.~ej. de la ``Escuela de Administración y Contaduría'' se pueden obtener los títulos de ``contador'' o de ``licenciado en administración''. Esto es algo a tener presente al momento de hacer la categorización ya que el nombre de la escuela no sirve en estos casos para realizarla, siendo necesario agregar al conjunto de datos el atributo de los títulos emitidos.
+\item
+  Algunos cuidados que se tuvieron que realizar sobre los textos fue la limpieza de estos, ya que en los listados se encontró que algunos nombres le faltaban palabras y la revisión de nombres, dada la cantidad total de 425 dependencias, se hizo manualmente para evitar errores que llevasen a problemas en la categorización.
+\end{enumerate}
+
+\hypertarget{asignacion}{%
+\subsubsection{Iteración- Extracción y Clasificación de las Investigaciones:}\label{asignacion}}
+
+En esta iteración se omiten diversos problemas que se encontraron para el procesamiento de lectura y clasificación de los documentos, ya que extenderse en este punto abultaría considerablemente el contenido expuesto.
+
+\hypertarget{especulaciuxf3n-3}{%
+\paragraph{Especulación:}\label{especulaciuxf3n-3}}
+
+Para las investigaciones que reposan en Saber UCV que cuentan con un archivo anexo, correspondiente al documento de la misma, es posible realizar la descarga, extraer una porción de texto y adoptando métodos basados en reglas de coincidencia de patrones, con las etiquetas obtenidas en la iteración \ref{labels} \textbf{Levantamiento de Categorías}, hacer la categorización por área de estudio, asignando el nombre del pre o postgrado, la escuela-postgrado y la facultad-centro de adscripción. Igualmente de esta porción de texto se estima viable extraer el nombre del tutor.
+
+\hypertarget{colaboraciuxf3n-3}{%
+\paragraph{Colaboración:}\label{colaboraciuxf3n-3}}
+
+Motivado a que en la primera iteración \ref{scrapeo} para conformar el conjunto de datos se había obtenido el \emph{url} asociado al documento soporte de la investigación, se procedió mediante un bucle a realizar la descarga de cada documento y extraer una cantidad de dos mil caracteres, partiendo del principio de que los trabajos de grado o tesis en sus primeras páginas tienen el nombre de la carrera o el postgrado, el nombre de la facultad-centro donde se cursó el estudio y el nombre del tutor.
+
+En esta iteración fue necesario realizar distintas adaptaciones para lograr la coincidencia de patrones. Teniendo en cuenta que son 425 etiquetas las que se usarán para realizar la clasificación, llegando a tener algunas 14 palabras, es elevada la probabilidad de que no se pueda hacer el ``pattern matching'' entre el texto y la categoría.
+
+Lo anterior motivo a realizar un proceso de limpieza, modificación y disminución de la cantidad de palabras, tanto en las etiquetas como en el texto extraído. Se evaluó en cada adaptación cuáles razones impedían clasificar los documentos aún pendientes, se tomaron los correctivos y así se fue incrementando, de forma iterativa, la precisión en este proceso.
+
+También se tuvo que tomar en cuenta el orden en que iba a ejecutar la secuencia de encontrar las coincidencias. Ejemplo es que varias facultades contienen las mismas tres palabras en la parte inicial de su nombre: \emph{Facultad de Ciencias}, \emph{Facultad de Ciencias} Jurídicas y Políticas, \emph{Facultad de Ciencias} Económicas y Sociales y la \emph{Facultad de Ciencias} Veterinarias. La secuencia para hacer la detección de la coincidencia fue buscar en orden decreciente por el total de caracteres que tenga el nombre de la facultad.
+
+Adicionalmente en el proceso de hacer coincidir las frases, se encontraron 17 postgrados que no estaban en el listado previamente conformado, los cuales se tuvieron que agregar al conjunto de datos de las categorías.
+
+Para aquellos casos donde no se podía hacer \emph{match} se aplicó el algorimo ``Smith Waterman'' \citep{smith1981} el cual fue expuesto en \ref{alghist} el Capítulo del Marco Teórico. Con este algoritmo se pueden alinear dos cadenas de texto cuando una de ellas no tiene coincidencia absoluta con la otra, como puede pasar en este caso por la introducción de caracteres adicionales.
+
+Un elemento que introdujo ruido en el texto leído de los documentos, fue la aparición de diversos \emph{encodings} que no resultó viable codificarlos a ``UTF-08'', lo que hizo que aparecieran caracteres no reconocidos dentro del texto dificultando la tarea de lograr realizar el proceso de ``pattern matching'' para obtener la clasificación. El algorimo SW fue efectivo para solucionar este problema más que otros como el de ``Distancia de Levenshtein'' o similares.
+
+Sobre un total de 9.705 potenciales documentos se lograron clasificar 9.325 investigaciones, mientras que 237 no disponían información en el texto del documento y resultaba inviable hacer la categorización. En algunos casos esta falta de información estuvo motivada en que el archivo contenía imágenes por estar escaneado el contenido o los documentos anexos no eran trabajos de grado o tesis sino informes de algún otro estilo.
+
+La cantidad de categorías que se encontraron fueron 274. En el cuadro \ref{tab:totalesporfacultad} se pueden ver los trabajos que pudieron ser clasificados por cada Facultad y el total de los que no se pudieron clasificar.
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{3.48in}|p{0.77in}}
+
+\caption{Cantidades\ de\ investigaciones\ clasificadas\ por\ Facultad}\label{tab:totalesporfacultad}\\
+
+\ascline{1.5pt}{666666}{1-2}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Facultad}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Total}}}}} \\
+
+\ascline{1.5pt}{666666}{1-2}\endfirsthead \caption[]{Cantidades\ de\ investigaciones\ clasificadas\ por\ Facultad}\label{tab:totalesporfacultad}\\
+
+\ascline{1.5pt}{666666}{1-2}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Facultad}}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Total}}}}} \\
+
+\ascline{1.5pt}{666666}{1-2}\endhead
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Centro\ De\ Estudios\ Del\ Desarrollo\ Cendes}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{26}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Agronomía}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{259}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Arquitectura\ Y\ Urbanismo}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{76}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Ciencias}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{2.018}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Ciencias\ Económicas\ Y\ Sociales}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{328}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Ciencias\ Jurídicas\ Y\ Políticas}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{362}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Ciencias\ Veterinarias}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{23}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Farmacia}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{101}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Humanidades\ Y\ Educación}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.984}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Ingeniería}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{2.891}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Medicina}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{967}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Facultad\ De\ Odontología}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{290}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 3.48in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Sin\ Clasificación}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.77in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{380}}}} \\
+
+\ascline{1.5pt}{666666}{1-2}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+En cuanto a la extracción de los nombres de los tutores lo que se hizo fue extraer el texto que se encontraba delimitado entre la propia palabra ``tutor'' y el brinco de línea ``\textbackslash n''. En el procedimiento también fue necesario remover algunas palabras de los textos, como las abreviaturas de los títulos académicos que preceden al nombre del tutor. Los resultados obtenidos fue que se pudo extraer un total de 7.942 nombres de tutores y una cantidad de 3.649 nombres únicos.
+
+Es importante destacar que en varios casos, en las cifras anteriores, el texto extraído no se corresponde propiamente al nombre del tutor por la organización visual del texto del documento, no obstante en la mayoría de los casos sí fue exitoso este proceso. En las Sección \ref{pruebas} se hace una evaluación estadística de la precisión alcanzada en esta extracción.
+
+\hypertarget{aprender-2}{%
+\paragraph{Aprender:}\label{aprender-2}}
+
+El proceso descrito presentó diversos inconvenientes que abarcaban diversas aristas que tratamos de agrupar a continuación:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Aparición de errores en la redacción y reglas ortográficas por parte de los autores, como por ejemplo, escribir mal el nombre del ``título al que optan'' o la facultad donde realizaron los estudios. Esto implicó realizar reemplazos de palabras en los textos y limpiezas para disminuir el ruido y facilitar el proceso de obtener la coincidencia.
+\item
+  Cambios en el estilo formal con que se deben presentar los documentos de grado en las distintas facultades o niveles académicos, cuestión que dificultó la detección de las reglas para hacer la comparación. Ante esto se buscó encontrar las formas más genéricas para hacer la comparación, así como la adopción de cuatro estrategias tratando de que primero coincidiera el nombre del título, en caso de fallo se siguió con el nombre del pregrado o postgrado, si nuevamente fallaba se procedía a hacer la búsqueda del nombre de la facultad, y finalmente si ninguna de las estrategias anteriores tenía éxito se aplicaba el algorítmo ``Smith Waterman'', siendo importante señala que puede generar falso positivos al aplicarse quedando pendiente hacer la revisión de estas métricas.
+\item
+  Dentro de los archivos descargados se encontraron algunos en formato de presentaciones \emph{power point} los cuales fueron desechados sólo siendo procesados los que estuviesen en formato \emph{word} o \emph{pdf}. También se encontraron trabajos que contaban con más de un archivo, ya que estaban separados por capítulos-archivo. En este caso sólo se tomó el primer archivo en la lista de url´s disponibles para tratar de hacer el proceso de clasificación. En la fase inicial se descargaron 12.765 documentos para evaluar las razones de que un trabajo de grado tuviese más de un documento anexo.
+\item
+  Se hicieron algunas simplificaciones sobre postgrados que dependen de dos facultades imputándolo sólo a una que fuese la primera en aparecer en el texto. Como queda fuera del alcance de esta Investigación determinar los casos en que existen este tipo de adscripciones compartidas se hizo esta simplificación.
+\item
+  Algunos trabajos en su primera página incluyen el nombre de dos facultades o escuelas creando errores en la clasificación. P. ej., investigaciones que indican en la portada el siguiente texto ``Facultad de Ciencias, Escuela de Computación, título: se realiza la propuesta de un sistema de gestión académica para la Escuela de Economía de la Facultad de Ciencias Económicas\ldots.'', lo cual genera dos posibles clasificaciones. En estos casos se optó por realizar la clasificación con base en la primera coincidencia detectada.
+\item
+  En el texto tutores se encontraron trabajos que tiene tutor académico, tutor industrial, cotutor y otras variantes. Generalmente se hace una disposición en la escritura de colocar el tipo de cada tutor alíneado en los extremos de una línea y los nombres en la parte inferior, quebrando la regla de extracción que se había diseñando. Esto pareciera un problema a enfrentar con técnicas de segmentación de archivos que tienen en consideración la disposición visual. En el caso de esta investigación no se adoptaron métodos para abordar este problema.
+\item
+  Se simplificaron algunos nombres de especializaciones por la cantidad de palabras que tienen estableciendo un límite, o \emph{prunning}, de 5 palabras para el nombre del postgrado, lo que implica que algunos trabajos habrán quedado agrupados en la misma categoría. Estos casos mayormente están asociados a las especializaciones en el área de medicina.
+\item
+  En este proceso de clasificación no resultaba conveniente usar técnicas de aprendizaje automático dada la cantidad de categorías y el gran desbalanceo de clases.
+\item
+  Se detectó que en Saber UCV en la categoría que se denomina ``otros'' se encuentran documentos que corresponden a especializaciones y también a trabajos de ascenso de profesores.
+\end{enumerate}
+
+Anexo: cantidad de trabajos por área académica
+
+Tener presente Tema13\_Proceso de MD\_011118~ laminas de Haydemar
 
 \hypertarget{desarrollociclos3}{%
-\subsection{Prototipo de buscador:}\label{desarrollociclos3}}
+\subsection{Ciclo-Prototipo del SCSU:}\label{desarrollociclos3}}
+
+En este ciclo se desarrolló la primera aproximación al \textbf{Prototipo del Sistema Complementario Saber UCV} con tres iteraciones. Al tener el corpus conformado en el ciclo anterior \ref{desarrollociclos1} \textbf{Conformación del Copus}, en la primera iteración de este ciclo \ref{iternlp} se realizó la \textbf{Preparación del Corpus}. En la segunda iteración \ref{iterbol} se creó una aplicación interactiva en la que se implementó el \textbf{Modelo de Búsqueda Boleano} para que a partir de una búsqueda de texto se pudiesen recuperar textos alojados en el corpus y visualizar los ``Mapas de Conocimiento'' \ref{mapacon} generados con el subconjunto de investigaciones representadas. Posteriormente en la iteración \ref{itervec} se implementó el índice \textbf{Invertido Invertido} usando un gestor de base de dato.
+
+Todo las rutinas y codificaciones que se mencionan a continuación fueron realizadas en el lenguaje R version 4.3.1 (2023-06-16) \citep{R}.
+
+\hypertarget{iternlp}{%
+\subsubsection{Iteración- Preparación del Corpus:}\label{iternlp}}
+
+En esta iteración el Corpus que se conformó en \ref{desarrollociclos1} fue sometido a distintos procesamientos conocidos como ``Preparación del Corpus'' mediante la aplicación de técnicas de PLN, ver \citet{ref}(nlproc). Posteriormente mediante el \emph{framework} ``shiny'' se implementó una visualización de los ``Mapas de Conocimiento'' por área de estudio, según la clasificación obtenida en \ref{asignacion}.
+
+\hypertarget{especulaciuxf3n-4}{%
+\paragraph{Especulación:}\label{especulaciuxf3n-4}}
+
+Creando un corpus anotado, marcando y etiquetando con métodos del Procesamiento del Lenguaje Natural, elementos específicos, como palabras, frases o partes del discurso (POS \ref{pos}), se facilita el acceso a información de relevancia para los investigadores mediante el análisis lingüístico de los documentos recolectados. Para
+
+En el esquema --- se muestra el pipeline a que fue sometido cada documento mediante la librería \citep{spacyr} que a su vez en un \emph{wrapper} de la librería Spacy \citep{spacy2020} . El modelo preentrenado ``es\_core\_news\_lg''. La selección de esta librería se basó en que da soporte a 73 idiomas e incluye directamente la ejecución de los pipelines ahorrando tiempo en la codificación para el etiquetado y lematización
+
+Tokenización, Part of Speach, lematización
+
+POS
+
+NLP
+
+Shiny app: identificar tendencias adil2019
+
+Recomendaciones
+
+Diagramas simplificados
+
+Revisar diagrama StanfordCoreNlp2014.pdf. Buscar foto en relacionado\_tesis imagenes. Usar la imagen con el termino Overall System archictectur y adaptar
+
+Visualizacion grafos. Mencionar paper A Visual Query System for Scholar Networks
+
+adil2019.pdf uso del text mining, tendencias y modelos de extracción de información
+
+Utilidades de contar con un corpus anotado Navegacion\_de\_corpus\_a\_traves\_de\_anotaci
+
+Citar \textbf{ir.pdf} para ir engine y términos de query
+
+\hypertarget{colaboraciuxf3n-4}{%
+\paragraph{Colaboración:}\label{colaboraciuxf3n-4}}
+
+\hypertarget{aprender-3}{%
+\paragraph{Aprender:}\label{aprender-3}}
+
+\hypertarget{iterbol}{%
+\subsubsection{Iteración- Modelo de búsqueda boleano}\label{iterbol}}
+
+\hypertarget{especulaciuxf3n-5}{%
+\paragraph{Especulación:}\label{especulaciuxf3n-5}}
+
+\hypertarget{colaboraciuxf3n-5}{%
+\paragraph{Colaboración:}\label{colaboraciuxf3n-5}}
+
+\hypertarget{aprender-4}{%
+\paragraph{Aprender:}\label{aprender-4}}
+
+\hypertarget{itertsvec}{%
+\subsubsection{Iteracion - Modelo Índice Invertido}\label{itertsvec}}
+
+\hypertarget{especulaciuxf3n-6}{%
+\paragraph{Especulación:}\label{especulaciuxf3n-6}}
+
+\hypertarget{colaboraciuxf3n-6}{%
+\paragraph{Colaboración:}\label{colaboraciuxf3n-6}}
+
+\hypertarget{aprender-5}{%
+\paragraph{Aprender:}\label{aprender-5}}
+
+Leer cita páginas de
+
+Rank, revisar la funcion
 
 \hypertarget{desarrollociclos4}{%
-\subsection{Integración de componentes del software:}\label{desarrollociclos4}}
+\subsection{Ciclo Integración de Componentes del software:}\label{desarrollociclos4}}
+
+\hypertarget{especulaciuxf3n-7}{%
+\paragraph{Especulación:}\label{especulaciuxf3n-7}}
+
+Del paper 1242572.1242745.pdf hay algunas ideas y diagramas que pueden ayudar en la fase de especulacion también Se propone que el sistema a implementar sea una aplicación web, ya que la información necesitará ser consultada desde lugares remotos
+
+Del libro Modern Information Retrieval\_ The Concepts - Ricardo Baeza-Yates ideas sobre UI, principios
+
+RJ-2017-065.pdf conceptos de docker
+
+ten-simple-rules-dockerfiles.pdf conceptos de docker de hacer reproducible el Sistema implementado
+
+En seccion del UML citar UML y Patrones Craig Larman.pdf
+
+Del paper 1908.06121 ideas del framework general, la propuesta de sistema
+
+\hypertarget{colaboraciuxf3n-7}{%
+\paragraph{Colaboración:}\label{colaboraciuxf3n-7}}
+
+\hypertarget{aprender-6}{%
+\paragraph{Aprender:}\label{aprender-6}}
 
 \hypertarget{desasarrollociclos5}{%
-\subsection{Buscador semántico:}\label{desasarrollociclos5}}
+\subsection{Ciclo Buscador Semántico:}\label{desasarrollociclos5}}
+
+\hypertarget{especulaciuxf3n-8}{%
+\paragraph{Especulación:}\label{especulaciuxf3n-8}}
+
+\hypertarget{colaboraciuxf3n-8}{%
+\paragraph{Colaboración:}\label{colaboraciuxf3n-8}}
+
+\hypertarget{aprender-7}{%
+\paragraph{Aprender:}\label{aprender-7}}
+
+Comparar tiempos de búsqueda
+
+Evaluar uso de UMAP para generar representación de títulos con datos de embeddings
+
+Citar 2005.04961 por el rerank de embeddings
 
 \hypertarget{pruebas}{%
 \section{Pruebas:}\label{pruebas}}
@@ -1191,6 +1790,10 @@ Extracción y clasificación
 
 \hypertarget{pruebas2}{%
 \subsection{Rendimiento:}\label{pruebas2}}
+
+Shinytest
+
+Tiempos de búsqueda
 
 \hypertarget{pruebas3}{%
 \subsection{Relevancia:}\label{pruebas3}}

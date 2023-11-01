@@ -1,9 +1,10 @@
 bookdown::gitbook:
   css: style.css
+  toc_depth: 5
   config:
     toc:
       before: |
-        <li><a href="./">Consulta Información</a></li>
+        <li><a href="https://tgucv.netlify.app">SCSU</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
     download: ["pdf"]
@@ -20,32 +21,31 @@ bookdown::gitbook:
     sharing:
       facebook: false
       github: false
-      twitter: false
+      twitter: true
       linkedin: false
       weibo: false
       instapaper: false
       vk: false
       whatsapp: false
-      all: ['facebook', 'twitter', 'linkedin','whatsapp']
+      all: ['twitter', 'linkedin','whatsapp']
 
 
 bookdown::pdf_book:
   includes:
     before_body: latex/portada.tex
     in_header: latex/preamble.tex
-
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
   fig_width: 7 #default
   fig_height: 5
+  fontsize: 12pt
   number_sections: true
   self_contained: true
-  toc_depth: 4
+  toc_depth: 5
   toc: true
   lot: true
   lof: true
-
 
 bookdown::word_document2:
   toc: yes

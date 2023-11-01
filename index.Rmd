@@ -15,7 +15,7 @@ link-citations: yes
 github-repo: javendaXgh/TG
 latex_engine: xelatex
 lang: es-ES
-fontsize: 10
+fontsize: 12pt
 lof: yes
 lot: yes
 geometry: left=2.54cm, right=2.54cm, top=2.54cm, bottom=2.54cm
@@ -30,24 +30,39 @@ library(stringr)
 library(dplyr)
 library(kableExtra)
 library(ggpubr)
-flextable::set_flextable_defaults(big.mark = '.',decimal.mark = ',')
+library(gt)
+library(dplyr)
+library(flextable)
+
+# Configurar opciones para separador de miles y decimales en R Markdown
+
+
+set_flextable_defaults(
+  digits = 2,
+  decimal.mark = ",",
+  big.mark = ".",
+  na_str = "<na>"
+)
+# flextable::set_flextable_defaults(big.mark = '.',decimal.mark = ',')
+
+
 
 ```
 
 `r if (knitr::is_html_output()) '
 # Resumen: {.unnumbered}
 
-Se presenta la investigación e implementación de un sistema para hacer la **Recuperación, Extracción y Clasificación de Información de SABER UCV**. El sistema ejecuta procesos de clasificación, almacenamiento y recuperación de información sobre los Resúmenes, tanto de las Tesis como de los Trabajos Especiales de Grado (TEG) que se encuentran publicados en el repositorio institucional Saber UCV  ([saber.ucv.ve](http://saber.ucv.ve/)) y permite al usuario hacer procesos de búsqueda mediante una aplicación web.
+Se presenta la investigación **Recuperación, Extracción y Clasificación de Información de Saber UCV** donde se ejecutan procesos de clasificación, almacenamiento y recuperación de información sobre las tesis y trabajos de grado que se encuentran publicados en el repositorio institucional Saber UCV.
 
-A los Resúmenes con los cuales se conforma el corpus, se le aplican técnicas de Procesamiento de Lenguaje Natural (PLN), de Minería de Texto, de indexación en base de datos y se usan modelos preentrenados de inteligencia artificial para generar *embeddings* y soportar procesos de búsqueda semántica.
+Se implementa un Sistema que permite clasificar los documentos mencionados, según el área académica donde cursó estudios el autor de la investigación.
 
-Mediante la búsqueda de palabras o frases, aplicando filtros como fechas de publicación, área en la cual se generó la investigación y/o el nivel académico, el usuario genera un (*query*) con el que se pueden recuperar los trabajos de mayor relevancia en que se encuentran contenidas tales palabras, o palabras similares y a partir de ahí enriquecer la experiencia del usuario con la presentación de la información extraída en tablas interactivas, gráficos, grafos de coocurrencia de palabras y recomendaciones de textos que puedan ser de interés para el investigador.
+Se extráen los resúmenes de los trabajos y con las clasificaciones obtenidas se conforma un corpus sobre el cual se genera un índice invertido. Al corpus se le aplican técnicas de Procesamiento de Lenguaje Natural, de Minería de Datos y con modelos preentrenados de inteligencia artificial se crean *embeddings* de textos. Con toda la información procesada se alimenta una base de datos indexada.
 
-La aplicación se implementa como un sistema distribuido bajo la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.
+El Sistema adicionalmente cuenta con una aplicación web para hacer procesos de Recuperación de Información donde el usuario puede hacer la exploración del corpus, incluida la búsqueda semántica, indicando el: texto a buscar, rango de fechas, área en la cual se generó la investigación, el nivel académico; posteriormente se recuperan los trabajos de mayor relevancia, enriqueciendo la experiencia con la presentación de los resultados en tablas interactivas, Mapas de Conocimiento y recomendaciones de documentos que puedan ser de interés.
 
-También se implementa una rutina que permite clasificar las Tesis y los TEG, según el área académica donde cursó estudios el autor del correspondiente trabajo y así se solventa la carencia que actualmente presenta Saber UCV, donde no están disponibles estas clasificaciones.
+La aplicación se implementa bajo un sistema distribuido con la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.
 
-**Palabras Clave:** Recuperación de Información, Procesamiento del Lenguaje Natural,  Minería de Texto, Relevancia, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas del Conocimiento.
+**Palabras Clave:** Recuperación de Información, Corpus, Procesamiento del Lenguaje Natural, Relevancia, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas de Conocimiento.
 '`
 
 ```{=tex}
@@ -56,26 +71,30 @@ También se implementa una rutina que permite clasificar las Tesis y los TEG, se
 ```
 # Introducción: {#introduccion}
 
-Es conocida la gran disponibilidad de información en distintos formatos que tienen a su disposición los investigadores. Ejemplo de esto son libros en las bibliotecas, o la variedad de documentos que se encuentran accesibles en formatos digitales como artículos publicados en revistas arbitradas, libros, páginas de internet especializadas en algún tema o los repositorios digitales de documentos. Es en esta abundancia donde recaen varios de los problemas a los cuales se enfrenta la labor investigativa, en particular, cuando se realiza la fase exploratoria de selección de aquellos documentos que puedan resultar de mayor relevancia.
+Es conocida la gran disponibilidad de información en distintos formatos que tienen a su disposición los investigadores. Ejemplo de esto son libros en las bibliotecas o la variedad de documentos que se encuentran accesibles en formatos digitales como artículos publicados en revistas arbitradas o investigaciones alojadas en repositorios digitales. Es en esta abundancia donde recaen varios de los problemas a los cuales se enfrenta la labor investigativa, en particular, cuando se realiza la fase exploratoria de selección de aquellos textos que puedan resultar de mayor importancia.
 
-Una de las herramientas con que cuentan los investigadores, para la búsqueda de documentos que se encuentran en formato digital, son los Sistemas de Recuperación de Información, donde ante una búsqueda, a la cual denominaremos el ***query***, serán recuperados del conjunto de documentos, conjunto al que denominaremos ***Corpus***, aquellos que cumplan ciertos parámetros [@manning2008]. Los documentos que el Sistema logre recuperar se deben adaptar a las necesidades del investigador y en caso de existir múltiples documentos, el sistema debe poder jerarquizar aquellos que puedan resultar de mayor relevancia.
+Una de las herramientas que tienen a su disposición los investigadores, para la búsqueda de información que se encuentra en formato digital, son los Sistemas de Recuperación de Información. En ellos, ante un texto que representa una necesidad, son recuperados los documentos que cumplen ciertos criterios y en la representación del resultado se deben jerarquizar los que poseen mayor relevancia [@manning2008].
 
-En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos denominado SABER.UCV al cual se puede acceder desde la dirección web [saber.ucv.ve](http://saber.ucv.ve/) el cual permite realizar búsquedas de información sobre documentos generados dentro de la comunidad de investigadores de la Universidad.
+En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos académicos denominado Saber UCV al que se puede acceder desde la dirección web [saber.ucv.ve](http://saber.ucv.ve/). Dentro de él se cuenta con un sistema que permite realizar búsquedas sobre las investigaciones generadas en la comunidad universitaria.
 
-En este Trabajo de Grado se presenta la propuesta para la **Recuperación, Extracción y Clasificación de Información de SABER UCV**, mediante el desarrollo de un sistema informático que se denomina **Sistema Complementario Saber UCV (SCSU)**, el cual complementa las funcionalidades de búsqueda de información que actualmente tiene el repositorio oficial de la Universidad Central de Venezuela.
+En este Trabajo de Grado se presenta la propuesta para la **Recuperación, Extracción y Clasificación de Información de Saber UCV**, mediante el desarrollo de un sistema informático que se denomina **Sistema Complementario Saber UCV (SCSU)**.
 
-La implementación del SCSU hace un aporte a los investigadores que necesitan realizar búsquedas de información sobre el subconjunto de tesis doctorales, de trabajos de grado de maestría y de pregrado, que se encuentran disponibles en SABER.UCV . Adicionalmente, la representación de los resultados de los *querys* son enriquecidas con gráficos interactivos que muestran "mapas del conocimiento" [@dueñas2011].
+La implementación del SCSU es de utilidad para los investigadores que necesitan encontrar información sobre el conjunto de: tesis doctorales, trabajos de grado de maestría, trabajos especiales de grado, trabajos de ascenso y trabajos de grado; al ofrecer una mayor cantidad de parametros que permiten refinar la búsqueda. 
 
-Gran parte de las funcionalidades que incorpora el SCSU se sustentan en los procesos de extracción y clasificación de información de datos que originalmente no se encuentran estructurados en el repositorio oficial, como lo son los nombres de las carreras de pregrado o del postrgrado donde fue generada cada una de las investigaciones o el nombre del tutor que acompañó el desarrollo de cada investigación, así que el Sistema acá descrito contribuye efectivamente a que estos datos puedan estar disponibles y afinar con una mayor cantidad de parámetros las búsquedas de información que se deban realizar y se incorporan técnicas de búsqueda indexada mediante un índice inverso que establece los criterios de relevancia al momento de jerarquizar y mostrar los resultados de una búsqueda.
+Las funcionalidades que incorpora el SCSU se sustentan en  procesos de extracción y clasificación de datos que originalmente no se encuentran estructurados en el repositorio oficial, como el nombre de la carrera de pregrado o el postrgrado donde fue generada la investigación y el nombre del tutor correspondiente. 
+
+Igualmente se aplican métodos para el Procesamiento del Lenguaje Natural y Minería de Texto para representar "Mapas de Conocimiento" [@dueñas2011] y los resultados de la búsqueda son enriquecidos con recomendaciones de documentos similares.
+
+Otra funcionalidad disponible en el SCSU es la "búsqueda semántica" la cual permite recuperar información relevante basada en el significado contextual y la relación semántica de los términos.
 
 ## Estructura:
 
-En el Capítulo \@ref(capproblema) **El Problema** se hace una exposición de cuáles son las funcionalidades de SABER.UCV que pueden ser complementadas por el Sistema Complementario Saber UCV mientras que en \@ref(delimitacion) se establecen las delimitaciones en el proceso de investigación abordado. En \@ref(justificacion) se justifica la necesidad de realizar este estudio y en \@ref(descripcion) se presenta la Solución propuesta junto con el \@ref(objegeneral) Objetivo General  y los \@ref(objeespe) Objetivos Específicos . En \@ref(alcance) se enuncia el alcance del proceso de recuperación, extracción y clasificación de Información de SABER UCV y en \@ref(aporte) se enumeran los aportes que brinda esta investigación.
+En el Capítulo \@ref(capproblema) **El Problema** se hace una "Descripción del Problema" enfrentado, mientras que en \@ref(delimitacion) se hace la "Delimitación del Problema". En \@ref(justificacion) se expone la "Justificación e Importancia" de realizar este estudio y en \@ref(descripcion) "Descripción de la Solución" se presenta la Solución junto con el \@ref(objegeneral) "Objetivo General"  y los \@ref(objeespe) "Objetivos Específicos". En \@ref(aporte) se enumeran los "Aportes" que hace esta investigación.
 
-En el Capítulo \@ref(teorico) **Marco Teórico**  se hace una reseña histórica \@ref(alghist) sobre el problema computacional que es la "búsqueda", entendido de manera genérica. En la sección \@ref(infret) "Recuperación de Información"  se mencionan los conceptos para comprender los procesos de búsqueda de texto dentro de un Corpus y también se introducen a los "Sistemas" que permiten ejecutar dicha tarea. Luego en \@ref(MRI) se describen algunos "Modelos de Recuperación de Información" que se usan en la implementación del SCSU. Para representar los resultados de las búsquedas, el Sistema implementado necesita que los textos sean procesados mediante diversos métodos que son descritos en en \@ref(PT) Procesamiento de Texto, como los son el  \@ref(nlproc) Procesamiento del Lenguaje Natural  y \@ref(textmin) la Minería de Texto . Seguidamente en \@ref(SD) se conceptualiza a los "Sistemas Distribuidos",  motivado a que la implementación realizada del Software se hace mediante este tipo de sistemas.Al finalizar este Capítulo en \@ref(sota) se presentan el Estado del Arte en lo relativo a los procesos de Recuperación de Información.
+En el Capítulo \@ref(teorico) **Marco Teórico** se hace una "Reseña Histórica" \@ref(alghist) sobre el problema computacional que representa la "búsqueda". En la sección \@ref(infret) "Recuperación de Información"  se mencionan los conceptos claves para comprender los procesos de búsqueda de texto dentro de un Corpus y se introducen a los "Sistemas de Recuperación de Información" que permiten ejecutar dicha tarea. Luego en \@ref(MRI) se describen algunos "Modelos de Recuperación de Información" que se usan en la implementación del SCSU. Para representar los resultados de las búsquedas, el Sistema implementado necesita que los textos sean procesados mediante diversos métodos que son descritos en \@ref(PT) "Procesamiento a los Textos". Seguidamente en \@ref(SD) se definen a los "Sistemas Distribuidos",  motivado a que la implementación realizada se hace mediante este tipo de sistemas. Al finalizar este Capítulo en \@ref(sota) se presentan el "Estado del Arte" en lo relativo a los procesos de Recuperación de Información.
 
-En el Capítulo  \@ref(mm)  **Marco Metodológico** se presenta la metodología de trabajo Kanban \@ref(mmmetodologia) que sirvió para realizar la planificación de la investigación así como también el Desarrollo Adaptable de Software –Adaptive Software Development (ASD)- \@ref(mmasd) que fue la metodología adaptada para realizar los ciclos de desarrollo del SCSU.
+En el Capítulo  \@ref(mm)  **Marco Metodológico** se presenta la "Metodología de Trabajo Kanban" \@ref(mmmetodologia) que sirvió para realizar la planificación de la investigación y el "Desarrollo Adaptable de Software –Adaptive Software Development (ASD)"- \@ref(mmasd) que fue la metodología adoptada para realizar los Ciclos de Desarrollo del SCSU.
 
-En el Capítulo \@ref(desarrollo) **Desarrollo** se presenta la \@ref(desarollodescripcion) Descripción general de la Solución  y en \@ref(desarrolloarquitectura) se presenta la Arquitectura de la misma. En \@ref(desarrollociclos) se muestran los Ciclos de Desarrollo.
+En el Capítulo \@ref(desarrollo) **Desarrollo de la Solución** se presenta la \@ref(desarollodescripcion) "Descripción General de la Solución". En \@ref(desarrolloarquitectura) se presenta la "Arquitectura" mientras que \@ref(desarrollociclos) se muestran los "Ciclos de Desarrollo" y sus correspondientes iteraciones.
 
-Para concluir esta investigación, en el Capítulo \@ref(conclusiones) **Conclusiones**  se exponen las \@ref(conclusionescontri) Contribuciones  y los \@ref(conclusionestrabafutu) Trabajos Futuros  que se pueden derivar del proceso expuesto a lo largo del contenido de los capítulos anteriormente citados.
+Para concluir esta investigación, en el Capítulo \@ref(conclusiones) **Conclusiones**  se exponen en  \@ref(conclusionescontri)  las "Contribuciones"  y en \@ref(conclusionestrabafutu) los  "Trabajos Futuros"que se pueden derivar del proceso expuesto a lo largo del contenido de los capítulos anteriormente citados.
