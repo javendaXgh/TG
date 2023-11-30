@@ -1,0 +1,59 @@
+---
+title: "consultas"
+author: "José M. Avendaño I."
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Capítulo 4:
+
+### Arquitectura/Modelo:
+
+del texto " Es el encargado de realizar las tareas de actualizar el corpus periódicamente y las recomendaciones de documentos a medida que se agreguen nuevos textos. En [4.3.3](http://127.0.0.1:7754/desarrollo.html#desarrollociclos4) el tercer ciclo de desarrollo se expondrán con detalle los componentes del *Modelo*. Estos son los principales procesos contenidos en el *Modelo*:
+
+1.  **Procesamiento de Texto:**
+
+    -   Tokenización: Dividir el texto en palabras o frases significativas.
+
+    -   Lematización: Reducir las palabras a su forma base para un análisis más preciso.
+
+    -   POS: etiquetado de partes del discurso."
+
+Del texto:
+
+1.  "se expondrán con detalle los componentes del *Modelo*." es correcto hablar de los "componentes"?
+
+2.  En "Estos son los principales procesos contenidos en el *Modelo*:" Es correcto hablar de los "procesos" del modelo? en particular por el uso de la palabra "procesos".
+
+### Resumen:
+
+del texto "La aplicación se implementa bajo un sistema distribuido con la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados"
+
+Es correcto indicar ahí cliente-servidor? aporta algo en el Resumen?
+
+## Capítulo 5:
+
+### Ciclos de Desarrollo enunciado:
+
+es necesario indicar este texto?: "La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evoluciona. Esto fue lo que se hizo en reuniones continuas en la materia *Tópicos Especiales en Sistemas de Información y Gerencia* que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis, se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados usados para los procesamiento de los textos."
+
+# PENDIENTE:
+
+-   Separar abstract
+
+-   Selector en app para utilizar búsqueda semántica
+
+-   Convertir a factores columnas de escuela y facultad
+
+-   Revisar representación grosor de los arcos
+
+-   Crear distintos embedddings
+
+-   Filtrar stopwords previo a recomendación
+
+-   Crear una versión simplificada de la app con datos locales, filtrar palabras. Evaluar pesos de las tablas. Igualmente para ver categorías

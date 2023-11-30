@@ -326,7 +326,7 @@ Es importante señalar que el uso de esta tecnología añade un entorno de segur
 
 Para cada contenedor es necesario usar una imagen donde previamente se definen las dependencias (sistema operativo, librerías, lenguajes) necesarias para su funcionamiento.
 
-### Orquestador:
+### Orquestador:  {#orquestador}
 
 Al tener diversos contenedores, donde cada uno aloja una aplicación distinta, puede resultar necesario que todos se integren en un sistema. Para que esta integración sea viable es necesario contar con un orquestador [@cook2017]. Su uso permitirá lograr altos grados de portabilidad y reproducibilidad, pudiendo colocarlos en la nube o en centros de datos, garantizando que se pueda hacer el *deploy* de forma sencilla y fiel a lo que se implementó en el ambiente de desarrollo.
 
@@ -407,7 +407,7 @@ Usando el mismo modelo GloVe, una representación gráfica de las palabras "King
 knitr::include_graphics("images/03-marco-teorico/embedding.png")
 ```
 
-El crédito a la visualización \@ref(fig:GloVeEmbedd) corresponde al divulgador Alammar,J. (2019). The Illustrated Word2vec. Blog. <https://jalammar.github.io/illustrated-word2vec/> (acceso 18 el octubre,2023).  La representación muestra gráficamente que las palabras "man" y "woman" son más "parecidas" visualmente que "king" y "man" y esto es lo que se puede generalizar para entender como las distintas palabras que se representan en un espacio semántico pueden presentar proximidades, similitudes o diferencias entre si, obteniendo de esta forma un significado semántico según la posición relativa que cada una tenga con respecto a la otra en el espacio indicado.
+El crédito a la visualización \@ref(fig:GloVeEmbedd) [@wordtovec] corresponde al divulgador Jay Alammar. (2019).  La representación muestra gráficamente que las palabras "man" y "woman" son más "parecidas" visualmente que "king" y "man" y esto es lo que se puede generalizar para entender como las distintas palabras que se representan en un espacio semántico pueden presentar proximidades, similitudes o diferencias entre si, obteniendo de esta forma un significado semántico según la posición relativa que cada una tenga con respecto a la otra en el espacio indicado.
 
 No obstante, en los puntos expuestos aún no ha explicado cómo se generan los *embeddings*, lo cual es indispensable para entender sus capacidades. En el año 2003 mediante el entrenamiento de redes neuronales logran modelar la probabilidad de las secuencias de palabras demostrando la capacidad de las redes neuronales para capturar patrones complejos en datos textuales [@Bengio:2003:NPL:944919.944966] . Otro hito fue la investigación "Semantic Hashing" [@salakhutdinov2009] donde usaron redes neuronales para transformar datos de alta dimensionalidad en representaciones binarias de baja dimensionalidad. Esa investigación añadió como aporte que se empezarán a usar técnicas de aprendizaje no supervisado para entrenar las redes neuronales, deshaciéndose de los cuellos de botella que previamente introducían los procesos de etiquetado, necesarios en métodos supervisados.
 
@@ -459,7 +459,7 @@ Como queda fuera del alcance de este trabajo explicar como funcionan los modelos
 
 [^03-marco-teorico-7]: la compañía que entrenó el modelo y lo liberó que es Meta indicó que es OpenSource, pero revisiones técnicas hechas a la licencia cuestionan que se pueda considerar que realmente cumpla las especificaciones para que sea considerado plenamente "open source". En el enlace [Is Llama 2 open source?](https://opensourceconnections.com/blog/2023/07/19/is-llama-2-open-source-no-and-perhaps-we-need-a-new-definition-of-open/) se encuentra un análisis sobre el tema.
 
-La diversidad de modelos preentrenados, con distintas versiones de fine tunning o cuantizaciones, se puede ver en el enlace <https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard> [@open-llm-leaderboard] donde se encuentra un tablero que muestra los modelos que presentan mayor popularidad, descargas y métricas de evaluación de su comportamiento.
+La diversidad de modelos preentrenados, con distintas versiones de fine tunning o cuantizaciones, se puede ver en el enlace [@openllm] <https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard> donde se encuentra un tablero que muestra los modelos que presentan mayor popularidad, descargas y métricas de evaluación de su comportamiento.
 
 ### Integración: {#int}
 

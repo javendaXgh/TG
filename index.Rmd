@@ -49,7 +49,8 @@ set_flextable_defaults(
 
 ```
 
-`r if (knitr::is_html_output()) '
+
+`r if (knitr::is_latex_output()) '<!--'`
 # Resumen: {.unnumbered}
 
 Se presenta la investigación **Recuperación, Extracción y Clasificación de Información de Saber UCV** donde se ejecutan procesos de clasificación, almacenamiento y recuperación de información sobre las tesis y trabajos de grado que se encuentran publicados en el repositorio institucional Saber UCV.
@@ -63,7 +64,8 @@ El Sistema adicionalmente cuenta con una aplicación web para hacer procesos de 
 La aplicación se implementa bajo un sistema distribuido con la arquitectura cliente-servidor y se soporta en el uso de contenedores orquestados.
 
 **Palabras Clave:** Recuperación de Información, Corpus, Procesamiento del Lenguaje Natural, Relevancia, Inteligencia Artificial, Embeddings, Búsqueda Semántica, Mapas de Conocimiento.
-'`
+
+`r if (knitr::is_latex_output()) '-->'`
 
 ```{=tex}
 \clearpage
