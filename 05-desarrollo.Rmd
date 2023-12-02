@@ -101,6 +101,10 @@ La literatura en este tema siempre especifica a un cliente del que hay que obten
 
 Los Ciclos que se van a exponer son los siguientes: en \@ref(desarrollociclos1) se muestran las tres iteraciones realizadas para la **Conformación del Conjunto de Datos**. En \@ref(desarrollociclos3) se revisan las iteraciones para el desarrollo del **Prototipo del SCSU**, mientras que en \@ref(desarrollociclos4) se hace la **Integración de los Componentes del Software** y en \@ref(desasarrollociclos5) se hace una versión del Sistema que incluye un **Buscador Semántico**.
 
+\newpage
+
+<br> <br>
+
 ### Ciclo - Conformación del Conjunto de Datos: {#desarrollociclos1}
 
 En este ciclo es donde se ejecutaron las tareas que permitieron conformar el conjunto de datos acorde a lo planteado en el \@ref(objeespe) **Objetivo Específico** **1,** siendo el insumo con el que se desarrollará el **Sistema Complementario Saber UCV**.
@@ -109,7 +113,7 @@ Se realizaron tres iteraciones para lograr el objetivo. La primera \@ref(scrapeo
 
 #### Iteración- "Extracción de Datos web Saber UCV": {#scrapeo}
 
-##### Especulación:
+##### Especulación: 
 
 El repositorio Saber UCV en la sección "Comunidades/Tesis" aloja las cantidades de trabajos por nivel académico que se muestran en el cuadro \@ref(tab:cantidadesteg) :
 
@@ -650,6 +654,10 @@ A continuación se agrupan y enuncian los principales inconvenientes que se enco
 
 4.  Extraer `r prettyNum(sum(cdad_tutores$n),big.mark=".")` nombres de tutores, equivalente al `r prettyNum(round(sum(cdad_tutores$n)/nrow(df_draw_seleccion)*100,1),decimal.mark = ",")`% del total de investigaciones, que también se estableció como parte del Objetivo Específico 2.
 
+\newpage
+
+<br> <br>
+
 ### Ciclo-Prototipo del SCSU: {#desarrollociclos3}
 
 En este ciclo se desarrolló el **Prototipo del Sistema Complementario Saber UCV** con tres iteraciones. En la primera iteración de este ciclo \@ref(iternlp) se realizó la **Preparación del Corpus**. En la segunda iteración se hicieron las pruebas para realizar las **Recomendaciones** de cada documento, basado en la similitud que presente con el resto de las investigaciones. En la tercera \@ref(imrecomendacion) \@ref(iterbol) se creó una aplicación web interactiva en la que se implementó el **Prototipo** donde ante un *query* se presentan los resultados y la visualización de los **"Mapa de Conocimiento"** (ver \@ref(mapacon)) .
@@ -797,7 +805,9 @@ En esta iteración se revisó la creación de recomendaciones de investigaciones
 
 ##### Especulación:
 
-Los documentos que presenten mayor similitud pueden ser de interés para los investigadores expandiendo las posibilidades de inspección del Corpus.
+Se ha determinado que los investigadores no necesariamente realizan la búsqueda de documentos que le puedan ser de interés mediante un *query* que contenga términos claves sino a partir de un documento que les resulta de interés quieren localizar otros que puedan compartir ciertos aspectos [@zhou2018].
+
+La similitud de un documento con otro se puede entender, en esta implementación, como aquellos que tienden a compartir palabras y dentro de una "term document matrix" generan vectores similares [@jurafsky2009]. Es por esto que se considera que los documentos que presenten mayor similitud, pueden resultar de interés para los investigadores, expandiendo así las posibilidades de inspección del Corpus.
 
 ##### Colaboración:
 
@@ -980,9 +990,9 @@ knitr::include_graphics("images/05-desarrollo/2_ciclo/esquemas/diagrama_entidadr
 
 En el modelo, la entidad "Corpus" se apoya en la tabla "POS" que contiene el detalle del etiquetado de la parte del discurso para cada palabra (token) presente en cada documento, mientras que la tabla "Indice Invertido" se destinará a almacenar la estructura que permite general la búsqueda de texto y básicamente almacena cada palabra que compone el vocabulario y el *id* de los documentos donde aparece cada palabra.
 
-Un factor determinante para la selección de PostgreSQL es el soporte que tiene para ejecutar procesos de "Busqueda de Texto Completo (Full Text Search)" en el idioma español.
+Un factor determinante para la selección de PostgreSQL es el soporte que tiene para ejecutar procesos de "Busqueda de Texto Completo (*Full Text Search*)" en el idioma español.
 
-El esquema de la arquitectura general de la aplicación, el cuál se implementará en el framework shiny, se representa en la figura \@ref(fig:esqshinyproto).
+El esquema de la arquitectura general de la aplicación, el cuál se implementará en el *framework* shiny, se representa en la figura \@ref(fig:esqshinyproto).
 
 ```{r esqshinyproto, echo=FALSE, fig.align='center', fig.cap='Esquema General del Prototipo de la Aplicación', out.width="50%"}
 knitr::include_graphics("images/05-desarrollo/2_ciclo/esquemas/shinyappproto.png")
@@ -1021,7 +1031,7 @@ La aplicación web que formará parte del Prototipo, una vez que se tiene confor
 
     La función `"to_tsvector"` hace el parseo de un documento a tokens y estos son modificados realizando el *stemming* para extraer la raíz de la palabra, proceso que se revisó en \@ref(steaming), lo cual ayuda a disminuir el espacio de búsqueda y a realizar las recuperación de textos de manera más eficiente. Para lograr ejecutar este proceso, es necesario dar el parámetro "spanish" a la función, para que sea sobre la base del idioma español, que sea extraída la raíz.
 
-    La posición de la palabra dentro del texto, también queda registrada para así poder determinar en un query de varias palabras, la cercanía que tienen dentro del texto las palabras que son buscadas, dando una mayor relevancia a las que estén más cercanas.
+    La posición de la palabra dentro del texto, también queda registrada para así poder determinar en un *query* de varias palabras, la cercanía que tienen dentro del texto las palabras que son buscadas, dando una mayor relevancia a las que estén más cercanas.
 
     Otro aspecto a destacar es que ciertas palabras de uso común y frecuente, denominadas *stopwords*, como: "el", "la", "y", "a", "en", "con", "para"; no son registradas, es decir que son omitidas así como los signos de puntuación, con lo cual un query que contenga una stopword o un signo de puntuación, no será buscada la coincidencia al no formar parte de la estructura de datos "`tsvector`".
 
@@ -1120,11 +1130,15 @@ Realizar el etiquetado de las partes del discurso, previamente a realizar la sel
 
 4.  Con los textos del Corpus generar recomendaciones de documentos que sean similares a una determinada investigación.
 
+\newpage
+
+<br> <br>
+
 ### Ciclo Integración de Componentes del Software: {#desarrollociclos4}
 
 En este Ciclo se realiza la integración de los elementos constituidos y evaluados en procesos anteriores, tomando en cuenta los "aprendizajes" para realizar las modificaciones que permitan implementar la primera versión del **Sistema Complementario Saber UCV (SCSU)**. En la sección \@ref(implemenesp) se presenta el proceso de Especulación, en \@ref(implemencolab) se expone la Colaboración y finalmente en \@ref(implemenapre) el Aprendizaje alcanzado a lo largo del Ciclo.
 
-##### Especulación:   {#implemenesp}
+##### Especulación: {#implemenesp}
 
 Usando las técnicas y métodos aplicados en ciclos anteriores e integrando los aprendizajes obtenidos, se puede implementar el SCSU. Concretamente se replicarán en este ciclo:
 
@@ -1138,22 +1152,21 @@ Usando las técnicas y métodos aplicados en ciclos anteriores e integrando los 
 
 5.  Representación de "Mapas de Conocimiento (MC)" revisado en \@ref(fig:mapacon).
 
-6.  Generación de "Recomendaciones", revisada en \@ref(imrecomendacion).
+6.  Generación de "Recomendaciones" revisada en \@ref(imrecomendacion).
 
-En el proceso de especulación de este ciclo se aplicaron los métodos de la "Ingeniería de Software" necesarios para implementar el SCSU.
+En el proceso de especulación de este ciclo se aplicaron los métodos de la "Ingeniería de Software" necesarios para implementar el SCSU estableciendo formalmente los requerimientos funcionales y no funcionales, los diagramas y tablas de casos de uso, el modelo entidad-relación y demás aspectos necesarios, para posteriormente en la fase de Colaboración, realizar la implementación del Sistema.
 
 ###### **Requerimientos Funcionales del SCSU:**
 
-1.  **Interactividad y Accesibilidad Web**
+1.  **Interactividad:**
 
 -   **Descripción:**
 
-    La aplicación web, a la cual se debe acceder mediante navegadores, debe ser altamente interactiva permitiendo al usuario de una manera fluida y receptiva, interactuar con la interfaz para realizar búsquedas, explorar resultados y utilizar funcionalidades como filtros y mapas del conocimiento de manera eficiente.
+    La aplicación web debe ser altamente interactiva permitiendo al usuario de una manera fluida y receptiva interactuar con la interfaz para realizar búsquedas, explorar resultados y utilizar funcionalidades como filtros e inspección de "mapas del conocimiento".
 
 -   **Criterios de Aceptación:**
 
-    -   La interfaz de usuario debe responder de manera rápida a las acciones del usuario.
-    -   Se debe garantizar la compatibilidad con los navegadores web más utilizados, como Chrome, Firefox, Safari y Edge.
+    -   La interfaz de usuario debe responder de manera rápida y efeciciente a las interacciones del usuario.
 
 2.  **Búsqueda de Contenido**
 
@@ -1186,7 +1199,7 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la "In
 
 -   **Descripción:**
 
-    El sistema debe tener la capacidad de generar "mapas del conocimiento" basados en la información recuperada. Estos mapas deben representar de manera clara las relaciones y conexiones entre los conceptos dentro de la información, mediante estructura de grafos.
+    El sistema debe tener la capacidad de generar "mapas del conocimiento" con la información recuperada. Estos mapas deben representar de manera clara las relaciones y conexiones entre los conceptos dentro de la información mediante una estructura de grafos.
 
 -   **Criterios de Aceptación:**
 
@@ -1242,6 +1255,16 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la "In
 
     -   Los tooltips deben ser informativos y fácilmente comprensibles.
 
+9.   **Accesibilidad Web**
+
+-   **Descripción:**
+
+    El acceso a la aplicación se debe realizar mediante desde cualquier sitio mediante el uso de navegadores web.
+
+-   **Criterios de Aceptación:**
+
+    -   Se debe garantizar la compatibilidad con los navegadores web más utilizados, como Chrome, Firefox, Safari y Edge.
+
 ###### **Requerimientos No Funcionales del SCSU:**
 
 1.  **Rendimiento del Sistema**
@@ -1282,7 +1305,7 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la "In
 
 -   **Descripción:**
 
-    El Sistema bien sea al momento de conformar la base de datos o realizar actualizaciones, en la mayor medida posible, debe ejecutar el preprocesamiento de los textos (PLN-POS, remoción stop words, índice invertido, etc.) para minimizar los computos al momento de la demanda de recursos cuando el usuario realiza las búsquedas.
+    El Sistema, bien sea al momento de conformar la base de datos o al realizar actualizaciones, en la mayor medida posible debe ejecutar el preprocesamiento de los textos (PLN-POS, remoción stop words, índice invertido, etc.) para minimizar los cómputos al momento de la demanda de recursos cuando el usuario realiza las búsquedas.
 
 -   **Criterios de aceptación:**
 
@@ -1310,7 +1333,7 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la "In
 
 -   **Criterios de aceptación:**
 
-    -   La realización de mantenimiento no debe causar una degradación significativa en el rendimiento del sistema, garantizando la continuidad operativa.
+    -   La realización de mantenimiento no debe causar una degradación significativa en el rendimiento del sistema garantizando la continuidad operativa.
 
     -   La realización del mantenimiento debe definirse con carácter periódico en la configuración.
 
@@ -1829,8 +1852,8 @@ flu_alt_titulo <- c('Sin clic arco')
 flu_alt_descrip <- c('El usuario no selecciona ningún arco en "Mapas de Conocimiento"')
 
 #######Precondiciones
-precond_titulo <- c('Realizar "query"', 'Selecc ventana "Coocurrencia"')
-precond_descri <- c('Haber realizado el UC. 1.', 'Haber realizado el UC. 3.')
+precond_titulo <- c('1) Realizar "query"', 'Selecc ventana "Coocurrencia"')
+precond_descri <- c('2) Haber realizado el UC. 1.', 'Haber realizado el UC. 3.')
 
 #######Postcondiciones
 postcond_titulo <- c('Éxito','Fracaso')
@@ -1941,8 +1964,8 @@ flu_alt_titulo <- c('No modifica el valor')
 flu_alt_descrip <- c('El usuario no modifica el valor que aparece por defecto')
 
 #######Precondiciones
-precond_titulo <- c('Realizar "query"', 'Selecc ventana "Coocurrencia"')
-precond_descri <- c('Haber realizado el UC. 1.', 'Haber realizado el UC. 3.')
+precond_titulo <- c('1) Realizar "query"', 'Selecc ventana "Coocurrencia"')
+precond_descri <- c('2) Haber realizado el UC. 1.', 'Haber realizado el UC. 3.')
 
 #######Postcondiciones
 postcond_titulo <- c('Éxito','Fracaso')
@@ -2160,23 +2183,28 @@ Adicionalmente a la tabla "Corpus" se le añade una columna que se corresponde c
 
 ###### Diagrama General del Sistema- versión contenedores:
 
-En la figura ------ se define la estructura que será implementada, teniendo en cuenta los Requerimientos Funcionales y No Funcionales indicados anteriormente. La propuesta funciona como un Sistema Distribuido, ver \@ref(SD), donde mediante el uso de contenedores, ver \@ref(contenedores), se crean instancias en las que son ejecutadas los servicios necesarios para que el Sistema Complementario Saber UCV puede cumplir con los objetivos propuestos. La integración y la asignación de recursos a cada contenedor se hace mediante el uso de un orquetador, ver \@ref(orquestador).
+En la figura \@ref(fig:diagramacontenedores) se define la estructura que será implementada, teniendo en cuenta los Requerimientos Funcionales y No Funcionales indicados anteriormente. La propuesta funciona como un Sistema Distribuido, ver \@ref(SD), donde mediante el uso de contenedores, ver \@ref(contenedores), se crean instancias en las que son ejecutadas los servicios necesarios para que el Sistema Complementario Saber UCV puede cumplir con los objetivos propuestos. La integración y la asignación de recursos a cada contenedor se hace mediante el uso de un orquetador, ver \@ref(orquestador).
 
-En la fase de colaboracion de este ciclo \@ref(implemencolab) se especificarán las tareas y funciones asignadas a cada contenedor.
+```{r diagramacontenedores, echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama General del Sistema en Contenedores', out.width="80%"}
+
+knitr::include_graphics("images/05-desarrollo/4_ciclo/digrama_contenedores_modulos.png")
+```
+
+En la fase de colaboración de este ciclo \@ref(implemencolab) se especificarán las tareas y funciones asignadas a cada contenedor.
 
 ###### Esquema General de Clasificación y Extracción de Datos del SCSU:
 
-En la figura \@ref(fig:diagramaextra) se observa el proceso de extracción y clasificación de datos que realiza el SCSU, obteniendo los valores desde el repositorio Saber UCV, teniendo dos ramas principales que alimentan a la base de datos.
+En la figura \@ref(fig:diagramaextra) se observa el proceso de extracción y clasificación de datos que realizará el SCSU, obteniendo los valores desde el repositorio Saber UCV, teniendo dos ramas principales que alimentan a la base de datos.
 
 La lógica de este proceso es que en la primera rama se descarga el documento anexo a cada investigación, cuando se cumplan las condiciones, se hace la lectura del documento y se inicia el proceso de clasificación por facultad y área de estudio, como se vio en la "Iteración- Extracción y Clasificación de las Investigaciones" en \@ref(asignacion).
 
 En la segunda rama se hace el "etiquetado del discurso", que fue revisado en la "Iteración- Preparación del Corpus" en \@ref(iternlp).
 
-Ambos procesos alimentan a las correspondientes tablas en la Base de Datos.
+Ambos procesos alimentarán a las correspondientes tablas en la Base de Datos.
 
 El proceso indicado se ejecuta inicialmente para realizar el poblado de la Base de Datos e igualmente se replica periódicamente, según parámetro definido en el archivo de configuración del orquestador, para actualizar e incorporar las nuevas investigaciones que se encuentren disponibles en el repositorio Saber UCV.
 
-```{r diagramaextra, echo=FALSE, fig.align='center', fig.cap='Esquema Extracción y Clasificación de datos', out.width="90%"}
+```{r diagramaextra, echo=FALSE, fig.align='center', fig.cap='Esquema Extracción y Clasificación de Datos', out.width="90%"}
 
 knitr::include_graphics("images/05-desarrollo/4_ciclo/esquema extraccion.png")
 ```
@@ -2187,14 +2215,14 @@ La interfaz cuenta con tres componentes:
 
 1.  **Sidebar:** en la barra lateral que se ubicará en la parte izquierda de la aplicación y es el área donde el usuario definirá el texto de búsqueda así como los paremetros que le acompañan. En la figura \@ref(fig:sidebar2) se puede ver el diseño propuesto.
 
-    ```{r sidebar2,echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario: Sidebar', out.width="20%"}
+    ```{r sidebar2,echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario - Sidebar', out.width="20%"}
 
     knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/sidebar.jpg")
     ```
 
-2.  **Main Tabs:** es la sección de pestañas que se encontrará en la parte media alta de la aplicación y es donde el usuario podrá seleccionar la visualización de los "tabla resultados", bien sea para los tabla de los textos o para ver los "mapas del conocimiento". En la figura \@ref(fig:maintab) se representa la propuesta.
+2.  **Main Tabs:** es la sección de pestañas que se encontrará en la parte media alta de la aplicación y es donde el usuario podrá seleccionar la visualización de los "tabla resultados", bien sea para los tabla de los textos o para ver los "mapas del conocimiento". En la figura \@ref(fig:maintab) se representa la propuesta. Al seleccionar una pestaña está cambiará el color de fondo verde a gris.
 
-    ```{r maintab, echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario: ', out.width="90%"}
+    ```{r maintab, echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario - Pestañas ', out.width="90%"}
 
     knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/maintab.png")
     ```
@@ -2203,13 +2231,13 @@ La interfaz cuenta con tres componentes:
 
     1.  En las figura \@ref(fig:tablaresultados2) se puede ver la representación de la tabla de resultados de una búsqueda.
 
-        ```{r tablaresultados2,echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario: tabla resultados de búsqueda', out.width="90%"}
+        ```{r tablaresultados2,echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario - Tabla Resultados de Búsqueda', out.width="90%"}
         knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/tablaresultado.png")
         ```
 
     2.  En las figura \@ref(fig:tablaresultados3) se puede ver la representación propuesta de "mapas de conocimiento".
 
-        ```{r tablaresultados3,echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario: Mapas de Conocimiento', out.width="70%"}
+        ```{r tablaresultados3,echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario - Mapas de Conocimiento', out.width="70%"}
         knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/uimapas.png")
         ```
 
@@ -2217,53 +2245,53 @@ Adicional a estos tres componentes la propuesta de intefaz incluye:
 
 1.  **Tooltips**: al hacer hoover por áreas de introducción o selección de valores se despliegará un texto de ayuda según se ve en la \@ref(fig:tooltip).
 
-    ```{r tooltip, echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario: tooltips ', out.width="30%"}
+    ```{r tooltip, echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario - Tooltips ', out.width="30%"}
     knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/tooltip.png")
     ```
 
 2.  **Inspección documento:** la tabla de resultados dispondrá de un ícono "+" que expande la tabla para mostrar el detalle y recomendaciones de un documento, como se observa en la figura \@ref(fig:detalledoc).
 
-    ```{r detalledoc, echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario: inspección documento ', out.width="90%"}
+    ```{r detalledoc, echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario -Inspección Documento ', out.width="80%"}
     knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/uiinspecciontabla.png")
     ```
 
 3.  **Inspección "mapas de conocimiento":** la propuesta de visualización del detalle de aparición en documentos de una determinada coocurrencia de dos palabrasque se encuentran unidas por un arco se ven en la figura \@ref(fig:detallemc). La tabla que se muesta aparecerá mediante una ventana desplegable.
 
-    ```{r detallemc, echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario: inspección Mapas de Conocimiento ', out.width="60%"}
+    ```{r detallemc, echo=FALSE, fig.align='center', fig.cap='Interfaz de Usuario- Inspección Mapas de Conocimiento ', out.width="60%"}
     knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/uiinspeccionmapas.png")
     ```
 
 ###### Módulos Aplicación Web:
 
-La aplicación web, que será desarrollada en el *framework* "Shiny", según las prácticas de desarrollo recomendadas, se hace bajo la arquitectura de módulos denominados "Shiny Modules", descomponiendo en partes independientes cada par de funciones relacionadas en la *UI* (define la interfaz de usuario) y el *Server* (define la lógica del servidor), facilitando la comprensión del funcionamiento de la aplicación, la legibilidad del código, pruebas unitarias y el mantenimiento [@wickham2021]. En la figura \@ref(fig:shinymodulo) se puede ver la arquitectura de la aplicación que se integrará dentro del Sistema.
+La aplicación web, que será desarrollada en el *framework* "Shiny", según las prácticas de desarrollo recomendadas, se hace bajo la arquitectura de módulos denominados "Shiny Modules", descomponiendo en partes independientes cada par de funciones relacionadas en la *UI* (define la interfaz de usuario) y el *Server* (define la lógica del servidor), facilitando la comprensión del funcionamiento de la aplicación, la legibilidad del código, pruebas unitarias y el mantenimiento [@wickham2021]. En la figura \@ref(fig:shinymodulo) se puede ver la arquitectura de la aplicación que se integrará dentro del Sistema distribuido.
 
-```{r shinymodulo,echo=FALSE, fig.align='center', fig.cap='Esquema Extracción y Clasificación de datos', out.width="90%"}
+```{r shinymodulo,echo=FALSE, fig.align='center', fig.cap='Diagrama Aplicación Web Shiny Versión Modular', out.width="60%"}
 
 
-knitr::include_graphics("images/05-desarrollo/4_ciclo/esquema extraccion.png")
+knitr::include_graphics("images/05-desarrollo/4_ciclo/digrama_shinyapp_modulos.png")
 ```
 
-##### Colaboración:  {#implemencolab}
+##### Colaboración: {#implemencolab}
 
-Según lo propuesto en la fase de Especulación \@ref(implenesp) se hizo el desarrollo del Sistema mediante un sistema de contenedores orquestados, tomando en cuenta que es necesario contar de los mecanismos de comunicación necesarios. En la implementación se usaron ampliamente los conocimientos adquiridos en ciclos anteriores, no obstante también se tuvieron que revisar documentaciones, probar distintas opciones de librerías e imágenes de contenedores que permitiesen llevar a un entorno de producción, con la debida integración de los componentes, el Sistema planificado.
+Según lo propuesto en la fase de Especulación \@ref(implemenesp) se hizo el desarrollo del Sistema mediante un conjunto de contenedores orquestados, tomando en consideración que es necesario implementar los mecanismos de comunicación necesarios con la definición de una red y de disponer de un volumen compartido con la máquina host.
+
+En la implementación se usaron ampliamente los conocimientos adquiridos en ciclos anteriores, no obstante también se tuvieron que revisar documentaciones, probar distintas opciones de librerías e imágenes de contenedores que permitiesen llevar a un entorno de producción, con la debida integración de los componentes, el Sistema planificado.
 
 ###### Contenedores:
 
-Para alcanza la reproducibilidad Citar ten-simple-rules-dockerfiles para el tema de hacer reproducible el Sistema implementado
+Para realizar la implementación del Sistema, apoyado en contenedores para los distintos servicios que lo conforman, se eligió docker como herramienta. Mediante un archivo denominado "dockerfile" para cada servicio se especificó el entorno, dependencias y configuraciones necesarias para crear la imagen que servirá para instanciar cada contenedor.
 
-ya que al crear un contenedor disponemos de una forma de empaquetar la aplicación y todas las dependencias con un procedimiento estandarizado permitiendo que se pueda ejecutar la aplicación en cualquier parte, es decir en cualquier máquina que cuente con el hardware necesario A lo anterior se añaden elementos de seguridad que las hacen estar menos expuestas a ataques a que corriera directamente en el servidor la aplicación. Esto principalmente se deriva al uso de las primitivas de seguridad como el \"linux kernel namespace\" dentro del contenedor to sandbox different. applications running on the same computers and control groups (cgroups) in order to avoid the noisy-neighbor problem, where one bad application is using all the available resources of a server and starving all other applications. GBIEL SCHNEKER Learn Docker, pag 14.  Citar sobre Docker y rocker el trabajo RJ-2017-065
+A continuación se indican los contenedores que forman parte del Sistema y los puertos que disponden para interactuar unos con otros:
 
-Para realizar la implementación de los contenedores se eligió docker como herramienta. A continuación se indican los contenedores que forman parte del Sistema y los puertos que disponden para interactuar unos con otros:
-
-1.  **Nginx:** Es el servidor web/proxy inverso de código abierto que en este Sistema se usa para redireccionar las peticiones del cliente recibidas en el puerto 80 y 443 al puerto 8080. En este contenedor también se almacena el certificado SSL para permitir conexiones por el protocolo HTTPS. Este contenedor fue generado desde una imagen oficial de NGINX que se encuentra en el "docker hub" sin añadir ninguna capa (layer) adicional.
+1.  **Nginx:** Es el servidor web/proxy inverso de código abierto que en este Sistema se usa para redireccionar las peticiones del cliente recibidas en el puerto 80 y 443 al puerto 8080. En este contenedor también se almacena el certificado SSL para permitir conexiones por el protocolo HTTPS en caso de configurar un dominio[^05-desarrollo-7]. Este contenedor fue generado desde una imagen oficial de NGINX que se encuentra en el "docker hub" sin añadir ninguna capa (layer) adicional.
 
 2.  **Cerbot:** es una herramienta de código abierto que permite tramitar y habilitar las conexiones mediante el protocolo HTTPS con el uso de un certificado "Let´s Encrypt". El uso de este certificado está asociado al uso de un dominio en el *deploy* de la aplicación. Este contenedor fue generado desde una imagen de CERBOT del "docker hub" sin realizar ninguna modificación.
 
-3.  **Shinyproxy:** es una solución empresarial de código abierto para alojar aplicaciones Shiny [@shinyproxy2023] que cuenta con una tecnología estable y probada. El uso de este contenedor se justifica en el hecho de que una aplicación Shiny funciona como "single thread" y es necesario que ante cada petición de acceso, al servidor despliegue un *workspace* completamente aislado, es decir, un contenedor distinto. Shinyproxy es una implementación del servidor "*Spring boo*t" que tiene la capacidad de hacer la replicación indicada y permite controlar los recursos de memoria y cpu asignados, así como el timeout a cada instancia que se despliega. Otras ventajas que aporta, no implementadas en esta versión del Sistema, es que permite establecer *login* en el uso de la aplicación y la creación de grupos de usuarios con perfiles distintos, cuentando con soporte para distintos métodos de autenticación. Si bien en estos momentos la aplicación está concebida como de libre acceso, en algún momento se pude restringir y no sería necesaria ninguna modificación en la arquitectura, más allá de cambios en el archivo de configuración. Este contenedor habilita el puerto 8080 para escuchar las peticiones y fue generado desde la imagen del docker hub *Shinyproxy*.
+3.  **Shinyproxy:** es una solución de código abierto para alojar aplicaciones Shiny [@shinyproxy2023] que cuenta con una tecnología estable y probada. El uso de este contenedor se justifica en el hecho de que una aplicación Shiny funciona como "single thread" y es necesario que ante cada petición de acceso, al servidor despliegue un *workspace* completamente aislado, es decir, un contenedor distinto. Shinyproxy es una implementación del servidor "*Spring boo*t" que tiene la capacidad de hacer la replicación indicada y permite controlar los recursos de memoria y cpu asignados, así como el timeout a cada instancia que se despliega. Otras ventajas que aporta, no implementadas en esta versión del Sistema, es que permite establecer *login* en el uso de la aplicación y la creación de grupos de usuarios con perfiles distintos, contando con soporte para distintos métodos de autenticación. Si bien en estos momentos la aplicación está concebida para el libre acceso, en algún momento se pude restringir y no sería necesario hacer modificaciones en la arquitectura, más allá de variaciones en el archivo de configuración. Este contenedor habilita el puerto 8080 para escuchar las peticiones y fue generado desde la imagen del docker hub *Shinyproxy*.
 
-4.  **"*Shiny Web App* "**: En este contenedor se encruentra la imagen de la aplicación web con todas las dependencias y librerías necesarias para remitir los *querys* al contenedor del manejador de la base de datos, presentar los resultados y generar las visualizaciones correspondientes. Como se indicó anteriormente, cada vez que ocurre desde el navegador del cliente una petición de acceso, desde el contenedor *shinyproxy* , se crea una instacia de este contenedor con todos los elementos necesarios para que la app funcione. En caso de presentar alguna falla, el sistema es tolerante a los mismos, porque se pueden seguir recibiendo peticiones que replicarían una imagen nueva del contenedor sin afectar al que presentase el fallo, o viceversa. Desde este contenedor se realiza el acceso de lectura al contenedor que contiene *PostgreSQL* donde reposa la base de datos que contiene los textos ya procesados. La imagen que se usa en este servidor fue definida a medida.
+4.  **"*Shiny Web App*"**: En este contenedor se encruentra la imagen de la aplicación web con todas las dependencias y librerías necesarias para remitir los *querys* al contenedor del manejador de la base de datos, presentar los resultados y generar las visualizaciones correspondientes. Como se indicó anteriormente, cada vez que ocurre desde el navegador del cliente una petición de acceso, desde el contenedor *shinyproxy* , se crea una instacia de este contenedor con todos los elementos necesarios para que la app funcione. En caso de presentar alguna falla, el sistema es tolerante a los mismos, porque se pueden seguir recibiendo peticiones que replicarían una imagen nueva del contenedor sin afectar al que presentase el fallo, o viceversa. Desde este contenedor se realiza el acceso de lectura al contenedor que contiene *PostgreSQL* donde reposa la base de datos que contiene los textos ya procesados. La imagen que se usa en este servidor fue definida a medida.
 
-    Parte de las configuraciones de la interfaz de usuario se realizan en un archivo css para facilitar modificaciones que pueda resultar de interés.
+    Parte de las configuraciones de la interfaz de usuario se realizan en un archivo *css* para facilitar modificaciones que puedan resultar de interés.
 
     **Lógica de la aplicación:**
 
@@ -2271,86 +2299,48 @@ Para realizar la implementación de los contenedores se eligió docker como herr
 
     1.  **Entradas:**
 
-        1.  **Texto query:** Contiene un campo para la entrada de texto con el que se generará el query.- Contiene un selector para indicar si se quiere generar la coocurrencia de palabras- Contiene tablas para seleccionar: 1) Nivel académico del trabajo. Opciones (pregrado, especialización, maestría, doctorado). 2) Facultad o Centro de adscripción. Opciones: 11 Facultades más un centro (CENDES). 3) Nombre del pregrado o postgrado. En total son 412 las opciones. Cada una de las tablas anteriores se actualiza según se vayan seleccionando las relaciones y la disponibilidades. Por ejemplo, al seleccionar pregrado solo se mostrarán los nombres de las carreras de pregrado, pero si se selecciona también el nombre de la Facultad, sólo se mostrarán las carreras de pregrado dentro de la Facultad seleccionada. Para una determinado filtro se permiten selecciones múltiples dando una total flexibilidad al momento de ejecutar los *querys*.
+        1.  **Defición query:** Contiene un campo para la entrada de texto con el que se generará el query.- Contiene un selector para indicar si se quiere generar la coocurrencia de palabras- Contiene tablas para seleccionar: 1) Nivel académico del trabajo. Opciones (pregrado, especialización, maestría, doctorado). 2) Facultad o Centro de adscripción. Opciones: 11 Facultades más un centro (CENDES). 3) Nombre del pregrado o postgrado. En total son 412 las opciones. Cada una de las tablas anteriores se actualiza según se vayan seleccionando las relaciones y la disponibilidades. Por ejemplo, al seleccionar pregrado solo se mostrarán los nombres de las carreras de pregrado, pero si se selecciona también el nombre de la Facultad, sólo se mostrarán las carreras de pregrado dentro de la Facultad seleccionada. Para una determinado filtro se permiten selecciones múltiples dando una total flexibilidad al momento de ejecutar los *querys*. El texto del *query* es procesado convirtiéndolo a minúsculas y removiendo signos de puntuación.
 
         2.  **Selector "generar coocurrencias":** es una casilla que sirve para seleccionar si se van a representar los Mapas de Conocimiento o no. Por defecto está desselccionado ya que la representación de los mapas incrementa el tiempo de procesamiento de los datos.
 
-        3.  **Clic inspeccionar documento:** al obtener los resultados en una tabla se puede inspeccionar un documento particular para ver el texto resumen y las recomendaciones de documentos similares.
+        3.  **"Clic" inspeccionar documento:** al obtener los resultados en una tabla se puede inspeccionar un documento particular para ver el texto resumen y las recomendaciones de documentos similares.
 
         4.  **Cantidad de coocurrencias:** teniendo como condición que previamente se seleccionara "generar coocurrencias",dentro de la pestaña de "Coocurrencias", correspondientes a los Mapas de Conocimiento, se puede modificar la cantidad de coocurrencias a representar. El valor por defecto representado es 60.
 
-        5.  **Clic inspeccionar Mapa de Conocimiento:**,dentro de la pestaña de "Coocurrencias", correspondientes a los Mapas de Conocimiento, al tener representadas dos palabras mediante nodos, existe un arco que las une. Sobre el arco se puede hacer clic e inspeccionar los documentos que contienen las palabras asociadas por el arco.
+        5.  **"Clic" inspeccionar Mapa de Conocimiento:** dentro de la pestaña de "Coocurrencias", correspondientes a los Mapas de Conocimiento, al tener representadas dos palabras mediante nodos, existe un arco que las une. Sobre el arco se puede hacer clic e inspeccionar los documentos que contienen las palabras asociadas por el arco.
 
     2.  **Salidas:** Ante el *query* se genera:
 
-        1.  **Resultados query:** en una tabla creada con la librería "DT" donde se muestra el listado que contiene en cada fila los documentos recuperados mostrando estos atributos: autor, fecha, palabras clave, texto resumen, nombre tutor. Los documentos a presentar y el orden en que son presentados viene desde el contenedor "PostgreSQL". Adicionalmente se muestra un enlace al repositorio Saber UCV que es donde se encuentra alojado el respectivo trabajo (el documento en PDF). Igualmente se presentan los textos que tienen mayor similitud con el texto seleccionado. Un gráfico con la frecuencia por año de los trabajos extraídos mediante el *query*. El gráfico se generá con la librería "apexcharter", por lo cual el gráfico tiene ciertas interactividades. Con el *hoover* muestra el valor de cada año representado en cada columna.
+        1.  **Resultados query:** en una tabla creada con la librería "DT" se muestra el listado de documentos recuperados mostrando en cada fila los siguientes atributos: autor, fecha, palabras clave, texto resumen, nombre tutor. Los documentos a presentar y el orden en que son presentados viene desde el contenedor "PostgreSQL". Adicionalmente se muestra un enlace al repositorio Saber UCV donde se encuentra alojado el respectivo trabajo (el documento en PDF). Igualmente se presentan los textos que tienen mayor similitud con el documento seleccionado. Un gráfico con la frecuencia por año de los trabajos extraídos mediante el *query*. El gráfico se generá con la librería "apexcharter", por lo cual tiene ciertas interactividades mostrando con el *hoover* el valor de la cantidad por año que está representada en cada columna.
 
-        2.  **Mapas de Conocimiento dinámico:** Gráfico de coocurrencia interactivo de palabras que se genera mediante la librería de "VisNetwork*"* . Este gráfico permite distintas interacciones con el usuario como hacer zoom (in-out), seleccionar un determinado nodo, usar las teclas izquierda, derecha, arriba y abajo del teclado así como también permite seleccionar un arco de unión entre dos palabras coocurrentes. Al realizar la selección se filtran un subconjunto de los documentos que contienen ambas palabras representadas por nodos. Los documentos filtrados se mostrarán en una tabla contigua, también generada en "DT", donde sólo se incluye el texto resumen de cada trabajo.
+        2.  **Mapas de Conocimiento dinámico:** Gráfico de coocurrencia interactivo de palabras que se genera mediante la librería de "VisNetwork*"* . Este gráfico permite distintas interacciones con el usuario como hacer zoom (in-out), seleccionar un determinado nodo, usar las teclas izquierda, derecha, arriba y abajo del teclado, así como también permite seleccionar un arco de unión entre dos palabras coocurrentes. Al realizar la selección se filtran un subconjunto de los documentos que contienen ambas palabras representadas por nodos. Los documentos filtrados se mostrarán en una tabla contigua, también generada en"DT", donde sólo se incluye el texto resumen de cada trabajo.
 
-        3.  **Mapas de Conocimiento Estático:** gráfico de coocurrencias estático de palabras, donde mediante la librería "ggraph*"* son generados un par de gráficos con distintas granularidades. El primero exhibe la misma coocurrencia de palabras expuesta en el punto con una visualización estática. En cuanto a la granularidad se muestran las palabras que coocurren dentro de todo el resumen independientemente de la proximidad que tengan. El segundo gráfico también muestra la coocurrencia, pero solo de palabras que se encuentran en el texto resumen una seguida de otra representando los resultados con una menor granularidad.Con la librería "UdPipe*"* se generan las estructuras de datos necesarias para generar los grafos (arcos y nodos).
+        3.  **Mapas de Conocimiento Estático:** gráfico de coocurrencias estático de palabras, donde mediante la librería "ggraph*"* son generados un par de gráficos con distintas granularidades. El primero exhibe la misma coocurrencia de palabras expuesta en el punto con una visualización estática. En cuanto a la granularidad se muestran las palabras que coocurren dentro de todo el resumen independientemente de la proximidad que tengan. El segundo gráfico también muestra la coocurrencia, pero solo de palabras que se encuentran en el texto resumen una seguida de otra representando los resultados con una menor granularidad.Con la librería"UdPipe*"* se generan las estructuras de datos necesarias para generar los grafos (arcos y nodos).
 
-        **Librerías instaladas:** Las librerías de R que usa la aplicación web son :
+            En el Apéndice \@ref(apendicea) se listan los paquetes que usa este contenedor.
 
-        1.  **shinydashboard**: sirve para genera un formato de dashboard en la aplicación [@shinydashboard].
+5.  **"PostgreSQL":** es el contenedor donde se encuentra el manejador de PostgreSQL versión 16 y en él se almacenan todas las tablas que usa el Sistema. También recae la funcionalidad de generar el "`ts_vector`", convertir el query a un "`ts_query`" y mediante la función "`ts_rank`" reordenar los resultados extraídos con base en un ranking junto con el indexado de las distintas tablas. En el ciclo "Iteración- Implementación Prototipo" \@ref(desarrollociclos3) se indican más detalles sobre las funciones señaladas. En este contenedor se tiene una imagen de *PostgreSQL* versión 16.1 extraída del "docker hub" a la cual no le fue realizada ninguna modificación distinta a la configuración para la definición de usuarios y contraseña junto con la definición de un volumen compartido con el *host* para garantizar que se tengan "datos persistentes". Este contenedor recibe consultas del contenedor **"*S****hiny Web App*" y escritura-lectura desde el contenedor "R imagen Servicios" teniendo habilitado el puerto 5432.
 
-        2.  **shinydashboardPlus**: sirve para asistir a "shinydashboard" en configuraciones y funcionalidades adicionales [@shinydashboardPlus].
-
-        3.  **shinycssloaders**: muestra un loader cuando la aplicación de está cargando [@shinycssloaders].
-
-        4.  **pool**: gestor de conexión mediante un pool a la base de datos [@pool].
-
-        5.  **RPostgres**: carga el protocolo de conexión a postgreSQL [@RPostgres].
-
-        6.  **DBI**: permite la definición en lenguaje SQL de los querys [@DBI].
-
-        7.  **dplyr**: es una herramienta que facilita la manipulación de dataframes que sirven de insumo para representar los resultados [@dplyr].
-
-        8.  **tidyr**: manipulación de la dataframe que contiene los resultados [@tidyr].
-
-        9.  **dbplyr**: bajo la sintáxis de dplyr permite estucturar los querys [@dbplyr].
-
-        10. **DT**: *wrapper* de la librería "DataTables" de Javascript que permite generar tablas interactivas en html que muestran los resultados de los querys [@DT-2].
-
-        11. **udpipe**: paquete que permite manejar textos bajo los principios del framework "Universal Dependencies" y en la aplicación se usa para generar la estructura de datos que representa la coocurrencias [@udpipe-3].
-
-        12. **ggraph**: permite realizar la visualización estática mediante grafos de las coocurrencias [@ggraph-2].
-
-        13. **visNetwork**: permite realizar la visualización dinámica mediante grafos de las coocurrencias. Es un *wrapper* de la libraría Vis.Js.
-
-        14. **apexcharter**: permite generar gráficos interactivos y es un *wrapper* de la librería "ApexCharts.Js" [@apexcharter].
-
-        15. **scales**: se usa para reescalar los arcos que unen los nodos en las coocurrencias [@scales].
-
-        16. **fontawesome**: se usa para mostrar íconos en los selectores y ventanas [@fontawesome].
-
-        17. **stringr**: manipulación y manejo de textos [@stringr].
-
-        18. **shinyBS**: permite añadir los tooltips [@shinyBS].
-
-        19. **shinyalert**: crea un popup al ingresar a la aplicación.
-
-        20. **shinyWidgets**: herramienta para manejar interactividades [@shinyWidgets].
-
-        21. **config**: configurar variables globales y contextuales [@config].
-
-5.  **"PostgreSQL":** es el contenedor donde se encuentra el manejador de PostgreSQL versión 16 y en él se almacenan todas las tablas que usa el Sistema. También recae la funcionalidad de generar el "`ts_vector`", convertir el query a un "`ts_query`" y mediante la función "`ts_rank`" reordenar los resultados extraídos con base en un ranking junto con el indexado de las distintas tablas. En el ciclo "Iteración- Implementación Prototipo" \@ref(cicloprototipo) se indican más detalles sobre las funciones señaladas. En este contenedor se tiene una imagen de *PostgreSQL* versión 16.1 extraída del "docker hub" a la cual no le fue realizada ninguna modificación distinta a la configuración, definición de usuarios y el poblado desde base de datos, incluyendo la definición de un volumen compartido con el *host* para garantizar que se tengan "datos persistentes. Este contenedor recibe consultas del contenedor **"*S****hiny Web App* " y escritura desde el contenedor "R imagen Servicios" teniendo habilitado el puerto 5432.
-
-6.  **"R Imagen Servicios"**: En este contenedor se creó una imagen con todos los servicios necesarios para realizar el web crawling, el procesamientos de textos y la descarga de los archivos desde Saber UCV para realizar la clasificación de las Tesis y demás trabajos. Al iniciar la configuración del Sistema, contiene las funcionalidades que permiten realizar la creación de la base de datos, las tablas y el poblado de estas. Periódicamente es invocado un script mediante un "cron job" para realizar los procesos de incorporación de aquellos documentos nuevos que se detecte que están disponibles en Saber UCV. La imagen base que se usa es la del proyecto Rocker [@RJ-2017-065:2017], la cual es una versión ampliamente probada y optimizada por la comunidad de usuarios de R.
+6.  **"R Imagen Servicios"**: En este contenedor se creó una imagen con todos los servicios necesarios para realizar el *web crawling*, el procesamientos de textos y la descarga de los archivos desde Saber UCV para realizar la clasificación de las Tesis y demás trabajos. Al iniciar la configuración del Sistema, contiene las funcionalidades que permiten realizar la creación de la base de datos, las tablas y el poblado de estas. Periódicamente es invocado un script mediante un "cron job" para realizar los procesos de incorporación de aquellos documentos nuevos que se detecte que están disponibles en Saber UCV. La imagen base que se usa es la del proyecto Rocker [@RJ-2017-065:2017], la cual es una versión ampliamente probada y optimizada por la comunidad de usuarios de R.
 
     **Procesos:**
 
-    1.  **Poblado base de datos:** se ejecutan los procesos para hacer el poblado inicial de base de dato así como a la creación del indexado de la base de datos en el contenedor "**PostgreSQL".** En la fase de especulación de este ciclo se presentó un diagrama que describe el esquema de "extracción y clasificación de los datos".
+    1.  **Poblado base de datos:** se ejecutan los procesos para hacer el poblado inicial de base de dato así como a la creación del indexado de la base de datos en el contenedor "**PostgreSQL".** En la fase de especulación de este ciclo se presentó un diagrama que describe el esquema de"extracción y clasificación de los datos", ver figura \@ref(fig:diagramaextra).
     2.  **Descarga de datos:** proceso que fue abordado en el "Ciclo Conformación del Conjunto de Datos".
-    3.  **Text Mining y NLP:** en el "Ciclo Prototipo SCSU" en la iteración "Preparación del Corpus" de detallan los procesamientos a los textos que son ejecutados en este contenedor. La diferencia es que para usar "spacyr", al depender esta librería de una ambiente virtual en python , es necesario configurar otro contenedor con las dependencias y librerías que permitan el llamado al etiquetado del discurso. El contenedor que se integra para realizar estos procesos es **"Python Spacy".**
-    4.  **Generación de recomendaciones:** se corresponde a lo que fue detallado en el Ciclo Prototipo de SCSU en la iteración "Recomendación de Documentos".
+    3.  **Text Mining y NLP:** en el "Ciclo Prototipo SCSU", ver \@ref(desarrollociclos3), en la iteración "Preparación del Corpus", ver \@ref(iternlp), se detallan los procesamientos a los textos que ahora son ejecutados en este contenedor. La diferencia es que para usar "spacyr", al depender esta librería de una ambiente virtual en python , es necesario configurar otro contenedor con las dependencias y librerías que permitan el llamado al etiquetado del discurso. El contenedor que se integra para realizar estos procesos es **"Python Spacy".**
+    4.  **Generación de recomendaciones:** se corresponde con detallado en el "Ciclo Prototipo de SCSU" en la iteración "Recomendación de Documentos", ver \@ref(imrecomendacion).
 
-7.  **"Python Spacy":** Se creó una imagen que contiene un Ubuntu 22 con python, la librería spacy y el modelo de Spacy "es_core_news_lg" . Su función es que mediante un volumen compartido pueda ser invocado desde el contenedor "R Imagen Servicios" para así realizar los procesamientos de NLP descritos.
+    En el Apéndice \@ref(apendicea) se listan las librerías que usa este contenedor
+
+7.  **"Python Spacy":** Se creó una imagen que contiene un "Ubuntu 22" con "python 3.10", la librería "spacy v.3" y el modelo de Spacy "es_core_news_lg" . Su función es que mediante un volumen compartido pueda ser invocado desde el contenedor "R Imagen Servicios" para así realizar los procesamientos de NLP descritos.
+
+[^05-desarrollo-7]: Al momento de presentar este Trabajo de Grado no se dispone de un dominio para realizar la configuración del certificado para conexiones HTTPS, no obstante en un momento previo en que se tenía disponible un dominio se hicieron las pruebas para comprobar la integración y correcto funcionamiento.
 
 ###### Orquestador:
 
 Todos los contenedores mencionados es necesario que actúen de forma coordinada, compartiendo recursos como una red y volúmenes de almacenamiento. Para lograr esto se acude a la herramienta "Docker Compose" que se instala en el *host* y permite simplificar y automatizar el despliegue de aplicaciones compuestas por múltiples servicios y contenedores en entornos de desarrollo y producción.
 
-Se define la infraestructura, configurarción y gestión de una aplicación a través de un archivo YAML, denominado "docker-compose.yml" donde se detallan los servicios, contenedores, redes y volúmenes necesarios para la aplicación, así como las relaciones y configuraciones entre ellos, simplificando la orquestación de los contenedores.
+Se define la infraestructura, configuración y gestión de una aplicación a través de un archivo YAML, denominado "docker-compose.yml" donde se detallan los servicios, contenedores, redes y volúmenes necesarios para la aplicación, así como las relaciones y configuraciones entre ellos, simplificando la orquestación de los contenedores.
 
 También la adopción de Docker Compose facilita la replicación del entorno de desarrollo en diferentes máquinas, mejorando la consistencia en el desarrollo.
 
@@ -2406,56 +2396,286 @@ Para un concurrencia de 4 usuarios simultáneos, estos son los requerimientos de
 -   4 GB de memoria RAM
 -   50 GB de disco duro
 
-##### Aprender:  {#implemenapre}
+##### Aprender: {#implemenapre}
 
-Este ciclo trajo un profundo y largo proceso de aprendizaje ya que implicó integrar distintos elementos abordados previamente de forma aislada, más encontrar componentes que fuesen compatibles y adaptados a los requerimientos funcionales y no funcionales planteados.
+Este Ciclo trajo un profundo y largo proceso de aprendizaje ya que el desarrollo implicó integrar distintos elementos abordados previamente de forma aislada, más el reto de encontrar componentes que fuesen compatibles y adaptados a los requerimientos funcionales y no funcionales planteados.
 
-La utilidad de esta integración también representa en que se cuenta con un framework que permite desplegar otro tipo de aplicaciones que pueden ser facilmente escalables en entornos de producción.
+La utilidad de esta integración también representa en que se cuenta con un *framework* que permite desplegar otro tipo de aplicaciones que pueden ser fácilmente escalables en entornos de producción o añadir módulos distintos al SCSU como pudiera ser una aplicación para la administración del sistema o consultar estadísticas de uso.
 
-Como la cantidad de ciclos e iteraciones ejecutados previamente había sido extenso, en esta Ciclo, más allá del reto de la integración y evaluación de componentes, no fueron de distinta índole el aprendizaje adquierido, sin embargo se decidió incorpirar el la interfaz del usuario un gráfico que muestre la frecuencia de aparición de query en el tiempo.
+Como la cantidad de ciclos e iteraciones ejecutados previamente había sido extenso, en esta Ciclo, más allá del reto de la integración y evaluación de componentes, no fue de distinta índole el aprendizaje adquirido, sin embargo se decidió incorporar en la interfaz del usuario un gráfico que muestre la frecuencia de aparición de *query* en el tiempo así como una representación estática de los "mapas de conocimiento" ya que en esta versión se presenta con una mejor perspectiva la coocurrencia de términos, a diferencia de la versión interactiva que está diseñada para inspeccionar en detalle una determinada aparición de términos.
 
 ###### Objetivos alcanzados:
 
-Se implementó el Sistema que cumple con el Objetivo General \@ref(objegeneral) propuesto.
+-   Se implementó el Sistema que cumple con el Objetivo General \@ref(objegeneral).
 
-###### 
+-   Se dispone de una versión del Sistema que es reproducible.
+
+-   Se integraron con éxito los distintos componentes del Sistema.
+
+\newpage
+
+<br> <br>
+
+### Ciclo Incorporación de otras investigaciones:  {#desarrollociclos6}
+
+En este ciclo se aborda la incorporación al "Sistema Complementario Saber UCV" publicaciones distintas a las investigaciones de pregrado y postgrado de la Universidad Central de Venezuela.
+
+Lo propuesto en este Ciclo únicamente tiene como finalidad evaluar si el SCSU se puede usar para alojar revistas de investigación producidas dentro de la Universidad Central de Venezuela o fuera de ella.
+
+##### Especulación:   {#dcseisespe}
+
+Para los centros de estudio que generen investigaciones que sean alojadas en un repositorio de datos y se cumpla la estructura donde se disponga de un título para la publicación, una fecha, un autor, palabras claves (opcional) y un texto, es posible replicar los métodos descritos anteriormente para obtener los datos e incorporarlos al SCSU.
+
+Las publicaciones que se incorporarán son:
+
+1.  Archivo histórico de la Revista "**Gestión I+D**" editada dentro de la Universidad Central de Venezuela por el Postgrado en Gestión de Investigación y Desarrollo de la Facultad de Ciencias Económicas y Sociales.
+
+2.  Archivo histórico de la Revista "**Episteme NS**" editada dentro de la Universidad Central de Venezuela por el Instituto de Filosofía de la Facultad de Humanidades y Educación.
+
+3.  Archivo histórico de la Revista "**Observador del Conocimiento**" editada por el Observatorio Nacional de Ciencia, Tecnología e Innovación, adscrito al Ministerio del Poder Popular para Ciencia y Tecnología.
+
+4.  Artículo "**El Dorado Revisitado**" del Boletín Atropológico editado por la Universidad de los Andes.
+
+##### Colaboración:  {#dcseiscola}
+
+Siguiendo las técnicas descritas en "Iteración- "Extracción de Datos web Saber UCV" \@ref(scrapeo), se hizo la descarga de los datos y se introdujeron a la base de datos sin alterar la estructura que se había propuesto en el "Ciclo de Integración de los Componentes" \@ref(desarrollociclos4) lo que motiva a que no se entre en detalles sobre los métodos aplicados para incorporar este nuevo lote de investigaciones.
+
+Luego de hacer la descarga y procesamiento de los datos se obtuvieron la siguiente cantidad de artículos por Revista:
+
+1.  Gestión I+D (UCV): 129
+
+2.  Revista Episteme (UCV): 68
+
+3.  Revista Observador del Conocimiento (ONCTI): 197
+
+4.  Boletín Antropológico (ULA): 1
+
+##### Aprender:  {#dcseisapre}
+
+En caso de querer expandir el Sistema a otro tipo de publicaciones o universidades puede resultar de utilidad crear un módulo para la incorporación de estas donde se determine previamente la estructura de las etiquetas *css* o *html* , y posteriomente ser realice el scrapy y la asignación de categorías, no obstante no con este método no se resolvería, en caso de ser necesario, el proceso de tener que realizar clasificacionespor área de conocimiento como se hizo *ad hoc* para Saber UCV.
+
+En los históricos de algunas publicaciones existen atributos que no cumplen con las etiquetas *css* identificadas para hacer la descarga y se presentan algunas fallas, no obstante es para un mínimo de artículos y se considera que sí es viable realizar las incorporaciones bajo el método propuesto.
+
+\newpage
+
+<br> <br>
 
 ### Ciclo Buscador Semántico: {#desasarrollociclos5}
 
-##### Especulación:
+Si bien en el "Ciclo de Integración de Componentes de Software" se cumplió con el objetivo general propuesto en esta investigación, en este ciclo se evalúa que el Sistema incorpore la búsqueda semántica \@ref(busquedasemantica).
 
-Que el usuario pueda realizar búsquedas por términos similares semánticamente y el sistema recupere y rankee
+Los procesos incorporados en este Ciclo se hacen con fines experimentales y no serán sometidos a las distintas pruebas que se efectuarán más adelante, ni tampoco se harán los procesos de ingeniería de software para detallar funcionalidades o modificaciones al "diagrama entidad relación", sino se expondrá el método adoptado para añadir al Sistema este tipo de búsqueda que para esta fecha constituye el estado del arte en los sistemas de recuperación de información.
 
-##### Colaboración:
+##### Especulación:  {#semanespe}
 
-La API es una implementación realizada con el lenguaje de programación Python el microframework FastAPI. Como ya se había implementado una versión orquestada en contenedores se añadió como un contenedor adicional este componente. Modelo de lenguaje usado, comunicación lectura en BD
+La búsqueda semántica trata de mejorar la precisión de la búsqueda entendiendo el contenido de la consulta. A diferencia de los motores de búsqueda tradicionales, que sólo encuentran documentos a partir de coincidencias léxicas, la búsqueda semántica también puede encontrar sinónimos.
 
-Servicios que ofrece la API y mostrar un diagrama de la API y pruebas
+Adicionalmente se puede hacer el *reranking* con modelos de *machine learning* entrenados para tales fines [@gökçe2020], [@nogueira2019] pudiendo mejorar el ordenamiento con criterios de relevancia distintos a los vistos en el creado por la función "ts_rank" de postgreSQL en \@ref(iterbol).
 
-##### Aprender:
+Para incorporar estas funcionalidades se propone crear una "API" que sea implementada mediante el microframework "FastAPI" donde se permitirán recibir peticiones para:
 
-Comparar tiempos de búsqueda
+1.  **Registrar Embedding**: Con el texto resumen de cada investigación, convertirlo en distintos trozos de texto, generar embeddings para cada trozo y que estos sean almacenados en una tabla de *embeddings* dentro de la base de datos, asociando el código de identificación del documento.
 
-Evaluar uso de UMAP para generar representación de títulos con datos de embeddings
+    ```{r semanticoregistrar,echo=FALSE, fig.align='center', fig.cap='Diagrama API- Registrar Embedding', out.width="45%"}
 
-Citar 2005.04961 por el rerank de embeddings
 
-## Pruebas: {#pruebas}
+    knitr::include_graphics("images/05-desarrollo/5_ciclo/diagramapiregistrar.png")
+    ```
+
+2.  **Consultar:** Recibir el texto del query, convertirlo en un *embedding*, buscar los trozos de texto que presenten mayor similitud coseno, recuperar los identificadores de esos documentos, hacer un proceso de *reranking* con un modelo de *machine learning* y dar como resultado los identificadores de los veinte documentos más relevantes.
+
+    ```{r semanticoconsultar,echo=FALSE, fig.align='center', fig.cap='Diagrama API- Consultar Embedding', out.width="45%"}
+
+    knitr::include_graphics("images/05-desarrollo/5_ciclo/diagramapiconsultar.png")
+    ```
+
+##### Colaboración:  {#semancola}
+
+La API es una implementación realizada con el lenguaje de programación Python mediante el *microframework* "FastAPI". Como ya se había implementado una versión orquestada en contenedores se añadió como un contenedor adicional este componente.
+
+Se hizo la evaluación de varios modelos de aprendizaje automático para generar los embeddigs los cuales se encuentran de libre acceso en el repositorio "Hugging Face" [@hfmodels2023].
+
+Para realizar el proceso del "splitting" del texto resumen se usaron distintos modelos preentrenados para segmentar el texto acorde a las distintas ideas representadas, no necesariamente basándose en signos de puntuación. Dentro de los modelos revisados está "What it's the point" [@minixhofer-etal-2023-wheres] , "Text to Sentence Splitter" [@sensplit22023] seleccionando este último. Este proceso es necesario ejecutarlo porque se busca segmentar el texto en ideas, que queden registradas en *embeddings* para que en el momento de hacer el *query* se busque el trozo de texto que presente una mayor similitud con el *embedding* generado a partir del *query*.
+
+Para poder registrar los vectores de *embeddings* y realizar la búsqueda por similaridad en el gestor de base de datos PostgreSQL fue necesario añadir la extensión "pgvector" [@pgvector2023].
+
+El modelo para crear los*embeddings* es el "intfloat/multilingual-e5-base" [@wang2022], alojado en el repositorio de hugging face [@e5base], el cual limita la cantidad de tokens a 512, equivalente a 360 palabras por *embedding* y tiene un tamaño de 768 atributos. Previo a ser seleccionado se hizo una evaluación de otros modelos que tienen la misma funcionalidad como "dccuchile/bert-base-spanish-wwm-cased" [@canete2020]. El modelo "e5-base" presenta la mejor relación entre cantidad de descargas y peso del modelo. Teniendo presente que la cantidad de recursos computacionales que se disponen para hacer el *deploy* de todo el Sistema es limitado se decidió usar este modelo que ocupa aproximadamente 1 GB para estar en producción.
+
+Para hacer los proceso de *reranking* se evaluaron dos modelos que son el "amberoad/bert-multilingual-passage-reranking-msmarco" [@erankingmsmarco] y el "IIC/roberta-base-bne-ranker" [@hfranker2023], siendo seleccionado segundo por presentar un menor peso, tener mayor cantidad de descargas y ayudar a minimizar el consumo de recurso dentro del Sistema.
+
+Es necesario señalar que los modelos de machine learning evaluados y seleccionados están entrenados para funcionar con textos en el idioma español.
+
+En la aplicación Shiny se hicieron las modificaciones para hacer el llamado a la API y obtener de ella el listado de id´s de documentos seleccionados y posteriormente añadirlo a la lista de documentos recuperados mediante el método de índice invertido. Con la finalidad de evitar que se dupliquen documentos que sean obtenidos mediante el índice invertido y la búsqueda semántica se procedió a remover los documentos repetidos. Igualmente en la interfaz de usuario en la tabla que muestra los resultados se añadió una columna para señalar el método con el que fue recuperado el documento.
+
+##### Aprender:  {#semanapre}
+
+Usar la "búsqueda semántica" amplia considerablemente las posibilidades de obtener documentos que resulten de interés para el investigador, ya que no sólo se queda circunscrita la recuperación de información a términos exactos, sino se extraen documentos que pueden estar altamente relacionados al tema de búsqueda. En la figura se presentan los resultados ante el texto "problemas que enfrentan las mujeres".
+
+```{r resultsemantico, echo=FALSE, fig.align='center', fig.cap='Resultados de Búsqueda Semántica', out.width="90%"}
+
+knitr::include_graphics("images/05-desarrollo/5_ciclo/resultsemantico.png")
+```
+
+En este query se extrajeron 25 documentos y sino se hubiese usado esta técnica hubiesen ascendido a solo 5 los documentos extraídos.
+
+Un elemento a tener en cuenta es que la búsqueda semántica y la ejecución del reranking, incrementa considerablemente el tiempo de ejecución del *query*, no obstante, es necesario señalar que el método que implementa postrgreSQL para hacer la comparación vectorial no es parte del estado del arte en la materia.
+
+El uso de postgreSQL para hacer el proceso se hizo para simplificar la instalación de componentes adicionales dentro del Sistema, pero en caso de ser adoptada la búsqueda semántica en otra versión del SCSU, es necesario encontrar métodos que proporcionen un mejor desempeño en lo referente a los tiempos de ejecución del *query*.
+
+En esta implementación se evaluaron algunos modelos para crear los *embeddings* sin entrar en consideración sobre cuáles presentan mejores resultados al evaluar la relevancia de los documentos extraídos. Este es un punto en que en futuras investigaciones es necesario ahondar para comparar cuáles pueden ser de mayor utilidad.
+
+Igualmente es necesario en futuros trabajos establecer un umbral de similitud o cantidad de documentos a recuperar, óptimo, ya que al no hacerlo y simplemente reordenar los documentos por similitud, se extraerá todo el Corpus y se afectará directamente las métricas de precisión y exactitud (recall).
+
+\newpage
+
+<br> <br>
+
+## Pruebas de aceptación: {#pruebas}
+
+La fase de "Pruebas de Aceptación" en el desarrollo del Sistema Complementario Saber UCV representa el punto culminante en los ciclos de desarrollo abordados ya que se mide si las expectativas y necesidades del usuario final fueron satisfechas con la solución propuesta. Estas pruebas verifican la conformidad del sistema con los requisitos previamente establecidos y evalúa la capacidad para satisfacer las demandas del entorno operativo.
+
+En esta sección, se muestran los resultados de las distintas pruebas que fueron ejecutadas, diseñadas para validar no solo la funcionalidad técnica de la aplicación, sino también su capacidad para integrarse al contexto de uso previsto.
 
 ### Funcionales: {#pruebas1}
 
-Incluir un cuadro para las pruebas de la app. Ver pruebas en tesis de Jean
+Las Pruebas Funcionales constituyen la columna vertebral en la validación del software, evaluando su comportamiento según los requisitos que fueron especificados.
 
-Incluir otro cuadro para la api
+En la tabla \@ref(tab:tablapruebasa) se muestran las pruebas de caja negra realizadas para evaluar si el Sistema se comporta según lo que fue definido para cada caso de uso sin evaluar los procesos, sino en de una forma concreta si la salida creada por el Sistema se corresponde a lo descrito en los Casos de Uso del "Ciclo Integración de Componentes de Software" \@ref(desarrollociclos4). En la tabla \@ref(tab:tablapruebasb) se muestran las pruebas de caja negra realizadas para evaluar si el Sistema cumple con todos los requerimientos funcionales también definidos en Ciclo precitado.
 
-Pruebas de usabilidad: mencionar disponibilidad de menús de ayuda y pantalla de bienvenida
+\newpage
 
-<https://chat.openai.com/share/1b871360-5c33-4cd1-8309-aea6368af6ea>
+<br> <br>
 
-### Rendimiento: {#pruebas2}
+```{r tablapruebasa, echo=FALSE}
+listado_UC <- c('UC.1: Realizar proceso de recuperación de información (query)',
+                'UC.1. Nivel 2: Realizar proceso de recuperación de información (query) aplicando filtros',
+                'UC.2: Realizar Inspección de Recomendaciones',
+                'UC.3: Realizar inspección de "Mapas de Conocimiento"',
+                'UC.3. Nivel 2.1: Realizar inspección "Mapa de Conocimiento"',
+                'UC.3. Nivel 2.2: modificar cantidad de coocurrencias en "Mapa de Conocimiento"'
+                )
 
-Shinytest
+df_pruebas_UC <- data.frame(col1=listado_UC,
+                            col2='verdad')
 
-Tiempos de búsqueda
+
+
+flextable(df_pruebas_UC)%>%
+  theme_box()%>%
+  fontsize(size = 10)%>%
+  set_header_labels(
+    values = list(
+    col1="Caso de Uso",
+    col2="Se realiza el comportamiento esperado"))%>%
+  width(j= 1 ,width  = 8, unit = 'cm')%>%
+  width(j= 2, width  = 4, unit = 'cm')%>%
+  bg(bg = "#A3A3A3", part = "header")%>%
+  align(j=2, align = 'center')%>%
+  align_text_col( align = "center", header = TRUE, footer = TRUE)%>%
+  set_caption(caption='Pruebas de Caja Negra: Casos de Uso')
+ 
+```
+
+\newpage
+
+<br> <br>
+
+```{r tablapruebasb, echo=FALSE}
+listado_RF <- c('Interactividad',
+                'Búsqueda de Contenido',
+                'Filtrado de Búsquedas',
+                'Generar Mapas del Conocimiento',
+                '"Rankiar" los Documentos Recuperados',
+                'Generar Recomendaciones',
+                'Actualizar Periódicamente las Investigaciones',
+                'Cuadros de Ayuda (Tooltips)',
+                'Accesibilidad Web')
+
+df_pruebas_rf <- data.frame(col1=listado_RF,
+                            col2='verdad')
+
+flextable(df_pruebas_UC)%>%
+  theme_box()%>%
+  fontsize(size = 10)%>%
+  set_header_labels(
+    values = list(
+    col1="Requerimiento Funcional",
+    col2="Se realiza el comportamiento esperado"))%>%
+  width(j= 1 ,width  = 8, unit = 'cm')%>%
+  width(j= 2, width  = 4, unit = 'cm')%>%
+  bg(bg = "#A3A3A3", part = "header")%>%
+  align(j=2, align = 'center')%>%
+  align_text_col( align = "center", header = TRUE, footer = TRUE)%>%
+  set_caption(caption='Pruebas de Caja Negra: Requerimientos Funcionales')
+
+```
+
+### Rendimiento:
+
+La primera prueba de rendimiento que se realizó fue mediante la librería Shinytest [@shinytest], la cual está diseñada para facilitar a los desarrolladores verificar el comportamiento de sus aplicaciones de manera sistemática y reproducible mediante pruebas automatizadas en aplicaciones Shiny. Las pruebas se hacen con un driver que simula la interacción del usuario con el sistema definiendo previamente cuáles son los comportamientos que se quieren simular. Igualmente se define en qué momento se quiere tomar una "snapshot" para posteriormente evaluar si se adapta al comportamiento esperado.
+
+Concretamente se evalúo en esta prueba si al hacer una simulación de *query* con cada uno de los textos de los títulos de las investigaciones, se generaba al menos la extracción de un documento, lo cual demostraría que todos los documentos que conforman el Corpus son extraídos. El resultado obtenido fue el esperado con al menos un documento por *query*.
+
+La segunda prueba aplicada fue la que se ejecuta con el paquete "Shinyloadtest" [@shinyloadtest] el cual permite evaluar el rendimiento y la escalabilidad de aplicaciones Shiny ya que permite simular múltiples usuarios interactuando simultáneamente con una aplicación y así evaluar el comportamiento bajo carga. Adicionalmente este paquete genera informes detallados sobre el rendimiento, identificando posibles cuellos de botella y proporcionando métricas clave, como tiempos de respuesta y tasas de error.
+
+Al realizar el shinytest no se detectaron cuellos de botella ni tiempos de carga que estuviesen fuera de lo esperado.
+
+### Pruebas de Usabilidad: 
+
+En estas pruebas se mide que el Sistema adapte criterios de usabilidad:
+
+```{r tablapruebasc, echo=FALSE}
+
+listado_PU <- c('Menús de ayuda (tooltips)',
+                'Pantalla de Bienvenida')
+
+df_pruebas_rf <- data.frame(col1=listado_PU,
+                            col2='verdad')
+
+flextable(df_pruebas_UC)%>%
+  theme_box()%>%
+  fontsize(size = 10)%>%
+  set_header_labels(
+    values = list(
+    col1="Usabilidad",
+    col2="Se realiza el comportamiento esperado"))%>%
+  width(j= 1 ,width  = 8, unit = 'cm')%>%
+  width(j= 2, width  = 4, unit = 'cm')%>%
+  bg(bg = "#A3A3A3", part = "header")%>%
+  align(j=2, align = 'center')%>%
+  align_text_col( align = "center", header = TRUE, footer = TRUE)%>%
+  set_caption(caption='Pruebas de Caja Negra: Usabilidad')
+```
 
 ### Relevancia: {#pruebas3}
+
+Para hacer las mediciones de Relevancia se adoptó el siguiente método:
+
+1.  **Definir Conjunto de Datos de Prueba:**
+    -   Se seleccionaron aleatoriamente 50 documentos de trabajos de pregrado y postgrado asociados a la Escuela de Computación y el postgrado en Ciencias de la Computación. Se denomina conjunto A.
+    -   Se seleccionaron aleatoriamente 50 documentos de trabajos de pregrado y postgrado de documentos que no pertenezcan a la Escuela de Computación ni al postgrado en Ciencias de la Computación. Se denomina conjunto B.
+    -   Con el conjunto A y B se conformó el conjunto C.
+2.  **Crear Consultas de Prueba:**
+    -   Se diseñaron 10 consultas con términos asociados a los documentos del conjunto A.
+3.  **Ejecutar Consultas en el Sistema:**
+    -   Se hicieron las consultas para el conjunto C y se guardaron los resultados junto con el término del query.
+4.  **Definir Relevancia Esperada por expertos:**
+    -   A un grupo de expertos sobre el conjunto de documentos C se les pidió que indicaran para cada consulta, de las 10 definidas, cuáles son los 5 (o un número menor) documentos más relevantes sin tener que hacer algún tipo de *ranking*.
+5.  **Recopilar Resultados:**
+    -   Para cada consulta evaluada por un experto se comparó si el Sistema introducía dentro de los 10 primeros lugares los cinco (o menos) documentos señalados por el experto. En esta evaluación no se toma en consideración el orden ni del sistema ni de los expertos.
+6.  **Calcular Métricas de Evaluación:**
+    -   Con los resultados se calcularon las métricas *precisión* y *recall* y F1 ya que ellas son claves para la evaluación de sistemas de recuperación de información.
+        -   **Precisión (Precision):** Número de documentos relevantes recuperados dividido por el número total de documentos recuperados.
+        -   **Recall:** Número de documentos relevantes recuperados dividido por el número total de documentos relevantes en la colección.
+
+Los resultados obtenidos fueron:
+
+-   **Precisión:**
+
+-   **Recall**:
+
+-   **F1**:
+
+Se hizo sobre el subcojunto de trabajos definidos ya que sería imposible abordar las distintas áreas de conocimiento que conforman el Corpus, que se vio que ascienden a --- , y crear la base de dato de documentos relevantes está fuera del alcance de esta investigación.
+
+Con esta prueba se da por concluido el Desarrollo de la Solución.

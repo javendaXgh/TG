@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es-ES" xml:lang="es-ES">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 (APPENDIX) Apéndice: Librerías usadas por contenedores Shiny y R Servicios: {#{apendicea}} | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV</title>
+  <meta name="description" content="Trabajo de Grado de Maestría" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 (APPENDIX) Apéndice: Librerías usadas por contenedores Shiny y R Servicios: {#{apendicea}} | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/UCV.png" />
+  <meta property="og:description" content="Trabajo de Grado de Maestría" />
+  <meta name="github-repo" content="javendaXgh/TG" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 (APPENDIX) Apéndice: Librerías usadas por contenedores Shiny y R Servicios: {#{apendicea}} | RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV" />
+  
+  <meta name="twitter:description" content="Trabajo de Grado de Maestría" />
+  <meta name="twitter:image" content="/images/UCV.png" />
+
+<meta name="author" content="José Miguel Avendaño Infante" />
+
+
+<meta name="date" content="2023-12-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="conclusiones.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://tgucv.netlify.app">SCSU</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Resumen:</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#estructura"><i class="fa fa-check"></i><b>0.1</b> Estructura:</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="capproblema.html"><a href="capproblema.html"><i class="fa fa-check"></i><b>1</b> El Problema:</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="capproblema.html"><a href="capproblema.html#desproblema"><i class="fa fa-check"></i><b>1.1</b> Descripción del Problema:</a></li>
+<li class="chapter" data-level="1.2" data-path="capproblema.html"><a href="capproblema.html#delimitacion"><i class="fa fa-check"></i><b>1.2</b> Delimitación del Problema:</a></li>
+<li class="chapter" data-level="1.3" data-path="capproblema.html"><a href="capproblema.html#descripcion"><i class="fa fa-check"></i><b>1.3</b> Descripción de la Solución:</a></li>
+<li class="chapter" data-level="1.4" data-path="capproblema.html"><a href="capproblema.html#justificacion"><i class="fa fa-check"></i><b>1.4</b> Justificación e Importancia:</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="capproblema.html"><a href="capproblema.html#objegeneral"><i class="fa fa-check"></i><b>1.4.1</b> Objetivo General:</a></li>
+<li class="chapter" data-level="1.4.2" data-path="capproblema.html"><a href="capproblema.html#objeespe"><i class="fa fa-check"></i><b>1.4.2</b> Objetivos Específicos:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="capproblema.html"><a href="capproblema.html#aporte"><i class="fa fa-check"></i><b>1.5</b> Aportes:</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="teorico.html"><a href="teorico.html"><i class="fa fa-check"></i><b>2</b> Marco Teórico-Referencial:</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="teorico.html"><a href="teorico.html#alghist"><i class="fa fa-check"></i><b>2.1</b> Reseña histórica:</a></li>
+<li class="chapter" data-level="2.2" data-path="teorico.html"><a href="teorico.html#infret"><i class="fa fa-check"></i><b>2.2</b> Recuperación de Información:</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="teorico.html"><a href="teorico.html#SRI"><i class="fa fa-check"></i><b>2.2.1</b> Sistemas de Recuperación de Información (SRI) :</a></li>
+<li class="chapter" data-level="2.2.2" data-path="teorico.html"><a href="teorico.html#ejemplos-de-irs"><i class="fa fa-check"></i><b>2.2.2</b> Ejemplos de IRS:</a></li>
+<li class="chapter" data-level="2.2.3" data-path="teorico.html"><a href="teorico.html#MRI"><i class="fa fa-check"></i><b>2.2.3</b> Modelos de Recuperación de Información:</a>
+<ul>
+<li class="chapter" data-level="2.2.3.1" data-path="teorico.html"><a href="teorico.html#MRIbol"><i class="fa fa-check"></i><b>2.2.3.1</b> Recuperación boleana:</a></li>
+<li class="chapter" data-level="2.2.3.2" data-path="teorico.html"><a href="teorico.html#invind"><i class="fa fa-check"></i><b>2.2.3.2</b> Índices Invertidos:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2.4" data-path="teorico.html"><a href="teorico.html#relevancia"><i class="fa fa-check"></i><b>2.2.4</b> Relevancia:</a></li>
+<li class="chapter" data-level="2.2.5" data-path="teorico.html"><a href="teorico.html#ranking"><i class="fa fa-check"></i><b>2.2.5</b> Re Ordenamiento (re-ranking):</a>
+<ul>
+<li class="chapter" data-level="2.2.5.1" data-path="teorico.html"><a href="teorico.html#learning-to-rank-ltr"><i class="fa fa-check"></i><b>2.2.5.1</b> Learning to Rank (LTR):</a></li>
+<li class="chapter" data-level="2.2.5.2" data-path="teorico.html"><a href="teorico.html#bm25"><i class="fa fa-check"></i><b>2.2.5.2</b> BM25:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2.6" data-path="teorico.html"><a href="teorico.html#evaluacion"><i class="fa fa-check"></i><b>2.2.6</b> Medidas y Métodos de Evaluación:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="teorico.html"><a href="teorico.html#PT"><i class="fa fa-check"></i><b>2.3</b> Procesamientos a los textos:</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="teorico.html"><a href="teorico.html#nlproc"><i class="fa fa-check"></i><b>2.3.1</b> Procesamiento del Lenguaje Natural (Natural Language Processing- NLP):</a>
+<ul>
+<li class="chapter" data-level="2.3.1.1" data-path="teorico.html"><a href="teorico.html#token"><i class="fa fa-check"></i><b>2.3.1.1</b> Tokenizador:</a></li>
+<li class="chapter" data-level="2.3.1.2" data-path="teorico.html"><a href="teorico.html#pos"><i class="fa fa-check"></i><b>2.3.1.2</b> Etiquetado de Partes del Discurso <em>(Part of speech tagging-POS)</em>:</a></li>
+<li class="chapter" data-level="2.3.1.3" data-path="teorico.html"><a href="teorico.html#steaming"><i class="fa fa-check"></i><b>2.3.1.3</b> Stemming:</a></li>
+<li class="chapter" data-level="2.3.1.4" data-path="teorico.html"><a href="teorico.html#lemma"><i class="fa fa-check"></i><b>2.3.1.4</b> Lematización:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3.2" data-path="teorico.html"><a href="teorico.html#textmin"><i class="fa fa-check"></i><b>2.3.2</b> Minería de Texto:</a>
+<ul>
+<li class="chapter" data-level="2.3.2.1" data-path="teorico.html"><a href="teorico.html#tdm"><i class="fa fa-check"></i><b>2.3.2.1</b> Term-Document Matrix:</a></li>
+<li class="chapter" data-level="2.3.2.2" data-path="teorico.html"><a href="teorico.html#coocurrencia"><i class="fa fa-check"></i><b>2.3.2.2</b> Coocurrencia de Palabras:</a>
+<ul>
+<li class="chapter" data-level="2.3.2.2.1" data-path="teorico.html"><a href="teorico.html#mapacon"><i class="fa fa-check"></i><b>2.3.2.2.1</b> Mapas de Conocimiento:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2.3.3" data-path="teorico.html"><a href="teorico.html#similitud"><i class="fa fa-check"></i><b>2.3.3</b> Similitud de documentos:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="teorico.html"><a href="teorico.html#SD"><i class="fa fa-check"></i><b>2.4</b> Sistemas Distribuidos:</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="teorico.html"><a href="teorico.html#contenedores"><i class="fa fa-check"></i><b>2.4.1</b> Contenedores:</a></li>
+<li class="chapter" data-level="2.4.2" data-path="teorico.html"><a href="teorico.html#orquestador"><i class="fa fa-check"></i><b>2.4.2</b> Orquestador:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="teorico.html"><a href="teorico.html#sota"><i class="fa fa-check"></i><b>2.5</b> Estado del Arte:</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="teorico.html"><a href="teorico.html#embed"><i class="fa fa-check"></i><b>2.5.1</b> Embeddings</a></li>
+<li class="chapter" data-level="2.5.2" data-path="teorico.html"><a href="teorico.html#trans"><i class="fa fa-check"></i><b>2.5.2</b> Arquitectura de Redes Neuronales <em>Transformers</em>:</a></li>
+<li class="chapter" data-level="2.5.3" data-path="teorico.html"><a href="teorico.html#LLM"><i class="fa fa-check"></i><b>2.5.3</b> Largos Modelos de Lenguaje:</a></li>
+<li class="chapter" data-level="2.5.4" data-path="teorico.html"><a href="teorico.html#int"><i class="fa fa-check"></i><b>2.5.4</b> Integración:</a></li>
+<li class="chapter" data-level="2.5.5" data-path="teorico.html"><a href="teorico.html#busquedasemantica"><i class="fa fa-check"></i><b>2.5.5</b> Búsqueda Semántica:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="mm.html"><a href="mm.html"><i class="fa fa-check"></i><b>3</b> Capítulo Marco Metodológico:</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="mm.html"><a href="mm.html#mmmetodologia"><i class="fa fa-check"></i><b>3.1</b> Metodología de Trabajo Kanban:</a></li>
+<li class="chapter" data-level="3.2" data-path="mm.html"><a href="mm.html#mmasd"><i class="fa fa-check"></i><b>3.2</b> Desarrollo Adaptable de Software:</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="mm.html"><a href="mm.html#características"><i class="fa fa-check"></i><b>3.2.1</b> Características:</a></li>
+<li class="chapter" data-level="3.2.2" data-path="mm.html"><a href="mm.html#ciclos"><i class="fa fa-check"></i><b>3.2.2</b> Ciclos:</a>
+<ul>
+<li class="chapter" data-level="3.2.2.1" data-path="mm.html"><a href="mm.html#especulación"><i class="fa fa-check"></i><b>3.2.2.1</b> <strong>Especulación:</strong></a></li>
+<li class="chapter" data-level="3.2.2.2" data-path="mm.html"><a href="mm.html#colaboración"><i class="fa fa-check"></i><b>3.2.2.2</b> <strong>Colaboración:</strong></a></li>
+<li class="chapter" data-level="3.2.2.3" data-path="mm.html"><a href="mm.html#aprendizaje"><i class="fa fa-check"></i><b>3.2.2.3</b> <strong>Aprendizaje:</strong></a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="desarrollo.html"><a href="desarrollo.html"><i class="fa fa-check"></i><b>4</b> Desarrollo de la Solución:</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="desarrollo.html"><a href="desarrollo.html#desarollodescripcion"><i class="fa fa-check"></i><b>4.1</b> Descripción General de la Solución:</a></li>
+<li class="chapter" data-level="4.2" data-path="desarrollo.html"><a href="desarrollo.html#desarrolloarquitectura"><i class="fa fa-check"></i><b>4.2</b> Arquitectura de la Solución:</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="desarrollo.html"><a href="desarrollo.html#modelo"><i class="fa fa-check"></i><b>4.2.1</b> <strong>Modelo:</strong></a></li>
+<li class="chapter" data-level="4.2.2" data-path="desarrollo.html"><a href="desarrollo.html#vista"><i class="fa fa-check"></i><b>4.2.2</b> <strong>Vista:</strong></a></li>
+<li class="chapter" data-level="4.2.3" data-path="desarrollo.html"><a href="desarrollo.html#controlador"><i class="fa fa-check"></i><b>4.2.3</b> <strong>Controlador:</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos"><i class="fa fa-check"></i><b>4.3</b> Ciclos de Desarrollo:</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos1"><i class="fa fa-check"></i><b>4.3.1</b> Ciclo - Conformación del Conjunto de Datos:</a>
+<ul>
+<li class="chapter" data-level="4.3.1.1" data-path="desarrollo.html"><a href="desarrollo.html#scrapeo"><i class="fa fa-check"></i><b>4.3.1.1</b> Iteración- “Extracción de Datos web Saber UCV”:</a>
+<ul>
+<li class="chapter" data-level="4.3.1.1.1" data-path="desarrollo.html"><a href="desarrollo.html#especulación-1"><i class="fa fa-check"></i><b>4.3.1.1.1</b> Especulación:</a></li>
+<li class="chapter" data-level="4.3.1.1.2" data-path="desarrollo.html"><a href="desarrollo.html#colaboración-1"><i class="fa fa-check"></i><b>4.3.1.1.2</b> Colaboración:</a></li>
+<li class="chapter" data-level="4.3.1.1.3" data-path="desarrollo.html"><a href="desarrollo.html#aprender"><i class="fa fa-check"></i><b>4.3.1.1.3</b> Aprender:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.1.2" data-path="desarrollo.html"><a href="desarrollo.html#labels"><i class="fa fa-check"></i><b>4.3.1.2</b> Iteración- Levantamiento de Categorías:</a>
+<ul>
+<li class="chapter" data-level="4.3.1.2.1" data-path="desarrollo.html"><a href="desarrollo.html#especulación-2"><i class="fa fa-check"></i><b>4.3.1.2.1</b> Especulación:</a></li>
+<li class="chapter" data-level="4.3.1.2.2" data-path="desarrollo.html"><a href="desarrollo.html#colaboración-2"><i class="fa fa-check"></i><b>4.3.1.2.2</b> Colaboración:</a></li>
+<li class="chapter" data-level="4.3.1.2.3" data-path="desarrollo.html"><a href="desarrollo.html#aprender-1"><i class="fa fa-check"></i><b>4.3.1.2.3</b> Aprender:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.1.3" data-path="desarrollo.html"><a href="desarrollo.html#asignacion"><i class="fa fa-check"></i><b>4.3.1.3</b> Iteración- Extracción y Clasificación de las Investigaciones:</a>
+<ul>
+<li class="chapter" data-level="4.3.1.3.1" data-path="desarrollo.html"><a href="desarrollo.html#especulación-3"><i class="fa fa-check"></i><b>4.3.1.3.1</b> Especulación:</a></li>
+<li class="chapter" data-level="4.3.1.3.2" data-path="desarrollo.html"><a href="desarrollo.html#colaboración-3"><i class="fa fa-check"></i><b>4.3.1.3.2</b> Colaboración:</a></li>
+<li class="chapter" data-level="4.3.1.3.3" data-path="desarrollo.html"><a href="desarrollo.html#aprender-2"><i class="fa fa-check"></i><b>4.3.1.3.3</b> Aprender:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.1.4" data-path="desarrollo.html"><a href="desarrollo.html#objetivos-alcanzados"><i class="fa fa-check"></i><b>4.3.1.4</b> Objetivos alcanzados:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.2" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos3"><i class="fa fa-check"></i><b>4.3.2</b> Ciclo-Prototipo del SCSU:</a>
+<ul>
+<li class="chapter" data-level="4.3.2.1" data-path="desarrollo.html"><a href="desarrollo.html#iternlp"><i class="fa fa-check"></i><b>4.3.2.1</b> Iteración- Preparación del Corpus:</a>
+<ul>
+<li class="chapter" data-level="4.3.2.1.1" data-path="desarrollo.html"><a href="desarrollo.html#especulación-4"><i class="fa fa-check"></i><b>4.3.2.1.1</b> Especulación:</a></li>
+<li class="chapter" data-level="4.3.2.1.2" data-path="desarrollo.html"><a href="desarrollo.html#colaboración-4"><i class="fa fa-check"></i><b>4.3.2.1.2</b> Colaboración:</a></li>
+<li class="chapter" data-level="4.3.2.1.3" data-path="desarrollo.html"><a href="desarrollo.html#aprender-3"><i class="fa fa-check"></i><b>4.3.2.1.3</b> Aprender:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.2.2" data-path="desarrollo.html"><a href="desarrollo.html#imrecomendacion"><i class="fa fa-check"></i><b>4.3.2.2</b> Iteración - Recomendación Documentos:</a>
+<ul>
+<li class="chapter" data-level="4.3.2.2.1" data-path="desarrollo.html"><a href="desarrollo.html#especulación-5"><i class="fa fa-check"></i><b>4.3.2.2.1</b> Especulación:</a></li>
+<li class="chapter" data-level="4.3.2.2.2" data-path="desarrollo.html"><a href="desarrollo.html#colaboración-5"><i class="fa fa-check"></i><b>4.3.2.2.2</b> Colaboración:</a></li>
+<li class="chapter" data-level="4.3.2.2.3" data-path="desarrollo.html"><a href="desarrollo.html#aprendizaje-1"><i class="fa fa-check"></i><b>4.3.2.2.3</b> Aprendizaje:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.2.3" data-path="desarrollo.html"><a href="desarrollo.html#iterbol"><i class="fa fa-check"></i><b>4.3.2.3</b> Iteración- Implementación Prototipo:</a>
+<ul>
+<li class="chapter" data-level="4.3.2.3.1" data-path="desarrollo.html"><a href="desarrollo.html#especulación-6"><i class="fa fa-check"></i><b>4.3.2.3.1</b> Especulación:</a></li>
+<li class="chapter" data-level="4.3.2.3.2" data-path="desarrollo.html"><a href="desarrollo.html#colaboración-6"><i class="fa fa-check"></i><b>4.3.2.3.2</b> Colaboración:</a></li>
+<li class="chapter" data-level="4.3.2.3.3" data-path="desarrollo.html"><a href="desarrollo.html#aprender-4"><i class="fa fa-check"></i><b>4.3.2.3.3</b> Aprender:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.2.4" data-path="desarrollo.html"><a href="desarrollo.html#objetivos-alcanzados-1"><i class="fa fa-check"></i><b>4.3.2.4</b> Objetivos Alcanzados:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.3" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos4"><i class="fa fa-check"></i><b>4.3.3</b> Ciclo Integración de Componentes del Software:</a>
+<ul>
+<li class="chapter" data-level="4.3.3.0.1" data-path="desarrollo.html"><a href="desarrollo.html#implemenesp"><i class="fa fa-check"></i><b>4.3.3.0.1</b> Especulación:</a></li>
+<li class="chapter" data-level="4.3.3.0.2" data-path="desarrollo.html"><a href="desarrollo.html#implemencolab"><i class="fa fa-check"></i><b>4.3.3.0.2</b> Colaboración:</a></li>
+<li class="chapter" data-level="4.3.3.0.3" data-path="desarrollo.html"><a href="desarrollo.html#implemenapre"><i class="fa fa-check"></i><b>4.3.3.0.3</b> Aprender:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.4" data-path="desarrollo.html"><a href="desarrollo.html#desarrollociclos6"><i class="fa fa-check"></i><b>4.3.4</b> Ciclo Incorporación de otras investigaciones:</a>
+<ul>
+<li class="chapter" data-level="4.3.4.0.1" data-path="desarrollo.html"><a href="desarrollo.html#dcseisespe"><i class="fa fa-check"></i><b>4.3.4.0.1</b> Especulación:</a></li>
+<li class="chapter" data-level="4.3.4.0.2" data-path="desarrollo.html"><a href="desarrollo.html#dcseiscola"><i class="fa fa-check"></i><b>4.3.4.0.2</b> Colaboración:</a></li>
+<li class="chapter" data-level="4.3.4.0.3" data-path="desarrollo.html"><a href="desarrollo.html#dcseisapre"><i class="fa fa-check"></i><b>4.3.4.0.3</b> Aprender:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.5" data-path="desarrollo.html"><a href="desarrollo.html#desasarrollociclos5"><i class="fa fa-check"></i><b>4.3.5</b> Ciclo Buscador Semántico:</a>
+<ul>
+<li class="chapter" data-level="4.3.5.0.1" data-path="desarrollo.html"><a href="desarrollo.html#semanespe"><i class="fa fa-check"></i><b>4.3.5.0.1</b> Especulación:</a></li>
+<li class="chapter" data-level="4.3.5.0.2" data-path="desarrollo.html"><a href="desarrollo.html#semancola"><i class="fa fa-check"></i><b>4.3.5.0.2</b> Colaboración:</a></li>
+<li class="chapter" data-level="4.3.5.0.3" data-path="desarrollo.html"><a href="desarrollo.html#semanapre"><i class="fa fa-check"></i><b>4.3.5.0.3</b> Aprender:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="desarrollo.html"><a href="desarrollo.html#pruebas"><i class="fa fa-check"></i><b>4.4</b> Pruebas de aceptación:</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="desarrollo.html"><a href="desarrollo.html#pruebas1"><i class="fa fa-check"></i><b>4.4.1</b> Funcionales:</a></li>
+<li class="chapter" data-level="4.4.2" data-path="desarrollo.html"><a href="desarrollo.html#no-funcionales"><i class="fa fa-check"></i><b>4.4.2</b> No Funcionales:</a></li>
+<li class="chapter" data-level="4.4.3" data-path="desarrollo.html"><a href="desarrollo.html#pruebas2"><i class="fa fa-check"></i><b>4.4.3</b> Rendimiento:</a></li>
+<li class="chapter" data-level="4.4.4" data-path="desarrollo.html"><a href="desarrollo.html#pruebas3"><i class="fa fa-check"></i><b>4.4.4</b> Relevancia:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>5</b> Conclusiones:</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="conclusiones.html"><a href="conclusiones.html#conclusionescontri"><i class="fa fa-check"></i><b>5.1</b> Contribución:</a></li>
+<li class="chapter" data-level="5.2" data-path="conclusiones.html"><a href="conclusiones.html#conclusionestrabafutu"><i class="fa fa-check"></i><b>5.2</b> Trabajos Futuros:</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="appendix-apéndice-librerías-usadas-por-contenedores-shiny-y-r-servicios-apendicea.html"><a href="appendix-apéndice-librerías-usadas-por-contenedores-shiny-y-r-servicios-apendicea.html"><i class="fa fa-check"></i><b>6</b> (APPENDIX) Apéndice: Librerías usadas por contenedores Shiny y R Servicios: {#{apendicea}}</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RECUPERACIÓN, EXTRACCIÓN Y CLASIFICACIÓN DE INFORMACIÓN DE SABER UCV</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix-apéndice-librerías-usadas-por-contenedores-shiny-y-r-servicios-apendicea" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> (APPENDIX) Apéndice: Librerías usadas por contenedores Shiny y R Servicios: {#{apendicea}}<a href="appendix-apéndice-librerías-usadas-por-contenedores-shiny-y-r-servicios-apendicea.html#appendix-apéndice-librerías-usadas-por-contenedores-shiny-y-r-servicios-apendicea" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol style="list-style-type: decimal">
+<li><p>Las librerías de R que usa la aplicación web son :</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>shinydashboard</strong>: sirve para gener un formato de <em>dashboard</em> en la aplicación <span class="citation">(<a href="#ref-shinydashboard">Chang y Borges Ribeiro 2021</a>)</span>.</p></li>
+<li><p><strong>shinydashboardPlus</strong>: sirve para asistir a “shinydashboard” en configuraciones y funcionalidades adicionales <span class="citation">(<a href="#ref-shinydashboardPlus">Granjon 2021</a>)</span>.</p></li>
+<li><p><strong>shinycssloaders</strong>: muestra un <em>loader</em> cuando la aplicación de está cargando <span class="citation">(<a href="#ref-shinycssloaders">Sali y Attali 2020</a>)</span>.</p></li>
+<li><p><strong>pool</strong>: gestor de conexión mediante un <em>pool</em> a la base de datos <span class="citation">(<a href="#ref-pool">Cheng, Borges, y Wickham 2023</a>)</span>.</p></li>
+<li><p><strong>RPostgres</strong>: carga el protocolo de conexión a postgreSQL <span class="citation">(<a href="#ref-RPostgres">Wickham, Ooms, y Müller 2023</a>)</span>.</p></li>
+<li><p><strong>DBI</strong>: permite la definición en R de <em>querys</em> en lenguaje SQL <span class="citation">(<a href="#ref-DBI">, Wickham, y Müller 2022</a>)</span>.</p></li>
+<li><p><strong>dplyr</strong>: es una herramienta que facilita la manipulación de las <em>dataframes</em> que sirven de insumo para representar los resultados <span class="citation">(<a href="#ref-dplyr">Wickham et al. 2023</a>)</span>.</p></li>
+<li><p><strong>tidyr</strong>: manipulación de la <em>dataframe</em> que contiene los resultados <span class="citation">(<a href="#ref-tidyr">Wickham, Vaughan, y Girlich 2023</a>)</span>.</p></li>
+<li><p><strong>dbplyr</strong>: bajo la sintáxis de “dplyr” permite estucturar los querys <span class="citation">(<a href="#ref-dbplyr">Wickham, Girlich, y Ruiz 2023</a>)</span>.</p></li>
+<li><p><strong>DT</strong>: <em>wrapper</em> de la librería “DataTables” de Javascript que permite generar tablas interactivas en html que muestran los resultados de los querys <span class="citation">(<a href="#ref-DT-2">Xie, Cheng, y Tan 2023</a>)</span>.</p></li>
+<li><p><strong>udpipe</strong>: paquete que permite manejar textos bajo los principios del <em>framework</em> “Universal Dependencies” y en la aplicación se usa para generar la estructura de datos que representa la coocurrencias <span class="citation">(<a href="#ref-udpipe-3">Wijffels 2023</a>)</span>.</p></li>
+<li><p><strong>ggraph</strong>: permite realizar la visualización estática mediante grafos de las coocurrencias <span class="citation">(<a href="#ref-ggraph-2">Pedersen 2022</a>)</span>.</p></li>
+<li><p><strong>visNetwork</strong>: permite realizar la visualización dinámica mediante grafos de las coocurrencias. Es un <em>wrapper</em> de la libraría Vis.Js.</p></li>
+<li><p><strong>apexcharter</strong>: permite generar gráficos interactivos y es un <em>wrapper</em> de la librería “ApexCharts.Js” <span class="citation">(<a href="#ref-apexcharter">Perrier y Meyer 2023</a>)</span>.</p></li>
+<li><p><strong>scales</strong>: se usa para reescalar los arcos que unen los nodos en las coocurrencias <span class="citation">(<a href="#ref-scales">Wickham y Seidel 2022</a>)</span>.</p></li>
+<li><p><strong>fontawesome</strong>: se usa para mostrar íconos en los selectores y ventanas <span class="citation">(<a href="#ref-fontawesome">Iannone 2023</a>)</span>.</p></li>
+<li><p><strong>stringr</strong>: manipulación y manejo de textos <span class="citation">(<a href="#ref-stringr">Wickham 2022b</a>)</span>.</p></li>
+<li><p><strong>shinyBS</strong>: permite añadir los <em>tooltips</em> <span class="citation">(<a href="#ref-shinyBS">Bailey 2022</a>)</span>.</p></li>
+<li><p><strong>shinyalert</strong>: crea un <em>popup</em> al ingresar a la aplicación.</p></li>
+<li><p><strong>shinyWidgets</strong>: herramienta para manejar interactividades <span class="citation">(<a href="#ref-shinyWidgets">Perrier, Meyer, y Granjon 2023</a>)</span>.</p></li>
+<li><p><strong>config</strong>: configurar variables globales <span class="citation">(<a href="#ref-config">Allaire 2020</a>)</span>.</p></li>
+</ol></li>
+<li><p>Librerías usadas por el Contenedor “R Servicios”:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>httr2</strong>: ejecutar consultas HTTp y procesar las respuestas<span class="citation">(<a href="#ref-httr2">Wickham 2023</a>)</span>.</p></li>
+<li><p><strong>pool</strong>: gestor de conexión mediante un <em>pool</em> a la base de datos <span class="citation">(<a href="#ref-pool">Cheng, Borges, y Wickham 2023</a>)</span>.</p></li>
+<li><p><strong>RPostgres</strong>: carga el protocolo de conexión a postgreSQL <span class="citation">(<a href="#ref-RPostgres">Wickham, Ooms, y Müller 2023</a>)</span>.</p></li>
+<li><p><strong>DBI</strong>: permite la definición en R de <em>querys</em> en lenguaje SQL <span class="citation">(<a href="#ref-DBI">, Wickham, y Müller 2022</a>)</span>.</p></li>
+<li><p><strong>odbc</strong>: soporte para conexiones a manejadores de base de datos <span class="citation">(<a href="#ref-odbc">Hester, Wickham, y Gjoneski 2023</a>)</span>.</p></li>
+<li><p><strong>dplyr</strong>: es una herramienta que facilita la manipulación de las <em>dataframes</em> que sirven de insumo para representar los resultados <span class="citation">(<a href="#ref-dplyr">Wickham et al. 2023</a>)</span>.</p></li>
+<li><p><strong>tidyr</strong>: manipulación de la <em>dataframe</em> que contiene los resultados <span class="citation">(<a href="#ref-tidyr">Wickham, Vaughan, y Girlich 2023</a>)</span>.</p></li>
+<li><p><strong>dbplyr</strong>: bajo la sintáxis de “dplyr” permite estucturar los querys <span class="citation">(<a href="#ref-dbplyr">Wickham, Girlich, y Ruiz 2023</a>)</span>.</p></li>
+<li><p><strong>stringr</strong>: manipulación y manejo de textos <span class="citation">(<a href="#ref-stringr">Wickham 2022b</a>)</span>.</p></li>
+<li><p><strong>rvest:</strong> manipulación y extracción de datos de páginas web <span class="citation">(<a href="#ref-rvest-2">Wickham 2022a</a>)</span>.</p></li>
+<li><p><strong>rlang:</strong> caja de herramientas para trabajar con estructuras de R base<span class="citation">(<a href="#ref-rlang-2">Henry y Wickham 2023</a>)</span>.</p></li>
+<li><p><strong>purrr</strong>: aplicar programación funcional <span class="citation">(<a href="#ref-purrr">Wickham y Henry 2023</a>)</span>.</p></li>
+<li><p><strong>readtext</strong>: importar archivos en formato “word” o “pdf” <span class="citation">(<a href="#ref-readtext">Benoit y Obeng 2023</a>)</span> .</p></li>
+<li><p><strong>text.alignment</strong>: aplicar el algoritmo “Smith-Waterman” <span class="citation">(<a href="#ref-text.alignment">Wijffels 2022</a>)</span>.</p></li>
+<li><p><strong>spacyr</strong>: wrapper para usar el framework Spacy <span class="citation">(<a href="#ref-spacyr-2">Benoit y Matsuo 2020</a>)</span>.</p></li>
+<li><p><strong>config</strong>: configurar variables globales <span class="citation">(<a href="#ref-config">Allaire 2020</a>)</span>.</p></li>
+<li><p><strong>tm</strong>: ejecutar procesos de minería de texto<span class="citation">(<a href="#ref-tm">Feinerer y Hornik 2023</a>)</span>.</p></li>
+<li><p><strong>quanteda</strong>: análisis cuantitativo de textos<span class="citation">(<a href="#ref-quanteda-2">Benoit et al. 2018</a>)</span>.</p></li>
+</ol>
+<p>Para realizar los diagramas y esquemas representados en esta investigación se uso el software “draw.io” <span class="citation">(<a href="#ref-draw2023"><span>«Security-First Diagramming for Teams»</span> 2023</a>)</span>.</p></li>
+</ol>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Allaire, JJ. 2020. <span>«config: Manage Environment Specific Configuration Values»</span>. <a href="https://CRAN.R-project.org/package=config">https://CRAN.R-project.org/package=config</a>.
+</div>
+<div class="csl-entry">
+Bailey, Eric. 2022. <span>«shinyBS: Twitter Bootstrap Components for Shiny»</span>. <a href="https://CRAN.R-project.org/package=shinyBS">https://CRAN.R-project.org/package=shinyBS</a>.
+</div>
+<div class="csl-entry">
+Benoit, Kenneth, y Akitaka Matsuo. 2020. <span>«spacyr: Wrapper to the ’spaCy’ ’NLP’ Library»</span>. <a href="https://CRAN.R-project.org/package=spacyr">https://CRAN.R-project.org/package=spacyr</a>.
+</div>
+<div class="csl-entry">
+Benoit, Kenneth, y Adam Obeng. 2023. <span>«readtext: Import and Handling for Plain and Formatted Text Files»</span>. <a href="https://CRAN.R-project.org/package=readtext">https://CRAN.R-project.org/package=readtext</a>.
+</div>
+<div class="csl-entry">
+Benoit, Kenneth, Kohei Watanabe, Haiyan Wang, Paul Nulty, Adam Obeng, Stefan Müller, y Akitaka Matsuo. 2018. <span>«quanteda: An R package for the quantitative analysis of textual data»</span> 3: 774. <a href="https://doi.org/10.21105/joss.00774">https://doi.org/10.21105/joss.00774</a>.
+</div>
+<div class="csl-entry">
+Chang, Winston, y Barbara Borges Ribeiro. 2021. <span>«shinydashboard: Create Dashboards with ’Shiny’»</span>. <a href="https://CRAN.R-project.org/package=shinydashboard">https://CRAN.R-project.org/package=shinydashboard</a>.
+</div>
+<div class="csl-entry">
+Cheng, Joe, Barbara Borges, y Hadley Wickham. 2023. <span>«pool: Object Pooling»</span>. <a href="https://CRAN.R-project.org/package=pool">https://CRAN.R-project.org/package=pool</a>.
+</div>
+<div class="csl-entry">
+Feinerer, Ingo, y Kurt Hornik. 2023. <span>«tm: Text Mining Package»</span>. <a href="https://CRAN.R-project.org/package=tm">https://CRAN.R-project.org/package=tm</a>.
+</div>
+<div class="csl-entry">
+Granjon, David. 2021. <span>«shinydashboardPlus: Add More ’AdminLTE2’ Components to ’shinydashboard’»</span>. <a href="https://CRAN.R-project.org/package=shinydashboardPlus">https://CRAN.R-project.org/package=shinydashboardPlus</a>.
+</div>
+<div class="csl-entry">
+Henry, Lionel, y Hadley Wickham. 2023. <span>«rlang: Functions for Base Types and Core R and ’Tidyverse’ Features»</span>. <a href="https://CRAN.R-project.org/package=rlang">https://CRAN.R-project.org/package=rlang</a>.
+</div>
+<div class="csl-entry">
+Hester, Jim, Hadley Wickham, y Oliver Gjoneski. 2023. <span>«odbc: Connect to ODBC Compatible Databases (using the DBI Interface)»</span>. <a href="https://CRAN.R-project.org/package=odbc">https://CRAN.R-project.org/package=odbc</a>.
+</div>
+<div class="csl-entry">
+Iannone, Richard. 2023. <span>«fontawesome: Easily Work with ’Font Awesome’ Icons»</span>. <a href="https://CRAN.R-project.org/package=fontawesome">https://CRAN.R-project.org/package=fontawesome</a>.
+</div>
+<div class="csl-entry">
+Pedersen, Thomas Lin. 2022. <span>«ggraph: An Implementation of Grammar of Graphics for Graphs and Networks»</span>. <a href="https://CRAN.R-project.org/package=ggraph">https://CRAN.R-project.org/package=ggraph</a>.
+</div>
+<div class="csl-entry">
+Perrier, Victor, y Fanny Meyer. 2023. <span>«apexcharter: Create Interactive Chart with the JavaScript ’ApexCharts’ Library»</span>. <a href="https://CRAN.R-project.org/package=apexcharter">https://CRAN.R-project.org/package=apexcharter</a>.
+</div>
+<div class="csl-entry">
+Perrier, Victor, Fanny Meyer, y David Granjon. 2023. <span>«shinyWidgets: Custom Inputs Widgets for Shiny»</span>. <a href="https://CRAN.R-project.org/package=shinyWidgets">https://CRAN.R-project.org/package=shinyWidgets</a>.
+</div>
+<div class="csl-entry">
+R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, y Kirill Müller. 2022. <span>«DBI: R Database Interface»</span>. <a href="https://CRAN.R-project.org/package=DBI">https://CRAN.R-project.org/package=DBI</a>.
+</div>
+<div class="csl-entry">
+Sali, Andras, y Dean Attali. 2020. <span>«shinycssloaders: Add Loading Animations to a ’shiny’ Output While It’s Recalculating»</span>. <a href="https://CRAN.R-project.org/package=shinycssloaders">https://CRAN.R-project.org/package=shinycssloaders</a>.
+</div>
+<div class="csl-entry">
+<span>«Security-First Diagramming for Teams»</span>. 2023. <a href="https://www.drawio.com/">https://www.drawio.com/</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley. 2022a. <span>«rvest: Easily Harvest (Scrape) Web Pages»</span>. <a href="https://CRAN.R-project.org/package=rvest">https://CRAN.R-project.org/package=rvest</a>.
+</div>
+<div class="csl-entry">
+———. 2022b. <span>«stringr: Simple, Consistent Wrappers for Common String Operations»</span>. <a href="https://CRAN.R-project.org/package=stringr">https://CRAN.R-project.org/package=stringr</a>.
+</div>
+<div class="csl-entry">
+———. 2023. <span>«httr2: Perform HTTP Requests and Process the Responses»</span>. <a href="https://CRAN.R-project.org/package=httr2">https://CRAN.R-project.org/package=httr2</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, y Davis Vaughan. 2023. <span>«dplyr: A Grammar of Data Manipulation»</span>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, Maximilian Girlich, y Edgar Ruiz. 2023. <span>«dbplyr: A ’dplyr’ Back End for Databases»</span>. <a href="https://CRAN.R-project.org/package=dbplyr">https://CRAN.R-project.org/package=dbplyr</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, y Lionel Henry. 2023. <span>«purrr: Functional Programming Tools»</span>. <a href="https://CRAN.R-project.org/package=purrr">https://CRAN.R-project.org/package=purrr</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, Jeroen Ooms, y Kirill Müller. 2023. <span>«RPostgres: Rcpp Interface to PostgreSQL»</span>. <a href="https://CRAN.R-project.org/package=RPostgres">https://CRAN.R-project.org/package=RPostgres</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, y Dana Seidel. 2022. <span>«scales: Scale Functions for Visualization»</span>. <a href="https://CRAN.R-project.org/package=scales">https://CRAN.R-project.org/package=scales</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, Davis Vaughan, y Maximilian Girlich. 2023. <span>«tidyr: Tidy Messy Data»</span>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.
+</div>
+<div class="csl-entry">
+Wijffels, Jan. 2022. <span>«text.alignment: Text Alignment with Smith-Waterman»</span>. <a href="https://CRAN.R-project.org/package=text.alignment">https://CRAN.R-project.org/package=text.alignment</a>.
+</div>
+<div class="csl-entry">
+———. 2023. <span>«udpipe: Tokenization, Parts of Speech Tagging, Lemmatization and Dependency Parsing with the ’UDPipe’ ’NLP’ Toolkit»</span>. <a href="https://CRAN.R-project.org/package=udpipe">https://CRAN.R-project.org/package=udpipe</a>.
+</div>
+<div class="csl-entry">
+Xie, Yihui, Joe Cheng, y Xianying Tan. 2023. <span>«DT: A Wrapper of the JavaScript Library ’DataTables’»</span>. <a href="https://CRAN.R-project.org/package=DT">https://CRAN.R-project.org/package=DT</a>.
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-config" class="csl-entry">
+Allaire, JJ. 2020. <span>«config: Manage Environment Specific Configuration Values»</span>. <a href="https://CRAN.R-project.org/package=config">https://CRAN.R-project.org/package=config</a>.
+</div>
+<div id="ref-shinyBS" class="csl-entry">
+Bailey, Eric. 2022. <span>«shinyBS: Twitter Bootstrap Components for Shiny»</span>. <a href="https://CRAN.R-project.org/package=shinyBS">https://CRAN.R-project.org/package=shinyBS</a>.
+</div>
+<div id="ref-spacyr-2" class="csl-entry">
+Benoit, Kenneth, y Akitaka Matsuo. 2020. <span>«spacyr: Wrapper to the ’spaCy’ ’NLP’ Library»</span>. <a href="https://CRAN.R-project.org/package=spacyr">https://CRAN.R-project.org/package=spacyr</a>.
+</div>
+<div id="ref-readtext" class="csl-entry">
+Benoit, Kenneth, y Adam Obeng. 2023. <span>«readtext: Import and Handling for Plain and Formatted Text Files»</span>. <a href="https://CRAN.R-project.org/package=readtext">https://CRAN.R-project.org/package=readtext</a>.
+</div>
+<div id="ref-quanteda-2" class="csl-entry">
+Benoit, Kenneth, Kohei Watanabe, Haiyan Wang, Paul Nulty, Adam Obeng, Stefan Müller, y Akitaka Matsuo. 2018. <span>«quanteda: An R package for the quantitative analysis of textual data»</span> 3: 774. <a href="https://doi.org/10.21105/joss.00774">https://doi.org/10.21105/joss.00774</a>.
+</div>
+<div id="ref-shinydashboard" class="csl-entry">
+Chang, Winston, y Barbara Borges Ribeiro. 2021. <span>«shinydashboard: Create Dashboards with ’Shiny’»</span>. <a href="https://CRAN.R-project.org/package=shinydashboard">https://CRAN.R-project.org/package=shinydashboard</a>.
+</div>
+<div id="ref-pool" class="csl-entry">
+Cheng, Joe, Barbara Borges, y Hadley Wickham. 2023. <span>«pool: Object Pooling»</span>. <a href="https://CRAN.R-project.org/package=pool">https://CRAN.R-project.org/package=pool</a>.
+</div>
+<div id="ref-tm" class="csl-entry">
+Feinerer, Ingo, y Kurt Hornik. 2023. <span>«tm: Text Mining Package»</span>. <a href="https://CRAN.R-project.org/package=tm">https://CRAN.R-project.org/package=tm</a>.
+</div>
+<div id="ref-shinydashboardPlus" class="csl-entry">
+Granjon, David. 2021. <span>«shinydashboardPlus: Add More ’AdminLTE2’ Components to ’shinydashboard’»</span>. <a href="https://CRAN.R-project.org/package=shinydashboardPlus">https://CRAN.R-project.org/package=shinydashboardPlus</a>.
+</div>
+<div id="ref-rlang-2" class="csl-entry">
+Henry, Lionel, y Hadley Wickham. 2023. <span>«rlang: Functions for Base Types and Core R and ’Tidyverse’ Features»</span>. <a href="https://CRAN.R-project.org/package=rlang">https://CRAN.R-project.org/package=rlang</a>.
+</div>
+<div id="ref-odbc" class="csl-entry">
+Hester, Jim, Hadley Wickham, y Oliver Gjoneski. 2023. <span>«odbc: Connect to ODBC Compatible Databases (using the DBI Interface)»</span>. <a href="https://CRAN.R-project.org/package=odbc">https://CRAN.R-project.org/package=odbc</a>.
+</div>
+<div id="ref-fontawesome" class="csl-entry">
+Iannone, Richard. 2023. <span>«fontawesome: Easily Work with ’Font Awesome’ Icons»</span>. <a href="https://CRAN.R-project.org/package=fontawesome">https://CRAN.R-project.org/package=fontawesome</a>.
+</div>
+<div id="ref-ggraph-2" class="csl-entry">
+Pedersen, Thomas Lin. 2022. <span>«ggraph: An Implementation of Grammar of Graphics for Graphs and Networks»</span>. <a href="https://CRAN.R-project.org/package=ggraph">https://CRAN.R-project.org/package=ggraph</a>.
+</div>
+<div id="ref-apexcharter" class="csl-entry">
+Perrier, Victor, y Fanny Meyer. 2023. <span>«apexcharter: Create Interactive Chart with the JavaScript ’ApexCharts’ Library»</span>. <a href="https://CRAN.R-project.org/package=apexcharter">https://CRAN.R-project.org/package=apexcharter</a>.
+</div>
+<div id="ref-shinyWidgets" class="csl-entry">
+Perrier, Victor, Fanny Meyer, y David Granjon. 2023. <span>«shinyWidgets: Custom Inputs Widgets for Shiny»</span>. <a href="https://CRAN.R-project.org/package=shinyWidgets">https://CRAN.R-project.org/package=shinyWidgets</a>.
+</div>
+<div id="ref-DBI" class="csl-entry">
+R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, y Kirill Müller. 2022. <span>«DBI: R Database Interface»</span>. <a href="https://CRAN.R-project.org/package=DBI">https://CRAN.R-project.org/package=DBI</a>.
+</div>
+<div id="ref-shinycssloaders" class="csl-entry">
+Sali, Andras, y Dean Attali. 2020. <span>«shinycssloaders: Add Loading Animations to a ’shiny’ Output While It’s Recalculating»</span>. <a href="https://CRAN.R-project.org/package=shinycssloaders">https://CRAN.R-project.org/package=shinycssloaders</a>.
+</div>
+<div id="ref-draw2023" class="csl-entry">
+<span>«Security-First Diagramming for Teams»</span>. 2023. <a href="https://www.drawio.com/">https://www.drawio.com/</a>.
+</div>
+<div id="ref-rvest-2" class="csl-entry">
+Wickham, Hadley. 2022a. <span>«rvest: Easily Harvest (Scrape) Web Pages»</span>. <a href="https://CRAN.R-project.org/package=rvest">https://CRAN.R-project.org/package=rvest</a>.
+</div>
+<div id="ref-stringr" class="csl-entry">
+———. 2022b. <span>«stringr: Simple, Consistent Wrappers for Common String Operations»</span>. <a href="https://CRAN.R-project.org/package=stringr">https://CRAN.R-project.org/package=stringr</a>.
+</div>
+<div id="ref-httr2" class="csl-entry">
+———. 2023. <span>«httr2: Perform HTTP Requests and Process the Responses»</span>. <a href="https://CRAN.R-project.org/package=httr2">https://CRAN.R-project.org/package=httr2</a>.
+</div>
+<div id="ref-dplyr" class="csl-entry">
+Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, y Davis Vaughan. 2023. <span>«dplyr: A Grammar of Data Manipulation»</span>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+</div>
+<div id="ref-dbplyr" class="csl-entry">
+Wickham, Hadley, Maximilian Girlich, y Edgar Ruiz. 2023. <span>«dbplyr: A ’dplyr’ Back End for Databases»</span>. <a href="https://CRAN.R-project.org/package=dbplyr">https://CRAN.R-project.org/package=dbplyr</a>.
+</div>
+<div id="ref-purrr" class="csl-entry">
+Wickham, Hadley, y Lionel Henry. 2023. <span>«purrr: Functional Programming Tools»</span>. <a href="https://CRAN.R-project.org/package=purrr">https://CRAN.R-project.org/package=purrr</a>.
+</div>
+<div id="ref-RPostgres" class="csl-entry">
+Wickham, Hadley, Jeroen Ooms, y Kirill Müller. 2023. <span>«RPostgres: Rcpp Interface to PostgreSQL»</span>. <a href="https://CRAN.R-project.org/package=RPostgres">https://CRAN.R-project.org/package=RPostgres</a>.
+</div>
+<div id="ref-scales" class="csl-entry">
+Wickham, Hadley, y Dana Seidel. 2022. <span>«scales: Scale Functions for Visualization»</span>. <a href="https://CRAN.R-project.org/package=scales">https://CRAN.R-project.org/package=scales</a>.
+</div>
+<div id="ref-tidyr" class="csl-entry">
+Wickham, Hadley, Davis Vaughan, y Maximilian Girlich. 2023. <span>«tidyr: Tidy Messy Data»</span>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.
+</div>
+<div id="ref-text.alignment" class="csl-entry">
+Wijffels, Jan. 2022. <span>«text.alignment: Text Alignment with Smith-Waterman»</span>. <a href="https://CRAN.R-project.org/package=text.alignment">https://CRAN.R-project.org/package=text.alignment</a>.
+</div>
+<div id="ref-udpipe-3" class="csl-entry">
+———. 2023. <span>«udpipe: Tokenization, Parts of Speech Tagging, Lemmatization and Dependency Parsing with the ’UDPipe’ ’NLP’ Toolkit»</span>. <a href="https://CRAN.R-project.org/package=udpipe">https://CRAN.R-project.org/package=udpipe</a>.
+</div>
+<div id="ref-DT-2" class="csl-entry">
+Xie, Yihui, Joe Cheng, y Xianying Tan. 2023. <span>«DT: A Wrapper of the JavaScript Library ’DataTables’»</span>. <a href="https://CRAN.R-project.org/package=DT">https://CRAN.R-project.org/package=DT</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conclusiones.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["twitter", "linkedin", "whatsapp"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"lib_dir": "book_assets",
+"split_by": "section",
+"config": {
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+}
+});
+});
+</script>
+
+</body>
+
+</html>

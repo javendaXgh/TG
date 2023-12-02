@@ -326,7 +326,7 @@ Es importante señalar que el uso de esta tecnología añade un entorno de segur
 
 Para cada contenedor es necesario usar una imagen donde previamente se definen las dependencias (sistema operativo, librerías, lenguajes) necesarias para su funcionamiento.
 
-### Orquestador:  {#orquestador}
+### Orquestador: {#orquestador}
 
 Al tener diversos contenedores, donde cada uno aloja una aplicación distinta, puede resultar necesario que todos se integren en un sistema. Para que esta integración sea viable es necesario contar con un orquestador [@cook2017]. Su uso permitirá lograr altos grados de portabilidad y reproducibilidad, pudiendo colocarlos en la nube o en centros de datos, garantizando que se pueda hacer el *deploy* de forma sencilla y fiel a lo que se implementó en el ambiente de desarrollo.
 
@@ -463,22 +463,30 @@ La diversidad de modelos preentrenados, con distintas versiones de fine tunning 
 
 ### Integración: {#int}
 
-Las versiones Open Source de estos modelos es posible integrarla en procesos de Information Retrieval principalmente mediante tres técnicas.
+Las versiones *Open Source* de estos modelos es posible integrarla en procesos de *Information Retrieval* principalmente mediante tres técnicas.
 
 1.  **Retrieval Augmented Generation RAG** [@lewis2020]: esta técnica permite que un LLM que fue entrenado con un determinado corpus, pueda activar la extracción de información desde fuentes externas, como páginas de internet, complementando la información que dispone el modelo. A nivel de interacción del usuario todo ocurre en el mismo entorno o API que dispone el modelo originalmente.
 
 2.  **Fine Tunning** [@lv2023]: con un conjunto de datos etiquetado, de un volumen de datos mucho menor al que inicialmente fue entrenado un determinado LLM, se puede lograr que un modelo de lenguaje aprenda, sea sobreentrenado con métodos como el propuesto en "Universal Language Model Fine-tuning for Text Classification" [@howard2018], con información de un dominio específico, mejorando su desempeño en esa particular área.
 
-3.  **Vector DataBase:** mediante una representación de datos en *embeddings* se crea una base de datos con los documentos que están contenidos en corpus. El manejador de base de datos ofrece un almacenamiento optimizado y capacidades de consulta para estructuras únicas de *embeddings* vectoriales, permitiendo búsquedas fáciles, alto rendimiento, escalabilidad y recuperación de datos al comparar valores y encontrar similitudes.
+3.  **Vector DataBase:** mediante una representación de datos en *embeddings* se crea una base de datos con los documentos que están contenidos en corpus. El manejador de base de datos ofrece un almacenamiento optimizado y capacidades de consulta para estructuras únicas de *embeddings* vectoriales, permitiendo hacer búsquedas semánticas, alto rendimiento, escalabilidad y recuperación de datos al comparar valores y encontrar similitudes.
 
 Principalmente estas tres técnicas, por separado, o en paralelo, pueden implementarse para crear sistemas de recuperación de información que se adapten y sean expertos en áreas de estudio de la Universidad Central de Venezuela, modificando la forma en que anteriormente un investigador hacía la búsqueda de información.
 
+### Búsqueda Semántica: {#busquedasemantica}
+
+Es una evolución en la forma en que los motores de búsqueda comprenden y responden a las consultas. A diferencia de la búsqueda tradicional basada en palabras clave, que se centra en encontrar coincidencias literales entre la consulta y el contenido web, la búsqueda semántica tiene como objetivo comprender el significado contextual de las consultas y ofrecer resultados más relevantes y precisos.
+
+En lugar de simplemente emparejar palabras clave, la búsqueda semántica utiliza *embeddings* para representar el texto y de una mejor forma comprender la intención detrás de una consulta. Esto implica analizar la relación semántica entre las palabras, interpretar el contexto y comprender el significado subyacente. Así, la búsqueda semántica busca proporcionar resultados que no solo coincidan con las palabras clave, sino que también aborden la verdadera intención del usuario.
+
+Se apoya en representar cadenas de texto de un documento como vectores *embeddings* que son almacenados en una base de dato y dado un *query* se transforma el texto en otro *embedding* y se determina cuáles son los embeddings de la base de dato que presentan mayor similitud [@muennighoff2022a].
+
 Finalmente se mencionan algunos puntos de lo que hoy constituye el estado del arte en temas que hemos ido revisando a lo largo de este capítulo:
 
-1.  Con modelos como BERT se ha hecho implementaciones modificadas para hacer el re ordenamiento \@ref(ranking) de los resultados obtenidos en un proceso de búsqueda, bien sea mediante las técnicas tradicionales o mediante técnicas de búsqueda semántica[@nogueira2019] . Igualmente mediante redes neuronales se ha buscado simular el comportamiento humano para jerarquizar los resultados obtenidos en procesos de búsqueda [@pang2017].
+1.  Con modelos como BERT se ha hecho implementaciones modificadas para hacer el re ordenamiento \@ref(ranking) de los resultados obtenidos en un proceso de búsqueda, bien sea mediante las técnicas tradicionales o mediante técnicas de búsqueda semántica[@nogueira2019] . Igualmente con redes neuronales se ha buscado simular el comportamiento humano para jerarquizar los resultados obtenidos en procesos de búsqueda [@pang2017].
 
 2.  Se están proponiendo nuevos métodos para evaluar la eficacia en los sistemas de "preguntas-respuestas" basados en similaridad semántica dadas las limitaciones que presentan las métricas tradicionales que no reflejan el desempeño de estos nuevos modelos [@risch2021].
 
-3.  Mediante técnicas de aprendizaje profundo se están creando conjuntos de datos sintéticos de dominio público que permitan evaluar el desempeño de los sistemas de recuperación de información, usando como entrada las publicaciones de Wikipedia y creando con los modelos los *querys*, que permitan medir el grado de precisión que alcanza un determinado sistema [@frej-etal-2020-wikir].
+3.  Mediante técnicas de aprendizaje profundo se están creando conjuntos de datos sintéticos de dominio público que permitan evaluar el desempeño de los sistemas de recuperación de información, usando como entrada las publicaciones de Wikipedia y creando con estos modelos los *querys*, que permitan medir el grado de precisión que alcanza un determinado sistema [@frej-etal-2020-wikir].
 
 Así culmina el recorrido por lo que es el Marco Teórico-Referencial \@ref(teorico) que soporta la investigación "Recuperación, Extracción y Clasificación de Información de SABER UCV".

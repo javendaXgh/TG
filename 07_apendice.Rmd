@@ -1,0 +1,87 @@
+# Apéndice: Librerías usadas y créditos {#apendicea}
+
+1.  Las librerías de R que usa la aplicación web son :
+
+    1.  **shinydashboard**: sirve para gener un formato de *dashboard* en la aplicación [@shinydashboard].
+
+    2.  **shinydashboardPlus**: sirve para asistir a "shinydashboard" en configuraciones y funcionalidades adicionales [@shinydashboardPlus].
+
+    3.  **shinycssloaders**: muestra un *loader* cuando la aplicación de está cargando [@shinycssloaders].
+
+    4.  **pool**: gestor de conexión mediante un *pool* a la base de datos [@pool].
+
+    5.  **RPostgres**: carga el protocolo de conexión a postgreSQL [@RPostgres].
+
+    6.  **DBI**: permite la definición en R de *querys* en lenguaje SQL [@DBI].
+
+    7.  **dplyr**: es una herramienta que facilita la manipulación de las *dataframes* que sirven de insumo para representar los resultados [@dplyr].
+
+    8.  **tidyr**: manipulación de la *dataframe* que contiene los resultados [@tidyr].
+
+    9.  **dbplyr**: bajo la sintáxis de "dplyr" permite estucturar los querys [@dbplyr].
+
+    10. **DT**: *wrapper* de la librería "DataTables" de Javascript que permite generar tablas interactivas en html que muestran los resultados de los querys [@DT-2].
+
+    11. **udpipe**: paquete que permite manejar textos bajo los principios del *framework* "Universal Dependencies" y en la aplicación se usa para generar la estructura de datos que representa la coocurrencias [@udpipe-3].
+
+    12. **ggraph**: permite realizar la visualización estática mediante grafos de las coocurrencias [@ggraph-2].
+
+    13. **visNetwork**: permite realizar la visualización dinámica mediante grafos de las coocurrencias. Es un *wrapper* de la libraría Vis.Js.
+
+    14. **apexcharter**: permite generar gráficos interactivos y es un *wrapper* de la librería "ApexCharts.Js" [@apexcharter].
+
+    15. **scales**: se usa para reescalar los arcos que unen los nodos en las coocurrencias [@scales].
+
+    16. **fontawesome**: se usa para mostrar íconos en los selectores y ventanas [@fontawesome].
+
+    17. **stringr**: manipulación y manejo de textos [@stringr].
+
+    18. **shinyBS**: permite añadir los *tooltips* [@shinyBS].
+
+    19. **shinyalert**: crea un *popup* al ingresar a la aplicación.
+
+    20. **shinyWidgets**: herramienta para manejar interactividades [@shinyWidgets].
+
+    21. **config**: configurar variables globales [@config].
+
+2.  Librerías usadas por el Contenedor "R Servicios":
+
+    1.  **httr2**: ejecutar consultas HTTp y procesar las respuestas [@httr2].
+
+    2.  **pool**: gestor de conexión mediante un *pool* a la base de datos [@pool].
+
+    3.  **RPostgres**: carga el protocolo de conexión a postgreSQL [@RPostgres].
+
+    4.  **DBI**: permite la definición en R de *querys* en lenguaje SQL [@DBI].
+
+    5.  **odbc**: soporte para conexiones a manejadores de base de datos [@odbc].
+
+    6.  **dplyr**: es una herramienta que facilita la manipulación de las *dataframes* que sirven de insumo para representar los resultados [@dplyr].
+
+    7.  **tidyr**: manipulación de la *dataframe* que contiene los resultados [@tidyr].
+
+    8.  **dbplyr**: bajo la sintáxis de "dplyr" permite estucturar los querys [@dbplyr].
+
+    9.  **stringr**: manipulación y manejo de textos [@stringr].
+
+    10. **rvest:** manipulación y extracción de datos de páginas web [@rvest-2].
+
+    11. **rlang:** caja de herramientas para trabajar con estructuras de R base [@rlang-2].
+
+    12. **purrr**: aplicar programación funcional [@purrr].
+
+    13. **readtext**: importar archivos en formato "word" o "pdf" [@readtext] .
+
+    14. **text.alignment**: aplicar el algoritmo "Smith-Waterman" [@text.alignment].
+
+    15. **spacyr**: wrapper para usar el framework Spacy [@spacyr-2].
+
+    16. **config**: configurar variables globales [@config].
+
+    17. **tm**: ejecutar procesos de minería de texto [@tm].
+
+    18. **quanteda**: análisis cuantitativo de textos [@quanteda-2].
+
+3.  Para realizar los diagramas y esquemas representados en esta investigación se uso el software "draw.io" [@draw2023].
+
+4.  Este documento, tanto en su versión PDF como en HTML se generó con la librería Bookdown [@bookdown].

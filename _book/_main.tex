@@ -124,6 +124,7 @@
 \usepackage[none]{hyphenat}
 \raggedbottom
 \usepackage{blindtext}
+\usepackage{textcomp}
 
 
 \usepackage{scrlayer-scrpage}
@@ -182,7 +183,7 @@
 \makeatother
 \subtitle{Caso de Estudio Repositorio www.saber.ucv.ve}
 \author{José Miguel Avendaño Infante}
-\date{2023-11-29}
+\date{2023-12-02}
 
 \begin{document}
 \maketitle
@@ -270,9 +271,11 @@ The application is implemented under a distributed system with client-server arc
 \thispagestyle{empty}
 \vspace*{5cm}
 \thispagestyle{empty}
-\begin{center} \Large \emph{A  mi hijo Cassiel y  } \end{center}
+\begin{center} \Large \emph{A mi hijo Cassiel y  } \end{center}
 \vspace*{1cm}
 \begin{center} \Large \emph{mi esposa Waleska.} \end{center}
+\vspace*{1cm}
+\begin{center} \Large {\emph{De ustedes es esta investigación.}} \end{center}
 
 
 
@@ -286,23 +289,19 @@ The application is implemented under a distributed system with client-server arc
 
 - A mi madre, obvio, sino no habría ni una sola palabra acá.\\\\
 - A mi padre Fernando por negarme el Atari e insistir en el Oddysey 2.\\\\
-- A mi tía Mercedes Infante.\\\\
-- A Cesar Alejandro García por todas las ayudas.\\\\
-- A mi hermano David por su soporte.\\\\
--   Dr. Andres Sanoja primero por aceptar la tutoría y enseñarme qué es la investigación dentro de una comunidad científica.\\\\
--   Dr. José Mirabal por siempre andar con alguna idea a desarrollar y el tiempo dedicado a escuchar las propuestas y complementar esta Investigación.\\\\
--   Dra. Concettina Di Vasta por las imponentes sesiones de 2 horas 15 minutos llenas de coherencia y conocimiento.\\\\
--   Dra. Haydemar Nuñez por la rigurosidad al impartir los conocimientos.\\\\
--   Dra. Vanessa Leguizamo por tomarse el tiempo de revisar la solicitud de estudio de un oxidado economista y por ser mi Prof.ª.\\\\
--   Dra. Nuri Hurtado Villasana por tomarse el tiempo de escucharme y brindarme sugerencias en la elaboración de este trabajo.\\\\
--   A todo el personal del Postgrado: sus buenos días, por tener a mano la llave, por ayudar a mantener viva la Academia.\\\\
--   Mauricio Sáez Toro del equipo Saber UCV por mantener activo el Sistema Saber UCV y tener el tiempo de haber colaborado con esta investigación.\\\\
--   A toda la comunidad de creadores de software libre y open sourcem en especial a los \#useRs por motivarme a adentrarme al mundo de las ciencias de la computación.\\\\
-- A Alexandra Asanovna Elbakyan, sin ella serían mínimas las citas bibliográficas de esta Investigación.
-
-
-
-
+- A mi tía Mercedes Infante y mi tío Teófilo García \textdagger, por "lo que fue y será".\\\\
+- A mi hermano David por su aguante y soporte.\\\\
+- A mi primo Cesar Alejandro García por todo el soporte.\\\\
+- Dr. Andres Sanoja primero por aceptar la tutoría y enseñarme qué es la investigación dentro de una comunidad científica.\\\\
+- Dr. José Mirabal por siempre andar con alguna idea a desarrollar y el tiempo dedicado a escuchar las propuestas y complementar esta Investigación.\\\\
+- Dra. Concettina Di Vasta por las imponentes sesiones de 2 horas 15 minutos llenas de coherencia y conocimiento.\\\\
+- Dra. Haydemar Nuñez por la rigurosidad al impartir los conocimientos.\\\\
+- Dra. Vanessa Leguizamo por tomarse el tiempo de revisar la solicitud de estudio de un oxidado economista y por ser mi Prof.ª.\\\\
+- Dra. Mairene Colina por la ayuda y sugerencias a lo largo de la investigación.\\\\
+- Mauricio Sáez Toro del equipo Saber UCV por mantener activo el Sistema Saber UCV y tener el tiempo de haber colaborado con esta investigación.\\\\
+- A Alexandra Asanovna Elbakyan por ayudar a liberar el conocimiento.\\\\
+- A todo el personal del Postgrado: sus buenos días, por tener a mano la llave, por ayudar a mantener viva la Academia.\\\\
+- A toda la comunidad de creadores de software libre y open source, en especial a los \#useRs por motivarme a adentrarme al mundo de las ciencias de la computación.\\\\
 
 
 \newpage
@@ -311,7 +310,7 @@ The application is implemented under a distributed system with client-server arc
 \hfill
 \begin{minipage}{0.70\textwidth}
 \begin{quote}
-Como todos los hombres de la Biblioteca, he viajado en mi juventud; he peregrinado en busca de un libro, acaso del catálogo de catálogos; ahora que mis ojos caso no pueden descifrar lo que escribo, me preparo a morir a unas pocas leguas del hexágono en que nací.\\
+Como todos los hombres de la Biblioteca, he viajado en mi juventud; he peregrinado en busca de un libro, acaso del \emph{catálogo de catálogos}; ahora que mis ojos caso no pueden descifrar lo que escribo, me preparo a morir a unas pocas leguas del hexágono en que nací.\\
 --- Jorge Luis Borges, \textit{La Bibioloteca de Babel}, Ficciones
 \end{quote}
 \hspace*{2cm}
@@ -1004,7 +1003,7 @@ La diversidad de modelos preentrenados, con distintas versiones de fine tunning 
 \hypertarget{int}{%
 \subsection{Integración:}\label{int}}
 
-Las versiones Open Source de estos modelos es posible integrarla en procesos de Information Retrieval principalmente mediante tres técnicas.
+Las versiones \emph{Open Source} de estos modelos es posible integrarla en procesos de \emph{Information Retrieval} principalmente mediante tres técnicas.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1013,21 +1012,30 @@ Las versiones Open Source de estos modelos es posible integrarla en procesos de 
 \item
   \textbf{Fine Tunning} \citep{lv2023}: con un conjunto de datos etiquetado, de un volumen de datos mucho menor al que inicialmente fue entrenado un determinado LLM, se puede lograr que un modelo de lenguaje aprenda, sea sobreentrenado con métodos como el propuesto en ``Universal Language Model Fine-tuning for Text Classification'' \citep{howard2018}, con información de un dominio específico, mejorando su desempeño en esa particular área.
 \item
-  \textbf{Vector DataBase:} mediante una representación de datos en \emph{embeddings} se crea una base de datos con los documentos que están contenidos en corpus. El manejador de base de datos ofrece un almacenamiento optimizado y capacidades de consulta para estructuras únicas de \emph{embeddings} vectoriales, permitiendo búsquedas fáciles, alto rendimiento, escalabilidad y recuperación de datos al comparar valores y encontrar similitudes.
+  \textbf{Vector DataBase:} mediante una representación de datos en \emph{embeddings} se crea una base de datos con los documentos que están contenidos en corpus. El manejador de base de datos ofrece un almacenamiento optimizado y capacidades de consulta para estructuras únicas de \emph{embeddings} vectoriales, permitiendo hacer búsquedas semánticas, alto rendimiento, escalabilidad y recuperación de datos al comparar valores y encontrar similitudes.
 \end{enumerate}
 
 Principalmente estas tres técnicas, por separado, o en paralelo, pueden implementarse para crear sistemas de recuperación de información que se adapten y sean expertos en áreas de estudio de la Universidad Central de Venezuela, modificando la forma en que anteriormente un investigador hacía la búsqueda de información.
+
+\hypertarget{busquedasemantica}{%
+\subsection{Búsqueda Semántica:}\label{busquedasemantica}}
+
+Es una evolución en la forma en que los motores de búsqueda comprenden y responden a las consultas. A diferencia de la búsqueda tradicional basada en palabras clave, que se centra en encontrar coincidencias literales entre la consulta y el contenido web, la búsqueda semántica tiene como objetivo comprender el significado contextual de las consultas y ofrecer resultados más relevantes y precisos.
+
+En lugar de simplemente emparejar palabras clave, la búsqueda semántica utiliza \emph{embeddings} para representar el texto y de una mejor forma comprender la intención detrás de una consulta. Esto implica analizar la relación semántica entre las palabras, interpretar el contexto y comprender el significado subyacente. Así, la búsqueda semántica busca proporcionar resultados que no solo coincidan con las palabras clave, sino que también aborden la verdadera intención del usuario.
+
+Se apoya en representar cadenas de texto de un documento como vectores \emph{embeddings} que son almacenados en una base de dato y dado un \emph{query} se transforma el texto en otro \emph{embedding} y se determina cuáles son los embeddings de la base de dato que presentan mayor similitud \citep{muennighoff2022a}.
 
 Finalmente se mencionan algunos puntos de lo que hoy constituye el estado del arte en temas que hemos ido revisando a lo largo de este capítulo:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Con modelos como BERT se ha hecho implementaciones modificadas para hacer el re ordenamiento \ref{ranking} de los resultados obtenidos en un proceso de búsqueda, bien sea mediante las técnicas tradicionales o mediante técnicas de búsqueda semántica\citep{nogueira2019} . Igualmente mediante redes neuronales se ha buscado simular el comportamiento humano para jerarquizar los resultados obtenidos en procesos de búsqueda \citep{pang2017}.
+  Con modelos como BERT se ha hecho implementaciones modificadas para hacer el re ordenamiento \ref{ranking} de los resultados obtenidos en un proceso de búsqueda, bien sea mediante las técnicas tradicionales o mediante técnicas de búsqueda semántica\citep{nogueira2019} . Igualmente con redes neuronales se ha buscado simular el comportamiento humano para jerarquizar los resultados obtenidos en procesos de búsqueda \citep{pang2017}.
 \item
   Se están proponiendo nuevos métodos para evaluar la eficacia en los sistemas de ``preguntas-respuestas'' basados en similaridad semántica dadas las limitaciones que presentan las métricas tradicionales que no reflejan el desempeño de estos nuevos modelos \citep{risch2021}.
 \item
-  Mediante técnicas de aprendizaje profundo se están creando conjuntos de datos sintéticos de dominio público que permitan evaluar el desempeño de los sistemas de recuperación de información, usando como entrada las publicaciones de Wikipedia y creando con los modelos los \emph{querys}, que permitan medir el grado de precisión que alcanza un determinado sistema \citep{frej-etal-2020-wikir}.
+  Mediante técnicas de aprendizaje profundo se están creando conjuntos de datos sintéticos de dominio público que permitan evaluar el desempeño de los sistemas de recuperación de información, usando como entrada las publicaciones de Wikipedia y creando con estos modelos los \emph{querys}, que permitan medir el grado de precisión que alcanza un determinado sistema \citep{frej-etal-2020-wikir}.
 \end{enumerate}
 
 Así culmina el recorrido por lo que es el Marco Teórico-Referencial \ref{teorico} que soporta la investigación ``Recuperación, Extracción y Clasificación de Información de SABER UCV''.
@@ -1235,6 +1243,8 @@ Para el desarrollo del SCSU se hizo un proceso iterativo donde en cada ciclo se 
 La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evoluciona. Esto fue lo que se hizo en reuniones continuas en la materia \emph{Tópicos Especiales en Sistemas de Información y Gerencia} que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis, se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados usados para los procesamiento de los textos.
 
 Los Ciclos que se van a exponer son los siguientes: en \ref{desarrollociclos1} se muestran las tres iteraciones realizadas para la \textbf{Conformación del Conjunto de Datos}. En \ref{desarrollociclos3} se revisan las iteraciones para el desarrollo del \textbf{Prototipo del SCSU}, mientras que en \ref{desarrollociclos4} se hace la \textbf{Integración de los Componentes del Software} y en \ref{desasarrollociclos5} se hace una versión del Sistema que incluye un \textbf{Buscador Semántico}.
+
+\newpage
 
 \hypertarget{desarrollociclos1}{%
 \subsection{Ciclo - Conformación del Conjunto de Datos:}\label{desarrollociclos1}}
@@ -1627,6 +1637,8 @@ A continuación se agrupan y enuncian los principales inconvenientes que se enco
   Extraer 7.969 nombres de tutores, equivalente al 79,8\% del total de investigaciones, que también se estableció como parte del Objetivo Específico 2.
 \end{enumerate}
 
+\newpage
+
 \hypertarget{desarrollociclos3}{%
 \subsection{Ciclo-Prototipo del SCSU:}\label{desarrollociclos3}}
 
@@ -1869,7 +1881,9 @@ En esta iteración se revisó la creación de recomendaciones de investigaciones
 \hypertarget{especulaciuxf3n-5}{%
 \paragraph{Especulación:}\label{especulaciuxf3n-5}}
 
-Los documentos que presenten mayor similitud pueden ser de interés para los investigadores expandiendo las posibilidades de inspección del Corpus.
+Se ha determinado que los investigadores no necesariamente realizan la búsqueda de documentos que le puedan ser de interés mediante un \emph{query} que contenga términos claves sino a partir de un documento que les resulta de interés quieren localizar otros que puedan compartir ciertos aspectos \citep{zhou2018}.
+
+La similitud de un documento con otro se puede entender, en esta implementación, como aquellos que tienden a compartir palabras y dentro de una ``term document matrix'' generan vectores similares \citep{jurafsky2009}. Es por esto que se considera que los documentos que presenten mayor similitud, pueden resultar de interés para los investigadores, expandiendo así las posibilidades de inspección del Corpus.
 
 \hypertarget{colaboraciuxf3n-5}{%
 \paragraph{Colaboración:}\label{colaboraciuxf3n-5}}
@@ -2129,9 +2143,9 @@ Para poder implementar la búsqueda de texto se usará \emph{postgreSQL V16}, po
 
 En el modelo, la entidad ``Corpus'' se apoya en la tabla ``POS'' que contiene el detalle del etiquetado de la parte del discurso para cada palabra (token) presente en cada documento, mientras que la tabla ``Indice Invertido'' se destinará a almacenar la estructura que permite general la búsqueda de texto y básicamente almacena cada palabra que compone el vocabulario y el \emph{id} de los documentos donde aparece cada palabra.
 
-Un factor determinante para la selección de PostgreSQL es el soporte que tiene para ejecutar procesos de ``Busqueda de Texto Completo (Full Text Search)'' en el idioma español.
+Un factor determinante para la selección de PostgreSQL es el soporte que tiene para ejecutar procesos de ``Busqueda de Texto Completo (\emph{Full Text Search})'' en el idioma español.
 
-El esquema de la arquitectura general de la aplicación, el cuál se implementará en el framework shiny, se representa en la figura \ref{fig:esqshinyproto}.
+El esquema de la arquitectura general de la aplicación, el cuál se implementará en el \emph{framework} shiny, se representa en la figura \ref{fig:esqshinyproto}.
 
 \begin{figure}
 
@@ -2183,7 +2197,7 @@ La aplicación web que formará parte del Prototipo, una vez que se tiene confor
 
   La función \texttt{"to\_tsvector"} hace el parseo de un documento a tokens y estos son modificados realizando el \emph{stemming} para extraer la raíz de la palabra, proceso que se revisó en \ref{steaming}, lo cual ayuda a disminuir el espacio de búsqueda y a realizar las recuperación de textos de manera más eficiente. Para lograr ejecutar este proceso, es necesario dar el parámetro ``spanish'' a la función, para que sea sobre la base del idioma español, que sea extraída la raíz.
 
-  La posición de la palabra dentro del texto, también queda registrada para así poder determinar en un query de varias palabras, la cercanía que tienen dentro del texto las palabras que son buscadas, dando una mayor relevancia a las que estén más cercanas.
+  La posición de la palabra dentro del texto, también queda registrada para así poder determinar en un \emph{query} de varias palabras, la cercanía que tienen dentro del texto las palabras que son buscadas, dando una mayor relevancia a las que estén más cercanas.
 
   Otro aspecto a destacar es que ciertas palabras de uso común y frecuente, denominadas \emph{stopwords}, como: ``el'', ``la'', ``y'', ``a'', ``en'', ``con'', ``para''; no son registradas, es decir que son omitidas así como los signos de puntuación, con lo cual un query que contenga una stopword o un signo de puntuación, no será buscada la coincidencia al no formar parte de la estructura de datos ``\texttt{tsvector}''.
 
@@ -2309,6 +2323,8 @@ Realizar el etiquetado de las partes del discurso, previamente a realizar la sel
   Con los textos del Corpus generar recomendaciones de documentos que sean similares a una determinada investigación.
 \end{enumerate}
 
+\newpage
+
 \hypertarget{desarrollociclos4}{%
 \subsection{Ciclo Integración de Componentes del Software:}\label{desarrollociclos4}}
 
@@ -2332,10 +2348,10 @@ Usando las técnicas y métodos aplicados en ciclos anteriores e integrando los 
 \item
   Representación de ``Mapas de Conocimiento (MC)'' revisado en \ref{fig:mapacon}.
 \item
-  Generación de ``Recomendaciones'', revisada en \ref{imrecomendacion}.
+  Generación de ``Recomendaciones'' revisada en \ref{imrecomendacion}.
 \end{enumerate}
 
-En el proceso de especulación de este ciclo se aplicaron los métodos de la ``Ingeniería de Software'' necesarios para implementar el SCSU.
+En el proceso de especulación de este ciclo se aplicaron los métodos de la ``Ingeniería de Software'' necesarios para implementar el SCSU estableciendo formalmente los requerimientos funcionales y no funcionales, los diagramas y tablas de casos de uso, el modelo entidad-relación y demás aspectos necesarios, para posteriormente en la fase de Colaboración, realizar la implementación del Sistema.
 
 \hypertarget{requerimientos-funcionales-del-scsu}{%
 \subparagraph{\texorpdfstring{\textbf{Requerimientos Funcionales del SCSU:}}{Requerimientos Funcionales del SCSU:}}\label{requerimientos-funcionales-del-scsu}}
@@ -2344,23 +2360,21 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la ``I
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Interactividad y Accesibilidad Web}
+  \textbf{Interactividad:}
 \end{enumerate}
 
 \begin{itemize}
 \item
   \textbf{Descripción:}
 
-  La aplicación web, a la cual se debe acceder mediante navegadores, debe ser altamente interactiva permitiendo al usuario de una manera fluida y receptiva, interactuar con la interfaz para realizar búsquedas, explorar resultados y utilizar funcionalidades como filtros y mapas del conocimiento de manera eficiente.
+  La aplicación web debe ser altamente interactiva permitiendo al usuario de una manera fluida y receptiva interactuar con la interfaz para realizar búsquedas, explorar resultados y utilizar funcionalidades como filtros e inspección de ``mapas del conocimiento''.
 \item
   \textbf{Criterios de Aceptación:}
 
   \begin{itemize}
   \tightlist
   \item
-    La interfaz de usuario debe responder de manera rápida a las acciones del usuario.
-  \item
-    Se debe garantizar la compatibilidad con los navegadores web más utilizados, como Chrome, Firefox, Safari y Edge.
+    La interfaz de usuario debe responder de manera rápida y efeciciente a las interacciones del usuario.
   \end{itemize}
 \end{itemize}
 
@@ -2431,7 +2445,7 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la ``I
 \item
   \textbf{Descripción:}
 
-  El sistema debe tener la capacidad de generar ``mapas del conocimiento'' basados en la información recuperada. Estos mapas deben representar de manera clara las relaciones y conexiones entre los conceptos dentro de la información, mediante estructura de grafos.
+  El sistema debe tener la capacidad de generar ``mapas del conocimiento'' con la información recuperada. Estos mapas deben representar de manera clara las relaciones y conexiones entre los conceptos dentro de la información mediante una estructura de grafos.
 \item
   \textbf{Criterios de Aceptación:}
 
@@ -2540,6 +2554,29 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la ``I
   \end{itemize}
 \end{itemize}
 
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  \textbf{Accesibilidad Web}
+\end{enumerate}
+
+\begin{itemize}
+\item
+  \textbf{Descripción:}
+
+  El acceso a la aplicación se debe realizar mediante desde cualquier sitio mediante el uso de navegadores web.
+\item
+  \textbf{Criterios de Aceptación:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Se debe garantizar la compatibilidad con los navegadores web más utilizados, como Chrome, Firefox, Safari y Edge.
+  \end{itemize}
+\end{itemize}
+
 \hypertarget{requerimientos-no-funcionales-del-scsu}{%
 \subparagraph{\texorpdfstring{\textbf{Requerimientos No Funcionales del SCSU:}}{Requerimientos No Funcionales del SCSU:}}\label{requerimientos-no-funcionales-del-scsu}}
 
@@ -2626,7 +2663,7 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la ``I
 \item
   \textbf{Descripción:}
 
-  El Sistema bien sea al momento de conformar la base de datos o realizar actualizaciones, en la mayor medida posible, debe ejecutar el preprocesamiento de los textos (PLN-POS, remoción stop words, índice invertido, etc.) para minimizar los computos al momento de la demanda de recursos cuando el usuario realiza las búsquedas.
+  El Sistema, bien sea al momento de conformar la base de datos o al realizar actualizaciones, en la mayor medida posible debe ejecutar el preprocesamiento de los textos (PLN-POS, remoción stop words, índice invertido, etc.) para minimizar los cómputos al momento de la demanda de recursos cuando el usuario realiza las búsquedas.
 \item
   \textbf{Criterios de aceptación:}
 
@@ -2681,7 +2718,7 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la ``I
 
   \begin{itemize}
   \item
-    La realización de mantenimiento no debe causar una degradación significativa en el rendimiento del sistema, garantizando la continuidad operativa.
+    La realización de mantenimiento no debe causar una degradación significativa en el rendimiento del sistema garantizando la continuidad operativa.
   \item
     La realización del mantenimiento debe definirse con carácter periódico en la configuración.
   \end{itemize}
@@ -3496,7 +3533,7 @@ El SCSU cuenta con los casos de uso que se observan en las figuras \ref{fig:uc1}
 
 
 
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{Realizar\ "query"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\raggedright}m{\dimexpr 6in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{Haber\ realizado\ el\ UC.\ 1.}}}} \\
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{1)\ Realizar\ "query"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\raggedright}m{\dimexpr 6in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{2)\ Haber\ realizado\ el\ UC.\ 1.}}}} \\
 
 \noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
 
@@ -3664,7 +3701,7 @@ El SCSU cuenta con los casos de uso que se observan en las figuras \ref{fig:uc1}
 
 
 
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{Realizar\ "query"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\raggedright}m{\dimexpr 6in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{Haber\ realizado\ el\ UC.\ 1.}}}} \\
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{1)\ Realizar\ "query"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\raggedright}m{\dimexpr 6in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{2)\ Haber\ realizado\ el\ UC.\ 1.}}}} \\
 
 \noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
 
@@ -3905,20 +3942,29 @@ Adicionalmente a la tabla ``Corpus'' se le añade una columna que se corresponde
 \hypertarget{diagrama-general-del-sistema--versiuxf3n-contenedores}{%
 \subparagraph{Diagrama General del Sistema- versión contenedores:}\label{diagrama-general-del-sistema--versiuxf3n-contenedores}}
 
-En la figura ------ se define la estructura que será implementada, teniendo en cuenta los Requerimientos Funcionales y No Funcionales indicados anteriormente. La propuesta funciona como un Sistema Distribuido, ver \ref{SD}, donde mediante el uso de contenedores, ver \ref{contenedores}, se crean instancias en las que son ejecutadas los servicios necesarios para que el Sistema Complementario Saber UCV puede cumplir con los objetivos propuestos. La integración y la asignación de recursos a cada contenedor se hace mediante el uso de un orquetador, ver \ref{orquestador}.
+En la figura \ref{fig:diagramacontenedores} se define la estructura que será implementada, teniendo en cuenta los Requerimientos Funcionales y No Funcionales indicados anteriormente. La propuesta funciona como un Sistema Distribuido, ver \ref{SD}, donde mediante el uso de contenedores, ver \ref{contenedores}, se crean instancias en las que son ejecutadas los servicios necesarios para que el Sistema Complementario Saber UCV puede cumplir con los objetivos propuestos. La integración y la asignación de recursos a cada contenedor se hace mediante el uso de un orquetador, ver \ref{orquestador}.
 
-En la fase de colaboracion de este ciclo \ref{implemencolab} se especificarán las tareas y funciones asignadas a cada contenedor.
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{images/05-desarrollo/4_ciclo/digrama_contenedores_modulos} 
+
+}
+
+\caption{SCSU: Diagrama General del Sistema en Contenedores}\label{fig:diagramacontenedores}
+\end{figure}
+
+En la fase de colaboración de este ciclo \ref{implemencolab} se especificarán las tareas y funciones asignadas a cada contenedor.
 
 \hypertarget{esquema-general-de-clasificaciuxf3n-y-extracciuxf3n-de-datos-del-scsu}{%
 \subparagraph{Esquema General de Clasificación y Extracción de Datos del SCSU:}\label{esquema-general-de-clasificaciuxf3n-y-extracciuxf3n-de-datos-del-scsu}}
 
-En la figura \ref{fig:diagramaextra} se observa el proceso de extracción y clasificación de datos que realiza el SCSU, obteniendo los valores desde el repositorio Saber UCV, teniendo dos ramas principales que alimentan a la base de datos.
+En la figura \ref{fig:diagramaextra} se observa el proceso de extracción y clasificación de datos que realizará el SCSU, obteniendo los valores desde el repositorio Saber UCV, teniendo dos ramas principales que alimentan a la base de datos.
 
 La lógica de este proceso es que en la primera rama se descarga el documento anexo a cada investigación, cuando se cumplan las condiciones, se hace la lectura del documento y se inicia el proceso de clasificación por facultad y área de estudio, como se vio en la ``Iteración- Extracción y Clasificación de las Investigaciones'' en \ref{asignacion}.
 
 En la segunda rama se hace el ``etiquetado del discurso'', que fue revisado en la ``Iteración- Preparación del Corpus'' en \ref{iternlp}.
 
-Ambos procesos alimentan a las correspondientes tablas en la Base de Datos.
+Ambos procesos alimentarán a las correspondientes tablas en la Base de Datos.
 
 El proceso indicado se ejecuta inicialmente para realizar el poblado de la Base de Datos e igualmente se replica periódicamente, según parámetro definido en el archivo de configuración del orquestador, para actualizar e incorporar las nuevas investigaciones que se encuentren disponibles en el repositorio Saber UCV.
 
@@ -3928,7 +3974,7 @@ El proceso indicado se ejecuta inicialmente para realizar el poblado de la Base 
 
 }
 
-\caption{Esquema Extracción y Clasificación de datos}\label{fig:diagramaextra}
+\caption{Esquema Extracción y Clasificación de Datos}\label{fig:diagramaextra}
 \end{figure}
 
 \hypertarget{interfaz-visual-mock-up}{%
@@ -3947,10 +3993,10 @@ La interfaz cuenta con tres componentes:
 
   }
 
-  \caption{Interfaz de Usuario: Sidebar}\label{fig:sidebar2}
+  \caption{Interfaz de Usuario - Sidebar}\label{fig:sidebar2}
   \end{figure}
 \item
-  \textbf{Main Tabs:} es la sección de pestañas que se encontrará en la parte media alta de la aplicación y es donde el usuario podrá seleccionar la visualización de los ``tabla resultados'', bien sea para los tabla de los textos o para ver los ``mapas del conocimiento''. En la figura \ref{fig:maintab} se representa la propuesta.
+  \textbf{Main Tabs:} es la sección de pestañas que se encontrará en la parte media alta de la aplicación y es donde el usuario podrá seleccionar la visualización de los ``tabla resultados'', bien sea para los tabla de los textos o para ver los ``mapas del conocimiento''. En la figura \ref{fig:maintab} se representa la propuesta. Al seleccionar una pestaña está cambiará el color de fondo verde a gris.
 
   \begin{figure}
 
@@ -3958,7 +4004,7 @@ La interfaz cuenta con tres componentes:
 
   }
 
-  \caption{Interfaz de Usuario: }\label{fig:maintab}
+  \caption{Interfaz de Usuario - Pestañas }\label{fig:maintab}
   \end{figure}
 \item
   \textbf{Resultados:} debajo de ``Main Tabs'' se presentan los resultados obtenidos en el proceso de búsqueda. La representación es contextual basada en la selección de pestaña que está seleccionada (``tabla resultados'' o ``mapas de conocimiento'').
@@ -3974,7 +4020,7 @@ La interfaz cuenta con tres componentes:
 
     }
 
-    \caption{Interfaz de Usuario: tabla resultados de búsqueda}\label{fig:tablaresultados2}
+    \caption{Interfaz de Usuario - Tabla Resultados de Búsqueda}\label{fig:tablaresultados2}
     \end{figure}
   \item
     En las figura \ref{fig:tablaresultados3} se puede ver la representación propuesta de ``mapas de conocimiento''.
@@ -3985,7 +4031,7 @@ La interfaz cuenta con tres componentes:
 
     }
 
-    \caption{Interfaz de Usuario: Mapas de Conocimiento}\label{fig:tablaresultados3}
+    \caption{Interfaz de Usuario - Mapas de Conocimiento}\label{fig:tablaresultados3}
     \end{figure}
   \end{enumerate}
 \end{enumerate}
@@ -4003,18 +4049,18 @@ Adicional a estos tres componentes la propuesta de intefaz incluye:
 
   }
 
-  \caption{Interfaz de Usuario: tooltips }\label{fig:tooltip}
+  \caption{Interfaz de Usuario - Tooltips }\label{fig:tooltip}
   \end{figure}
 \item
   \textbf{Inspección documento:} la tabla de resultados dispondrá de un ícono ``+'' que expande la tabla para mostrar el detalle y recomendaciones de un documento, como se observa en la figura \ref{fig:detalledoc}.
 
   \begin{figure}
 
-  {\centering \includegraphics[width=0.9\linewidth]{images/05-desarrollo/4_ciclo/UI/uiinspecciontabla} 
+  {\centering \includegraphics[width=0.8\linewidth]{images/05-desarrollo/4_ciclo/UI/uiinspecciontabla} 
 
   }
 
-  \caption{Interfaz de Usuario: inspección documento }\label{fig:detalledoc}
+  \caption{Interfaz de Usuario -Inspección Documento }\label{fig:detalledoc}
   \end{figure}
 \item
   \textbf{Inspección ``mapas de conocimiento'':} la propuesta de visualización del detalle de aparición en documentos de una determinada coocurrencia de dos palabrasque se encuentran unidas por un arco se ven en la figura \ref{fig:detallemc}. La tabla que se muesta aparecerá mediante una ventana desplegable.
@@ -4025,50 +4071,50 @@ Adicional a estos tres componentes la propuesta de intefaz incluye:
 
   }
 
-  \caption{Interfaz de Usuario: inspección Mapas de Conocimiento }\label{fig:detallemc}
+  \caption{Interfaz de Usuario- Inspección Mapas de Conocimiento }\label{fig:detallemc}
   \end{figure}
 \end{enumerate}
 
 \hypertarget{muxf3dulos-aplicaciuxf3n-web}{%
 \subparagraph{Módulos Aplicación Web:}\label{muxf3dulos-aplicaciuxf3n-web}}
 
-La aplicación web, que será desarrollada en el \emph{framework} ``Shiny'', según las prácticas de desarrollo recomendadas, se hace bajo la arquitectura de módulos denominados ``Shiny Modules'', descomponiendo en partes independientes cada par de funciones relacionadas en la \emph{UI} (define la interfaz de usuario) y el \emph{Server} (define la lógica del servidor), facilitando la comprensión del funcionamiento de la aplicación, la legibilidad del código, pruebas unitarias y el mantenimiento \citep{wickham2021}. En la figura \ref{fig:shinymodulo} se puede ver la arquitectura de la aplicación que se integrará dentro del Sistema.
+La aplicación web, que será desarrollada en el \emph{framework} ``Shiny'', según las prácticas de desarrollo recomendadas, se hace bajo la arquitectura de módulos denominados ``Shiny Modules'', descomponiendo en partes independientes cada par de funciones relacionadas en la \emph{UI} (define la interfaz de usuario) y el \emph{Server} (define la lógica del servidor), facilitando la comprensión del funcionamiento de la aplicación, la legibilidad del código, pruebas unitarias y el mantenimiento \citep{wickham2021}. En la figura \ref{fig:shinymodulo} se puede ver la arquitectura de la aplicación que se integrará dentro del Sistema distribuido.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.9\linewidth]{images/05-desarrollo/4_ciclo/esquema extraccion} 
+{\centering \includegraphics[width=0.6\linewidth]{images/05-desarrollo/4_ciclo/digrama_shinyapp_modulos} 
 
 }
 
-\caption{Esquema Extracción y Clasificación de datos}\label{fig:shinymodulo}
+\caption{Diagrama Aplicación Web Shiny Versión Modular}\label{fig:shinymodulo}
 \end{figure}
 
 \hypertarget{implemencolab}{%
 \paragraph{Colaboración:}\label{implemencolab}}
 
-Según lo propuesto en la fase de Especulación \ref{implenesp} se hizo el desarrollo del Sistema mediante un sistema de contenedores orquestados, tomando en cuenta que es necesario contar de los mecanismos de comunicación necesarios. En la implementación se usaron ampliamente los conocimientos adquiridos en ciclos anteriores, no obstante también se tuvieron que revisar documentaciones, probar distintas opciones de librerías e imágenes de contenedores que permitiesen llevar a un entorno de producción, con la debida integración de los componentes, el Sistema planificado.
+Según lo propuesto en la fase de Especulación \ref{implemenesp} se hizo el desarrollo del Sistema mediante un conjunto de contenedores orquestados, tomando en consideración que es necesario implementar los mecanismos de comunicación necesarios con la definición de una red y de disponer de un volumen compartido con la máquina host.
+
+En la implementación se usaron ampliamente los conocimientos adquiridos en ciclos anteriores, no obstante también se tuvieron que revisar documentaciones, probar distintas opciones de librerías e imágenes de contenedores que permitiesen llevar a un entorno de producción, con la debida integración de los componentes, el Sistema planificado.
 
 \hypertarget{contenedores-1}{%
 \subparagraph{Contenedores:}\label{contenedores-1}}
 
-Para alcanza la reproducibilidad Citar ten-simple-rules-dockerfiles para el tema de hacer reproducible el Sistema implementado
+Para realizar la implementación del Sistema, apoyado en contenedores para los distintos servicios que lo conforman, se eligió docker como herramienta. Mediante un archivo denominado ``dockerfile'' para cada servicio se especificó el entorno, dependencias y configuraciones necesarias para crear la imagen que servirá para instanciar cada contenedor.
 
-ya que al crear un contenedor disponemos de una forma de empaquetar la aplicación y todas las dependencias con un procedimiento estandarizado permitiendo que se pueda ejecutar la aplicación en cualquier parte, es decir en cualquier máquina que cuente con el hardware necesario A lo anterior se añaden elementos de seguridad que las hacen estar menos expuestas a ataques a que corriera directamente en el servidor la aplicación. Esto principalmente se deriva al uso de las primitivas de seguridad como el "linux kernel namespace" dentro del contenedor to sandbox different. applications running on the same computers and control groups (cgroups) in order to avoid the noisy-neighbor problem, where one bad application is using all the available resources of a server and starving all other applications. GBIEL SCHNEKER Learn Docker, pag 14.~ Citar sobre Docker y rocker el trabajo RJ-2017-065
-
-Para realizar la implementación de los contenedores se eligió docker como herramienta. A continuación se indican los contenedores que forman parte del Sistema y los puertos que disponden para interactuar unos con otros:
+A continuación se indican los contenedores que forman parte del Sistema y los puertos que disponden para interactuar unos con otros:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Nginx:} Es el servidor web/proxy inverso de código abierto que en este Sistema se usa para redireccionar las peticiones del cliente recibidas en el puerto 80 y 443 al puerto 8080. En este contenedor también se almacena el certificado SSL para permitir conexiones por el protocolo HTTPS. Este contenedor fue generado desde una imagen oficial de NGINX que se encuentra en el ``docker hub'' sin añadir ninguna capa (layer) adicional.
+  \textbf{Nginx:} Es el servidor web/proxy inverso de código abierto que en este Sistema se usa para redireccionar las peticiones del cliente recibidas en el puerto 80 y 443 al puerto 8080. En este contenedor también se almacena el certificado SSL para permitir conexiones por el protocolo HTTPS en caso de configurar un dominio\footnote{Al momento de presentar este Trabajo de Grado no se dispone de un dominio para realizar la configuración del certificado para conexiones HTTPS, no obstante en un momento previo en que se tenía disponible un dominio se hicieron las pruebas para comprobar la integración y correcto funcionamiento.}. Este contenedor fue generado desde una imagen oficial de NGINX que se encuentra en el ``docker hub'' sin añadir ninguna capa (layer) adicional.
 \item
   \textbf{Cerbot:} es una herramienta de código abierto que permite tramitar y habilitar las conexiones mediante el protocolo HTTPS con el uso de un certificado ``Let´s Encrypt''. El uso de este certificado está asociado al uso de un dominio en el \emph{deploy} de la aplicación. Este contenedor fue generado desde una imagen de CERBOT del ``docker hub'' sin realizar ninguna modificación.
 \item
-  \textbf{Shinyproxy:} es una solución empresarial de código abierto para alojar aplicaciones Shiny \citep{shinyproxy2023} que cuenta con una tecnología estable y probada. El uso de este contenedor se justifica en el hecho de que una aplicación Shiny funciona como ``single thread'' y es necesario que ante cada petición de acceso, al servidor despliegue un \emph{workspace} completamente aislado, es decir, un contenedor distinto. Shinyproxy es una implementación del servidor ``\emph{Spring boo}t'' que tiene la capacidad de hacer la replicación indicada y permite controlar los recursos de memoria y cpu asignados, así como el timeout a cada instancia que se despliega. Otras ventajas que aporta, no implementadas en esta versión del Sistema, es que permite establecer \emph{login} en el uso de la aplicación y la creación de grupos de usuarios con perfiles distintos, cuentando con soporte para distintos métodos de autenticación. Si bien en estos momentos la aplicación está concebida como de libre acceso, en algún momento se pude restringir y no sería necesaria ninguna modificación en la arquitectura, más allá de cambios en el archivo de configuración. Este contenedor habilita el puerto 8080 para escuchar las peticiones y fue generado desde la imagen del docker hub \emph{Shinyproxy}.
+  \textbf{Shinyproxy:} es una solución de código abierto para alojar aplicaciones Shiny \citep{shinyproxy2023} que cuenta con una tecnología estable y probada. El uso de este contenedor se justifica en el hecho de que una aplicación Shiny funciona como ``single thread'' y es necesario que ante cada petición de acceso, al servidor despliegue un \emph{workspace} completamente aislado, es decir, un contenedor distinto. Shinyproxy es una implementación del servidor ``\emph{Spring boo}t'' que tiene la capacidad de hacer la replicación indicada y permite controlar los recursos de memoria y cpu asignados, así como el timeout a cada instancia que se despliega. Otras ventajas que aporta, no implementadas en esta versión del Sistema, es que permite establecer \emph{login} en el uso de la aplicación y la creación de grupos de usuarios con perfiles distintos, contando con soporte para distintos métodos de autenticación. Si bien en estos momentos la aplicación está concebida para el libre acceso, en algún momento se pude restringir y no sería necesario hacer modificaciones en la arquitectura, más allá de variaciones en el archivo de configuración. Este contenedor habilita el puerto 8080 para escuchar las peticiones y fue generado desde la imagen del docker hub \emph{Shinyproxy}.
 \item
   \textbf{``\emph{Shiny Web App}''}: En este contenedor se encruentra la imagen de la aplicación web con todas las dependencias y librerías necesarias para remitir los \emph{querys} al contenedor del manejador de la base de datos, presentar los resultados y generar las visualizaciones correspondientes. Como se indicó anteriormente, cada vez que ocurre desde el navegador del cliente una petición de acceso, desde el contenedor \emph{shinyproxy} , se crea una instacia de este contenedor con todos los elementos necesarios para que la app funcione. En caso de presentar alguna falla, el sistema es tolerante a los mismos, porque se pueden seguir recibiendo peticiones que replicarían una imagen nueva del contenedor sin afectar al que presentase el fallo, o viceversa. Desde este contenedor se realiza el acceso de lectura al contenedor que contiene \emph{PostgreSQL} donde reposa la base de datos que contiene los textos ya procesados. La imagen que se usa en este servidor fue definida a medida.
 
-  Parte de las configuraciones de la interfaz de usuario se realizan en un archivo css para facilitar modificaciones que pueda resultar de interés.
+  Parte de las configuraciones de la interfaz de usuario se realizan en un archivo \emph{css} para facilitar modificaciones que puedan resultar de interés.
 
   \textbf{Lógica de la aplicación:}
 
@@ -4082,15 +4128,15 @@ Para realizar la implementación de los contenedores se eligió docker como herr
     \begin{enumerate}
     \def\labelenumiii{\arabic{enumiii}.}
     \item
-      \textbf{Texto query:} Contiene un campo para la entrada de texto con el que se generará el query.- Contiene un selector para indicar si se quiere generar la coocurrencia de palabras- Contiene tablas para seleccionar: 1) Nivel académico del trabajo. Opciones (pregrado, especialización, maestría, doctorado). 2) Facultad o Centro de adscripción. Opciones: 11 Facultades más un centro (CENDES). 3) Nombre del pregrado o postgrado. En total son 412 las opciones. Cada una de las tablas anteriores se actualiza según se vayan seleccionando las relaciones y la disponibilidades. Por ejemplo, al seleccionar pregrado solo se mostrarán los nombres de las carreras de pregrado, pero si se selecciona también el nombre de la Facultad, sólo se mostrarán las carreras de pregrado dentro de la Facultad seleccionada. Para una determinado filtro se permiten selecciones múltiples dando una total flexibilidad al momento de ejecutar los \emph{querys}.
+      \textbf{Defición query:} Contiene un campo para la entrada de texto con el que se generará el query.- Contiene un selector para indicar si se quiere generar la coocurrencia de palabras- Contiene tablas para seleccionar: 1) Nivel académico del trabajo. Opciones (pregrado, especialización, maestría, doctorado). 2) Facultad o Centro de adscripción. Opciones: 11 Facultades más un centro (CENDES). 3) Nombre del pregrado o postgrado. En total son 412 las opciones. Cada una de las tablas anteriores se actualiza según se vayan seleccionando las relaciones y la disponibilidades. Por ejemplo, al seleccionar pregrado solo se mostrarán los nombres de las carreras de pregrado, pero si se selecciona también el nombre de la Facultad, sólo se mostrarán las carreras de pregrado dentro de la Facultad seleccionada. Para una determinado filtro se permiten selecciones múltiples dando una total flexibilidad al momento de ejecutar los \emph{querys}. El texto del \emph{query} es procesado convirtiéndolo a minúsculas y removiendo signos de puntuación.
     \item
       \textbf{Selector ``generar coocurrencias'':} es una casilla que sirve para seleccionar si se van a representar los Mapas de Conocimiento o no. Por defecto está desselccionado ya que la representación de los mapas incrementa el tiempo de procesamiento de los datos.
     \item
-      \textbf{Clic inspeccionar documento:} al obtener los resultados en una tabla se puede inspeccionar un documento particular para ver el texto resumen y las recomendaciones de documentos similares.
+      \textbf{``Clic'' inspeccionar documento:} al obtener los resultados en una tabla se puede inspeccionar un documento particular para ver el texto resumen y las recomendaciones de documentos similares.
     \item
       \textbf{Cantidad de coocurrencias:} teniendo como condición que previamente se seleccionara ``generar coocurrencias'',dentro de la pestaña de ``Coocurrencias'', correspondientes a los Mapas de Conocimiento, se puede modificar la cantidad de coocurrencias a representar. El valor por defecto representado es 60.
     \item
-      \textbf{Clic inspeccionar Mapa de Conocimiento:},dentro de la pestaña de ``Coocurrencias'', correspondientes a los Mapas de Conocimiento, al tener representadas dos palabras mediante nodos, existe un arco que las une. Sobre el arco se puede hacer clic e inspeccionar los documentos que contienen las palabras asociadas por el arco.
+      \textbf{``Clic'' inspeccionar Mapa de Conocimiento:} dentro de la pestaña de ``Coocurrencias'', correspondientes a los Mapas de Conocimiento, al tener representadas dos palabras mediante nodos, existe un arco que las une. Sobre el arco se puede hacer clic e inspeccionar los documentos que contienen las palabras asociadas por el arco.
     \end{enumerate}
   \item
     \textbf{Salidas:} Ante el \emph{query} se genera:
@@ -4098,65 +4144,19 @@ Para realizar la implementación de los contenedores se eligió docker como herr
     \begin{enumerate}
     \def\labelenumiii{\arabic{enumiii}.}
     \item
-      \textbf{Resultados query:} en una tabla creada con la librería ``DT'' donde se muestra el listado que contiene en cada fila los documentos recuperados mostrando estos atributos: autor, fecha, palabras clave, texto resumen, nombre tutor. Los documentos a presentar y el orden en que son presentados viene desde el contenedor ``PostgreSQL''. Adicionalmente se muestra un enlace al repositorio Saber UCV que es donde se encuentra alojado el respectivo trabajo (el documento en PDF). Igualmente se presentan los textos que tienen mayor similitud con el texto seleccionado. Un gráfico con la frecuencia por año de los trabajos extraídos mediante el \emph{query}. El gráfico se generá con la librería ``apexcharter'', por lo cual el gráfico tiene ciertas interactividades. Con el \emph{hoover} muestra el valor de cada año representado en cada columna.
+      \textbf{Resultados query:} en una tabla creada con la librería ``DT'' se muestra el listado de documentos recuperados mostrando en cada fila los siguientes atributos: autor, fecha, palabras clave, texto resumen, nombre tutor. Los documentos a presentar y el orden en que son presentados viene desde el contenedor ``PostgreSQL''. Adicionalmente se muestra un enlace al repositorio Saber UCV donde se encuentra alojado el respectivo trabajo (el documento en PDF). Igualmente se presentan los textos que tienen mayor similitud con el documento seleccionado. Un gráfico con la frecuencia por año de los trabajos extraídos mediante el \emph{query}. El gráfico se generá con la librería ``apexcharter'', por lo cual tiene ciertas interactividades mostrando con el \emph{hoover} el valor de la cantidad por año que está representada en cada columna.
     \item
-      \textbf{Mapas de Conocimiento dinámico:} Gráfico de coocurrencia interactivo de palabras que se genera mediante la librería de ``VisNetwork\emph{''} . Este gráfico permite distintas interacciones con el usuario como hacer zoom (in-out), seleccionar un determinado nodo, usar las teclas izquierda, derecha, arriba y abajo del teclado así como también permite seleccionar un arco de unión entre dos palabras coocurrentes. Al realizar la selección se filtran un subconjunto de los documentos que contienen ambas palabras representadas por nodos. Los documentos filtrados se mostrarán en una tabla contigua, también generada en''DT'', donde sólo se incluye el texto resumen de cada trabajo.
+      \textbf{Mapas de Conocimiento dinámico:} Gráfico de coocurrencia interactivo de palabras que se genera mediante la librería de ``VisNetwork\emph{''} . Este gráfico permite distintas interacciones con el usuario como hacer zoom (in-out), seleccionar un determinado nodo, usar las teclas izquierda, derecha, arriba y abajo del teclado, así como también permite seleccionar un arco de unión entre dos palabras coocurrentes. Al realizar la selección se filtran un subconjunto de los documentos que contienen ambas palabras representadas por nodos. Los documentos filtrados se mostrarán en una tabla contigua, también generada en''DT'', donde sólo se incluye el texto resumen de cada trabajo.
     \item
       \textbf{Mapas de Conocimiento Estático:} gráfico de coocurrencias estático de palabras, donde mediante la librería ``ggraph\emph{''} son generados un par de gráficos con distintas granularidades. El primero exhibe la misma coocurrencia de palabras expuesta en el punto con una visualización estática. En cuanto a la granularidad se muestran las palabras que coocurren dentro de todo el resumen independientemente de la proximidad que tengan. El segundo gráfico también muestra la coocurrencia, pero solo de palabras que se encuentran en el texto resumen una seguida de otra representando los resultados con una menor granularidad.Con la librería''UdPipe\emph{``} se generan las estructuras de datos necesarias para generar los grafos (arcos y nodos).
-    \end{enumerate}
 
-    \textbf{Librerías instaladas:} Las librerías de R que usa la aplicación web son :
-
-    \begin{enumerate}
-    \def\labelenumiii{\arabic{enumiii}.}
-    \item
-      \textbf{shinydashboard}: sirve para genera un formato de dashboard en la aplicación \citep{shinydashboard}.
-    \item
-      \textbf{shinydashboardPlus}: sirve para asistir a ``shinydashboard'' en configuraciones y funcionalidades adicionales \citep{shinydashboardPlus}.
-    \item
-      \textbf{shinycssloaders}: muestra un loader cuando la aplicación de está cargando \citep{shinycssloaders}.
-    \item
-      \textbf{pool}: gestor de conexión mediante un pool a la base de datos \citep{pool}.
-    \item
-      \textbf{RPostgres}: carga el protocolo de conexión a postgreSQL \citep{RPostgres}.
-    \item
-      \textbf{DBI}: permite la definición en lenguaje SQL de los querys \citep{DBI}.
-    \item
-      \textbf{dplyr}: es una herramienta que facilita la manipulación de dataframes que sirven de insumo para representar los resultados \citep{dplyr}.
-    \item
-      \textbf{tidyr}: manipulación de la dataframe que contiene los resultados \citep{tidyr}.
-    \item
-      \textbf{dbplyr}: bajo la sintáxis de dplyr permite estucturar los querys \citep{dbplyr}.
-    \item
-      \textbf{DT}: \emph{wrapper} de la librería ``DataTables'' de Javascript que permite generar tablas interactivas en html que muestran los resultados de los querys \citep{DT-2}.
-    \item
-      \textbf{udpipe}: paquete que permite manejar textos bajo los principios del framework ``Universal Dependencies'' y en la aplicación se usa para generar la estructura de datos que representa la coocurrencias \citep{udpipe-3}.
-    \item
-      \textbf{ggraph}: permite realizar la visualización estática mediante grafos de las coocurrencias \citep{ggraph-2}.
-    \item
-      \textbf{visNetwork}: permite realizar la visualización dinámica mediante grafos de las coocurrencias. Es un \emph{wrapper} de la libraría Vis.Js.
-    \item
-      \textbf{apexcharter}: permite generar gráficos interactivos y es un \emph{wrapper} de la librería ``ApexCharts.Js'' \citep{apexcharter}.
-    \item
-      \textbf{scales}: se usa para reescalar los arcos que unen los nodos en las coocurrencias \citep{scales}.
-    \item
-      \textbf{fontawesome}: se usa para mostrar íconos en los selectores y ventanas \citep{fontawesome}.
-    \item
-      \textbf{stringr}: manipulación y manejo de textos \citep{stringr}.
-    \item
-      \textbf{shinyBS}: permite añadir los tooltips \citep{shinyBS}.
-    \item
-      \textbf{shinyalert}: crea un popup al ingresar a la aplicación.
-    \item
-      \textbf{shinyWidgets}: herramienta para manejar interactividades \citep{shinyWidgets}.
-    \item
-      \textbf{config}: configurar variables globales y contextuales \citep{config}.
+      En el Apéndice \ref{apendicea} se listan los paquetes que usa este contenedor.
     \end{enumerate}
   \end{enumerate}
 \item
-  \textbf{``PostgreSQL'':} es el contenedor donde se encuentra el manejador de PostgreSQL versión 16 y en él se almacenan todas las tablas que usa el Sistema. También recae la funcionalidad de generar el ``\texttt{ts\_vector}'', convertir el query a un ``\texttt{ts\_query}'' y mediante la función ``\texttt{ts\_rank}'' reordenar los resultados extraídos con base en un ranking junto con el indexado de las distintas tablas. En el ciclo ``Iteración- Implementación Prototipo'' \ref{cicloprototipo} se indican más detalles sobre las funciones señaladas. En este contenedor se tiene una imagen de \emph{PostgreSQL} versión 16.1 extraída del ``docker hub'' a la cual no le fue realizada ninguna modificación distinta a la configuración, definición de usuarios y el poblado desde base de datos, incluyendo la definición de un volumen compartido con el \emph{host} para garantizar que se tengan ``datos persistentes. Este contenedor recibe consultas del contenedor \textbf{''\emph{S}}\emph{hiny Web App}'' y escritura desde el contenedor ``R imagen Servicios'' teniendo habilitado el puerto 5432.
+  \textbf{``PostgreSQL'':} es el contenedor donde se encuentra el manejador de PostgreSQL versión 16 y en él se almacenan todas las tablas que usa el Sistema. También recae la funcionalidad de generar el ``\texttt{ts\_vector}'', convertir el query a un ``\texttt{ts\_query}'' y mediante la función ``\texttt{ts\_rank}'' reordenar los resultados extraídos con base en un ranking junto con el indexado de las distintas tablas. En el ciclo ``Iteración- Implementación Prototipo'' \ref{desarrollociclos3} se indican más detalles sobre las funciones señaladas. En este contenedor se tiene una imagen de \emph{PostgreSQL} versión 16.1 extraída del ``docker hub'' a la cual no le fue realizada ninguna modificación distinta a la configuración para la definición de usuarios y contraseña junto con la definición de un volumen compartido con el \emph{host} para garantizar que se tengan ``datos persistentes''. Este contenedor recibe consultas del contenedor \textbf{``\emph{S}}\emph{hiny Web App}'' y escritura-lectura desde el contenedor ``R imagen Servicios'' teniendo habilitado el puerto 5432.
 \item
-  \textbf{``R Imagen Servicios''}: En este contenedor se creó una imagen con todos los servicios necesarios para realizar el web crawling, el procesamientos de textos y la descarga de los archivos desde Saber UCV para realizar la clasificación de las Tesis y demás trabajos. Al iniciar la configuración del Sistema, contiene las funcionalidades que permiten realizar la creación de la base de datos, las tablas y el poblado de estas. Periódicamente es invocado un script mediante un ``cron job'' para realizar los procesos de incorporación de aquellos documentos nuevos que se detecte que están disponibles en Saber UCV. La imagen base que se usa es la del proyecto Rocker \citep{RJ-2017-065:2017}, la cual es una versión ampliamente probada y optimizada por la comunidad de usuarios de R.
+  \textbf{``R Imagen Servicios''}: En este contenedor se creó una imagen con todos los servicios necesarios para realizar el \emph{web crawling}, el procesamientos de textos y la descarga de los archivos desde Saber UCV para realizar la clasificación de las Tesis y demás trabajos. Al iniciar la configuración del Sistema, contiene las funcionalidades que permiten realizar la creación de la base de datos, las tablas y el poblado de estas. Periódicamente es invocado un script mediante un ``cron job'' para realizar los procesos de incorporación de aquellos documentos nuevos que se detecte que están disponibles en Saber UCV. La imagen base que se usa es la del proyecto Rocker \citep{RJ-2017-065:2017}, la cual es una versión ampliamente probada y optimizada por la comunidad de usuarios de R.
 
   \textbf{Procesos:}
 
@@ -4164,16 +4164,18 @@ Para realizar la implementación de los contenedores se eligió docker como herr
   \def\labelenumii{\arabic{enumii}.}
   \tightlist
   \item
-    \textbf{Poblado base de datos:} se ejecutan los procesos para hacer el poblado inicial de base de dato así como a la creación del indexado de la base de datos en el contenedor ``\textbf{PostgreSQL''.} En la fase de especulación de este ciclo se presentó un diagrama que describe el esquema de''extracción y clasificación de los datos''.
+    \textbf{Poblado base de datos:} se ejecutan los procesos para hacer el poblado inicial de base de dato así como a la creación del indexado de la base de datos en el contenedor ``\textbf{PostgreSQL''.} En la fase de especulación de este ciclo se presentó un diagrama que describe el esquema de''extracción y clasificación de los datos'', ver figura \ref{fig:diagramaextra}.
   \item
     \textbf{Descarga de datos:} proceso que fue abordado en el ``Ciclo Conformación del Conjunto de Datos''.
   \item
-    \textbf{Text Mining y NLP:} en el ``Ciclo Prototipo SCSU'' en la iteración ``Preparación del Corpus'' de detallan los procesamientos a los textos que son ejecutados en este contenedor. La diferencia es que para usar ``spacyr'', al depender esta librería de una ambiente virtual en python , es necesario configurar otro contenedor con las dependencias y librerías que permitan el llamado al etiquetado del discurso. El contenedor que se integra para realizar estos procesos es \textbf{``Python Spacy''.}
+    \textbf{Text Mining y NLP:} en el ``Ciclo Prototipo SCSU'', ver \ref{desarrollociclos3}, en la iteración ``Preparación del Corpus'', ver \ref{iternlp}, se detallan los procesamientos a los textos que ahora son ejecutados en este contenedor. La diferencia es que para usar ``spacyr'', al depender esta librería de una ambiente virtual en python , es necesario configurar otro contenedor con las dependencias y librerías que permitan el llamado al etiquetado del discurso. El contenedor que se integra para realizar estos procesos es \textbf{``Python Spacy''.}
   \item
-    \textbf{Generación de recomendaciones:} se corresponde a lo que fue detallado en el Ciclo Prototipo de SCSU en la iteración ``Recomendación de Documentos''.
+    \textbf{Generación de recomendaciones:} se corresponde con detallado en el ``Ciclo Prototipo de SCSU'' en la iteración ``Recomendación de Documentos'', ver \ref{imrecomendacion}.
   \end{enumerate}
+
+  En el Apéndice \ref{apendicea} se listan las librerías que usa este contenedor
 \item
-  \textbf{``Python Spacy'':} Se creó una imagen que contiene un Ubuntu 22 con python, la librería spacy y el modelo de Spacy ``es\_core\_news\_lg'' . Su función es que mediante un volumen compartido pueda ser invocado desde el contenedor ``R Imagen Servicios'' para así realizar los procesamientos de NLP descritos.
+  \textbf{``Python Spacy'':} Se creó una imagen que contiene un ``Ubuntu 22'' con ``python 3.10'', la librería ``spacy v.3'' y el modelo de Spacy ``es\_core\_news\_lg'' . Su función es que mediante un volumen compartido pueda ser invocado desde el contenedor ``R Imagen Servicios'' para así realizar los procesamientos de NLP descritos.
 \end{enumerate}
 
 \hypertarget{orquestador-1}{%
@@ -4181,7 +4183,7 @@ Para realizar la implementación de los contenedores se eligió docker como herr
 
 Todos los contenedores mencionados es necesario que actúen de forma coordinada, compartiendo recursos como una red y volúmenes de almacenamiento. Para lograr esto se acude a la herramienta ``Docker Compose'' que se instala en el \emph{host} y permite simplificar y automatizar el despliegue de aplicaciones compuestas por múltiples servicios y contenedores en entornos de desarrollo y producción.
 
-Se define la infraestructura, configurarción y gestión de una aplicación a través de un archivo YAML, denominado ``docker-compose.yml'' donde se detallan los servicios, contenedores, redes y volúmenes necesarios para la aplicación, así como las relaciones y configuraciones entre ellos, simplificando la orquestación de los contenedores.
+Se define la infraestructura, configuración y gestión de una aplicación a través de un archivo YAML, denominado ``docker-compose.yml'' donde se detallan los servicios, contenedores, redes y volúmenes necesarios para la aplicación, así como las relaciones y configuraciones entre ellos, simplificando la orquestación de los contenedores.
 
 También la adopción de Docker Compose facilita la replicación del entorno de desarrollo en diferentes máquinas, mejorando la consistencia en el desarrollo.
 
@@ -4292,80 +4294,614 @@ Para un concurrencia de 4 usuarios simultáneos, estos son los requerimientos de
 \hypertarget{implemenapre}{%
 \paragraph{Aprender:}\label{implemenapre}}
 
-Este ciclo trajo un profundo y largo proceso de aprendizaje ya que implicó integrar distintos elementos abordados previamente de forma aislada, más encontrar componentes que fuesen compatibles y adaptados a los requerimientos funcionales y no funcionales planteados.
+Este Ciclo trajo un profundo y largo proceso de aprendizaje ya que el desarrollo implicó integrar distintos elementos abordados previamente de forma aislada, más el reto de encontrar componentes que fuesen compatibles y adaptados a los requerimientos funcionales y no funcionales planteados.
 
-La utilidad de esta integración también representa en que se cuenta con un framework que permite desplegar otro tipo de aplicaciones que pueden ser facilmente escalables en entornos de producción.
+La utilidad de esta integración también representa en que se cuenta con un \emph{framework} que permite desplegar otro tipo de aplicaciones que pueden ser fácilmente escalables en entornos de producción o añadir módulos distintos al SCSU como pudiera ser una aplicación para la administración del sistema o consultar estadísticas de uso.
 
-Como la cantidad de ciclos e iteraciones ejecutados previamente había sido extenso, en esta Ciclo, más allá del reto de la integración y evaluación de componentes, no fueron de distinta índole el aprendizaje adquierido, sin embargo se decidió incorpirar el la interfaz del usuario un gráfico que muestre la frecuencia de aparición de query en el tiempo.
+Como la cantidad de ciclos e iteraciones ejecutados previamente había sido extenso, en esta Ciclo, más allá del reto de la integración y evaluación de componentes, no fue de distinta índole el aprendizaje adquirido, sin embargo se decidió incorporar en la interfaz del usuario un gráfico que muestre la frecuencia de aparición de \emph{query} en el tiempo así como una representación estática de los ``mapas de conocimiento'' ya que en esta versión se presenta con una mejor perspectiva la coocurrencia de términos, a diferencia de la versión interactiva que está diseñada para inspeccionar en detalle una determinada aparición de términos.
 
 \hypertarget{objetivos-alcanzados-2}{%
 \subparagraph{Objetivos alcanzados:}\label{objetivos-alcanzados-2}}
 
-Se implementó el Sistema que cumple con el Objetivo General \ref{objegeneral} propuesto.
+\begin{itemize}
+\item
+  Se implementó el Sistema que cumple con el Objetivo General \ref{objegeneral}.
+\item
+  Se dispone de una versión del Sistema que es reproducible.
+\item
+  Se integraron con éxito los distintos componentes del Sistema.
+\end{itemize}
 
-\hypertarget{section}{%
-\subparagraph{}\label{section}}
+\newpage
+
+\hypertarget{desarrollociclos6}{%
+\subsection{Ciclo Incorporación de otras investigaciones:}\label{desarrollociclos6}}
+
+En este ciclo se aborda la incorporación al ``Sistema Complementario Saber UCV'' publicaciones distintas a las investigaciones de pregrado y postgrado de la Universidad Central de Venezuela.
+
+Lo propuesto en este Ciclo únicamente tiene como finalidad evaluar si el SCSU se puede usar para alojar revistas de investigación producidas dentro de la Universidad Central de Venezuela o fuera de ella.
+
+\hypertarget{dcseisespe}{%
+\paragraph{Especulación:}\label{dcseisespe}}
+
+Para los centros de estudio que generen investigaciones que sean alojadas en un repositorio de datos y se cumpla la estructura donde se disponga de un título para la publicación, una fecha, un autor, palabras claves (opcional) y un texto, es posible replicar los métodos descritos anteriormente para obtener los datos e incorporarlos al SCSU.
+
+Las publicaciones que se incorporarán son:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Archivo histórico de la Revista ``\textbf{Gestión I+D}'' editada dentro de la Universidad Central de Venezuela por el Postgrado en Gestión de Investigación y Desarrollo de la Facultad de Ciencias Económicas y Sociales.
+\item
+  Archivo histórico de la Revista ``\textbf{Episteme NS}'' editada dentro de la Universidad Central de Venezuela por el Instituto de Filosofía de la Facultad de Humanidades y Educación.
+\item
+  Archivo histórico de la Revista ``\textbf{Observador del Conocimiento}'' editada por el Observatorio Nacional de Ciencia, Tecnología e Innovación, adscrito al Ministerio del Poder Popular para Ciencia y Tecnología.
+\item
+  Artículo ``\textbf{El Dorado Revisitado}'' del Boletín Atropológico editado por la Universidad de los Andes.
+\end{enumerate}
+
+\hypertarget{dcseiscola}{%
+\paragraph{Colaboración:}\label{dcseiscola}}
+
+Siguiendo las técnicas descritas en ``Iteración-''Extracción de Datos web Saber UCV'' \ref{scrapeo}, se hizo la descarga de los datos y se introdujeron a la base de datos sin alterar la estructura que se había propuesto en el ``Ciclo de Integración de los Componentes'' \ref{desarrollociclos4} lo que motiva a que no se entre en detalles sobre los métodos aplicados para incorporar este nuevo lote de investigaciones.
+
+Luego de hacer la descarga y procesamiento de los datos se obtuvieron la siguiente cantidad de artículos por Revista:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Gestión I+D (UCV): 129
+\item
+  Revista Episteme (UCV): 68
+\item
+  Revista Observador del Conocimiento (ONCTI): 197
+\item
+  Boletín Antropológico (ULA): 1
+\end{enumerate}
+
+\hypertarget{dcseisapre}{%
+\paragraph{Aprender:}\label{dcseisapre}}
+
+En caso de querer expandir el Sistema a otro tipo de publicaciones o universidades puede resultar de utilidad crear un módulo para la incorporación de estas donde se determine previamente la estructura de las etiquetas \emph{css} o \emph{html} , y posteriomente ser realice el scrapy y la asignación de categorías, no obstante no con este método no se resolvería, en caso de ser necesario, el proceso de tener que realizar clasificacionespor área de conocimiento como se hizo \emph{ad hoc} para Saber UCV.
+
+En los históricos de algunas publicaciones existen atributos que no cumplen con las etiquetas \emph{css} identificadas para hacer la descarga y se presentan algunas fallas, no obstante es para un mínimo de artículos y se considera que sí es viable realizar las incorporaciones bajo el método propuesto.
+
+\newpage
 
 \hypertarget{desasarrollociclos5}{%
 \subsection{Ciclo Buscador Semántico:}\label{desasarrollociclos5}}
 
-\hypertarget{especulaciuxf3n-7}{%
-\paragraph{Especulación:}\label{especulaciuxf3n-7}}
+Si bien en el ``Ciclo de Integración de Componentes de Software'' se cumplió con el objetivo general propuesto en esta investigación, en este ciclo se evalúa que el Sistema incorpore la búsqueda semántica \ref{busquedasemantica}.
 
-Que el usuario pueda realizar búsquedas por términos similares semánticamente y el sistema recupere y rankee
+Los procesos incorporados en este Ciclo se hacen con fines experimentales y no serán sometidos a las distintas pruebas que se efectuarán más adelante, ni tampoco se harán los procesos de ingeniería de software para detallar funcionalidades o modificaciones al ``diagrama entidad relación'', sino se expondrá el método adoptado para añadir al Sistema este tipo de búsqueda que para esta fecha constituye el estado del arte en los sistemas de recuperación de información.
 
-\hypertarget{colaboraciuxf3n-7}{%
-\paragraph{Colaboración:}\label{colaboraciuxf3n-7}}
+\hypertarget{semanespe}{%
+\paragraph{Especulación:}\label{semanespe}}
 
-La API es una implementación realizada con el lenguaje de programación Python el microframework FastAPI. Como ya se había implementado una versión orquestada en contenedores se añadió como un contenedor adicional este componente. Modelo de lenguaje usado, comunicación lectura en BD
+La búsqueda semántica trata de mejorar la precisión de la búsqueda entendiendo el contenido de la consulta. A diferencia de los motores de búsqueda tradicionales, que sólo encuentran documentos a partir de coincidencias léxicas, la búsqueda semántica también puede encontrar sinónimos.
 
-Servicios que ofrece la API y mostrar un diagrama de la API y pruebas
+Adicionalmente se puede hacer el \emph{reranking} con modelos de \emph{machine learning} entrenados para tales fines \citep{gökçe2020}, \citep{nogueira2019} pudiendo mejorar el ordenamiento con criterios de relevancia distintos a los vistos en el creado por la función ``ts\_rank'' de postgreSQL en \ref{iterbol}.
 
-\hypertarget{aprender-5}{%
-\paragraph{Aprender:}\label{aprender-5}}
+Para incorporar estas funcionalidades se propone crear una ``API'' que sea implementada mediante el microframework ``FastAPI'' donde se permitirán recibir peticiones para:
 
-Comparar tiempos de búsqueda
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Registrar Embedding}: Con el texto resumen de cada investigación, convertirlo en distintos trozos de texto, generar embeddings para cada trozo y que estos sean almacenados en una tabla de \emph{embeddings} dentro de la base de datos, asociando el código de identificación del documento.
 
-Evaluar uso de UMAP para generar representación de títulos con datos de embeddings
+  \begin{figure}
 
-Citar 2005.04961 por el rerank de embeddings
+  {\centering \includegraphics[width=0.45\linewidth]{images/05-desarrollo/5_ciclo/diagramapiregistrar} 
+
+  }
+
+  \caption{Diagrama API- Registrar Embedding}\label{fig:semanticoregistrar}
+  \end{figure}
+\item
+  \textbf{Consultar:} Recibir el texto del query, convertirlo en un \emph{embedding}, buscar los trozos de texto que presenten mayor similitud coseno, recuperar los identificadores de esos documentos, hacer un proceso de \emph{reranking} con un modelo de \emph{machine learning} y dar como resultado los identificadores de los veinte documentos más relevantes.
+
+  \begin{figure}
+
+  {\centering \includegraphics[width=0.45\linewidth]{images/05-desarrollo/5_ciclo/diagramapiconsultar} 
+
+  }
+
+  \caption{Diagrama API- Consultar Embedding}\label{fig:semanticoconsultar}
+  \end{figure}
+\end{enumerate}
+
+\hypertarget{semancola}{%
+\paragraph{Colaboración:}\label{semancola}}
+
+La API es una implementación realizada con el lenguaje de programación Python mediante el \emph{microframework} ``FastAPI''. Como ya se había implementado una versión orquestada en contenedores se añadió como un contenedor adicional este componente.
+
+Se hizo la evaluación de varios modelos de aprendizaje automático para generar los embeddigs los cuales se encuentran de libre acceso en el repositorio ``Hugging Face'' \citep{hfmodels2023}.
+
+Para realizar el proceso del ``splitting'' del texto resumen se usaron distintos modelos preentrenados para segmentar el texto acorde a las distintas ideas representadas, no necesariamente basándose en signos de puntuación. Dentro de los modelos revisados está ``What it's the point'' \citep{minixhofer-etal-2023-wheres} , ``Text to Sentence Splitter'' \citep{sensplit22023} seleccionando este último. Este proceso es necesario ejecutarlo porque se busca segmentar el texto en ideas, que queden registradas en \emph{embeddings} para que en el momento de hacer el \emph{query} se busque el trozo de texto que presente una mayor similitud con el \emph{embedding} generado a partir del \emph{query}.
+
+Para poder registrar los vectores de \emph{embeddings} y realizar la búsqueda por similaridad en el gestor de base de datos PostgreSQL fue necesario añadir la extensión ``pgvector'' \citep{pgvector2023}.
+
+El modelo para crear los\emph{embeddings} es el ``intfloat/multilingual-e5-base'' \citep{wang2022}, alojado en el repositorio de hugging face \citep{e5base}, el cual limita la cantidad de tokens a 512, equivalente a 360 palabras por \emph{embedding} y tiene un tamaño de 768 atributos. Previo a ser seleccionado se hizo una evaluación de otros modelos que tienen la misma funcionalidad como ``dccuchile/bert-base-spanish-wwm-cased'' \citep{canete2020}. El modelo ``e5-base'' presenta la mejor relación entre cantidad de descargas y peso del modelo. Teniendo presente que la cantidad de recursos computacionales que se disponen para hacer el \emph{deploy} de todo el Sistema es limitado se decidió usar este modelo que ocupa aproximadamente 1 GB para estar en producción.
+
+Para hacer los proceso de \emph{reranking} se evaluaron dos modelos que son el ``amberoad/bert-multilingual-passage-reranking-msmarco'' \citep{erankingmsmarco} y el ``IIC/roberta-base-bne-ranker'' \citep{hfranker2023}, siendo seleccionado segundo por presentar un menor peso, tener mayor cantidad de descargas y ayudar a minimizar el consumo de recurso dentro del Sistema.
+
+Es necesario señalar que los modelos de machine learning evaluados y seleccionados están entrenados para funcionar con textos en el idioma español.
+
+En la aplicación Shiny se hicieron las modificaciones para hacer el llamado a la API y obtener de ella el listado de id´s de documentos seleccionados y posteriormente añadirlo a la lista de documentos recuperados mediante el método de índice invertido. Con la finalidad de evitar que se dupliquen documentos que sean obtenidos mediante el índice invertido y la búsqueda semántica se procedió a remover los documentos repetidos. Igualmente en la interfaz de usuario en la tabla que muestra los resultados se añadió una columna para señalar el método con el que fue recuperado el documento.
+
+\hypertarget{semanapre}{%
+\paragraph{Aprender:}\label{semanapre}}
+
+Usar la ``búsqueda semántica'' amplia considerablemente las posibilidades de obtener documentos que resulten de interés para el investigador, ya que no sólo se queda circunscrita la recuperación de información a términos exactos, sino se extraen documentos que pueden estar altamente relacionados al tema de búsqueda. En la figura se presentan los resultados ante el texto ``problemas que enfrentan las mujeres''.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{images/05-desarrollo/5_ciclo/resultsemantico} 
+
+}
+
+\caption{Resultados de Búsqueda Semántica}\label{fig:resultsemantico}
+\end{figure}
+
+En este query se extrajeron 25 documentos y sino se hubiese usado esta técnica hubiesen ascendido a solo 5 los documentos extraídos.
+
+Un elemento a tener en cuenta es que la búsqueda semántica y la ejecución del reranking, incrementa considerablemente el tiempo de ejecución del \emph{query}, no obstante, es necesario señalar que el método que implementa postrgreSQL para hacer la comparación vectorial no es parte del estado del arte en la materia.
+
+El uso de postgreSQL para hacer el proceso se hizo para simplificar la instalación de componentes adicionales dentro del Sistema, pero en caso de ser adoptada la búsqueda semántica en otra versión del SCSU, es necesario encontrar métodos que proporcionen un mejor desempeño en lo referente a los tiempos de ejecución del \emph{query}.
+
+En esta implementación se evaluaron algunos modelos para crear los \emph{embeddings} sin entrar en consideración sobre cuáles presentan mejores resultados al evaluar la relevancia de los documentos extraídos. Este es un punto en que en futuras investigaciones es necesario ahondar para comparar cuáles pueden ser de mayor utilidad.
+
+Igualmente es necesario en futuros trabajos establecer un umbral de similitud o cantidad de documentos a recuperar, óptimo, ya que al no hacerlo y simplemente reordenar los documentos por similitud, se extraerá todo el Corpus y se afectará directamente las métricas de precisión y exactitud (recall).
+
+\newpage
 
 \hypertarget{pruebas}{%
-\section{Pruebas:}\label{pruebas}}
+\section{Pruebas de aceptación:}\label{pruebas}}
+
+La fase de ``Pruebas de Aceptación'' en el desarrollo del Sistema Complementario Saber UCV representa el punto culminante en los ciclos de desarrollo abordados ya que se mide si las expectativas y necesidades del usuario final fueron satisfechas con la solución propuesta. Estas pruebas verifican la conformidad del sistema con los requisitos previamente establecidos y evalúa la capacidad para satisfacer las demandas del entorno operativo.
+
+En esta sección, se muestran los resultados de las distintas pruebas que fueron ejecutadas, diseñadas para validar no solo la funcionalidad técnica de la aplicación, sino también su capacidad para integrarse al contexto de uso previsto.
 
 \hypertarget{pruebas1}{%
 \subsection{Funcionales:}\label{pruebas1}}
 
-Incluir un cuadro para las pruebas de la app. Ver pruebas en tesis de Jean
+Las Pruebas Funcionales constituyen la columna vertebral en la validación del software, evaluando su comportamiento según los requisitos que fueron especificados.
 
-Incluir otro cuadro para la api
+En la tabla \ref{tab:tablapruebasa} se muestran las pruebas de caja negra realizadas para evaluar si el Sistema se comporta según lo que fue definido para cada caso de uso sin evaluar los procesos, sino en de una forma concreta si la salida creada por el Sistema se corresponde a lo descrito en los Casos de Uso del ``Ciclo Integración de Componentes de Software'' \ref{desarrollociclos4}. En la tabla \ref{tab:tablapruebasb} se muestran las pruebas de caja negra realizadas para evaluar si el Sistema cumple con todos los requerimientos funcionales también definidos en Ciclo precitado.
+
+\newpage
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{3.15in}|p{1.57in}}
+
+\caption{Pruebas\ de\ Caja\ Negra:\ Casos\ de\ Uso}\label{tab:tablapruebasa}\\
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Caso\ de\ Uso}}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Se\ realiza\ el\ comportamiento\ esperado}}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}\endfirsthead \caption[]{Pruebas\ de\ Caja\ Negra:\ Casos\ de\ Uso}\label{tab:tablapruebasa}\\
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Caso\ de\ Uso}}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Se\ realiza\ el\ comportamiento\ esperado}}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}\endhead
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.1:\ Realizar\ proceso\ de\ recuperación\ de\ información\ (query)}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.1.\ Nivel\ 2:\ Realizar\ proceso\ de\ recuperación\ de\ información\ (query)\ aplicando\ filtros}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.2:\ Realizar\ Inspección\ de\ Recomendaciones}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.3:\ Realizar\ inspección\ de\ "Mapas\ de\ Conocimiento"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.3.\ Nivel\ 2.1:\ Realizar\ inspección\ "Mapa\ de\ Conocimiento"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.3.\ Nivel\ 2.2:\ modificar\ cantidad\ de\ coocurrencias\ en\ "Mapa\ de\ Conocimiento"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+\newpage
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{3.15in}|p{1.57in}}
+
+\caption{Pruebas\ de\ Caja\ Negra:\ Requerimientos\ Funcionales}\label{tab:tablapruebasb}\\
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Requerimiento\ Funcional}}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Se\ realiza\ el\ comportamiento\ esperado}}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}\endfirsthead \caption[]{Pruebas\ de\ Caja\ Negra:\ Requerimientos\ Funcionales}\label{tab:tablapruebasb}\\
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Requerimiento\ Funcional}}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Se\ realiza\ el\ comportamiento\ esperado}}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}\endhead
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.1:\ Realizar\ proceso\ de\ recuperación\ de\ información\ (query)}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.1.\ Nivel\ 2:\ Realizar\ proceso\ de\ recuperación\ de\ información\ (query)\ aplicando\ filtros}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.2:\ Realizar\ Inspección\ de\ Recomendaciones}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.3:\ Realizar\ inspección\ de\ "Mapas\ de\ Conocimiento"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.3.\ Nivel\ 2.1:\ Realizar\ inspección\ "Mapa\ de\ Conocimiento"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{UC.3.\ Nivel\ 2.2:\ modificar\ cantidad\ de\ coocurrencias\ en\ "Mapa\ de\ Conocimiento"}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+\hypertarget{rendimiento}{%
+\subsection{Rendimiento:}\label{rendimiento}}
+
+La primera prueba de rendimiento que se realizó fue mediante la librería Shinytest \citep{shinytest}, la cual está diseñada para facilitar a los desarrolladores verificar el comportamiento de sus aplicaciones de manera sistemática y reproducible mediante pruebas automatizadas en aplicaciones Shiny. Las pruebas se hacen con un driver que simula la interacción del usuario con el sistema definiendo previamente cuáles son los comportamientos que se quieren simular. Igualmente se define en qué momento se quiere tomar una ``snapshot'' para posteriormente evaluar si se adapta al comportamiento esperado.
+
+Concretamente se evalúo en esta prueba si al hacer una simulación de \emph{query} con cada uno de los textos de los títulos de las investigaciones, se generaba al menos la extracción de un documento, lo cual demostraría que todos los documentos que conforman el Corpus son extraídos. El resultado obtenido fue el esperado con al menos un documento por \emph{query}.
+
+La segunda prueba aplicada fue la que se ejecuta con el paquete ``Shinyloadtest'' \citep{shinyloadtest} el cual es un paquete que permite evaluar el rendimiento y la escalabilidad de aplicaciones Shiny ya que permite simular múltiples usuarios interactuando simultáneamente con una aplicación y así evaluar el comportamiento bajo carga. Adicionalmente este paquete genera informes detallados sobre el rendimiento, identificando posibles cuellos de botella y proporcionando métricas clave, como tiempos de respuesta y tasas de error.
+
+Al realizar el shinytest no se detectaron cuellos de botella ni tiempos de carga que estuviesen fuera de lo esperado.
 
 Pruebas de usabilidad: mencionar disponibilidad de menús de ayuda y pantalla de bienvenida
 
-\url{https://chat.openai.com/share/1b871360-5c33-4cd1-8309-aea6368af6ea}
-
-\hypertarget{pruebas2}{%
-\subsection{Rendimiento:}\label{pruebas2}}
-
-Shinytest
-
-Tiempos de búsqueda
-
 \hypertarget{pruebas3}{%
 \subsection{Relevancia:}\label{pruebas3}}
+
+Para hacer las mediciones de Relevancia se adoptó el siguiente método:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Definir Conjunto de Datos de Prueba:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Se seleccionaron aleatoriamente 50 documentos de trabajos de pregrado y postgrado asociados a la Escuela de Computación y el postgrado en Ciencias de la Computación. Se denomina conjunto A.
+  \item
+    Se seleccionaron aleatoriamente 50 documentos de trabajos de pregrado y postgrado de documentos que no pertenezcan a la Escuela de Computación ni al postgrado en Ciencias de la Computación. Se denomina conjunto B.
+  \end{itemize}
+\item
+  \textbf{Crear Consultas de Prueba:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Se diseñaron 10 consultas con términos asociados a los documentos del conjunto A.
+  \item
+    Se diseñaron 10 consultas con términos asociados a los documentos del conjunto B.
+  \end{itemize}
+\item
+  \textbf{Ejecutar Consultas en el Sistema:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Se hicieron las consultas tanto para el conjunto A como para el B y se guardaron los resultados junto con el término del query.
+  \end{itemize}
+\item
+  \textbf{Definir Relevancia Esperada por expertos:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A un grupo de expertos sobre el conjunto de documentos A se les pidió que indicaran para cada consulta, de las 10 definidas, cuáles son los 5 (o un número menor) documentos más relevantes sin tomar en cuenta el ranking.
+  \end{itemize}
+\item
+  \textbf{Recopilar Resultados:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Para cada consulta evaluada por un experto se comparó si el Sistema introducía dentro de los 10 primeros lugares los cinco (o menos) documentos señalados por el experto. En esta evaluación no se toma en consideración el orden ni del sistema ni de los expertos.
+  \end{itemize}
+\item
+  \textbf{Calcular Métricas de Evaluación:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Con los resultados se calcularon las métricas \emph{precisión} y \emph{recall} y F1 ya que ellas son claves para la evaluación de sistemas de recuperación de información.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{Precisión (Precision):} Número de documentos relevantes recuperados dividido por el número total de documentos recuperados.
+    \item
+      \textbf{Recall:} Número de documentos relevantes recuperados dividido por el número total de documentos relevantes en la colección.
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+Los resultados obtenidos fueron:
+
+\begin{itemize}
+\item
+  \textbf{Precisión:}
+\item
+  \textbf{Recall}:
+\item
+  \textbf{F1}:
+\end{itemize}
+
+Con esta prueba se da por concluido el Desarrollo de la Solución.
 
 \hypertarget{conclusiones}{%
 \chapter{Conclusiones:}\label{conclusiones}}
 
 Este es el capítulo de las Conclusiones
 
+Repaso por el problema que representó la generación del Corpus
+
+Implementación del Sistema Complementario Saber
+
 \hypertarget{conclusionescontri}{%
 \section{Contribución:}\label{conclusionescontri}}
+
+Contar con un sistema que permite clasificar los trabajos alojados en el repositorio Saber UCV mientras no se solucione de raíz la asignación de las investigaciones a su área de conocimiento en el momento en que son registradas dentro del sistema por las unidades responsables. Otra contribución que representa la investigación realizada es que se extráen los nombres de los tutores con lo cual se permite tener noción de cuáles son las áreas de investigaciones que manejan los profesores de la Universidad Central de Venezuela.
+
+El Sistema Complementario Saber UCV puede servir de base para el desarrollo de softwares que permitan incorporar métodos distintos para la recuperación y representación de los resultados obtenidos.
+
+Usar los \emph{embeddings} dentro del Sistema abre las puertas para poder realizar complementos y mejoras al proceso de Recuperación de Información y en concreto expande la posibilidades con que contarán los investigadores que hagan búsquedas sobre el Corpus conformado.
 
 \hypertarget{conclusionestrabafutu}{%
 \section{Trabajos Futuros:}\label{conclusionestrabafutu}}
 
-Finalizar con que este libro en sus dos versiones pdf y html se generó con bookdown
+La investigación que se presentó en este Trabajo de Grado deja grandes inquietudes para inspeccionar nuevos métodos que ayudan a la gestión de la investigación. A continuación se muestran algunas de las áreas sobre las cuales se puede ahondar en Trabajos Futuros:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Incorporar otros saberes (Universidad de los Andes, Universidad de Carabobo, Universidad Católica) o repositorios en la base de dato de un sistema similar al propuesto, para poder contar con un repositorio donde se integren las distintas investigaciones que son realizadas a nivel nacional.
+\item
+  Distribuir mediante técnicas de ``map reduce'' los datos en un sistema distribuido y paralelo para evaluar métodos que permitan mejorar los tiempos de búsqueda, sobre todo en caso de que se contase con más documentos.
+\item
+  Mediante el uso de embeddings:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    Integrar largos modelos de lenguaje para crear un sistema de ``preguntas y respuestas'' sobre los documentos alojados en el Sistema.
+  \item
+    Evaluar distintos modelos para realizar el \emph{rerank} a todos los resultados obtenidos.
+  \item
+    Evaluar distintos modelos de generación de \emph{embeddings} para evaluar el comportamiento en el proceso de recuperación de información, incluso usando modelos que están entrenados sobre áreas de conocimiento específicas como lo es ``SciBERT'' \citep{beltagy2019}.
+  \item
+    Usar distintos métodos para medición de similitud, como el de vecinos cercanos (KNN) \citep{annoy2023} o de máquinas de soporte vectorial (SVM) \citep{svm2023}.
+  \end{enumerate}
+\end{enumerate}
+
+\hypertarget{apendicea}{%
+\chapter{Apéndice: Librerías usadas y créditos}\label{apendicea}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Las librerías de R que usa la aplicación web son :
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    \textbf{shinydashboard}: sirve para gener un formato de \emph{dashboard} en la aplicación \citep{shinydashboard}.
+  \item
+    \textbf{shinydashboardPlus}: sirve para asistir a ``shinydashboard'' en configuraciones y funcionalidades adicionales \citep{shinydashboardPlus}.
+  \item
+    \textbf{shinycssloaders}: muestra un \emph{loader} cuando la aplicación de está cargando \citep{shinycssloaders}.
+  \item
+    \textbf{pool}: gestor de conexión mediante un \emph{pool} a la base de datos \citep{pool}.
+  \item
+    \textbf{RPostgres}: carga el protocolo de conexión a postgreSQL \citep{RPostgres}.
+  \item
+    \textbf{DBI}: permite la definición en R de \emph{querys} en lenguaje SQL \citep{DBI}.
+  \item
+    \textbf{dplyr}: es una herramienta que facilita la manipulación de las \emph{dataframes} que sirven de insumo para representar los resultados \citep{dplyr}.
+  \item
+    \textbf{tidyr}: manipulación de la \emph{dataframe} que contiene los resultados \citep{tidyr}.
+  \item
+    \textbf{dbplyr}: bajo la sintáxis de ``dplyr'' permite estucturar los querys \citep{dbplyr}.
+  \item
+    \textbf{DT}: \emph{wrapper} de la librería ``DataTables'' de Javascript que permite generar tablas interactivas en html que muestran los resultados de los querys \citep{DT-2}.
+  \item
+    \textbf{udpipe}: paquete que permite manejar textos bajo los principios del \emph{framework} ``Universal Dependencies'' y en la aplicación se usa para generar la estructura de datos que representa la coocurrencias \citep{udpipe-3}.
+  \item
+    \textbf{ggraph}: permite realizar la visualización estática mediante grafos de las coocurrencias \citep{ggraph-2}.
+  \item
+    \textbf{visNetwork}: permite realizar la visualización dinámica mediante grafos de las coocurrencias. Es un \emph{wrapper} de la libraría Vis.Js.
+  \item
+    \textbf{apexcharter}: permite generar gráficos interactivos y es un \emph{wrapper} de la librería ``ApexCharts.Js'' \citep{apexcharter}.
+  \item
+    \textbf{scales}: se usa para reescalar los arcos que unen los nodos en las coocurrencias \citep{scales}.
+  \item
+    \textbf{fontawesome}: se usa para mostrar íconos en los selectores y ventanas \citep{fontawesome}.
+  \item
+    \textbf{stringr}: manipulación y manejo de textos \citep{stringr}.
+  \item
+    \textbf{shinyBS}: permite añadir los \emph{tooltips} \citep{shinyBS}.
+  \item
+    \textbf{shinyalert}: crea un \emph{popup} al ingresar a la aplicación.
+  \item
+    \textbf{shinyWidgets}: herramienta para manejar interactividades \citep{shinyWidgets}.
+  \item
+    \textbf{config}: configurar variables globales \citep{config}.
+  \end{enumerate}
+\item
+  Librerías usadas por el Contenedor ``R Servicios'':
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    \textbf{httr2}: ejecutar consultas HTTp y procesar las respuestas \citep{httr2}.
+  \item
+    \textbf{pool}: gestor de conexión mediante un \emph{pool} a la base de datos \citep{pool}.
+  \item
+    \textbf{RPostgres}: carga el protocolo de conexión a postgreSQL \citep{RPostgres}.
+  \item
+    \textbf{DBI}: permite la definición en R de \emph{querys} en lenguaje SQL \citep{DBI}.
+  \item
+    \textbf{odbc}: soporte para conexiones a manejadores de base de datos \citep{odbc}.
+  \item
+    \textbf{dplyr}: es una herramienta que facilita la manipulación de las \emph{dataframes} que sirven de insumo para representar los resultados \citep{dplyr}.
+  \item
+    \textbf{tidyr}: manipulación de la \emph{dataframe} que contiene los resultados \citep{tidyr}.
+  \item
+    \textbf{dbplyr}: bajo la sintáxis de ``dplyr'' permite estucturar los querys \citep{dbplyr}.
+  \item
+    \textbf{stringr}: manipulación y manejo de textos \citep{stringr}.
+  \item
+    \textbf{rvest:} manipulación y extracción de datos de páginas web \citep{rvest-2}.
+  \item
+    \textbf{rlang:} caja de herramientas para trabajar con estructuras de R base \citep{rlang-2}.
+  \item
+    \textbf{purrr}: aplicar programación funcional \citep{purrr}.
+  \item
+    \textbf{readtext}: importar archivos en formato ``word'' o ``pdf'' \citep{readtext} .
+  \item
+    \textbf{text.alignment}: aplicar el algoritmo ``Smith-Waterman'' \citep{text.alignment}.
+  \item
+    \textbf{spacyr}: wrapper para usar el framework Spacy \citep{spacyr-2}.
+  \item
+    \textbf{config}: configurar variables globales \citep{config}.
+  \item
+    \textbf{tm}: ejecutar procesos de minería de texto \citep{tm}.
+  \item
+    \textbf{quanteda}: análisis cuantitativo de textos \citep{quanteda-2}.
+  \end{enumerate}
+\item
+  Para realizar los diagramas y esquemas representados en esta investigación se uso el software ``draw.io'' \citep{draw2023}.
+\item
+  Este documento, tanto en su versión PDF como en HTML se generó con la librería Bookdown \citep{bookdown}.
+\end{enumerate}
 
   \bibliography{references.bib}
 

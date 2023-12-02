@@ -6,8 +6,32 @@ bibliography: references.bib
 
 Este es el capítulo de las Conclusiones
 
+Repaso por el problema que representó la generación del Corpus
+
+Implementación del Sistema Complementario Saber
+
 ## Contribución: {#conclusionescontri}
+
+Contar con un sistema que permite clasificar los trabajos alojados en el repositorio Saber UCV mientras no se solucione de raíz la asignación de las investigaciones a su área de conocimiento en el momento en que son registradas dentro del sistema por las unidades responsables. Otra contribución que representa la investigación realizada es que se extráen los nombres de los tutores con lo cual se permite tener noción de cuáles son las áreas de investigaciones que manejan los profesores de la Universidad Central de Venezuela.
+
+El Sistema Complementario Saber UCV puede servir de base para el desarrollo de softwares que permitan incorporar métodos distintos para la recuperación y representación de los resultados obtenidos.
+
+Usar los *embeddings* dentro del Sistema abre las puertas para poder realizar complementos y mejoras al proceso de Recuperación de Información y en concreto expande la posibilidades con que contarán los investigadores que hagan búsquedas sobre el Corpus conformado.
 
 ## Trabajos Futuros: {#conclusionestrabafutu}
 
-Finalizar con que este libro en sus dos versiones pdf y html se generó con bookdown
+La investigación que se presentó en este Trabajo de Grado deja grandes inquietudes para inspeccionar nuevos métodos que ayudan a la gestión de la investigación. A continuación se muestran algunas de las áreas sobre las cuales se puede ahondar en Trabajos Futuros:
+
+1.  Incorporar otros saberes (Universidad de los Andes, Universidad de Carabobo, Universidad Católica) o repositorios en la base de dato de un sistema similar al propuesto, para poder contar con un repositorio donde se integren las distintas investigaciones que son realizadas a nivel nacional.
+
+2.  Distribuir mediante técnicas de "map reduce" los datos en un sistema distribuido y paralelo para evaluar métodos que permitan mejorar los tiempos de búsqueda, sobre todo en caso de que se contase con más documentos.
+
+3.  Mediante el uso de embeddings:
+
+    1.  Integrar largos modelos de lenguaje para crear un sistema de "preguntas y respuestas" sobre los documentos alojados en el Sistema.
+
+    2.  Evaluar distintos modelos para realizar el *rerank* a todos los resultados obtenidos.
+
+    3.  Evaluar distintos modelos de generación de *embeddings* para evaluar el comportamiento en el proceso de recuperación de información, incluso usando modelos que están entrenados sobre áreas de conocimiento específicas como lo es "SciBERT" [@beltagy2019].
+
+    4.  Usar distintos métodos para medición de similitud, como el de vecinos cercanos (KNN) [@annoy2023] o de máquinas de soporte vectorial (SVM) [@svm2023].
