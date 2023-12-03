@@ -99,7 +99,7 @@ Para el desarrollo del SCSU se hizo un proceso iterativo donde en cada ciclo se 
 
 La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evoluciona. Esto fue lo que se hizo en reuniones continuas en la materia *Tópicos Especiales en Sistemas de Información y Gerencia* que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis, se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados usados para los procesamiento de los textos.
 
-Los Ciclos que se van a exponer son los siguientes: en \@ref(desarrollociclos1) se muestran las tres iteraciones realizadas para la **Conformación del Conjunto de Datos**. En \@ref(desarrollociclos3) se revisan las iteraciones para el desarrollo del **Prototipo del SCSU**, mientras que en \@ref(desarrollociclos4) se hace la **Integración de los Componentes del Software** y en \@ref(desasarrollociclos5) se hace una versión del Sistema que incluye un **Buscador Semántico**.
+Los Ciclos que se van a exponer son los siguientes: en \@ref(desarrollociclos1) se muestran las tres iteraciones realizadas para la **Conformación del Conjunto de Datos**. En \@ref(desarrollociclos3) se revisan las iteraciones para el desarrollo del **Prototipo del SCSU**, mientras que en \@ref(desarrollociclos4) se hace la **Integración de los Componentes del Software**. En \@ref(desarrollociclos6) se hace la "**Incorporación de Otras Investigaciones"** al incluir Revistas de investigación dentro del Sistema. Finalmente en \@ref(desasarrollociclos5) se hace una versión del Sistema donde se incluye un **Buscador Semántico**.
 
 \newpage
 
@@ -648,7 +648,7 @@ A continuación se agrupan y enuncian los principales inconvenientes que se enco
 
 1.  Obtener las fichas de `r prettyNum(nrow(df_draw_seleccion),big.mark=".")` investigaciones, equivalente al 100% de los trabajos de pre y postgrado alojados en Saber UCV (descartando los duplicados) , conforme a lo propuesto en el Objetivo Específico 1.
 
-2.  Obtener `r rowSums(df_cdad_postgrados)` nombres de postgrado y 50 de carreras de pregrado, insumo necesario para alcanzar lo propuesto en el Objetivo Específico 2.
+2.  Obtener `r rowSums(df_cdad_postgrados)` nombres de postgrado y 50 de carreras de pregrado, generando 454 etiquetas en total que servirán de insumo necesario para alcanzar lo propuesto en el Objetivo Específico 2.
 
 3.  Categorizar `r prettyNum(clasificados,big.mark=".")` investigaciones por área académica, equivalente al `r  prettyNum(round( clasificados/nrow(df_draw_seleccion)*100,1), decimal.mark=",")`% de toda la información a clasificar, de acuerdo al Objetivo Específico 2.
 
@@ -2416,7 +2416,7 @@ Como la cantidad de ciclos e iteraciones ejecutados previamente había sido exte
 
 <br> <br>
 
-### Ciclo Incorporación de otras investigaciones:  {#desarrollociclos6}
+### Ciclo Incorporación de Otras Investigaciones:  {#desarrollociclos6}
 
 En este ciclo se aborda la incorporación al "Sistema Complementario Saber UCV" publicaciones distintas a las investigaciones de pregrado y postgrado de la Universidad Central de Venezuela.
 
@@ -2632,7 +2632,7 @@ listado_PU <- c('Menús de ayuda (tooltips)',
 df_pruebas_rf <- data.frame(col1=listado_PU,
                             col2='verdad')
 
-flextable(df_pruebas_UC)%>%
+flextable(df_pruebas_rf)%>%
   theme_box()%>%
   fontsize(size = 10)%>%
   set_header_labels(
@@ -2646,6 +2646,229 @@ flextable(df_pruebas_UC)%>%
   align_text_col( align = "center", header = TRUE, footer = TRUE)%>%
   set_caption(caption='Pruebas de Caja Negra: Usabilidad')
 ```
+
+#### Interacción Usuario Sistema:
+
+Los usuarios tienen un perfil de ser profesores universitarios de la Escuela de Computación o Postgrado de Ciencias de la Computación de la Facultad de Ciencias de la Universidad Central de Venezuela.
+
+A 5 usuarios se les preguntó:
+
+1.  ¿Ha hecho búsquedas en el repositorio Saber UCV? (sí - no).
+
+2.  ¿Pudo realizar una búsqueda en el SCSU? (sí - no).
+
+3.  ¿Los resultados de un query en el SCSU satisfacen sus expectativas ? (sí - no). se entiende por expectativa que los resultados se adaptan al *query* formulado.
+
+4.  ¿Comprendió las funcionalidades de cada pestaña del SCSU apoyándose en el menú de ayuda y en los tooltips? (sí - no).
+
+5.  ¿En caso de ser negativa la respuesta anterior cuál funcionalidad no comprendió? (realizar query, inspeccionar documentos recuperados, generar mapas de conocimiento, inspeccionar mapas de conocimiento, cambiar cantidad de coocurrencias, acceder a menú ayuda).
+
+6.  ¿Los colores de la interfaz del SCSU resultan agradables? (sí - no).
+
+Hay preguntas sobre lo intuitivo de la interfaz que se omiten ya que el diseño del Sistema no se considera intuitivo al incorporar funcionalidades como la inspección de los Mapas del Conocimiento.
+
+Los resultados obtenidos son:
+
+Para la pregunta ¿Ha hecho búsquedas en el repositorio Saber UCV? se muestran en la figura \@ref(fig:preguntaa) donde se aprecia que indica ????, lo que conlleva a que
+
+```{r preguntaa, echo=FALSE, fig.align='center', fig.cap=' ',  out.width="35%"}
+
+df_muesta_clasificacion <- readRDS('data/muestra_clasificacion.rds')
+
+df_muesta_clasificacion_totales <- df_muesta_clasificacion%>%
+  group_by(jerarquia)%>%
+  count()%>%
+  rename(total= n)%>%
+  as.data.frame()
+
+labs <- paste0(df_muesta_clasificacion_totales$jerarquia,
+               " (", df_muesta_clasificacion_totales$total, "%)")
+
+
+ggpie(df_muesta_clasificacion_totales,
+      "total",
+      label = labs,
+      lab.pos = "out",
+      # lab.font = "white",
+      fill = "jerarquia",
+      # color = "white",
+      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
+  # theme(text=element_text(face='bold',size=20))+
+  theme(legend.position="none")
+```
+
+Los resultados obtenidos para la pregunta ¿Pudo realizar una búsqueda en el SCSU? se muestran en la figura \@ref(fig:preguntab) donde se aprecia que indica ????, lo que conlleva a .
+
+```{r preguntab, echo=FALSE, fig.align='center', fig.cap=' ',  out.width="35%"}
+
+df_muesta_clasificacion <- readRDS('data/muestra_clasificacion.rds')
+
+df_muesta_clasificacion_totales <- df_muesta_clasificacion%>%
+  group_by(jerarquia)%>%
+  count()%>%
+  rename(total= n)%>%
+  as.data.frame()
+
+labs <- paste0(df_muesta_clasificacion_totales$jerarquia,
+               " (", df_muesta_clasificacion_totales$total, "%)")
+
+
+ggpie(df_muesta_clasificacion_totales,
+      "total",
+      label = labs,
+      lab.pos = "out",
+      # lab.font = "white",
+      fill = "jerarquia",
+      # color = "white",
+      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
+  # theme(text=element_text(face='bold',size=20))+
+  theme(legend.position="none")
+```
+
+Los resultados obtenidos para la pregunta ¿Los resultados de un query en el SCSU satisfacen sus expectativas ? se muestran en la figura \@ref(fig:preguntac) donde se aprecia que indica ????, lo que conlleva a .
+
+```{r preguntac, echo=FALSE, fig.align='center', fig.cap=' ',  out.width="35%"}
+
+df_muesta_clasificacion <- readRDS('data/muestra_clasificacion.rds')
+
+df_muesta_clasificacion_totales <- df_muesta_clasificacion%>%
+  group_by(jerarquia)%>%
+  count()%>%
+  rename(total= n)%>%
+  as.data.frame()
+
+labs <- paste0(df_muesta_clasificacion_totales$jerarquia,
+               " (", df_muesta_clasificacion_totales$total, "%)")
+
+
+ggpie(df_muesta_clasificacion_totales,
+      "total",
+      label = labs,
+      lab.pos = "out",
+      # lab.font = "white",
+      fill = "jerarquia",
+      # color = "white",
+      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
+  # theme(text=element_text(face='bold',size=20))+
+  theme(legend.position="none")
+```
+
+Los resultados obtenidos para la pregunta ¿Comprendió las funcionalidades de cada pestaña del SCSU apoyándose en el menú de ayuda y en los tooltips? se muestran en la figura \@ref(fig:preguntad) donde se aprecia que indica ????, lo que conlleva a.
+
+```{r preguntad, echo=FALSE, fig.align='center', fig.cap=' ',  out.width="35%"}
+
+df_muesta_clasificacion <- readRDS('data/muestra_clasificacion.rds')
+
+df_muesta_clasificacion_totales <- df_muesta_clasificacion%>%
+  group_by(jerarquia)%>%
+  count()%>%
+  rename(total= n)%>%
+  as.data.frame()
+
+labs <- paste0(df_muesta_clasificacion_totales$jerarquia,
+               " (", df_muesta_clasificacion_totales$total, "%)")
+
+
+ggpie(df_muesta_clasificacion_totales,
+      "total",
+      label = labs,
+      lab.pos = "out",
+      # lab.font = "white",
+      fill = "jerarquia",
+      # color = "white",
+      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
+  # theme(text=element_text(face='bold',size=20))+
+  theme(legend.position="none")
+```
+
+Los resultados obtenidos para la pregunta ¿En caso de ser negativa la respuesta anterior cuál funcionalidad no comprendió? se muestran en la figura \@ref(fig:preguntae) donde se aprecia que indica ????, lo que conlleva a .
+
+```{r preguntae, echo=FALSE, fig.align='center', fig.cap=' ',  out.width="35%"}
+
+df_muesta_clasificacion_totales <- df_muesta_clasificacion%>%
+  group_by(jerarquia)%>%
+  count()%>%
+  rename(total= n)%>%
+  as.data.frame()
+
+labs <- paste0(df_muesta_clasificacion_totales$jerarquia,
+               " (", df_muesta_clasificacion_totales$total, "%)")
+
+
+ggpie(df_muesta_clasificacion_totales,
+      "total",
+      label = labs,
+      lab.pos = "out",
+      # lab.font = "white",
+      fill = "jerarquia",
+      # color = "white",
+      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
+  # theme(text=element_text(face='bold',size=20))+
+  theme(legend.position="none")
+```
+
+Los resultados obtenidos para la pregunta ¿Los colores de la interfaz del SCSU resultan agradables? ( se muestran en la figura \@ref(fig:preguntaf) donde se aprecia que indica ????, lo que conlleva a .
+
+```{r preguntaf, echo=FALSE, fig.align='center', fig.cap=' ',  out.width="35%"}
+df_muesta_clasificacion_totales <- df_muesta_clasificacion%>%
+  group_by(jerarquia)%>%
+  count()%>%
+  rename(total= n)%>%
+  as.data.frame()
+
+labs <- paste0(df_muesta_clasificacion_totales$jerarquia,
+               " (", df_muesta_clasificacion_totales$total, "%)")
+
+
+ggpie(df_muesta_clasificacion_totales,
+      "total",
+      label = labs,
+      lab.pos = "out",
+      # lab.font = "white",
+      fill = "jerarquia",
+      # color = "white",
+      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
+  # theme(text=element_text(face='bold',size=20))+
+  theme(legend.position="none")
+
+```
+
+### Validación de las Clasificaciones:
+
+Para hacer la validación sobre las Clasificaciones por área de conocimiento y para el nombre del tutor se adoptó la siguiente metodología:
+
+1.  **Muestra aleatoria:** del total de trabajos que son investigaciones de pregrado y postgrado, se tomó una muestra aleatoria del 1 % de los trabajos, equivalente a 100 investigaciones. La cantidad de trabajos por categoría se observa en la figura \@ref(fig:muestracategoria).
+
+    ```{r muestracategoria,echo=FALSE, fig.align='center', fig.cap='Muestra- Seleccionados por categoría',  out.width="50%" }
+    df_muesta_clasificacion <- readRDS('data/muestra_clasificacion.rds')
+
+    df_muesta_clasificacion_totales <- df_muesta_clasificacion%>%
+      group_by(jerarquia)%>%
+      count()%>%
+      rename(total= n)%>%
+      as.data.frame()
+
+    labs <- paste0(df_muesta_clasificacion_totales$jerarquia,
+                   " (", df_muesta_clasificacion_totales$total, "%)")
+
+
+    ggpie(df_muesta_clasificacion_totales,
+          "total",
+          label = labs,
+          lab.pos = "out",
+          # lab.font = "white",
+          fill = "jerarquia",
+          # color = "white",
+          palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
+      # theme(text=element_text(face='bold',size=20))+
+      theme(legend.position="none")
+    ```
+
+2.  **Validación manual:** Se procede con la muestra a validar manualmente si la clasificación efectuada el nombre del tutor extraído se corresponde con el que aparece en el documento escrito.
+
+3.  **Calcular Métrica de Evaluación:** para este proceso se adoptó la métrica de exactitud "accuracy" que mide la proporción entre la cantidad de número de predicciones correctas dividida entre la cantidad total de instancias.
+
+El resultado de exactitud obtenido para el proceso de categorización fue \_\_\_, mientras que para la extracción del nombre del tutor fue \_\_\_\_.
 
 ### Relevancia: {#pruebas3}
 
@@ -2667,6 +2890,9 @@ Para hacer las mediciones de Relevancia se adoptó el siguiente método:
     -   Con los resultados se calcularon las métricas *precisión* y *recall* y F1 ya que ellas son claves para la evaluación de sistemas de recuperación de información.
         -   **Precisión (Precision):** Número de documentos relevantes recuperados dividido por el número total de documentos recuperados.
         -   **Recall:** Número de documentos relevantes recuperados dividido por el número total de documentos relevantes en la colección.
+7.  **Comparar cantidad de resultados de query obtenidos para Saber UCV y el S.C.S.U.:**
+    -   Se comparan en tablas y gráficos 10 ejemplos de los querys entre la cantidad total de resultados obtenidos en Saber UCV y el S.C.S.U.
+    -   Proceso de especulación sobre los resultados, teniendo presente el gran recall que presenta Saber UCV.
 
 Los resultados obtenidos fueron:
 
@@ -2675,6 +2901,8 @@ Los resultados obtenidos fueron:
 -   **Recall**:
 
 -   **F1**:
+
+Las cifras obtenidas indican que el desempeño del Sistema \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 Se hizo sobre el subcojunto de trabajos definidos ya que sería imposible abordar las distintas áreas de conocimiento que conforman el Corpus, que se vio que ascienden a --- , y crear la base de dato de documentos relevantes está fuera del alcance de esta investigación.
 

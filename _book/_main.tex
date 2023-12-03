@@ -298,7 +298,8 @@ The application is implemented under a distributed system with client-server arc
 - Dra. Haydemar Nuñez por la rigurosidad al impartir los conocimientos.\\\\
 - Dra. Vanessa Leguizamo por tomarse el tiempo de revisar la solicitud de estudio de un oxidado economista y por ser mi Prof.ª.\\\\
 - Dra. Mairene Colina por la ayuda y sugerencias a lo largo de la investigación.\\\\
-- Mauricio Sáez Toro del equipo Saber UCV por mantener activo el Sistema Saber UCV y tener el tiempo de haber colaborado con esta investigación.\\\\
+- Dr. Roberto Abalde por haberme dejado entrar de oyente a su Diplomado y generar tanto interés en estos temas.\\\\
+- Mauricio Sáez Toro del equipo Saber UCV por mantener activo el Sistema Saber UCV y disponer del tiempo para colaborar con esta investigación.\\\\
 - A Alexandra Asanovna Elbakyan por ayudar a liberar el conocimiento.\\\\
 - A todo el personal del Postgrado: sus buenos días, por tener a mano la llave, por ayudar a mantener viva la Academia.\\\\
 - A toda la comunidad de creadores de software libre y open source, en especial a los \#useRs por motivarme a adentrarme al mundo de las ciencias de la computación.\\\\
@@ -1242,7 +1243,7 @@ Para el desarrollo del SCSU se hizo un proceso iterativo donde en cada ciclo se 
 
 La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evoluciona. Esto fue lo que se hizo en reuniones continuas en la materia \emph{Tópicos Especiales en Sistemas de Información y Gerencia} que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis, se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados usados para los procesamiento de los textos.
 
-Los Ciclos que se van a exponer son los siguientes: en \ref{desarrollociclos1} se muestran las tres iteraciones realizadas para la \textbf{Conformación del Conjunto de Datos}. En \ref{desarrollociclos3} se revisan las iteraciones para el desarrollo del \textbf{Prototipo del SCSU}, mientras que en \ref{desarrollociclos4} se hace la \textbf{Integración de los Componentes del Software} y en \ref{desasarrollociclos5} se hace una versión del Sistema que incluye un \textbf{Buscador Semántico}.
+Los Ciclos que se van a exponer son los siguientes: en \ref{desarrollociclos1} se muestran las tres iteraciones realizadas para la \textbf{Conformación del Conjunto de Datos}. En \ref{desarrollociclos3} se revisan las iteraciones para el desarrollo del \textbf{Prototipo del SCSU}, mientras que en \ref{desarrollociclos4} se hace la \textbf{Integración de los Componentes del Software}. En \ref{desarrollociclos6} se hace la ``\textbf{Incorporación de Otras Investigaciones''} al incluir Revistas de investigación dentro del Sistema. Finalmente en \ref{desasarrollociclos5} se hace una versión del Sistema donde se incluye un \textbf{Buscador Semántico}.
 
 \newpage
 
@@ -4315,7 +4316,7 @@ Como la cantidad de ciclos e iteraciones ejecutados previamente había sido exte
 \newpage
 
 \hypertarget{desarrollociclos6}{%
-\subsection{Ciclo Incorporación de otras investigaciones:}\label{desarrollociclos6}}
+\subsection{Ciclo Incorporación de Otras Investigaciones:}\label{desarrollociclos6}}
 
 En este ciclo se aborda la incorporación al ``Sistema Complementario Saber UCV'' publicaciones distintas a las investigaciones de pregrado y postgrado de la Universidad Central de Venezuela.
 
@@ -4668,11 +4669,76 @@ La primera prueba de rendimiento que se realizó fue mediante la librería Shiny
 
 Concretamente se evalúo en esta prueba si al hacer una simulación de \emph{query} con cada uno de los textos de los títulos de las investigaciones, se generaba al menos la extracción de un documento, lo cual demostraría que todos los documentos que conforman el Corpus son extraídos. El resultado obtenido fue el esperado con al menos un documento por \emph{query}.
 
-La segunda prueba aplicada fue la que se ejecuta con el paquete ``Shinyloadtest'' \citep{shinyloadtest} el cual es un paquete que permite evaluar el rendimiento y la escalabilidad de aplicaciones Shiny ya que permite simular múltiples usuarios interactuando simultáneamente con una aplicación y así evaluar el comportamiento bajo carga. Adicionalmente este paquete genera informes detallados sobre el rendimiento, identificando posibles cuellos de botella y proporcionando métricas clave, como tiempos de respuesta y tasas de error.
+La segunda prueba aplicada fue la que se ejecuta con el paquete ``Shinyloadtest'' \citep{shinyloadtest} el cual permite evaluar el rendimiento y la escalabilidad de aplicaciones Shiny ya que permite simular múltiples usuarios interactuando simultáneamente con una aplicación y así evaluar el comportamiento bajo carga. Adicionalmente este paquete genera informes detallados sobre el rendimiento, identificando posibles cuellos de botella y proporcionando métricas clave, como tiempos de respuesta y tasas de error.
 
 Al realizar el shinytest no se detectaron cuellos de botella ni tiempos de carga que estuviesen fuera de lo esperado.
 
-Pruebas de usabilidad: mencionar disponibilidad de menús de ayuda y pantalla de bienvenida
+\hypertarget{pruebas-de-usabilidad}{%
+\subsection{Pruebas de Usabilidad:}\label{pruebas-de-usabilidad}}
+
+En estas pruebas se mide que el Sistema adapte criterios de usabilidad:
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{3.15in}|p{1.57in}}
+
+\caption{Pruebas\ de\ Caja\ Negra:\ Usabilidad}\label{tab:tablapruebasc}\\
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Usabilidad}}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Se\ realiza\ el\ comportamiento\ esperado}}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}\endfirsthead \caption[]{Pruebas\ de\ Caja\ Negra:\ Usabilidad}\label{tab:tablapruebasc}\\
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Usabilidad}}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\cellcolor[HTML]{A3A3A3}\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{\textbf{Se\ realiza\ el\ comportamiento\ esperado}}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}\endhead
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{Menús\ de\ ayuda\ (tooltips)}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 3.15in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{Pantalla\ de\ Bienvenida}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1.57in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\global\setmainfont{Helvetica}{verdad}}}} \\
+
+\noalign{\global\arrayrulewidth 0.75pt}\arrayrulecolor[HTML]{666666}
+
+\hhline{|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-|>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=0.75pt}-}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
 
 \hypertarget{pruebas3}{%
 \subsection{Relevancia:}\label{pruebas3}}
@@ -4691,6 +4757,8 @@ Para hacer las mediciones de Relevancia se adoptó el siguiente método:
     Se seleccionaron aleatoriamente 50 documentos de trabajos de pregrado y postgrado asociados a la Escuela de Computación y el postgrado en Ciencias de la Computación. Se denomina conjunto A.
   \item
     Se seleccionaron aleatoriamente 50 documentos de trabajos de pregrado y postgrado de documentos que no pertenezcan a la Escuela de Computación ni al postgrado en Ciencias de la Computación. Se denomina conjunto B.
+  \item
+    Con el conjunto A y B se conformó el conjunto C.
   \end{itemize}
 \item
   \textbf{Crear Consultas de Prueba:}
@@ -4699,8 +4767,6 @@ Para hacer las mediciones de Relevancia se adoptó el siguiente método:
   \tightlist
   \item
     Se diseñaron 10 consultas con términos asociados a los documentos del conjunto A.
-  \item
-    Se diseñaron 10 consultas con términos asociados a los documentos del conjunto B.
   \end{itemize}
 \item
   \textbf{Ejecutar Consultas en el Sistema:}
@@ -4708,7 +4774,7 @@ Para hacer las mediciones de Relevancia se adoptó el siguiente método:
   \begin{itemize}
   \tightlist
   \item
-    Se hicieron las consultas tanto para el conjunto A como para el B y se guardaron los resultados junto con el término del query.
+    Se hicieron las consultas para el conjunto C y se guardaron los resultados junto con el término del query.
   \end{itemize}
 \item
   \textbf{Definir Relevancia Esperada por expertos:}
@@ -4716,7 +4782,7 @@ Para hacer las mediciones de Relevancia se adoptó el siguiente método:
   \begin{itemize}
   \tightlist
   \item
-    A un grupo de expertos sobre el conjunto de documentos A se les pidió que indicaran para cada consulta, de las 10 definidas, cuáles son los 5 (o un número menor) documentos más relevantes sin tomar en cuenta el ranking.
+    A un grupo de expertos sobre el conjunto de documentos C se les pidió que indicaran para cada consulta, de las 10 definidas, cuáles son los 5 (o un número menor) documentos más relevantes sin tener que hacer algún tipo de \emph{ranking}.
   \end{itemize}
 \item
   \textbf{Recopilar Resultados:}
@@ -4754,6 +4820,8 @@ Los resultados obtenidos fueron:
 \item
   \textbf{F1}:
 \end{itemize}
+
+Se hizo sobre el subcojunto de trabajos definidos ya que sería imposible abordar las distintas áreas de conocimiento que conforman el Corpus, que se vio que ascienden a --- , y crear la base de dato de documentos relevantes está fuera del alcance de esta investigación.
 
 Con esta prueba se da por concluido el Desarrollo de la Solución.
 

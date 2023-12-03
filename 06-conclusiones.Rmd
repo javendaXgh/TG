@@ -4,34 +4,42 @@ bibliography: references.bib
 
 # Conclusiones: {#conclusiones}
 
-Este es el capítulo de las Conclusiones
+Para sintetizar el trabajo realizado a lo largo de esta investigación, se procede a dividir en tres partes los procesos abordados. Sobre cada uno de ellos se mencionan los elementos más importantes.
 
-Repaso por el problema que representó la generación del Corpus
+En la primera, se hizo la obtención y clasificación de los trabajos de grado que reposan en Saber UCV. El proceso fue complejo al no contar con las etiquetas para realizar la clasificación y encontrar distintos problemas en la extracción y limpieza de los datos, motivado a que se puede considerar, que al realizar la lectura de cada investigación, se termina obteniendo una fuente distinta de datos para cada una, la cual tiene sus propias características, reflejando en gran medida el entorno y las técnicas de trabajo del autor, introduciendo con ello un gran ruido dentro del conjunto de datos y dificultando el proceso de etiquetado. No obstante, con el proceso propuesto e implementado, finalmente se obtuvieron con 454 etiquetas que permitieron clasificar a 9.585 trabajos, con un margen de error estimado en \_\_\_\_\_ %. El proceso igualmente facilitó extraer 7.969 nombres de tutores, equivalente al 79,8% de las investigaciones con el margen de error \_\_\_\_% . De los datos presentados se desprende que el método propuesto es un camino alternativo que se puede adoptar para suplir la carencia de información mencionada, mientras se implementan los mecanismos formales, que acudiendo a la fuente primaria de los datos, permita hacer el vaciado de estos.
 
-Implementación del Sistema Complementario Saber
+En la segunda parte de esta investigación se muestra como se puede disponer de un Sistema de Recuperación de Información que integre la búsqueda mediante el "índice invertido", el "rerank" mediante la frecuencia y cercanía de las palabras, y la representación de los resultados mediante técnicas de procesamiento del lenguaje natural, todo esto dentro de una aplicación interactiva que enriquece la experiencia del usuario y aporta distintas herramientas para el investigador que inspecciona el Corpus conformado. El Sistema propuesto se pudo implementar y tener en producción, y si bien no está diseñado para suplir a Saber UCV, se muestra, tal cual como fue diseñado, como un complemento al repositorio ya que la aplicación web propuesta, por ejemplo, no sirve para que los buscadores puedan indexar los documentos que la componen, lo cual impide que este tipo de sistema tenga un alcance mayor al mencionado.
+
+En la tercera fase, que sólo abarcó un proceso exploratorio, se asoma el incremento en el potencial de recuperación de información que se asocia al uso de *embeddings.* Los resultados obtenidos muestran cómo se expanden las capacidades de búsqueda cuando se crea una base de datos vectorial, donde se cada porción de texto de un resumen es representada como un vector que refleja de una forma bastante aproximada el significado de cada trozo. Sin embargo es necesario tener presente que el uso de esta tecnología incrementa sustancialmente el uso de recursos computacionales y por ende el costo de implementación. Estas restricciones impidieron que este modelo de recuperación de información pudiese ser probado en un entorno de producción y sólo se hizo de forma local.
 
 ## Contribución: {#conclusionescontri}
 
-Contar con un sistema que permite clasificar los trabajos alojados en el repositorio Saber UCV mientras no se solucione de raíz la asignación de las investigaciones a su área de conocimiento en el momento en que son registradas dentro del sistema por las unidades responsables. Otra contribución que representa la investigación realizada es que se extráen los nombres de los tutores con lo cual se permite tener noción de cuáles son las áreas de investigaciones que manejan los profesores de la Universidad Central de Venezuela.
+1.  Disponer de un sistema y procedimiento que permite clasificar los trabajos alojados en el repositorio Saber UCV.
 
-El Sistema Complementario Saber UCV puede servir de base para el desarrollo de softwares que permitan incorporar métodos distintos para la recuperación y representación de los resultados obtenidos.
+2.  Conformar una base de datos con los nombres de los tutores, lo cual permite tener nociones sobre cuáles son las áreas de investigaciones que manejan los profesores de la Universidad Central de Venezuela.
 
-Usar los *embeddings* dentro del Sistema abre las puertas para poder realizar complementos y mejoras al proceso de Recuperación de Información y en concreto expande la posibilidades con que contarán los investigadores que hagan búsquedas sobre el Corpus conformado.
+3.  El Sistema Complementario Saber UCV puede servir de base para el desarrollo de *softwares* que permitan incorporar métodos distintos para la recuperación y representación de los resultados obtenidos.
+
+4.  Usar los *embeddings* dentro del Sistema para realizar búsquedas semánticas introduce mejoras al proceso de "Recuperación de Información", concretamente al ensanchar las herramientas que tienen a disposición los investigadores que hagan búsquedas sobre el Corpus conformado.
 
 ## Trabajos Futuros: {#conclusionestrabafutu}
 
 La investigación que se presentó en este Trabajo de Grado deja grandes inquietudes para inspeccionar nuevos métodos que ayudan a la gestión de la investigación. A continuación se muestran algunas de las áreas sobre las cuales se puede ahondar en Trabajos Futuros:
 
-1.  Incorporar otros saberes (Universidad de los Andes, Universidad de Carabobo, Universidad Católica) o repositorios en la base de dato de un sistema similar al propuesto, para poder contar con un repositorio donde se integren las distintas investigaciones que son realizadas a nivel nacional.
+1.  Incorporar otros saberes (Universidad de los Andes, Universidad de Carabobo, Universidad Católica) u otros repositorios, a un sistema similar al propuesto, para así poder contar con un repositorio unificado donde se integren las distintas investigaciones que son realizadas a nivel nacional.
 
 2.  Distribuir mediante técnicas de "map reduce" los datos en un sistema distribuido y paralelo para evaluar métodos que permitan mejorar los tiempos de búsqueda, sobre todo en caso de que se contase con más documentos.
 
-3.  Mediante el uso de embeddings:
+3.  Mediante el uso de *embeddings*:
 
-    1.  Integrar largos modelos de lenguaje para crear un sistema de "preguntas y respuestas" sobre los documentos alojados en el Sistema.
+    1.  Integrar "Largos Modelos del Lenguaje" dentro de una segunda versión del SCSU en un módulo de "preguntas y respuesta", donde el usuario mediante el uso del lenguaje natural, pueda realizar preguntas a los conocimientos abordados en los documentos que conformen el corpus.
 
-    2.  Evaluar distintos modelos para realizar el *rerank* a todos los resultados obtenidos.
+    2.  Usar los corpus que se obtengan para realizar el sobre entrenamiento (*fine tunning*) de "Largos Modelos de Lenguaje" y así lograr que estos sean adaptados a las necesidades de dominios específicos de conocimiento de una determinada comunidad de investigadores.
 
-    3.  Evaluar distintos modelos de generación de *embeddings* para evaluar el comportamiento en el proceso de recuperación de información, incluso usando modelos que están entrenados sobre áreas de conocimiento específicas como lo es "SciBERT" [@beltagy2019].
+    3.  Mejorar la representación de los "Mapas de Conocimiento" mediante representaciones más elaboradas de los conceptos que son abordados en las investigaciones que conforman el corpus.
 
-    4.  Usar distintos métodos para medición de similitud, como el de vecinos cercanos (KNN) [@annoy2023] o de máquinas de soporte vectorial (SVM) [@svm2023].
+    4.  Evaluar distintos modelos de aprendizaje automático para realizar el *rerank* a los resultados obtenidos en un *query*.
+
+    5.  Evaluar distintos modelos de generación de *embeddings* para evaluar el comportamiento en el proceso de recuperación de información, incluso usando modelos que están entrenados sobre áreas de conocimiento específicas, como lo es "SciBERT" [@beltagy2019].
+
+    6.  Usar distintos métodos para medición de similitud, como el de vecinos cercanos (KNN) [@annoy2023] o de máquinas de soporte vectorial (SVM) [@svm2023].
