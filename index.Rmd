@@ -79,11 +79,11 @@ Una de las herramientas que tienen a su disposición los investigadores, para la
 
 En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos académicos denominado Saber UCV al que se puede acceder desde la dirección web [saber.ucv.ve](http://saber.ucv.ve/). Dentro de él se cuenta con un sistema que permite realizar búsquedas sobre las investigaciones generadas en la comunidad universitaria.
 
-En este Trabajo de Grado se presenta la propuesta para la **Recuperación, Extracción y Clasificación de Información de Saber UCV**, mediante el desarrollo de un sistema informático que se denomina **Sistema Complementario Saber UCV (SCSU)**.
+En este Trabajo de Grado se presenta la propuesta para la **Recuperación, Extracción y Clasificación de Información de Saber UCV**, mediante el desarrollo de un sistema informático que se denomina **Sistema Complementario Saber UCV (SCSU)** el cual enriquece las funcionalidades actuales de búsqueda de información que tiene este repositorio oficial de la Universidad.
 
-La implementación del SCSU es de utilidad para los investigadores que necesitan encontrar información sobre el conjunto de: tesis doctorales, trabajos de grado de maestría, trabajos especiales de grado, trabajos de ascenso y trabajos de grado; al ofrecer una mayor cantidad de parametros que permiten refinar la búsqueda. 
+La implementación del SCSU es de utilidad para los investigadores que necesitan encontrar información sobre el conjunto de: tesis doctorales, trabajos de grado de maestría, trabajos especiales de grado, trabajos de ascenso y trabajos de grado; al ofrecer una mayor cantidad de parámetros en las búsquedas de información que se desee realizar. 
 
-Las funcionalidades que incorpora el SCSU se sustentan en  procesos de extracción y clasificación de datos que originalmente no se encuentran estructurados en el repositorio oficial, como el nombre de la carrera de pregrado o el postrgrado donde fue generada la investigación y el nombre del tutor correspondiente. 
+Las funcionalidades que incorpora el SCSU se sustentan en  procesos de extracción y clasificación de datos que originalmente no se encuentran estructurados en el repositorio oficial, como el nombre de la carrera de pregrado o el postrgrado donde fue generada la investigación o el nombre del tutor que acompañó el desarrollo de cada investigación. Adicionalmente se indexan los textos de los documentos mediante un índice inverso donde se establecen los criterios de relevancia que serán aplicados al momento de jerarquizar y mostrar los resultados de una búsqueda.
 
 Igualmente se aplican métodos para el Procesamiento del Lenguaje Natural y Minería de Texto para representar "Mapas de Conocimiento" [@dueñas2011] y los resultados de la búsqueda son enriquecidos con recomendaciones de documentos similares.
 

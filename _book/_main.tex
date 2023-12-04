@@ -183,7 +183,7 @@
 \makeatother
 \subtitle{Caso de Estudio Repositorio www.saber.ucv.ve}
 \author{José Miguel Avendaño Infante}
-\date{2023-12-02}
+\date{2023-12-04}
 
 \begin{document}
 \maketitle
@@ -212,7 +212,7 @@
   Tutor: Dr. Andres Sanoja\\
   \vspace{1.5cm}
   Caracas - Venezuela\\
-  Octubre 2023
+  Diciembre 2023
 \end{center}
 
 
@@ -346,11 +346,11 @@ Una de las herramientas que tienen a su disposición los investigadores, para la
 
 En el caso de la Universidad Central de Venezuela existe un repositorio digital de documentos académicos denominado Saber UCV al que se puede acceder desde la dirección web \href{http://saber.ucv.ve/}{saber.ucv.ve}. Dentro de él se cuenta con un sistema que permite realizar búsquedas sobre las investigaciones generadas en la comunidad universitaria.
 
-En este Trabajo de Grado se presenta la propuesta para la \textbf{Recuperación, Extracción y Clasificación de Información de Saber UCV}, mediante el desarrollo de un sistema informático que se denomina \textbf{Sistema Complementario Saber UCV (SCSU)}.
+En este Trabajo de Grado se presenta la propuesta para la \textbf{Recuperación, Extracción y Clasificación de Información de Saber UCV}, mediante el desarrollo de un sistema informático que se denomina \textbf{Sistema Complementario Saber UCV (SCSU)} el cual enriquece las funcionalidades actuales de búsqueda de información que tiene este repositorio oficial de la Universidad.
 
-La implementación del SCSU es de utilidad para los investigadores que necesitan encontrar información sobre el conjunto de: tesis doctorales, trabajos de grado de maestría, trabajos especiales de grado, trabajos de ascenso y trabajos de grado; al ofrecer una mayor cantidad de parametros que permiten refinar la búsqueda.
+La implementación del SCSU es de utilidad para los investigadores que necesitan encontrar información sobre el conjunto de: tesis doctorales, trabajos de grado de maestría, trabajos especiales de grado, trabajos de ascenso y trabajos de grado; al ofrecer una mayor cantidad de parámetros en las búsquedas de información que se desee realizar.
 
-Las funcionalidades que incorpora el SCSU se sustentan en procesos de extracción y clasificación de datos que originalmente no se encuentran estructurados en el repositorio oficial, como el nombre de la carrera de pregrado o el postrgrado donde fue generada la investigación y el nombre del tutor correspondiente.
+Las funcionalidades que incorpora el SCSU se sustentan en procesos de extracción y clasificación de datos que originalmente no se encuentran estructurados en el repositorio oficial, como el nombre de la carrera de pregrado o el postrgrado donde fue generada la investigación o el nombre del tutor que acompañó el desarrollo de cada investigación. Adicionalmente se indexan los textos de los documentos mediante un índice inverso donde se establecen los criterios de relevancia que serán aplicados al momento de jerarquizar y mostrar los resultados de una búsqueda.
 
 Igualmente se aplican métodos para el Procesamiento del Lenguaje Natural y Minería de Texto para representar ``Mapas de Conocimiento'' \citep{dueñas2011} y los resultados de la búsqueda son enriquecidos con recomendaciones de documentos similares.
 
@@ -385,36 +385,40 @@ Los usuarios interesados en hacer búsquedas sobre la información académica al
 
 \begin{itemize}
 \item
-  Seleccionar ``comunidades'': artículos de investigación, tesis (doctorales, maestrías, otras y pregrado), guías de estudio, revistas entre otras categorías.
+  Seleccionar ``comunidades'': artículos de investigación, trabajos doctorales, maestrías, especialización y pregrado, guías de estudio y revistas, entre otras categorías.
 \item
-  Seleccionar la ``fecha de inicio'' referente al año en que se efectuó la publicación.
+  Seleccionar la ``fecha de inicio'', referente al año en que se efectuó la publicación.
 \end{itemize}
 
-Igualmente pueden realizar la búsqueda sobre atributos específicos como el título del documento, el nombre del autor o el texto del resumen.
+También pueden realizar búsqueda en el texto en áreas como: el nombre del documento, el nombre del autor o en el resumen.
 
-Dadas estas funcionalidades, en algunos casos el investigador que acuda a este repositorio puede necesitar filtrar información por el criterio del área académica donde fue realizada la investigación, no siendo esto posible al no contar los criterios ``nombre de facultad'' y ``nombre de escuela-postgrado''.
+Además de estas funcionalidades, el investigador pudiera necesitar filtrar información por criterios adicionales, como lo es: el área académica donde fue realizada la investigación, en particular, si fue hecha en una escuela, en una facultad, o un postgrado. En este caso, se presenta una limitación al hacer búsquedas en Saber UCV, ya que el sistema no dispone de esos criterios para la recuperación de información.
+
+De manera similar ocurre con el nombre del tutor de los trabajos de grado, de pregrado y tesis, al no encontrarse datos registrados para esta información.
+
+Motivado a que es viable realizar procesos para extraer y clasificar la información faltante, se realiza esta investigación que mediante la implementación de un software denominado \textbf{Sistema Complementario Saber UCV (SCSU)}, extrae y clasifica los datos del área académica donde se realizaron las distintas investigaciones que están alojadas en Saber UCV.
 
 \hypertarget{delimitacion}{%
 \section{Delimitación del Problema:}\label{delimitacion}}
 
-El corpus con el que se trabajará es el subconjunto de los trabajos de grado de pregrado, trabajos especiales de grado de especialización, trabajos de grado de maestría, tesis doctorales y trabajos de ascenso, no abarcando otro tipo de documentos que se encuentran registrados en el repositorio.
+El corpus con el que se trabajará es el subconjunto de los trabajos de pregrado, trabajos de grado de maestría y tesis doctorales, así como otros tipos de documentos que se encuentran registrados en el repositorio que en Saber UCV están clasificados como ``Otros'' y alojan: trabajos de especialización, trabajos de ascenso y demás tipos de documentos, pero que no son diferenciados.
 
-No obstante en la implementación del ciclo de desarrollo \ref{desarrollociclos4} se incluyen dos revistas publicadas por la Universidad Central de Venezuela que son Gestión I+D y Episteme y una publicación del repositorio Saber U.L.A. de la Universidad de los Andes, para mostrar posibles ampliaciones en la ingesta de distintos tipos de publicaciones y fuentes dentro del SCSU.
+Adicionalmente, en la implementación del ciclo de desarrollo \ref{desarrollociclos4} se incluyen dos revistas dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes Saber U.L.A., para mostrar posibles ampliaciones en la ingesta de distintas publicaciones y fuentes de documentos dentro del SCSU.
 
-Estas posibles incorporaciones implican procesos de revisión en las estructuras de los datos, ya que por los momentos el Sistema no está diseñado para automatizar tales procesos, sin la modificación de los códigos con los que se extrae la información desde los sitios web donde se alojan los documentos.
+Sin embargo, posibles incorporaciones de otras fuentes de datos implican procesos de revisión en las estructuras de los datos, ya que por los momentos SCSU no está diseñado para incorporaciones de datos adicionales sin la modificación de los códigos con los que se extraen los datos desde las páginas web donde se alojan los documentos.
 
 \hypertarget{descripcion}{%
 \section{Descripción de la Solución:}\label{descripcion}}
 
-La Solución que se propone es la implementación de un Sistema de Recuperación de Información con diversos componentes. Inicialmente de los trabajos mencionados en \ref{delimitacion}, mediante técnicas de extracción de nodos de archivos HTML´s, se obtienen de Saber UCV los siguientes datos de cada investigación: el título, el nombre del autor, las palabras claves, la fecha de publicación, el resumen y el enlace de descarga del documento que soporta el trabajo de grado.
+La Solución que se propone es un un Sistema de Recuperación de Información con diversos componentes. Inicialmente de los trabajos mencionados en \ref{delimitacion}, mediante técnicas de extracción de nodos de archivos HTML´s, se obtienen de Saber UCV los siguientes datos de cada investigación: el título, el nombre del autor, las palabras claves, la fecha de publicación, el resumen y el enlace de descarga del documento que soporta el trabajo de grado.
 
-Posteriormente el Sistema descarga el documento anexo a cada investigación, da lectura y clasifica la información del nombre de la facultad, la escuela o postgrado donde fue realizado el trabajo e igualmente extrae el nombre del tutor.
+Posteriormente el Sistema descarga el documento anexo a cada investigación, da lectura y clasifica la información del nombre de la facultad, la escuela o postgrado donde fue realizado el trabajo así como el nombre del tutor.
 
 Todos los datos obtenidos son sometidos a técnicas del estado del arte en el Procesamiento del Lenguaje Natural y la Minería de Texto para conformar un corpus anotado, un índice invertido y se generan los vectores de \emph{embeddings} de texto. Posteriormente las tablas obtenidas se almacenan en una base de datos indexada.
 
 El Sistema cuenta con una aplicación web que permite a los usuarios desde un navegador, explorar extensivamente el corpus anotado, realizando consultas de texto y aplicando varios filtros como la selección de la jerarquía, el área académica y el rango de fechas. La relevancia de los resultados recuperados se determina mediante una función de ponderación y los documentos se presentan de manera priorizada para mejorar la experiencia del usuario.
 
-Adicionalmente, el Sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También representa los ``Mapas de Conocimiento'', según una adaptación \emph{ad-hoc} hecha para la implementación del SCSU basada en el trabajo de \citep{dueñas2011}, en una representación gráfica interactiva.
+Adicionalmente, el Sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También representa los ``Mapas de Conocimiento'', según una adaptación \emph{ad-hoc} hecha para la implementación del SCSU basada en el trabajo de \citep{dueñas2011} donde mediante una representación en grafos en formato interactivo, se podrán aplicar filtros sobre palabras coocurrentes en los resultados de la búsqueda.
 
 La solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV y se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura ``modelo-vista-controlador''.
 
@@ -422,22 +426,22 @@ En la figura \ref{fig:arquitecturasri} se muestra un diagrama con la arquitectur
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.6\linewidth]{images/02-problema/arquitectura_sri} 
+{\centering \includegraphics[width=0.9\linewidth]{images/05-desarrollo/MVC9} 
 
 }
 
-\caption{Arquitectura del Sistema-Este diagrama se va a traducir y adaptar al SCSU. Se coloca ya que es muy similar a la Solución Implementada}\label{fig:arquitecturasri}
+\caption{Arquitectura del Sistema}\label{fig:arquitecturasri}
 \end{figure}
 
 \hypertarget{justificacion}{%
 \section{Justificación e Importancia:}\label{justificacion}}
 
-Con esta Investigación se implementa un método que permite subsanar la falta de clasificaciones por áreas académica que tiene el repositorio Saber UCV y mediante la aplicación web se amplían los criterios de búsqueda disponibles para investigadores que necesiten realizar consultas sobre los documentos disponibles en el repositorio.
+Con esta Investigación se implementa un método que permite subsanar la falta de clasificaciones por área académica que tiene el repositorio Saber UCV y que mediante la aplicación web se amplían los criterios de búsqueda disponibles para investigadores que necesiten realizar consultas sobre los documentos disponibles en el repositorio.
 
 \hypertarget{objegeneral}{%
 \subsection{Objetivo General:}\label{objegeneral}}
 
-Implementar un Sistema en el que se puedan realizar procesos de recuperación de información (\emph{information retrieval}), extracción y clasificación de los textos académicos alojados en el Repositorio Saber UCV, empleando técnicas de procesamiento de lenguaje natural, de minería de texto y usando modelos de lenguaje preentrenados de inteligencia artificial.
+Implementar un Sistema que realice procesos de recuperación de información (\emph{information retrieval}), extracción y clasificación de los textos académicos alojados en el Repositorio Saber UCV, empleando técnicas de procesamiento de lenguaje natural, de minería de texto y modelos de lenguaje preentrenados de inteligencia artificial.
 
 \hypertarget{objeespe}{%
 \subsection{Objetivos Específicos:}\label{objeespe}}
@@ -445,11 +449,11 @@ Implementar un Sistema en el que se puedan realizar procesos de recuperación de
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Conformar un corpus con los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado y maestría alojados en Saber UCV.
+  Conformar un corpus con los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado, maestría y otros documentos alojados en SABER.UCV.
 \item
-  Clasificar los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer el nombre completo del tutor. (nota para el Prof.~Mirabal: en este punto se puede separar, o colocar un nombre genérico para el objetivo como: creación de metadata a partir del texto contenido en los documentos de cada trabajo de grado).
+  Clasificar los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer el nombre completo del tutor.
 \item
-  Crear una aplicación web con una interface de navegación de corpus que facilite realizar ``búsquedas de texto completo'' o ``búsqueda semántica'' con acceso a información de relevancia que permita generar ``Mapas de Conocimiento''.
+  Crear una aplicación web que permita realizar las ``búsquedas de texto completo'' o ``búsqueda semántica'' sobre el corpus conformado donde se establezcan criterios de relevancia para presentar los resultados de la búsqueda y se representen los ``Mapas de Conocimiento''.
 \item
   Generar recomendaciones de investigaciones que presenten similitud con los documentos recuperados por el Sistema.
 \end{enumerate}
@@ -461,31 +465,31 @@ Algunos de los aportes que se generaron al realizar esta investigación son los 
 
 \begin{itemize}
 \item
-  Se mejora y flexibilizan los criterios de búsqueda en comparación a los que tiene el repositorio Saber UCV al clasificar por área académica un total de 9.585 investigaciones de 9.982 potenciales documentos a categorizar.
+  Mejora y flexibiliza los criterios de búsqueda en comparación a los que tiene el repositorio Saber UCV al clasificar por área académica un total de 9.585 investigaciones de 9.982 potenciales documentos a categorizar.
 \item
   Se crea un listado con 425 categorías de carreras de pregrado, especializaciones, maestrías y doctorados que se imparten en la Universidad.
 \item
   Se obtiene un listado de potenciales tutores de las investigaciones realizadas con 8.217 nombres y una cantidad de 3.766 nombres únicos.
 \item
-  Se crean visualizaciones y representaciones de ``Mapas de Conocimiento''.
+  Visualizaciones y representaciones de ``Mapas de Conocimiento''.
 \item
-  Se implementa la búsqueda de texto completo con una función de relevancia distinta a la de Saber UCV permitiendo obtener mejores métricas de desempeño en la tarea de ``recuperación de información''
+  Implementación de la búsqueda de texto completo con una función de relevancia distinta a la de Saber UCV permitiendo obtener mejores métricas de desempeño en la tarea de ``recuperación de información''
 \item
-  Se implementa un ``sistema de recomendación'' de documentos que presenten similitudes con los textos recuperados.
+  Implementación de un ``sistema de recomendación'' de documentos que presenten similitudes con los textos recuperados.
 \item
-  La experiencia del usuario se enriquece mediante gráficos que muestran la evolución de aparición de los términos buscados en el período establecido para la recuperación de información.
+  Enriquecimiento de la experiencia del usuario mediante gráficos que muestran la evolución de aparición de los términos solicitados en el período establecido para la búsqueda de la información.
 \item
-  Todos los componentes del Sistema son de código abierto, libres de algún pago de licencia.
+  Diseño del sistema para estar en producción donde todos los componentes son de código abierto, libres de algún pago de licencia.
 \item
-  La implementación se hace mediante un orquestador de contenedores, teniendo asociados los archivos ``docker compose'' y ``dockerfiles'', que facilitan que pueda estar en producción el Sistema con un mínimo de configuraciones y se garantiza la reproducibilidad de los códigos que conforman la Solución.
+  Implementación fácil del Sistema en un servidor ya que está diseñado de manera que con los archivos ``docker compose'' y ``dockerfiles'', se puedan desplegar la aplicación, alcanzando elevados niveles de reproducibilidad en todos los procesos que conforman la solución.
 \item
-  La propuesta es escalable y adaptable a la demanda de accesos.
+  Sistema escalable y adaptable a la demanda de accesos de acuerdo al tipo de componentes.
 \item
-  El Sistema está diseñado para poder actualizar los datos registrados con la periodicidad que se defina.
+  Sistema diseñado para poder actualizarse cada vez que sea necesario o con la periodicidad que se defina.
 \item
-  El Sistema puede servir de prototipo para integrar publicaciones de otros repositorios de documentos que pertenecen a instituciones nacionales de investigación.
+  Sistema prototipo para integrar publicaciones de otros repositorios de documentos que pertenecen a instituciones nacionales de investigación.
 \item
-  Se realiza la implementación de ``búsquedas semánticas''.
+  Aproximación a la implementación de ``búsquedas semánticas''.
 \end{itemize}
 
 \hypertarget{teorico}{%
@@ -1109,7 +1113,7 @@ Las aplicaciones complejas requieren la recopilación y el análisis de grandes 
 \hypertarget{aprendizaje}{%
 \subsubsection{\texorpdfstring{\textbf{Aprendizaje:}}{Aprendizaje:}}\label{aprendizaje}}
 
-La evaluación continua del conocimiento a través de retroalimentaciones y reuniones grupales al final de cada ciclo iterativo es esencial. Este enfoque difiere de la evaluación al final del proyecto. Evaluar constantemente permite enfrentar y resolver de manera efectiva los cambios constantes del proyecto y su adaptación.
+La evaluación continua del conocimiento a través de retroalimentaciones y reuniones grupales al final de cada ciclo iterativo es esencial, lo cual difiere de la evaluación al final del proyecto. Evaluar constantemente permite enfrentar y resolver de manera efectiva los cambios constantes del proyecto y su adaptación a entorno dinámicos y complejos.
 
 \hypertarget{desarrollo}{%
 \chapter{Desarrollo de la Solución:}\label{desarrollo}}
@@ -1119,9 +1123,9 @@ En este Capítulo en \ref{desarollodescripcion} se presenta la \textbf{Descripci
 \hypertarget{desarollodescripcion}{%
 \section{Descripción General de la Solución:}\label{desarollodescripcion}}
 
-Se implementa un Sistema de Recuperación de Información sobre un corpus de documentos de tesis de grado y trabajos de grado que originalmente se encuentran alojados en el repositorio digital Saber UCV . Utilizando técnicas de extracción de datos de archivos HTML, desde la ficha de cada investigación, se obtiene: el título, el nombre del autor, palabras clave, fecha de publicación, el resumen y el url de descarga del documento que sustenta la investigación.
+Se implementa un Sistema de Recuperación de Información sobre un corpus de documentos de tesis de grado y trabajos de grado que originalmente se encuentran alojados en el repositorio digital Saber UCV . Utilizando técnicas de extracción de datos de archivos HTML, desde la ficha de cada investigación se obtiene: el título, el nombre del autor, palabras clave, fecha de publicación, el resumen y el url de descarga del documento que la sustenta.
 
-Posteriormente el Sistema descarga el documento referenciado en cada ficha, el cual contiene el texto completo de la investigación, da lectura y clasifica información sobre el nombre de la facultad, la escuela o postgrado donde fue realizado el trabajo e igualmente extrae el nombre del tutor.
+Posteriormente el Sistema descarga el documento referenciado en cada ficha, el cual contiene el texto completo de la investigación, da lectura y clasifica la información sobre el nombre de la facultad, la escuela o postgrado donde fue realizado el trabajo e igualmente extrae el nombre del tutor.
 
 Todos los datos obtenidos son sometidos a técnicas del estado del arte en el Procesamiento del Lenguaje Natural y la Minería de Texto para conformar un corpus anotado, un índice invertido y una tabla con los vectores de \emph{embeddings} (vector database), esenciales para un eficiente manejo de la base de datos.
 
@@ -1154,7 +1158,7 @@ La arquitectura ``Modelo-Vista-Controlador'' se muestra en la figura \ref{fig:ar
 
 El \emph{Modelo,} en el contexto de esta propuesta, es la parte del Sistema que se ocupa de la obtención, manipulación y gestión de los datos. Esto incluye la descarga de la información, la clasificación, el Procesamiento del Lenguaje Natural, la Minería de Texto y la creación del índice invertido. Esta parte del Sistema también incluye la lógica para generar los \emph{embeddings} y manejar el corpus anotado. En la implementación el manejador de base de datos que usa es PostgreSQL.
 
-Igualmente le corresponde realizar las tareas de actualizar el corpus periódicamente y las recomendaciones de documentos a medida que se agreguen nuevos textos en Saber UCV. En \ref{desarrollociclos4} el tercer ciclo de desarrollo se expondrán con detalle los componentes del \emph{Modelo} y a continuación se enumeran los principales procesos que él sustenta:
+Igualmente le corresponde realizar las tareas de actualizar el corpus periódicamente y las recomendaciones de documentos a medida que se agreguen nuevos textos en Saber UCV. En \ref{desarrollociclos4}, el tercer ciclo de desarrollo, se expondrán con detalle los componentes del \emph{Modelo} y a continuación se enumeran los principales procesos que él sustenta:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1227,12 +1231,12 @@ Igualmente le corresponde realizar las tareas de actualizar el corpus periódica
 \hypertarget{vista}{%
 \subsection{\texorpdfstring{\textbf{Vista:}}{Vista:}}\label{vista}}
 
-La \emph{Vista} se implementa mediante el \emph{framework} ``Shiny'' \citep{shiny} \footnote{El framework Shiny incluye dos componentes principales. El primero es la UI (interfaz de Usuario), que corresponde a la ``Vista''. El otro componente es el ``Server'' que en la representación actual es el Controlador.} que permite crear aplicaciones web interactivas y tiene un componente de ``User Inferface (UI)'' donde el usuario interactúa al introducir el texto con el que se hará la búsqueda y aplica filtros como jerarquía, área académica y rango de fechas. Posterior a la definición de los atributos del \emph{query}, se desencadenan acciones que son enviadas al \emph{Controlador} y al recibir la respuesta la \emph{Vista} se actualiza y muestra las tablas con los resultados de las búsqueda, las representaciones visuales como el ``Mapa del Conocimiento'' y las recomendaciones de documentos similares.
+La \emph{Vista} se implementa mediante el \emph{framework} ``Shiny'' \citep{shiny} \footnote{El framework Shiny incluye dos componentes principales. El primero es la UI (interfaz de Usuario), que corresponde a la ``Vista''. El otro componente es el ``Server'' que en la representación actual es el Controlador.} que permite crear aplicaciones web interactivas y tiene un componente de ``User Inferface (UI)'' donde el usuario interactúa al introducir el texto con el que se hará la búsqueda y aplica filtros como: jerarquía, área académica y rango de fechas. Posterior a la definición de los atributos del \emph{query}, se desencadenan acciones que son enviadas al \emph{Controlador} y al recibir la respuesta la \emph{Vista} se actualiza y muestra las tablas con los resultados de la búsqueda, las representaciones visuales como el ``Mapa del Conocimiento'' y las recomendaciones de documentos similares.
 
 \hypertarget{controlador}{%
 \subsection{\texorpdfstring{\textbf{Controlador:}}{Controlador:}}\label{controlador}}
 
-El \emph{Controlador} se implementa mediante el el \emph{framework} ``Shiny'' que tiene un componente denominado ``Server'' que es el responsable de manejar las interacciones del usuario, gestionar las consultas de texto y aplicar los filtros seleccionados. También se encarga de orquestar las operaciones entre el \emph{Modelo} y la \emph{Vista}, asegurando que los datos se presenten correctamente y que las consultas se procesen de manera eficiente. Desde el \emph{Controlador} se hace el llamado al componente del \emph{Modelo} donde se encuentra la API para generar el \emph{embedding} del \emph{query} y determinar la relevancia de los documentos recuperados. El \emph{Controlador} aplica el re ordenamiento para mostrar en orden los resultados más relevantes. En él se conforma la estructura para representar el ``Mapa del Conocimiento'' con datos obtenidos del \emph{Modelo}.
+El \emph{Controlador} se implementa mediante el \emph{framework} ``Shiny'' que tiene un componente denominado ``Server'' que es el responsable de manejar las interacciones del usuario, gestionar las consultas de texto y aplicar los filtros seleccionados. También se encarga de orquestar las operaciones entre el \emph{Modelo} y la \emph{Vista}, asegurando que los datos se presenten correctamente y que las consultas se procesen de manera eficiente. Desde el \emph{Controlador} se hace el llamado al componente del \emph{Modelo} donde se encuentra la API para generar el \emph{embedding} del \emph{query} y determinar la relevancia de los documentos recuperados. El \emph{Controlador} aplica el re ordenamiento para mostrar en orden los resultados más relevantes. En él se conforma la estructura para representar el ``Mapa del Conocimiento'' con datos obtenidos del \emph{Modelo}.
 
 \hypertarget{desarrollociclos}{%
 \section{Ciclos de Desarrollo:}\label{desarrollociclos}}
@@ -1241,7 +1245,7 @@ Los Ciclos de Desarrollo \ref{mm} constituyen fases críticas del proceso, donde
 
 Para el desarrollo del SCSU se hizo un proceso iterativo donde en cada ciclo se abordó cada una de las fases descritas y así incrementalmente se fueron añadiendo funcionalidades al Sistema.
 
-La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evoluciona. Esto fue lo que se hizo en reuniones continuas en la materia \emph{Tópicos Especiales en Sistemas de Información y Gerencia} que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis, se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados usados para los procesamiento de los textos.
+La literatura en este tema siempre especifica a un cliente del que hay que obtener retroalimentación temprana, para así adaptar el producto a medida que evoluciona. Esto fue lo que se hizo en reuniones continuas en la materia \emph{Tópicos Especiales en Sistemas de Información y Gerencia} que representó a la unidad requirente (cliente) y así se fueron evaluando los requisitos y se formularon las correspondientes hipótesis, se observó y se midió el desempeño, por ejemplo, en los modelos de aprendizaje automático preentrenados, usados para los procesamiento de los textos.
 
 Los Ciclos que se van a exponer son los siguientes: en \ref{desarrollociclos1} se muestran las tres iteraciones realizadas para la \textbf{Conformación del Conjunto de Datos}. En \ref{desarrollociclos3} se revisan las iteraciones para el desarrollo del \textbf{Prototipo del SCSU}, mientras que en \ref{desarrollociclos4} se hace la \textbf{Integración de los Componentes del Software}. En \ref{desarrollociclos6} se hace la ``\textbf{Incorporación de Otras Investigaciones''} al incluir Revistas de investigación dentro del Sistema. Finalmente en \ref{desasarrollociclos5} se hace una versión del Sistema donde se incluye un \textbf{Buscador Semántico}.
 
@@ -1345,7 +1349,7 @@ En esta etapa se realizaron dos procesos de extracción de datos web usando el l
 \setcounter{enumi}{1}
 \tightlist
 \item
-  En una segunda fase, mediante la misma técnica indicada en el punto anterior, se localizó en la ficha de un trabajo la etiqueta \emph{css}, en este caso la \emph{`.metadataFieldValue' ,} que está asociada al nodo que contiene los valores del: título, autor, fecha de publicación, palabras clave, url de descarga del documento y el texto del resumen. En la figura \ref{fig:nodosurl}-b se aprecia una imagen de una ficha. Al contar con el listado de url´s y la identificación de los datos a extraer, se hizo un bucle para visitar cada enlace, se descargó el archivo html, se accedió al nodo, se extrajeron los valores y se fueron almacenando en una estructura de datos.
+  En una segunda fase, mediante la misma técnica indicada en el punto anterior, se localizó en la ficha de un trabajo la etiqueta \emph{css}, en este caso la \emph{`.metadataFieldValue',} que está asociada al nodo que contiene los valores del: título, autor, fecha de publicación, palabras clave, url de descarga del documento y el texto del resumen. En la figura \ref{fig:nodosurl}-b se aprecia una imagen de una ficha. Al contar con el listado de url´s y la identificación de los datos a extraer, se hizo un bucle para visitar cada enlace, se descargó el archivo html, se accedió al nodo, se extrajeron los valores y se fueron almacenando en una estructura de datos.
 \end{enumerate}
 
 \hypertarget{aprender}{%
@@ -1358,11 +1362,11 @@ Se enfrentaron las siguientes dificultades y se adoptaron en algunos casos las c
 \item
   Se realizaron varios intentos para la descarga y extracción de los valores. Para la obtención de cada campo, en principio se tomó de referencia la posición fija en que aparecía dentro de la ficha, porque se había asumido que estas tenían la misma estructura para todos los trabajos, sin embargo en algunas aparecían otros valores, p.~ej. el de ``colección'', alterando la posición en que se encuentra el dato a extraer. La solución adoptada fue que primero se localizarán, dentro de cada ficha, los títulos de los campos, con esto se generó el listado de los valores posicionales y relativo a estos se extrajeron los valores propuestos.
 \item
-  Algunos valores de las fechas contenían información parcial faltando el mes y/o el día. Se adoptó un método de imputar el valor ``1'' tanto al mes como día faltante.
+  Algunos valores de las fechas contenían información parcial faltando el mes y/o el día. Se adoptó un método de imputar el valor ``1'' tanto al mes como al día faltante.
 \item
   Adoptar previsiones para caídas del servidor de Saber UCV y resguardar en cada vuelta del bucle la información extraída, para no perder el trabajo de extracción acumulado en caso de una falla remota o local en el acceso.
 \item
-  La revisión del conjunto de datos obtenido mostró que existen 861 valores duplicados en el ``título'' de los trabajos. Esta situación también se presenta con un subconjunto distinto al anterior, donde existen ``resúmenes'' que están repetidos. Esto ocurre por la introducción de algún carácter adicional o mínimas alteraciones en el texto. Para descartar estos registros, se aplicó una función de limpieza al texto (convertir a minúscula, remover signos puntuación, etc.). Posteriormente se obtuvieron sendos valores \emph{hash} sobre el título y el resumen y luego se descartaron los \emph{hashes} duplicados. Adicionalmente se decidió usar el \emph{hash} obtenido del ``título procesado'' como el identificador único de cada documento. La remoción de investigaciones que puedan estar duplicadas es importante efectuarla, ya que al ejecutar los procesos de recuperación de información o la representación de los resultados en Mapas de Conocimiento, al incluir textos repetidos, creará representaciones distorsionadas. En el cuadro \ref{tab:cantidadesduplicados} se muestra la cantidad de los valores detectados por Jerarquía.
+  La revisión del conjunto de datos obtenido mostró que existen 861 documentos duplicados bien sea en el ``título'' o en el texto del ``resumen''. Esto ocurre por la introducción de algún carácter adicional o mínimas alteraciones en el texto. Para descartar estos registros, se aplicó una función de limpieza al texto (convertir a minúscula, remover signos puntuación, etc.). Posteriormente se obtuvieron sendos valores \emph{hash} sobre el título y el resumen y luego se descartaron los \emph{hashes} duplicados. Adicionalmente se decidió usar el \emph{hash} obtenido del ``título procesado'' como el identificador único de cada documento. La remoción de investigaciones que puedan estar duplicadas es importante efectuarla, ya que al ejecutar los procesos de recuperación de información o la representación de los resultados en Mapas de Conocimiento, al incluir textos repetidos, creará representaciones distorsionadas. En el cuadro \ref{tab:cantidadesduplicados} se muestra la cantidad de los valores detectados por Jerarquía.
 \end{enumerate}
 
 \global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
@@ -1450,7 +1454,7 @@ Al no encontrarse el listado de categorías disponible en el propio repositorio 
 \hypertarget{colaboraciuxf3n-2}{%
 \paragraph{Colaboración:}\label{colaboraciuxf3n-2}}
 
-Se visitó al sitio oficial de la Universidad Central de Venezuela para revisar la oferta de pregrados y postgrados. Para los postgrados se encontró para cada categoría (especialización, maestría y doctorado) una página con el listado, p.~ej. \href{http://www.ucv.ve/organizacion/vrac/gerencia-de-investigacion-cientifica-y-humanistica/gerencia-de-estudios-de-postgrado/programas-de-postgrado-ucv/maestria.html}{http://www.ucv.ve/organizacion/maestria.html} \footnote{previendo posibles modificacions en las páginas que contienen los listado de postgrados, se procedió a respaldarlas y forman parte del contenido del repositorio asociado a esta Investigación para garantizar la reproducibilidad de los resultados obtenidos. Para la fecha de redacción de este documento el contenido de los \emph{urls} indicados fue modificado}. En la figura \ref{fig:maestrias} se aprecian las potenciales etiquetas para las maestrías.
+Se visitó al sitio web oficial de la Universidad Central de Venezuela para revisar la oferta de pregrados y postgrados. Para los postgrados se encontró para cada categoría (especialización, maestría y doctorado) una página con el listado, p.~ej. \href{http://www.ucv.ve/organizacion/vrac/gerencia-de-investigacion-cientifica-y-humanistica/gerencia-de-estudios-de-postgrado/programas-de-postgrado-ucv/maestria.html}{http://www.ucv.ve/organizacion/maestria.html} \footnote{previendo posibles modificacions en las páginas que contienen los listado de postgrados, se procedió a respaldarlas y forman parte del contenido del repositorio asociado a esta Investigación para garantizar la reproducibilidad de los resultados obtenidos. Para la fecha de redacción de este documento el contenido de los \emph{urls} indicados fue modificado}. En la figura \ref{fig:maestrias} se aprecian las potenciales etiquetas para las maestrías.
 
 \begin{figure}
 
@@ -1461,7 +1465,9 @@ Se visitó al sitio oficial de la Universidad Central de Venezuela para revisar 
 \caption{Listado de Maestrías}\label{fig:maestrias}
 \end{figure}
 
-Mediante la técnica de recuperación de datos web la información descrita en \ref{scrapeo} se procedió a extraer el nombre de cada postgrado, añadir el nivel académico y asociar la facultad a la cual está adscrito. La cantidad de postgrados por nivel académico: Doctorado, Maetría y Especializaciones se muestran en el cuadro \ref{tab:resultpostgrado}.
+Mediante la técnica de recuperación de datos web descrita en \ref{scrapeo}, se procedió a extraer el nombre de cada postgrado, añadir el nivel académico y asociar la facultad a la cual está adscrito.
+
+La cantidad de postgrados por nivel académico: Doctorado, Maestría y Especializaciones se muestran en el cuadro \ref{tab:resultpostgrado}.
 
 \global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
 
@@ -1511,9 +1517,9 @@ Mediante la técnica de recuperación de datos web la información descrita en \
 
 \renewcommand*{\arraystretch}{1}
 
-En cuanto a los pregrados no se encontró en el sitio de la Universidad en una página centralizada la información y se procedió a obtenerla de la página \href{https://es.wikipedia.org/wiki/Anexo:Facultades_de_la_Universidad_Central_de_Venezuela}{wikipedia} asociada a la U.C.V. recuperando un total del 50 nombres de escuelas de pregrado junto con la facultad de dependencia.
+En cuanto a los pregrados no se encontró en el sitio de la Universidad en una página centralizada la información y se procedió a obtenerla de la página \href{https://es.wikipedia.org/wiki/Anexo:Facultades_de_la_Universidad_Central_de_Venezuela}{wikipedia} asociada a la U.C.V., recuperando un total del 50 nombres de escuelas de pregrado junto con la facultad de adscripción.
 
-En la figura \ref{fig:jerarquias} se muestran los totales apilados de pregrados y postgrados que se encontraron por Facultad-Centro de Investigación durante el levantamiento de información, cifra que al totalizar los postgrados y pregrados alcanza la cantidad de 425 áreas de conocimiento.
+En la figura \ref{fig:jerarquias} se muestran los totales apilados de pregrados y postgrados que se encontraron por Facultad-Centro de Investigación durante el levantamiento de información, cifra que al totalizar los postgrados y pregrados, alcanza la cantidad de 425 áreas de conocimiento.
 
 \begin{figure}
 \includegraphics[width=0.7\linewidth]{_main_files/figure-latex/jerarquias-1} \caption{Total pregrados y postgrados por Facultad-Centro}\label{fig:jerarquias}
@@ -1525,9 +1531,9 @@ En la figura \ref{fig:jerarquias} se muestran los totales apilados de pregrados 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  En el caso de los postgrados, inicialmente se esperaba que sólo estuvieran asociados a Facultades pero también se encontró que el Centro de Estudios del Desarrollo y el Centro de Estudios Integrales del Ambiente imparten este tipo de estudios.
+  En el caso de los postgrados inicialmente se esperaba que sólo estuvieran asociados a Facultades pero también se encontró que el Centro de Estudios del Desarrollo y el Centro de Estudios Integrales del Ambiente imparten este tipo de estudios.
 \item
-  Se evaluó que existen nombres postgrados duplicados con la misma categoría, lo que puede generar problemas en la clasificación de las investigaciones teniendo como ejemplo la ``Maestría en Estadística'' que se dicta en la Facultad de Agronomía y en la Facultad de Ciencias Económicas y Sociales.
+  Se evaluó que existen nombres postgrados duplicados con la misma categoría, lo que puede generar problemas en la clasificación de las investigaciones, teniendo como ejemplo la ``Maestría en Estadística'' que se dicta en la Facultad de Agronomía y en la Facultad de Ciencias Económicas y Sociales.
 \item
   Se detectó que en pregrado existen escuelas que otorgan distintos títulos, p.~ej. de la ``Escuela de Administración y Contaduría'' se pueden obtener los títulos de ``contador'' o de ``licenciado en administración''. Esto es algo a tener presente al momento de hacer la categorización, ya que el nombre de la escuela no sirve en estos casos para realizarla, siendo necesario agregar al conjunto de datos el atributo del nombre de los títulos emitidos.
 \item
@@ -1551,17 +1557,17 @@ Motivado a que en la primera iteración \ref{scrapeo} para conformar el conjunto
 
 En esta iteración fue necesario realizar distintas adaptaciones para lograr la coincidencia de patrones. Teniendo en cuenta que son 425 etiquetas las que se usarán para realizar la clasificación, llegando a tener 14 palabras algunas categorías, es elevada la probabilidad de que no se pueda hacer el ``\emph{pattern matching}'' entre el texto y la etiqueta.
 
-Lo anterior motivo a realizar un proceso de limpieza, modificación y disminución de la cantidad de palabras, tanto en las etiquetas como en el texto extraído. Se evaluó en cada adaptación cuáles razones impedían clasificar los documentos aún pendientes, se tomaron los correctivos y así se fue incrementando, de forma iterativa, la precisión en este proceso.
+Lo anterior motivo a realizar un proceso de limpieza, modificación y disminución de la cantidad de palabras, tanto en las etiquetas como en el texto extraído. Se evaluó en cada adaptación cuáles razones impedían clasificar los documentos aún pendientes, se tomaron los correctivos y así se fue incrementando, de forma iterativa, la exactitud en este proceso.
 
-También se tuvo que tomar en cuenta el orden en que se iba a ejecutar la secuencia de encontrar las coincidencias. Ejemplo es que varias facultades contienen las mismas tres palabras en la parte inicial de su nombre: \emph{Facultad de Ciencias}, \emph{Facultad de Ciencias} Jurídicas y Políticas, \emph{Facultad de Ciencias} Económicas y Sociales y la \emph{Facultad de Ciencias} Veterinarias. La secuencia para hacer la detección de la coincidencia fue buscar en orden decreciente por el total de caracteres que tenga el nombre de la facultad, para evitar clasificaciones erróneas.
+También se tuvo que tomar en cuenta el orden en que se iba a ejecutar la secuencia de encontrar las coincidencias. Ejemplo es que varias facultades contienen las mismas tres palabras en la parte inicial de su nombre: \emph{Facultad de Ciencias}, \emph{Facultad de Ciencias} Jurídicas y Políticas, \emph{Facultad de Ciencias} Económicas y Sociales y la \emph{Facultad de Ciencias} Veterinarias. La secuencia para hacer la detección de la coincidencia fue buscar hacer la comparación de cada elemento ordenado en forma decreciente, según el total de caracteres que tenga el nombre de la facultad, para evitar clasificaciones erróneas.
 
-Adicionalmente en el proceso de hacer coincidir las frases, se encontraron 17 postgrados que no estaban en el listado previamente conformado, los cuales se tuvieron que agregar al conjunto de datos de las categorías.
+Adicionalmente en el proceso de hacer coincidir las frases, se encontraron 17 postgrados que no estaban en el conjunto de datos de las categorías, los cuales se tuvo que proceder a agregar.
 
-Para aquellos casos donde no se podía hacer \emph{match} se aplicó el algorimo ``Smith Waterman'' \citep{smith1981}, expuesto en el Capítulo del Marco Teórico \ref{alghist}, el cual permite alinear dos cadenas de texto cuando una de ellas no tiene coincidencia absoluta con la otra, como puede pasar en este caso por la introducción de caracteres adicionales.
+Para aquellos casos donde no se podía hacer \emph{match,} se aplicó el algoritmo ``Smith Waterman'' \citep{smith1981}, expuesto en el Capítulo del Marco Teórico \ref{alghist}, el cual permite alinear dos cadenas de texto cuando una de ellas no tiene coincidencia absoluta con la otra, como puede pasar en este caso por la introducción de caracteres adicionales.
 
 Un elemento que introdujo ruido en el texto leído de los documentos, fue la aparición de diversos \emph{encodings} que no resultó viable codificarlos a ``UTF-08'', haciendo que aparecieran caracteres no reconocidos dentro del texto, dificultando la tarea de lograr realizar el proceso de ``pattern matching''. El algorimo SW resultó eficaz para solucionar este problema, aunque igualmente se hicieron pruebas con otros métodos como el algoritmo de ``Distancia de Levenshtein'' o similares.
 
-Sobre un total de 9.982 potenciales documentos se lograron clasificar 9.585 investigaciones, mientras que 244 no disponían información en el texto del documento y resultaba inviable hacer la categorización. En algunos casos esta falta de información estuvo motivada en que el archivo contenía imágenes por estar escaneado el contenido o los documentos anexos no eran trabajos de grado o tesis sino informes de algún otro estilo.
+Sobre un total de 9.982 potenciales documentos se lograron clasificar 9.585 investigaciones, mientras que 244 no disponían información en el texto del documento y resultaba inviable hacer la categorización. En algunos casos esta falta de información estuvo motivada en que el archivo contenía imágenes por estar escaneado el contenido o también motivado en que los documentos anexos no eran trabajos de grado o tesis, sino informes de algún otro estilo.
 
 La cantidad de categorías distintas, con al menos una investigación asignada a una facultad o centro, ascendió a 284 que se distribuyen por Facultad según lo que se observa en la figura \ref{fig:categorias}
 
@@ -1575,7 +1581,7 @@ En en la figura \ref{fig:totalesporfacultad} se pueden ver primero la cantidad t
 \includegraphics[width=0.45\linewidth]{_main_files/figure-latex/totalesporfacultad-1} \includegraphics[width=0.45\linewidth]{_main_files/figure-latex/totalesporfacultad-2} \caption{Cantidades de investigaciones clasificadas por Facultad y por año de publicación}\label{fig:totalesporfacultad}
 \end{figure}
 
-En cuanto a la obtención de los nombres de los tutores, el procedimiento adoptado fue nuevamente realizar algunas limpiezas sobre el texto como remover digitos, abreviaturas de títulos académicos ( PhD, MgS, etc), y luego extraer el texto que se encontraba delimitado entre la propia palabra ``tutor'' y el brinco de línea ``\textbackslash n'' más próximo a la aparición de dicha palabra. Con el procedimiento descrito se pudo extraer un total de 7.969 nombres, equivalente al 79,8\% de las investigaciones, así como 3.718 nombres únicos. En la figura \ref{fig:tutores} se aprecia la frecuencia para la cantidad de investigaciones que corresponden a un mismo tutor.
+En cuanto a la obtención de los nombres de los tutores, el procedimiento adoptado fue nuevamente realizar algunas limpiezas sobre el texto como remover digitos, abreviaturas de títulos académicos (PhD, MgS, etc), y luego extraer el texto que se encontraba delimitado entre la propia palabra ``tutor'' y el brinco de línea ``\textbackslash n'' más próximo a la aparición de dicha palabra. Con el procedimiento descrito se pudo extraer un total de 7.969 nombres, equivalente al 79,8\% de las investigaciones, así como 3.718 nombres únicos. En la figura \ref{fig:tutores} se aprecia la frecuencia para la cantidad de investigaciones que corresponden a un mismo tutor.
 
 \begin{figure}
 \includegraphics[width=0.65\linewidth]{_main_files/figure-latex/tutores-1} \caption{Histógrama Nombres Tutores Extraídos }\label{fig:tutores}
@@ -1595,17 +1601,19 @@ A continuación se agrupan y enuncian los principales inconvenientes que se enco
 \item
   Aparición de errores en la redacción y ortográfia por parte de los autores, como por ejemplo, escribir incorrectamente el nombre del título al que optan o la facultad donde realizaron los estudios. Esto implicó crear reglas para realizar reemplazos de palabras en los textos y limpiezas para disminuir el ruido y facilitar el proceso de obtener la coincidencia. Un problema que se presentaría al intentar extender el SCSU a otros repositorios, cuando los trabajos de grado no estén categorizados, es que el procedimiento anterior no es completamente generalizable si los nombres de los postgrados-escuelas y el de las facultades son distintos, ya que las reglas de modificación de texto son específicas para el corpus de la Universidad Central de Venezuela.
 \item
-  Cambios en el estilo y formalidades con que se deben presentar los documentos de grado en las distintas facultades o niveles académicos, cuestión que dificultó la detección de las reglas para hacer la comparación. Ante esto se buscó encontrar las formas más genéricas en el procesamiento, así como la adopción de un procedimiento que progresivamente intentaba obtener la coindicidencia: primero con el nombre del título, en caso de fallo se sigue con el nombre del pregrado o postgrado, si nuevamente fallaba se procedía a hacer la búsqueda del nombre de la facultad y finalmente si ninguna de las estrategias anteriores tenía éxito, se aplicaba el algoritmo ``Smith Waterman'', con el cual se pudieron clasificar 1.658 trabajos, que equivalen a un 16,6\% del total. Es importante señalar que al aplicar este último recurso se pueden generar ``falsos positivos'' y por esto en la Sección \ref{pruebas} se hace una estimación estadística del error que puede representar acudir a este método.
+  Cambios en el estilo y formalidades con que se deben presentar los documentos de grado en las distintas facultades o niveles académicos, cuestión que dificultó la detección de las reglas para hacer la comparación. Ante esto se buscó encontrar las formas más genéricas en el procesamiento, así como la adopción de un procedimiento que progresivamente intentaba obtener la coindicidencia: primero con el nombre del título, en caso de fallo se sigue con el nombre del pregrado o postgrado, si nuevamente fallaba se procedía a hacer la búsqueda del nombre de la facultad y finalmente si ninguna de las estrategias anteriores tenía éxito, se aplicaba el algoritmo ``Smith Waterman''.
+
+  Con este último método se pudieron clasificar 1.658 trabajos, que equivalen a un 16,6\% del total. Es importante señalar que al aplicar este recurso se pueden generar ``falsos positivos'' y por esto en la Sección \ref{pruebas} se hace una estimación estadística del error que puede representar acudir a este método.
 \item
-  Dentro de los archivos descargados se encontraron algunos en formato de presentaciones \emph{power point} los cuales fueron desechados sólo siendo procesados los que estuviesen en formato \emph{word} o \emph{pdf} . Esto llevo a condicionar posteriormente que para ejecutar la descarga y hacer el procesamiento de extracción de datos, la extensión debía alguna de las mencionadas como válidas\emph{.}
+  Dentro de los archivos descargados se encontraron algunos en formato de presentaciones \emph{power point} los cuales fueron desechados sólo siendo procesados los que estuviesen en formato \emph{word} o \emph{pdf} . Esto llevo a condicionar que para ejecutar la descarga y hacer el procesamiento de extracción de datos, la extensión debía ser alguna de las mencionadas como válidas\emph{.}
 \item
-  También se encontraron trabajos que contaban con más de un archivo disponible para descargar. En la fase inicial se descargaron 12.765 de documentos aunque la cantidad de trabajos disponibles en el repositorio (incluyendo duplicados) era 10.843. Al evaluar las razones que motivaban que existiera una cantidad superior de archivos vs.~documentos, se encontraron casos en que por investigación existía un archivo por capítulo y no se encontraba algún elemento que indicará la secuencia en que se debía cargar cada archivo para armar el documento unificado. Para estos casos sólo se tomó el primer archivo en la lista de \emph{url}´s disponibles para tratar de hacer el proceso de clasificación.
+  También se encontraron trabajos que contaban con más de un archivo disponible para descargar. En la fase inicial se descargaron 12.765 de documentos aunque la cantidad de trabajos disponibles en el repositorio (incluyendo duplicados) era 10.843. Al evaluar las razones que motivaban que existiera una cantidad superior de archivos vs.~documentos, se distinguieron casos en que por investigación existía un archivo por capítulo y no se encontraba algún elemento que indicará la secuencia en que se debía cargar cada archivo para armar el documento unificado. Para estos casos sólo se tomó el primer archivo en la lista de \emph{url}´s disponibles para tratar de hacer el proceso de clasificación.
 \item
   Se hicieron algunas simplificaciones sobre postgrados que dependen de dos facultades imputándolo sólo a una que fuese la primera en aparecer en el texto. Como queda fuera del alcance de esta Investigación determinar los casos en que existen este tipo de adscripciones compartidas se hizo esta simplificación \footnote{Un ejemplo de esto es la Maestría en Física Médica que es impartida de manera conjunta por la Facultad de Ciencias y por la Facultad de Medicina. Al no disponer de información oficial sobre otros casos de postrgrados que presenten esta característica, se adoptó el método mencionado de imputar sólo a una dependencia que sea la primera en aparecer en el texto.}.
 \item
   Algunos trabajos en su primera página incluyen el nombre de dos facultades o escuelas creando errores en la clasificación. P. ej., investigaciones que indican en la portada el siguiente texto ``Facultad de Ciencias, Escuela de Computación, título: se realiza la propuesta de un sistema de gestión académica para la Escuela de Economía de la Facultad de Ciencias Económicas\ldots.'', lo cual genera mútilples clasificaciones. En estos casos se optó por realizar la imputación con base en la primera coincidencia detectada.
 \item
-  En la obtención del nombre del tutor es importante destacar que en varios casos el texto extraído no se corresponde propiamente al nombre del mismo, motivado a que la escritura de la portada puede responder a la representación visual. Se encontraron trabajos que tienen tutor académico, tutor industrial, cotutor y otras variantes, donde se hace una disposición en la escritura de colocar el tipo de cada tutor alíneado cada uno en los extremos de una línea y los nombres también se disponen en los extremos de la línea superior, quebrando la regla de extracción que se había diseñando. Esto pareciera un problema a enfrentar con técnicas de segmentación de archivos que tienen en consideración la disposición visual. En el caso de esta investigación no se adoptaron métodos para abordar este problema. En las Sección \ref{pruebas} se hace una evaluación estadística de la precisión alcanzada en esta extracción.
+  En la obtención del nombre del tutor es importante destacar que en varios casos el texto extraído no se corresponde propiamente al nombre del mismo, motivado a que la escritura de la portada puede responder a la representación visual. Se encontraron trabajos que tienen tutor académico, tutor industrial, cotutor y otras variantes, donde se hace una disposición en la escritura de colocar el tipo de cada tutor alíneado, cada uno en los extremos de una línea y los nombres también se disponen en los extremos de la línea superior, quebrando la regla de extracción que se había diseñando. Esto pareciera un problema a enfrentar con técnicas de segmentación de archivos que tienen en consideración la disposición visual. En el caso de esta investigación no se adoptaron métodos para abordar este problema. En las Sección \ref{pruebas} se hace una evaluación estadística de la precisión alcanzada en esta extracción.
 \item
   Se simplificaron algunos nombres de especializaciones por la cantidad de palabras que tienen estableciendo un límite, o \emph{prunning}, de 5 palabras para el nombre del postgrado, lo que implica que algunos trabajos habrán quedado agrupados en la misma categoría. Estos casos mayormente están asociados a las especializaciones en el área de medicina, teniendo de ejemplo la figura \ref{fig:especial}.
 
@@ -1620,7 +1628,7 @@ A continuación se agrupan y enuncian los principales inconvenientes que se enco
 \item
   En este proceso de clasificación no resultaba conveniente usar técnicas de aprendizaje automático dada la cantidad de categorías y el gran desbalanceo de clases.
 \item
-  Se detectó que en Saber UCV en la categoría que se denomina ``otros'' en Saber UCV se encuentran documentos que corresponden a especializaciones y también 60 trabajos de ascenso de profesores.
+  Se detectó que en Saber UCV en la categoría que se denomina ``otros'' en Saber UCV se encuentran documentos que corresponden a especializaciones y también se alojan 60 investigaciones que son ``trabajos de ascenso'' de profesores.
 \end{enumerate}
 
 \hypertarget{objetivos-alcanzados}{%
@@ -1629,9 +1637,9 @@ A continuación se agrupan y enuncian los principales inconvenientes que se enco
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Obtener las fichas de 9.982 investigaciones, equivalente al 100\% de los trabajos de pre y postgrado alojados en Saber UCV (descartando los duplicados) , conforme a lo propuesto en el Objetivo Específico 1.
+  Obtener las fichas de 9.982 investigaciones, equivalente al 100\% de los trabajos de pre y postgrado alojados en Saber UCV (descartando los duplicados), conforme a lo propuesto en el Objetivo Específico 1.
 \item
-  Obtener 375 nombres de postgrado y 50 de carreras de pregrado, generando 454 etiquetas en total que servirán de insumo necesario para alcanzar lo propuesto en el Objetivo Específico 2.
+  Obtener 375 nombres de postgrado y 50 de carreras de pregrado, generando 454 etiquetas en total que sirvieron de insumo para alcanzar lo propuesto en el Objetivo Específico 2.
 \item
   Categorizar 9.585 investigaciones por área académica, equivalente al 96\% de toda la información a clasificar, de acuerdo al Objetivo Específico 2.
 \item
@@ -1643,14 +1651,14 @@ A continuación se agrupan y enuncian los principales inconvenientes que se enco
 \hypertarget{desarrollociclos3}{%
 \subsection{Ciclo-Prototipo del SCSU:}\label{desarrollociclos3}}
 
-En este ciclo se desarrolló el \textbf{Prototipo del Sistema Complementario Saber UCV} con tres iteraciones. En la primera iteración de este ciclo \ref{iternlp} se realizó la \textbf{Preparación del Corpus}. En la segunda iteración se hicieron las pruebas para realizar las \textbf{Recomendaciones} de cada documento, basado en la similitud que presente con el resto de las investigaciones. En la tercera \ref{imrecomendacion} \ref{iterbol} se creó una aplicación web interactiva en la que se implementó el \textbf{Prototipo} donde ante un \emph{query} se presentan los resultados y la visualización de los \textbf{``Mapa de Conocimiento''} (ver \ref{mapacon}) .
+En este ciclo se desarrolló el \textbf{Prototipo del Sistema Complementario Saber UCV} con tres iteraciones. En la primera iteración de este ciclo \ref{iternlp} se realizó la \textbf{Preparación del Corpus}. En la segunda iteración se hicieron las pruebas para realizar las \textbf{Recomendaciones} de cada documento, basado en la similitud que presente con el resto de las investigaciones. En la tercera \ref{imrecomendacion} \ref{iterbol} se creó una aplicación web interactiva en la que se implementó el \textbf{Prototipo} donde ante un \emph{query} se presentan los resultados, ordenados según criterios de relevancia y se representan los \textbf{``Mapa de Conocimiento''} (ver \ref{mapacon}) .
 
 Todo las rutinas y codificaciones que se mencionan a continuación fueron realizadas en el lenguaje R version 4.3.2 (2023-10-31) \citep{R}.
 
 \hypertarget{iternlp}{%
 \subsubsection{Iteración- Preparación del Corpus:}\label{iternlp}}
 
-En esta iteración el Corpus que se conformó en \ref{desarrollociclos1}, fue sometido a distintos procesamientos conocidos como ``Preparación del Corpus'' mediante la aplicación de técnicas de PLN, ver \ref{nlproc}. .
+En esta iteración el Corpus que se conformó en \ref{desarrollociclos1}, fue sometido a distintos procesamientos conocidos como ``Preparación del Corpus'' mediante la aplicación de técnicas de PLN, ver \ref{nlproc}.
 
 \hypertarget{especulaciuxf3n-4}{%
 \paragraph{Especulación:}\label{especulaciuxf3n-4}}
@@ -1710,7 +1718,7 @@ El Corpus Anotado cuenta con 9.982 documentos que generan 3.147.740 tokens, un v
 \caption{Cantidad de palabras por función gramatical}\label{fig:posgr}
 \end{figure}
 
-Realizando el análisis exploratorio del Corpus, es interesante ver la cantidad de palabras únicas por función gramatical y el ratio que presentan con respecto al total de palabras por ``POS'' que se vio en la figura \ref{fig:posgr}. En la tabla \ref{tab:lemmasg} se observa que las categorías del ``etiquetado de la parte del discurso'' que contienen mayor cantidad de información son los nombres propios (PROPN), los adjetivos (ADJ), números (NUM) y los sustantivos (NOUN), pero los nombres propios al ser únicos en cada trabajo y los números represetar cantidades, realmente la mayor cantidad de información del Corpus se encuentra en los adjetivos y sustantivos, lo que refuerza la construcción y representación de los Mapas de Conocimiento mediante la selección de las palabras que tienen las funciones gramatical de sustantivos y adjetivos, al presentar la mejor relación señal/ruido.
+Realizando el análisis exploratorio del Corpus, es interesante ver la cantidad de palabras únicas por función gramatical y el ratio que presentan con respecto al total de palabras por ``POS'' que se vio en la figura \ref{fig:posgr}. En la tabla \ref{tab:lemmasg} se observa que las categorías del ``etiquetado de la parte del discurso'' que contienen mayor cantidad de información son los nombres propios (PROPN), los adjetivos (ADJ), números (NUM) y los sustantivos (NOUN), pero los nombres propios al ser únicos en cada trabajo y los números al representar cantidades, realmente la mayor cantidad de información del Corpus se encuentra en los adjetivos y sustantivos, lo que refuerza la construcción y representación de los ``Mapas de Conocimiento'' mediante la selección de las palabras que tienen esas funciones gramatical.
 
 \global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
 
@@ -1882,7 +1890,7 @@ En esta iteración se revisó la creación de recomendaciones de investigaciones
 \hypertarget{especulaciuxf3n-5}{%
 \paragraph{Especulación:}\label{especulaciuxf3n-5}}
 
-Se ha determinado que los investigadores no necesariamente realizan la búsqueda de documentos que le puedan ser de interés mediante un \emph{query} que contenga términos claves sino a partir de un documento que les resulta de interés quieren localizar otros que puedan compartir ciertos aspectos \citep{zhou2018}.
+Se ha determinado que los investigadores no necesariamente realizan la búsqueda de documentos que le puedan ser de interés mediante un \emph{query} que contenga términos claves sino a partir de un documento que les resulta de interés, quieren localizar otros que puedan compartir ciertos aspectos \citep{zhou2018}.
 
 La similitud de un documento con otro se puede entender, en esta implementación, como aquellos que tienden a compartir palabras y dentro de una ``term document matrix'' generan vectores similares \citep{jurafsky2009}. Es por esto que se considera que los documentos que presenten mayor similitud, pueden resultar de interés para los investigadores, expandiendo así las posibilidades de inspección del Corpus.
 
@@ -1912,11 +1920,11 @@ Es necesario señalar que el método adaptado no es se considera que esté dentr
 \hypertarget{iterbol}{%
 \subsubsection{Iteración- Implementación Prototipo:}\label{iterbol}}
 
-En esta iteración se hace el desarrollo del Prototipo de un ``Sistema de Recuperación de Información'' que servirá de base para probar distintas funcionalidades con las cuales contará el Sistema Complementario Saber UCV. En particular se hace el Prototipo de la aplicación web, mediante el uso del framework Shiny \citep{shiny-2} y se establecen los casos de uso, para que el usuario pueda realizar procesos de búsqueda, sobre el corpus anotado que se conformó en la iteración anterior \ref{iternlp}.
+En esta iteración se hace el desarrollo del Prototipo de un ``Sistema de Recuperación de Información'' que servirá de base para probar distintas funcionalidades con las cuales contará el Sistema Complementario Saber UCV. En particular se hace el Prototipo de la aplicación web, mediante el uso del framework Shiny y se establecen los casos de uso, para que el usuario pueda realizar procesos de búsqueda, sobre el corpus anotado que se conformó en la iteración anterior \ref{iternlp}.
 
 En este Prototipo solo se va a trabajar con el subconjunto de las investigaciones que han sido realizadas en la Facultad de Ciencias y ante un \emph{query}, son extraídos los documentos que contengan tales palabras y con ellos se representan los ``Mapas de Conocimiento''.
 
-Esta implementación se apoya en el uso del sistema gestor de base de datos PostgreSQL, ya que este software nativamente cuenta con la funcionalidad de construir un índice invertido, sobre un conjunto de documentos, y así se da sustento a las ``búsquedas de texto completo''.
+Esta implementación se apoya en el uso del sistema gestor de base de datos PostgreSQL, ya que este software nativamente cuenta con la funcionalidad de construir un índice invertido, sobre un conjunto de documentos y así se da sustento a las ``búsquedas de texto completo''.
 
 \hypertarget{especulaciuxf3n-6}{%
 \paragraph{Especulación:}\label{especulaciuxf3n-6}}
@@ -2167,7 +2175,7 @@ La aplicación web que formará parte del Prototipo, una vez que se tiene confor
 \item
   \textbf{Tabla Corpus}: con los datos del Corpus Anotado, se conforma la tabla con los siguientes datos: jerarquía, título, nombre autor, fecha publicación, nombre de tutor, texto resumen, palabras claves, nombre de la facultad y nombre de la escuela-postgrado y el código único identificador de cada documento.
 \item
-  \textbf{Tabla ``indiceinvertido'':} mediante una extensión de \emph{PostrgreSQL V16.1} denominada \texttt{"TS\_Vector}``, se crea una columna de nombre \texttt{"document\_tokens"}, donde se almacena una estructura de datos de tipo''\texttt{tsvector}``, que facilita al gestor de BD la búsqueda de texto completo. El script siguiente hace el trabajo de crear el índice invertido mediante la función \texttt{"to\_tsvector"}, para los datos del''título'', ``palabras claves'', ``autor'' y del ``resumen''. En el mismo proceso se añaden pesos distintos (importancia para el criterio de reordenamiento de los resultados, según lo revisado en \ref{ranking} ) a cada atributo mediante la función \texttt{"setweight"}.
+  \textbf{Tabla ``indiceinvertido'':} mediante una extensión de \emph{PostrgreSQL V16.1} denominada \texttt{"TS\_Vector}``, se crea una columna de nombre \texttt{"document\_tokens"}, donde se almacena una estructura de datos de tipo''\texttt{tsvector}``, que facilita al gestor de BD la búsqueda de texto completo. El \emph{script} siguiente hace el trabajo de crear el índice invertido mediante la función \texttt{"to\_tsvector"}, para los datos del''título'', ``palabras claves'', ``autor'' y del ``resumen''. En el mismo proceso se añaden pesos distintos (importancia para el criterio de reordenamiento de los resultados, según lo revisado en \ref{ranking} ) a cada atributo mediante la función \texttt{"setweight"}.
 
   \newpage
 
@@ -2202,14 +2210,14 @@ La aplicación web que formará parte del Prototipo, una vez que se tiene confor
 
   Otro aspecto a destacar es que ciertas palabras de uso común y frecuente, denominadas \emph{stopwords}, como: ``el'', ``la'', ``y'', ``a'', ``en'', ``con'', ``para''; no son registradas, es decir que son omitidas así como los signos de puntuación, con lo cual un query que contenga una stopword o un signo de puntuación, no será buscada la coincidencia al no formar parte de la estructura de datos ``\texttt{tsvector}''.
 
-  Para culminar el proceso de creación del ``Índice Invertido'' se debe ejecutar el comando \texttt{"CREATE\ INDEX\ document\_weights\_idx\ ON\ Corpus\ USING\ GIN\ (document\_tokens);"} que cierra el ciclo de la generación del índice y es lo que permite realizar los procesos de búsqueda en una forma más eficiente, disminuyendo los tiempos de respuesta, pero debiendo tener presente que la creación del índice puede incrementar entre un cincuenta y doscientos por ciento el espacio de almacenamiento al generarlo. Una de las bondades que adicionalmente brinda la función \texttt{"TS\_VECTOR"},es que al añadir nuevos documentos a la base de datos, el índice será actualizado automáticamente.
+  Para culminar el proceso de creación del ``Índice Invertido'' se debe ejecutar el comando \texttt{"CREATE\ INDEX\ document\_weights\_idx\ ON\ Corpus\ USING\ GIN\ (document\_tokens);"} que cierra el ciclo de la generación del índice y es lo que permite realizar los procesos de búsqueda en una forma más eficiente, disminuyendo los tiempos de respuesta, debiendo tener presente que la creación del índice puede incrementar entre un cincuenta y doscientos por ciento el espacio de almacenamiento al ser generado. Una de las bondades que adicionalmente brinda la función \texttt{"TS\_VECTOR"},es que al añadir nuevos documentos a la base de datos, el índice será actualizado automáticamente.
 \item
   \textbf{Tabla ``POS'':} con los procesos que fueron revisados en el etiquetado de la parte del discurso en \ref{iternlp}, se obtuvieron los datos que formarán parte de esta tabla, donde cada palabra que conforma el corpus, pasa a ser una fila identificando el documento de origen, la oración dentro del documento donde se encuentra la palabra, el número de orden de aparición de la palabra, la palabra, su lema y la función gramatical asignada, idéntico a lo que se observó en la figura \ref{fig:spacypi}.
 \end{enumerate}
 
 En cuanto a la aplicación web, mediante el \emph{framework} Shiny se implementó el Prototipo, con la codificación de dos componentes principales que son: la interfaz de usuario (UI) y el Servidor (Server).
 
-Shiny se basa en la ``programación reactiva'', lo que significa que ante cambios en los ``campos de entrada'' en la interfaz de usario (UI), los elementos asociados se actualizan dinámicamente desde el componente ``Server'' sin necesidad de recargar la página, permitiendo crear una experiencia al usuario fluida. Shiny utiliza conceptos como ``observadores'' y ``reactividad'' para mantener sincronizados los elementos de la UI con los datos subyacentes, que en el caso del Prototipo son el texto del \emph{query}, el valor para establecer la cantidad de coocurrencias a representar en el Mapa del Conocimiento y el botón para ejecutar el \emph{query}.
+Shiny se basa en la ``programación reactiva'', lo que significa que ante cambios en los ``campos de entrada'' en la interfaz de usario (UI), los elementos asociados se actualizan dinámicamente desde el componente ``Server'' sin necesidad de recargar la página, permitiendo crear una experiencia al usuario fluida. Shiny utiliza conceptos como ``observadores'' y ``reactividad'' para mantener sincronizados los elementos de la UI con los datos subyacentes, que en el caso del Prototipo son el texto del \emph{query}, el valor para establecer la cantidad de coocurrencias a representar en el ``Mapa del Conocimiento'' y el botón para ejecutar el \emph{query}.
 
 \hfill\break
 A nivel de la aplicación web, en la interfaz de usuario están estos tres componentes:
@@ -2245,8 +2253,6 @@ En la figura \ref{fig:prototipoapp} se muestra la versión implementada del prot
 \caption{Estructura de datos Índice Invertido}\label{fig:prototipoapp}
 \end{figure}
 
-Explicación de los servicios ofrecidos por la aplicación: el usuario introduce un texto con el cual se va a generar el query y la cantidad de palabras que quiere visualizar en los Mapas de Conocimiento. Posteriormente hace clic en ``buscar palabras''.
-
 \textbf{Lógica de la aplicación:}
 
 En el detalle que se expone en las siguientes líneas es necesario mencionar que Shiny, funciona a nivel de computo como monohilo (``single-threaded''), por lo cual es estrictamente necesario que los pasos sean ejecutados secuencialmente según lo descrito.
@@ -2269,11 +2275,11 @@ En el detalle que se expone en las siguientes líneas es necesario mencionar que
 \end{Highlighting}
 \end{Shaded}
 
-  Lo relevante, es apreciar que el texto del \emph{query}, mediante la función \texttt{"websearch\_to\_tsquery"}, es sometido a un parseo que lo convierte a la estructura de datos ``\texttt{tsvector"} que fue revisada anteriormente y así la hace compatible con el contenido de la columna''\texttt{document\_tokens"} . El operador de coincidencia ``\texttt{@@}'' es el que determina si el texto del \texttt{tsquery} coincide con los distintos textos registrados en el ``\texttt{tsvector"} . Si la frase del query, por ejemplo''física química'', que incluye dos palabras, el operador lógico que se intercala entre cada palabra es el ``y (and)'', no obstante, la propia función \texttt{websearch\_to\_tsquery} permite que se defina que pueda ser el operador ``o (or)'', por ejemplo si se escribe ``física OR química''. \footnote{Otros operadores que se pueden usar en esta función son: ``!'' para excluir un término, ``\textless-\textgreater{}'' para indicar que las palabras deben aparecer una seguida de otra. En la documentación oficial de PostgreSQL disponible en el enlace \url{https://www.postgresql.org/docs/current/textsearch-controls.html} se encuentra más información sobre los operadores que se pueden aplicar en los procesos de búsqueda.}
+  Lo relevante es apreciar que el texto del \emph{query}, mediante la función \texttt{"websearch\_to\_tsquery"}, es sometido a un parseo que lo convierte a la estructura de datos ``\texttt{tsvector"}, revisada anteriormente, y así la hace compatible con el contenido de la columna''\texttt{document\_tokens"} . El operador de coincidencia ``\texttt{@@}'' es el que determina si el texto del \texttt{tsquery} coincide con los distintos textos registrados en el ``\texttt{tsvector"} . Si la frase del query, p.~ej.''física química'', que incluye dos palabras, el operador lógico que se intercala entre cada palabra es el ``y (and)'', no obstante, la propia función \texttt{websearch\_to\_tsquery} permite que se defina que pueda ser el operador ``o (or)'', por ejemplo si se escribe ``física OR química''. \footnote{Otros operadores que se pueden usar en esta función son: ``!'' para excluir un término, ``\textless-\textgreater{}'' para indicar que las palabras deben aparecer una seguida de otra. En la documentación oficial de PostgreSQL disponible en el enlace \url{https://www.postgresql.org/docs/current/textsearch-controls.html} se encuentra más información sobre los operadores que se pueden aplicar en los procesos de búsqueda.}
 
-  También incluye la función \texttt{order\ by\ ts\_rank\_cd} la cual es una implementación del método ``\emph{cover density}~\emph{ranking}''~que fue introducido en la investigación de \citep{clarke2000} , donde la relevancia se determina mediante la proximidad y coocurrencia de las palabras que conforman el query dentro de cada documento del Corpus ejecutando el reordenamiento, según lo visto en \ref{ranking}, teniendo como base los criterios de peso que habían sido definidos al crear el \texttt{"tsvector"} y también toma en cuenta la proximidad que puedan tener las distintas palabras que componen el query. Es conveniente citar la documentación de PostgreSQL relativa a esta función ``\ldots{}\emph{es decir, consideran la frecuencia con la que los términos de la consulta aparecen en el documento, la proximidad de los términos en el documento y la importancia de la parte del documento en la que aparecen. Sin embargo, el concepto de relevancia es vago y muy específico de cada aplicación. Diferentes aplicaciones pueden requerir información adicional para la clasificación, por ejemplo, la hora de modificación del documento}''.\\
+  También incluye la función \texttt{order\ by\ ts\_rank\_cd} la cual es una implementación del método ``\emph{cover density}~\emph{ranking}''~que fue introducido en la investigación de \citep{clarke2000}, donde la relevancia se determina mediante la proximidad y coocurrencia de las palabras que conforman el query dentro de cada documento del Corpus ejecutando el reordenamiento, según lo visto en \ref{ranking}, teniendo como base los criterios de peso que habían sido definidos al crear el \texttt{"tsvector"} y también toma en cuenta la proximidad que puedan tener las distintas palabras que componen el query. Es conveniente citar la documentación de PostgreSQL relativa a esta función ``\ldots{}\emph{es decir, consideran la frecuencia con la que los términos de la consulta aparecen en el documento, la proximidad de los términos en el documento y la importancia de la parte del documento en la que aparecen. Sin embargo, el concepto de relevancia es vago y muy específico de cada aplicación. Diferentes aplicaciones pueden requerir información adicional para la clasificación, por ejemplo, la hora de modificación del documento}''.\\
 \item
-  \textbf{Query datos MC:} Con la lista de ``id\_docs'', que fue obtenida en el paso anterior, se ejecuta un segundo \emph{query} sobre la tabla ``POS'' y se seleccionan las palabras que cumplan con la condición de ser sustantivos y adjetivos, obteniendo la tabla filtrada con ``doc\_id'', ``token\_id'', ``sentence\_id'', ``pos'', ``lemma''.
+  \textbf{Query datos MC:} Con la lista de ``id\_docs'', que fue obtenida en el paso anterior, se ejecuta un segundo \emph{query} sobre la tabla ``POS'', se seleccionan las filas que tienen la lista de ``id\_docs'' y en las cuales las palabras (tokens) cumplan con la condición de ser sustantivos y adjetivos, obteniendo la tabla filtrada con ``doc\_id'', ``token\_id'', ``sentence\_id'', ``pos'', ``lemma''.
 
   Contar en esta tabla con el ``doc\_id'', ``token\_id'' y el ``sentence\_id'', sirve para determinar el nivel de representación de las coocurrencias, a modo de granularidad, permitiendo que posteriormente el resultado pueda ser representado con palabras que coocurren: a) una seguida de otra, b) dentro de la misma oración, o, c) dentro del mismo texto resumen.
 \item
@@ -2305,7 +2311,7 @@ Otro proceso de aprendizaje de este ciclo fue hacer los ajustes a la función de
   Texto Resumen
 \end{enumerate}
 
-Lo que quiere decir que si ante un texto de una búsqueda, en los documentos que conforman el Corpus, las palabras de query presentan coincidencia en el título, la función de relevancia le otorgará mayor peso ese documento por sobre otro que pueda tener la misma coincicidencia de aparición, pero el en texto resumen. Este ejemplo aplica para el resto de las combinaciones posibles.
+Lo que quiere decir que si ante un texto de una búsqueda, en los documentos que conforman el Corpus, las palabras de \emph{query} presentan coincidencia en el título, la función de relevancia le otorgará mayor peso a ese documento por sobre otro que pueda tener la misma coincidencia de aparición, pero en el texto resumen. Este ejemplo aplica para el resto de las combinaciones posibles.
 
 Realizar el etiquetado de las partes del discurso, previamente a realizar la selección de los textos que serán representados mediante Mapas de Conocimiento, representa una mejora en los tiempos que tarda el Prototipo en realizar el render, lo cual refuerza la necesidad de contar con un sistema gestor de base de datos que pueda tener indexadas las distintas tablas que conforman el SCSU.
 
@@ -2352,7 +2358,7 @@ Usando las técnicas y métodos aplicados en ciclos anteriores e integrando los 
   Generación de ``Recomendaciones'' revisada en \ref{imrecomendacion}.
 \end{enumerate}
 
-En el proceso de especulación de este ciclo se aplicaron los métodos de la ``Ingeniería de Software'' necesarios para implementar el SCSU estableciendo formalmente los requerimientos funcionales y no funcionales, los diagramas y tablas de casos de uso, el modelo entidad-relación y demás aspectos necesarios, para posteriormente en la fase de Colaboración, realizar la implementación del Sistema.
+En el proceso de especulación de este ciclo se aplicaron los métodos de la ``Ingeniería de Software'' necesarios para implementar el SCSU estableciendo formalmente los requerimientos funcionales y no funcionales, los diagramas y tablas de casos de uso, el modelo entidad-relación y demás aspectos necesarios, para posteriormente en la fase de Colaboración realizar la implementación del Sistema.
 
 \hypertarget{requerimientos-funcionales-del-scsu}{%
 \subparagraph{\texorpdfstring{\textbf{Requerimientos Funcionales del SCSU:}}{Requerimientos Funcionales del SCSU:}}\label{requerimientos-funcionales-del-scsu}}
@@ -2645,8 +2651,6 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la ``I
   \begin{itemize}
   \item
     Todas las dependencias externas, incluyendo bibliotecas y componentes \emph{open source}, deben estar claramente especificadas y gestionadas.
-  \item
-    Se debe proporcionar documentación detallada sobre cómo configurar el entorno de desarrollo y construir el Sistema.
   \item
     La aplicación debe ser capaz de ejecutarse correctamente en diferentes sistemas operativos y configuraciones de infraestructura.
   \end{itemize}
@@ -3931,7 +3935,7 @@ El modelo ``entidad-relación'' que se ve en detalle en la figura \ref{fig:diagr
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.9\linewidth]{images/05-desarrollo/4_ciclo/diagrama_entidadrel_SCSU} 
+{\centering \includegraphics[width=0.8\linewidth]{images/05-desarrollo/4_ciclo/diagrama_entidadrel_SCSU} 
 
 }
 
@@ -3997,7 +4001,7 @@ La interfaz cuenta con tres componentes:
   \caption{Interfaz de Usuario - Sidebar}\label{fig:sidebar2}
   \end{figure}
 \item
-  \textbf{Main Tabs:} es la sección de pestañas que se encontrará en la parte media alta de la aplicación y es donde el usuario podrá seleccionar la visualización de los ``tabla resultados'', bien sea para los tabla de los textos o para ver los ``mapas del conocimiento''. En la figura \ref{fig:maintab} se representa la propuesta. Al seleccionar una pestaña está cambiará el color de fondo verde a gris.
+  \textbf{Main Tabs:} es la sección de pestañas que se encontrará en la parte media alta de la aplicación y es donde el usuario podrá seleccionar la visualización de los ``tabla resultados'', bien sea para la tabla de los documentos o para ver los ``mapas del conocimiento''. En la figura \ref{fig:maintab} se representa la propuesta. Al seleccionar una pestaña está cambiará el color de fondo verde a gris.
 
   \begin{figure}
 
@@ -4093,7 +4097,7 @@ La aplicación web, que será desarrollada en el \emph{framework} ``Shiny'', seg
 \hypertarget{implemencolab}{%
 \paragraph{Colaboración:}\label{implemencolab}}
 
-Según lo propuesto en la fase de Especulación \ref{implemenesp} se hizo el desarrollo del Sistema mediante un conjunto de contenedores orquestados, tomando en consideración que es necesario implementar los mecanismos de comunicación necesarios con la definición de una red y de disponer de un volumen compartido con la máquina host.
+Según lo propuesto en la fase de Especulación \ref{implemenesp} se hizo el desarrollo del Sistema mediante un conjunto de contenedores orquestados, tomando en consideración que es necesario implementar los mecanismos de comunicación necesarios con la definición de una red y de disponer de un volumen compartido con la máquina \emph{host}.
 
 En la implementación se usaron ampliamente los conocimientos adquiridos en ciclos anteriores, no obstante también se tuvieron que revisar documentaciones, probar distintas opciones de librerías e imágenes de contenedores que permitiesen llevar a un entorno de producción, con la debida integración de los componentes, el Sistema planificado.
 
@@ -4107,15 +4111,13 @@ A continuación se indican los contenedores que forman parte del Sistema y los p
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Nginx:} Es el servidor web/proxy inverso de código abierto que en este Sistema se usa para redireccionar las peticiones del cliente recibidas en el puerto 80 y 443 al puerto 8080. En este contenedor también se almacena el certificado SSL para permitir conexiones por el protocolo HTTPS en caso de configurar un dominio\footnote{Al momento de presentar este Trabajo de Grado no se dispone de un dominio para realizar la configuración del certificado para conexiones HTTPS, no obstante en un momento previo en que se tenía disponible un dominio se hicieron las pruebas para comprobar la integración y correcto funcionamiento.}. Este contenedor fue generado desde una imagen oficial de NGINX que se encuentra en el ``docker hub'' sin añadir ninguna capa (layer) adicional.
+  \textbf{Nginx:} Es el servidor web/proxy inverso de código abierto que en este Sistema se usa para redireccionar las peticiones del cliente recibidas en el puerto 80 y 443 al puerto 8080. En este contenedor también se almacena el certificado SSL para permitir conexiones por el protocolo HTTPS en caso de configurar un dominio\footnote{Al momento de presentar este Trabajo de Grado no se dispone de un dominio para realizar la configuración del certificado para conexiones HTTPS, no obstante en un momento previo en que se tenía disponible un dominio se hicieron las pruebas para comprobar la integración y correcto funcionamiento.}. Este contenedor fue creado desde la imagen oficial de NGINX que se encuentra en el ``docker hub'' sin añadir ninguna capa (layer) adicional.
 \item
-  \textbf{Cerbot:} es una herramienta de código abierto que permite tramitar y habilitar las conexiones mediante el protocolo HTTPS con el uso de un certificado ``Let´s Encrypt''. El uso de este certificado está asociado al uso de un dominio en el \emph{deploy} de la aplicación. Este contenedor fue generado desde una imagen de CERBOT del ``docker hub'' sin realizar ninguna modificación.
+  \textbf{Cerbot:} es una herramienta de código abierto que permite tramitar y habilitar las conexiones mediante el protocolo HTTPS con el uso de un certificado ``Let´s Encrypt''. El uso de este certificado está asociado al uso de un dominio en el \emph{deploy} de la aplicación. Este contenedor fue instanciado desde una imagen de CERBOT del ``docker hub'' sin realizar ninguna modificación.
 \item
   \textbf{Shinyproxy:} es una solución de código abierto para alojar aplicaciones Shiny \citep{shinyproxy2023} que cuenta con una tecnología estable y probada. El uso de este contenedor se justifica en el hecho de que una aplicación Shiny funciona como ``single thread'' y es necesario que ante cada petición de acceso, al servidor despliegue un \emph{workspace} completamente aislado, es decir, un contenedor distinto. Shinyproxy es una implementación del servidor ``\emph{Spring boo}t'' que tiene la capacidad de hacer la replicación indicada y permite controlar los recursos de memoria y cpu asignados, así como el timeout a cada instancia que se despliega. Otras ventajas que aporta, no implementadas en esta versión del Sistema, es que permite establecer \emph{login} en el uso de la aplicación y la creación de grupos de usuarios con perfiles distintos, contando con soporte para distintos métodos de autenticación. Si bien en estos momentos la aplicación está concebida para el libre acceso, en algún momento se pude restringir y no sería necesario hacer modificaciones en la arquitectura, más allá de variaciones en el archivo de configuración. Este contenedor habilita el puerto 8080 para escuchar las peticiones y fue generado desde la imagen del docker hub \emph{Shinyproxy}.
 \item
-  \textbf{``\emph{Shiny Web App}''}: En este contenedor se encruentra la imagen de la aplicación web con todas las dependencias y librerías necesarias para remitir los \emph{querys} al contenedor del manejador de la base de datos, presentar los resultados y generar las visualizaciones correspondientes. Como se indicó anteriormente, cada vez que ocurre desde el navegador del cliente una petición de acceso, desde el contenedor \emph{shinyproxy} , se crea una instacia de este contenedor con todos los elementos necesarios para que la app funcione. En caso de presentar alguna falla, el sistema es tolerante a los mismos, porque se pueden seguir recibiendo peticiones que replicarían una imagen nueva del contenedor sin afectar al que presentase el fallo, o viceversa. Desde este contenedor se realiza el acceso de lectura al contenedor que contiene \emph{PostgreSQL} donde reposa la base de datos que contiene los textos ya procesados. La imagen que se usa en este servidor fue definida a medida.
-
-  Parte de las configuraciones de la interfaz de usuario se realizan en un archivo \emph{css} para facilitar modificaciones que puedan resultar de interés.
+  \textbf{``\emph{Shiny Web App}''}: en la imagen creada se encuentra la aplicación web con todas las dependencias y librerías necesarias para remitir los \emph{querys} al contenedor del manejador de la base de datos, presentar los resultados y generar las visualizaciones correspondientes. Como se indicó anteriormente, cada vez que ocurre desde el navegador del cliente una petición de acceso, desde el contenedor \emph{shinyproxy} , se crea una instancia de esta imagen con todos los elementos necesarios para que la \emph{app} funcione. En caso de presentar alguna falla, el sistema es tolerante a los mismos, porque se pueden seguir recibiendo peticiones que replicarían un contenedor nuevo desde la imagen sin afectar al contenedor que presentase el fallo, o viceversa. Desde cada contenedor instanciado de esta imagen se realiza el acceso de lectura al contenedor que contiene \emph{PostgreSQL,} donde reposa la base de datos que contiene los textos ya procesados. La imagen que se usa en este servidor fue definida a medida de las necesidades.
 
   \textbf{Lógica de la aplicación:}
 
@@ -4131,7 +4133,7 @@ A continuación se indican los contenedores que forman parte del Sistema y los p
     \item
       \textbf{Defición query:} Contiene un campo para la entrada de texto con el que se generará el query.- Contiene un selector para indicar si se quiere generar la coocurrencia de palabras- Contiene tablas para seleccionar: 1) Nivel académico del trabajo. Opciones (pregrado, especialización, maestría, doctorado). 2) Facultad o Centro de adscripción. Opciones: 11 Facultades más un centro (CENDES). 3) Nombre del pregrado o postgrado. En total son 412 las opciones. Cada una de las tablas anteriores se actualiza según se vayan seleccionando las relaciones y la disponibilidades. Por ejemplo, al seleccionar pregrado solo se mostrarán los nombres de las carreras de pregrado, pero si se selecciona también el nombre de la Facultad, sólo se mostrarán las carreras de pregrado dentro de la Facultad seleccionada. Para una determinado filtro se permiten selecciones múltiples dando una total flexibilidad al momento de ejecutar los \emph{querys}. El texto del \emph{query} es procesado convirtiéndolo a minúsculas y removiendo signos de puntuación.
     \item
-      \textbf{Selector ``generar coocurrencias'':} es una casilla que sirve para seleccionar si se van a representar los Mapas de Conocimiento o no. Por defecto está desselccionado ya que la representación de los mapas incrementa el tiempo de procesamiento de los datos.
+      \textbf{Selector ``generar coocurrencias'':} es una casilla que sirve para seleccionar si se van a representar los Mapas de Conocimiento o no. Por defecto está desseleccionado ya que la representación de los mapas incrementa el tiempo de procesamiento.
     \item
       \textbf{``Clic'' inspeccionar documento:} al obtener los resultados en una tabla se puede inspeccionar un documento particular para ver el texto resumen y las recomendaciones de documentos similares.
     \item
@@ -4150,14 +4152,14 @@ A continuación se indican los contenedores que forman parte del Sistema y los p
       \textbf{Mapas de Conocimiento dinámico:} Gráfico de coocurrencia interactivo de palabras que se genera mediante la librería de ``VisNetwork\emph{''} . Este gráfico permite distintas interacciones con el usuario como hacer zoom (in-out), seleccionar un determinado nodo, usar las teclas izquierda, derecha, arriba y abajo del teclado, así como también permite seleccionar un arco de unión entre dos palabras coocurrentes. Al realizar la selección se filtran un subconjunto de los documentos que contienen ambas palabras representadas por nodos. Los documentos filtrados se mostrarán en una tabla contigua, también generada en''DT'', donde sólo se incluye el texto resumen de cada trabajo.
     \item
       \textbf{Mapas de Conocimiento Estático:} gráfico de coocurrencias estático de palabras, donde mediante la librería ``ggraph\emph{''} son generados un par de gráficos con distintas granularidades. El primero exhibe la misma coocurrencia de palabras expuesta en el punto con una visualización estática. En cuanto a la granularidad se muestran las palabras que coocurren dentro de todo el resumen independientemente de la proximidad que tengan. El segundo gráfico también muestra la coocurrencia, pero solo de palabras que se encuentran en el texto resumen una seguida de otra representando los resultados con una menor granularidad.Con la librería''UdPipe\emph{``} se generan las estructuras de datos necesarias para generar los grafos (arcos y nodos).
-
-      En el Apéndice \ref{apendicea} se listan los paquetes que usa este contenedor.
     \end{enumerate}
+
+    En el Apéndice se listan los paquetes que usa este contenedor.
   \end{enumerate}
 \item
-  \textbf{``PostgreSQL'':} es el contenedor donde se encuentra el manejador de PostgreSQL versión 16 y en él se almacenan todas las tablas que usa el Sistema. También recae la funcionalidad de generar el ``\texttt{ts\_vector}'', convertir el query a un ``\texttt{ts\_query}'' y mediante la función ``\texttt{ts\_rank}'' reordenar los resultados extraídos con base en un ranking junto con el indexado de las distintas tablas. En el ciclo ``Iteración- Implementación Prototipo'' \ref{desarrollociclos3} se indican más detalles sobre las funciones señaladas. En este contenedor se tiene una imagen de \emph{PostgreSQL} versión 16.1 extraída del ``docker hub'' a la cual no le fue realizada ninguna modificación distinta a la configuración para la definición de usuarios y contraseña junto con la definición de un volumen compartido con el \emph{host} para garantizar que se tengan ``datos persistentes''. Este contenedor recibe consultas del contenedor \textbf{``\emph{S}}\emph{hiny Web App}'' y escritura-lectura desde el contenedor ``R imagen Servicios'' teniendo habilitado el puerto 5432.
+  \textbf{``PostgreSQL'':} es el contenedor donde se encuentra el manejador de PostgreSQL versión 16 y en él se almacenan todas las tablas que usa el Sistema. También recae la funcionalidad de generar el ``\texttt{ts\_vector}'', convertir el query a un ``\texttt{ts\_query}'' y mediante la función ``\texttt{ts\_rank}'' reordenar los resultados extraídos con base en un ranking junto con el indexado de las distintas tablas. En el ciclo ``Iteración- Implementación Prototipo'' \ref{desarrollociclos3} se indican más detalles sobre las funciones señaladas. En este contenedor se instanció desde una imagen de \emph{PostgreSQL} versión 16.1 extraída del ``docker hub'', a la cual no le fue realizada ninguna modificación distinta a la configuración para la definición de usuarios, contraseña y la ruta de un volumen compartido con el \emph{host} para garantizar que se tengan ``datos persistentes''. Este contenedor recibe consultas del contenedor \textbf{``\emph{S}}\emph{hiny Web App}'' y escritura-lectura desde el contenedor ``R imagen Servicios'' teniendo habilitado el puerto 5432.
 \item
-  \textbf{``R Imagen Servicios''}: En este contenedor se creó una imagen con todos los servicios necesarios para realizar el \emph{web crawling}, el procesamientos de textos y la descarga de los archivos desde Saber UCV para realizar la clasificación de las Tesis y demás trabajos. Al iniciar la configuración del Sistema, contiene las funcionalidades que permiten realizar la creación de la base de datos, las tablas y el poblado de estas. Periódicamente es invocado un script mediante un ``cron job'' para realizar los procesos de incorporación de aquellos documentos nuevos que se detecte que están disponibles en Saber UCV. La imagen base que se usa es la del proyecto Rocker \citep{RJ-2017-065:2017}, la cual es una versión ampliamente probada y optimizada por la comunidad de usuarios de R.
+  \textbf{``R Imagen Servicios''}: En este contenedor se creó una imagen con todos los servicios necesarios para realizar el \emph{web crawling}, el procesamientos de textos y la descarga de los archivos desde Saber UCV para realizar la clasificación de las Tesis y demás trabajos. Al iniciar la configuración del Sistema, contiene las funcionalidades que permiten realizar la creación de la base de datos, las tablas y el poblado de estas. Periódicamente es invocado un \emph{script} mediante un ``cron job'' para realizar los procesos de incorporación de aquellos documentos nuevos que se detecte que están disponibles en Saber UCV. La imagen base que se usa es la del proyecto Rocker \citep{RJ-2017-065:2017}, la cual es una versión ampliamente probada y optimizada por la comunidad de usuarios de R.
 
   \textbf{Procesos:}
 
@@ -4174,7 +4176,7 @@ A continuación se indican los contenedores que forman parte del Sistema y los p
     \textbf{Generación de recomendaciones:} se corresponde con detallado en el ``Ciclo Prototipo de SCSU'' en la iteración ``Recomendación de Documentos'', ver \ref{imrecomendacion}.
   \end{enumerate}
 
-  En el Apéndice \ref{apendicea} se listan las librerías que usa este contenedor
+  En el Apéndice se listan las librerías que usa este contenedor
 \item
   \textbf{``Python Spacy'':} Se creó una imagen que contiene un ``Ubuntu 22'' con ``python 3.10'', la librería ``spacy v.3'' y el modelo de Spacy ``es\_core\_news\_lg'' . Su función es que mediante un volumen compartido pueda ser invocado desde el contenedor ``R Imagen Servicios'' para así realizar los procesamientos de NLP descritos.
 \end{enumerate}
@@ -4363,7 +4365,7 @@ Luego de hacer la descarga y procesamiento de los datos se obtuvieron la siguien
 \hypertarget{dcseisapre}{%
 \paragraph{Aprender:}\label{dcseisapre}}
 
-En caso de querer expandir el Sistema a otro tipo de publicaciones o universidades puede resultar de utilidad crear un módulo para la incorporación de estas donde se determine previamente la estructura de las etiquetas \emph{css} o \emph{html} , y posteriomente ser realice el scrapy y la asignación de categorías, no obstante no con este método no se resolvería, en caso de ser necesario, el proceso de tener que realizar clasificacionespor área de conocimiento como se hizo \emph{ad hoc} para Saber UCV.
+En caso de querer expandir el Sistema a otro tipo de publicaciones o universidades puede resultar de utilidad crear un módulo para la incorporación de estas donde se determine previamente la estructura de las etiquetas \emph{css} o \emph{html} , y posteriomente ser realice el \emph{scrapy} y la asignación de categorías, no obstante con este método no se resolvería, en caso de ser necesario, el proceso de tener que realizar clasificaciones por área de conocimiento como se hizo \emph{ad hoc} para Saber UCV.
 
 En los históricos de algunas publicaciones existen atributos que no cumplen con las etiquetas \emph{css} identificadas para hacer la descarga y se presentan algunas fallas, no obstante es para un mínimo de artículos y se considera que sí es viable realizar las incorporaciones bajo el método propuesto.
 
@@ -4374,7 +4376,9 @@ En los históricos de algunas publicaciones existen atributos que no cumplen con
 
 Si bien en el ``Ciclo de Integración de Componentes de Software'' se cumplió con el objetivo general propuesto en esta investigación, en este ciclo se evalúa que el Sistema incorpore la búsqueda semántica \ref{busquedasemantica}.
 
-Los procesos incorporados en este Ciclo se hacen con fines experimentales y no serán sometidos a las distintas pruebas que se efectuarán más adelante, ni tampoco se harán los procesos de ingeniería de software para detallar funcionalidades o modificaciones al ``diagrama entidad relación'', sino se expondrá el método adoptado para añadir al Sistema este tipo de búsqueda que para esta fecha constituye el estado del arte en los sistemas de recuperación de información.
+Los procesos incorporados en este Ciclo se hacen con fines experimentales y no serán sometidos a las distintas pruebas y mediciones a las que sí será sometido más adelante la propuesta de software que se desarrolló en el ciclo ``Integración de Componentes de Software''
+
+Tampoco se aplicarán los distintos métodos de ingeniería de software para esta versión con busqueda semática, sino unicamente se expondrá el método adoptado para añadir al Sistema este tipo de búsqueda, que para la fecha forma parte del ``estado del arte'' en los sistemas de recuperación de información.
 
 \hypertarget{semanespe}{%
 \paragraph{Especulación:}\label{semanespe}}
@@ -4422,18 +4426,20 @@ Para realizar el proceso del ``splitting'' del texto resumen se usaron distintos
 
 Para poder registrar los vectores de \emph{embeddings} y realizar la búsqueda por similaridad en el gestor de base de datos PostgreSQL fue necesario añadir la extensión ``pgvector'' \citep{pgvector2023}.
 
-El modelo para crear los\emph{embeddings} es el ``intfloat/multilingual-e5-base'' \citep{wang2022}, alojado en el repositorio de hugging face \citep{e5base}, el cual limita la cantidad de tokens a 512, equivalente a 360 palabras por \emph{embedding} y tiene un tamaño de 768 atributos. Previo a ser seleccionado se hizo una evaluación de otros modelos que tienen la misma funcionalidad como ``dccuchile/bert-base-spanish-wwm-cased'' \citep{canete2020}. El modelo ``e5-base'' presenta la mejor relación entre cantidad de descargas y peso del modelo. Teniendo presente que la cantidad de recursos computacionales que se disponen para hacer el \emph{deploy} de todo el Sistema es limitado se decidió usar este modelo que ocupa aproximadamente 1 GB para estar en producción.
+El modelo usado para crear los \emph{embeddings} es el ``intfloat/multilingual-e5-base'' \citep{wang2022}, alojado en el repositorio de hugging face \citep{e5base}, el cual limita la cantidad de tokens a 512, equivalente a 360 palabras por \emph{embedding} y tiene un tamaño de 768 atributos. Previo a ser seleccionado se hizo una evaluación de otros modelos que tienen la misma funcionalidad como ``dccuchile/bert-base-spanish-wwm-cased'' \citep{canete2020}.
 
-Para hacer los proceso de \emph{reranking} se evaluaron dos modelos que son el ``amberoad/bert-multilingual-passage-reranking-msmarco'' \citep{erankingmsmarco} y el ``IIC/roberta-base-bne-ranker'' \citep{hfranker2023}, siendo seleccionado segundo por presentar un menor peso, tener mayor cantidad de descargas y ayudar a minimizar el consumo de recurso dentro del Sistema.
+El modelo ``e5-base'' presenta la mejor relación entre cantidad de descargas y peso del modelo. Teniendo presente que la cantidad de recursos computacionales que se disponen para hacer el \emph{deploy} de todo el Sistema es limitado, se decidió usar este modelo que ocupa aproximadamente 1 GB de memoria RAM al estar en producción.
 
-Es necesario señalar que los modelos de machine learning evaluados y seleccionados están entrenados para funcionar con textos en el idioma español.
+Para hacer los proceso de \emph{reranking} se evaluaron dos modelos que son el ``amberoad/bert-multilingual-passage-reranking-msmarco'' \citep{erankingmsmarco} y el ``IIC/roberta-base-bne-ranker'' \citep{hfranker2023}, siendo seleccionado segundo por presentar un menor peso, tener mayor cantidad de descargas y ayudar a minimizar el consumo de recursos dentro del sistema.
+
+Es necesario señalar que los modelos de \emph{machine learning} evaluados y seleccionados están entrenados para funcionar con textos en el idioma español.
 
 En la aplicación Shiny se hicieron las modificaciones para hacer el llamado a la API y obtener de ella el listado de id´s de documentos seleccionados y posteriormente añadirlo a la lista de documentos recuperados mediante el método de índice invertido. Con la finalidad de evitar que se dupliquen documentos que sean obtenidos mediante el índice invertido y la búsqueda semántica se procedió a remover los documentos repetidos. Igualmente en la interfaz de usuario en la tabla que muestra los resultados se añadió una columna para señalar el método con el que fue recuperado el documento.
 
 \hypertarget{semanapre}{%
 \paragraph{Aprender:}\label{semanapre}}
 
-Usar la ``búsqueda semántica'' amplia considerablemente las posibilidades de obtener documentos que resulten de interés para el investigador, ya que no sólo se queda circunscrita la recuperación de información a términos exactos, sino se extraen documentos que pueden estar altamente relacionados al tema de búsqueda. En la figura se presentan los resultados ante el texto ``problemas que enfrentan las mujeres''.
+Usar la ``búsqueda semántica'' amplia considerablemente las posibilidades de obtener documentos que resulten de interés para el investigador, ya que no sólo se queda circunscrita la recuperación de información a términos exactos, sino se extraen documentos que pueden estar altamente relacionados al tema de búsqueda. En la figura se presentan los resultados del \emph{query} ``problemas que enfrentan las mujeres''.
 
 \begin{figure}
 
@@ -4444,15 +4450,17 @@ Usar la ``búsqueda semántica'' amplia considerablemente las posibilidades de o
 \caption{Resultados de Búsqueda Semántica}\label{fig:resultsemantico}
 \end{figure}
 
-En este query se extrajeron 25 documentos y sino se hubiese usado esta técnica hubiesen ascendido a solo 5 los documentos extraídos.
+En este \emph{query} se extrajeron 25 documentos y sino se hubiese usado esta técnica solo 5 los hubiesen sido extraídos.
 
-Un elemento a tener en cuenta es que la búsqueda semántica y la ejecución del reranking, incrementa considerablemente el tiempo de ejecución del \emph{query}, no obstante, es necesario señalar que el método que implementa postrgreSQL para hacer la comparación vectorial no es parte del estado del arte en la materia.
+Un elemento a tener en cuenta es que la búsqueda semántica y la ejecución del \emph{reranking}, incrementa considerablemente el tiempo de ejecución del \emph{query}, sin embarfo, es necesario señalar que el método que implementa postrgreSQL para hacer la comparación vectorial no es parte del ``estado del arte'' en la materia.
 
 El uso de postgreSQL para hacer el proceso se hizo para simplificar la instalación de componentes adicionales dentro del Sistema, pero en caso de ser adoptada la búsqueda semántica en otra versión del SCSU, es necesario encontrar métodos que proporcionen un mejor desempeño en lo referente a los tiempos de ejecución del \emph{query}.
 
 En esta implementación se evaluaron algunos modelos para crear los \emph{embeddings} sin entrar en consideración sobre cuáles presentan mejores resultados al evaluar la relevancia de los documentos extraídos. Este es un punto en que en futuras investigaciones es necesario ahondar para comparar cuáles pueden ser de mayor utilidad.
 
 Igualmente es necesario en futuros trabajos establecer un umbral de similitud o cantidad de documentos a recuperar, óptimo, ya que al no hacerlo y simplemente reordenar los documentos por similitud, se extraerá todo el Corpus y se afectará directamente las métricas de precisión y exactitud (recall).
+
+Otro aspecto que resulta factible es someter todos los resultados obtenidos en la búsqueda, tanto los obtenidos por el método de ``full text search'', como los recuperados por ``búsqueda semántica'', a un proceso de ``reranking'' mediante el modelo mostrado. La tendencia de incorporar ambos métodos de búsqueda se denomina ``Búsqueda Híbrida''.
 
 \newpage
 
@@ -4468,7 +4476,9 @@ En esta sección, se muestran los resultados de las distintas pruebas que fueron
 
 Las Pruebas Funcionales constituyen la columna vertebral en la validación del software, evaluando su comportamiento según los requisitos que fueron especificados.
 
-En la tabla \ref{tab:tablapruebasa} se muestran las pruebas de caja negra realizadas para evaluar si el Sistema se comporta según lo que fue definido para cada caso de uso sin evaluar los procesos, sino en de una forma concreta si la salida creada por el Sistema se corresponde a lo descrito en los Casos de Uso del ``Ciclo Integración de Componentes de Software'' \ref{desarrollociclos4}. En la tabla \ref{tab:tablapruebasb} se muestran las pruebas de caja negra realizadas para evaluar si el Sistema cumple con todos los requerimientos funcionales también definidos en Ciclo precitado.
+En la tabla \ref{tab:tablapruebasa} se muestran las pruebas de caja negra realizadas para evaluar si el Sistema se comporta según lo que fue definido para cada caso de uso sin evaluar los procesos, sino en de una forma concreta si la salida creada por el Sistema se corresponde a lo descrito en los ``Casos de Uso'' del ``Ciclo Integración de Componentes de Software'' \ref{desarrollociclos4}.
+
+En la tabla \ref{tab:tablapruebasb} se muestran las pruebas de caja negra realizadas para evaluar si el Sistema cumple con todos los requerimientos funcionales también definidos en Ciclo precitado.
 
 \newpage
 
@@ -4665,18 +4675,22 @@ En la tabla \ref{tab:tablapruebasa} se muestran las pruebas de caja negra realiz
 \hypertarget{rendimiento}{%
 \subsection{Rendimiento:}\label{rendimiento}}
 
-La primera prueba de rendimiento que se realizó fue mediante la librería Shinytest \citep{shinytest}, la cual está diseñada para facilitar a los desarrolladores verificar el comportamiento de sus aplicaciones de manera sistemática y reproducible mediante pruebas automatizadas en aplicaciones Shiny. Las pruebas se hacen con un driver que simula la interacción del usuario con el sistema definiendo previamente cuáles son los comportamientos que se quieren simular. Igualmente se define en qué momento se quiere tomar una ``snapshot'' para posteriormente evaluar si se adapta al comportamiento esperado.
+La primera prueba de rendimiento que se realizó fue mediante la librería Shinytest \citep{shinytest}, la cual está diseñada para facilitar a los desarrolladores verificar el comportamiento de sus aplicaciones de manera sistemática y reproducible mediante pruebas automatizadas en aplicaciones Shiny. Las pruebas se hacen con un \emph{driver} que simula la interacción del usuario con el sistema, definiendo previamente cuáles son los comportamientos que se quieren simular. Igualmente se define en qué momento se quiere tomar una ``snapshot'' para posteriormente evaluar si se adapta al comportamiento esperado.
 
-Concretamente se evalúo en esta prueba si al hacer una simulación de \emph{query} con cada uno de los textos de los títulos de las investigaciones, se generaba al menos la extracción de un documento, lo cual demostraría que todos los documentos que conforman el Corpus son extraídos. El resultado obtenido fue el esperado con al menos un documento por \emph{query}.
+Concretamente se evalúo haciendo simulaciones de \emph{query} con cada uno de los textos de los títulos de las investigaciones, evaluando que se generará al menos la extracción de un documento ante cada \emph{query}, lo cual demostraría que todos los documentos que conforman el Corpus son extraídos.
 
-La segunda prueba aplicada fue la que se ejecuta con el paquete ``Shinyloadtest'' \citep{shinyloadtest} el cual permite evaluar el rendimiento y la escalabilidad de aplicaciones Shiny ya que permite simular múltiples usuarios interactuando simultáneamente con una aplicación y así evaluar el comportamiento bajo carga. Adicionalmente este paquete genera informes detallados sobre el rendimiento, identificando posibles cuellos de botella y proporcionando métricas clave, como tiempos de respuesta y tasas de error.
+El resultado obtenido fue el esperado con al menos un documento recuperado por \emph{query}.
+
+La segunda prueba aplicada fue la que se ejecuta con el paquete ``Shinyloadtest'' \citep{shinyloadtest} el cual permite evaluar el rendimiento y la escalabilidad de aplicaciones Shiny, al permitir simular múltiples usuarios interactuando simultáneamente con una aplicación y así evaluar el comportamiento bajo carga.
+
+Adicionalmente este paquete genera informes detallados sobre el rendimiento, identificando posibles cuellos de botella y proporcionando métricas clave, como tiempos de respuesta y tasas de error.
 
 Al realizar el shinytest no se detectaron cuellos de botella ni tiempos de carga que estuviesen fuera de lo esperado.
 
 \hypertarget{pruebas-de-usabilidad}{%
 \subsection{Pruebas de Usabilidad:}\label{pruebas-de-usabilidad}}
 
-En estas pruebas se mide que el Sistema adapte criterios de usabilidad:
+En estas pruebas se mide que el Sistema disponga criterios de usabilidad: (texto y contenido pendiente por validar)
 
 \global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
 
@@ -4743,9 +4757,9 @@ En estas pruebas se mide que el Sistema adapte criterios de usabilidad:
 \hypertarget{interacciuxf3n-usuario-sistema}{%
 \subsubsection{Interacción Usuario Sistema:}\label{interacciuxf3n-usuario-sistema}}
 
-Los usuarios tienen un perfil de ser profesores universitarios de la Escuela de Computación o Postgrado de Ciencias de la Computación de la Facultad de Ciencias de la Universidad Central de Venezuela.
+Se hizo una encuesta a cinco usuarios que interactuaron con el SCSU, donde cada uno de estos tiene un perfil de ser profesores universitarios de la Escuela de Computación o Postgrado de Ciencias de la Computación, de la Facultad de Ciencias de la Universidad Central de Venezuela.
 
-A 5 usuarios se les preguntó:
+Se les preguntó:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4763,7 +4777,7 @@ A 5 usuarios se les preguntó:
   ¿Los colores de la interfaz del SCSU resultan agradables? (sí - no).
 \end{enumerate}
 
-Hay preguntas sobre lo intuitivo de la interfaz que se omiten ya que el diseño del Sistema no se considera intuitivo al incorporar funcionalidades como la inspección de los Mapas del Conocimiento.
+Preguntas sobre lo ``intuitivo de la interfaz'' se omitieron en el diseño de la encuesta ya que el diseño no se considera que sea ``intuitivo'' al incorporar funcionalidades como la inspección de los Mapas del Conocimiento.
 
 Los resultados obtenidos son:
 
@@ -4836,7 +4850,7 @@ Los resultados obtenidos para la pregunta ¿Los colores de la interfaz del SCSU 
 \hypertarget{validaciuxf3n-de-las-clasificaciones}{%
 \subsection{Validación de las Clasificaciones:}\label{validaciuxf3n-de-las-clasificaciones}}
 
-Para hacer la validación sobre las Clasificaciones por área de conocimiento y para el nombre del tutor se adoptó la siguiente metodología:
+Para hacer la validación sobre las Clasificaciones por área de conocimiento, aplicación del Algoritmo Smith Waterman y para el nombre del tutor se adoptó la siguiente metodología:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4851,13 +4865,15 @@ Para hacer la validación sobre las Clasificaciones por área de conocimiento y 
 
   \caption{Muestra- Seleccionados por categoría}\label{fig:muestracategoria}
   \end{figure}
+
+  Para validar las clasificaciones realizadas mediante el algoritmo Smith Waterman se selección otra muestra como 17 investigaciones.
 \item
-  \textbf{Validación manual:} Se procede con la muestra a validar manualmente si la clasificación efectuada el nombre del tutor extraído se corresponde con el que aparece en el documento escrito.
+  \textbf{Validación manual:} Se procede con la muestra a validar manualmente si la clasificación efectuada y si el nombre del tutor extraído, se corresponden con el que aparece en el documento digital.
 \item
   \textbf{Calcular Métrica de Evaluación:} para este proceso se adoptó la métrica de exactitud ``accuracy'' que mide la proporción entre la cantidad de número de predicciones correctas dividida entre la cantidad total de instancias.
 \end{enumerate}
 
-El resultado de exactitud obtenido para el proceso de categorización fue \_\_\_, mientras que para la extracción del nombre del tutor fue \_\_\_\_.
+El resultado de exactitud obtenido para el proceso de categorización fue \_\_\_, mientras que para la extracción del nombre del tutor fue \_\_\_\_ y para la aplicación de Smith Waterman fue \_\_\_\_
 
 \hypertarget{pruebas3}{%
 \subsection{Relevancia:}\label{pruebas3}}
@@ -4901,7 +4917,7 @@ Para hacer las mediciones de Relevancia se adoptó el siguiente método:
   \begin{itemize}
   \tightlist
   \item
-    A un grupo de expertos sobre el conjunto de documentos C se les pidió que indicaran para cada consulta, de las 10 definidas, cuáles son los 5 (o un número menor) documentos más relevantes sin tener que hacer algún tipo de \emph{ranking}.
+    A un grupo de expertos, sobre el conjunto de documentos C, se les pidió que indicaran para cada consulta, de las 10 definidas, cuáles son los 5 (o un número menor) documentos más relevantes. Observación: no se solicitó indicar algún tipo de ranking entre los documentos seleccionados.
   \end{itemize}
 \item
   \textbf{Recopilar Resultados:}
@@ -4909,7 +4925,7 @@ Para hacer las mediciones de Relevancia se adoptó el siguiente método:
   \begin{itemize}
   \tightlist
   \item
-    Para cada consulta evaluada por un experto se comparó si el Sistema introducía dentro de los 10 primeros lugares los cinco (o menos) documentos señalados por el experto. En esta evaluación no se toma en consideración el orden ni del sistema ni de los expertos.
+    Para cada consulta evaluada por un experto se comparó si el Sistema introducía dentro de los 10 primeros lugares los cinco (o menos) documentos señalados por el experto. En esta evaluación no se toma en consideración el orden, ni del sistema ni de los expertos.
   \end{itemize}
 \item
   \textbf{Calcular Métricas de Evaluación:}
@@ -4924,7 +4940,9 @@ Para hacer las mediciones de Relevancia se adoptó el siguiente método:
     \item
       \textbf{Precisión (Precision):} Número de documentos relevantes recuperados dividido por el número total de documentos recuperados.
     \item
-      \textbf{Recall:} Número de documentos relevantes recuperados dividido por el número total de documentos relevantes en la colección.
+      \textbf{Recall (}\emph{exhaustividad})\textbf{:} Número de documentos relevantes recuperados dividido por el número total de documentos relevantes en la colección.
+    \item
+      \textbf{F1:} es una medida que combina precisión y exhaustividad en la evaluación de un modelo. Se calcula como la media armónica de precisión y exhaustividad.
     \end{itemize}
   \end{itemize}
 \item
@@ -4950,7 +4968,7 @@ Los resultados obtenidos fueron:
   \textbf{F1}:
 \end{itemize}
 
-Las cifras obtenidas indican que el desempeño del Sistema \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+Las cifras obtenidas indican que el desempeño del Sistema \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 Se hizo sobre el subcojunto de trabajos definidos ya que sería imposible abordar las distintas áreas de conocimiento que conforman el Corpus, que se vio que ascienden a --- , y crear la base de dato de documentos relevantes está fuera del alcance de esta investigación.
 
@@ -4961,11 +4979,11 @@ Con esta prueba se da por concluido el Desarrollo de la Solución.
 
 Para sintetizar el trabajo realizado a lo largo de esta investigación, se procede a dividir en tres partes los procesos abordados. Sobre cada uno de ellos se mencionan los elementos más importantes.
 
-En la primera, se hizo la obtención y clasificación de los trabajos de grado que reposan en Saber UCV. El proceso fue complejo al no contar con las etiquetas para realizar la clasificación y encontrar distintos problemas en la extracción y limpieza de los datos, motivado a que se puede considerar, que al realizar la lectura de cada investigación, se termina obteniendo una fuente distinta de datos para cada una, la cual tiene sus propias características, reflejando en gran medida el entorno y las técnicas de trabajo del autor, introduciendo con ello un gran ruido dentro del conjunto de datos y dificultando el proceso de etiquetado. No obstante, con el proceso propuesto e implementado, finalmente se obtuvieron con 454 etiquetas que permitieron clasificar a 9.585 trabajos, con un margen de error estimado en \_\_\_\_\_ \%. El proceso igualmente facilitó extraer 7.969 nombres de tutores, equivalente al 79,8\% de las investigaciones con el margen de error \_\_\_\_\% . De los datos presentados se desprende que el método propuesto es un camino alternativo que se puede adoptar para suplir la carencia de información mencionada, mientras se implementan los mecanismos formales, que acudiendo a la fuente primaria de los datos, permita hacer el vaciado de estos.
+En la primera se hizo la obtención y clasificación de los trabajos de grado que reposan en Saber UCV. El proceso fue complejo efectuarlo al no contar con las etiquetas para realizar la clasificación y encontrar distintos problemas en la extracción y limpieza de los datos, motivado a que se puede considerar, que al realizar la lectura de cada investigación, se termina obteniendo una fuente distinta de datos para cada una, la cual tiene sus propias características, reflejando en gran medida el entorno y las técnicas de trabajo del autor, introduciendo con ello un gran ruido dentro del conjunto de datos y dificultando el proceso de etiquetado. No obstante, con el proceso propuesto e implementado, finalmente se obtuvieron con 454 etiquetas que permitieron clasificar a 9.585 trabajos, con un margen de error estimado en \_\_\_\_\_ \%. El proceso igualmente facilitó extraer 7.969 nombres de tutores, equivalente al 79,8\% de las investigaciones con el margen de error \_\_\_\_\% . De los datos presentados se desprende que el método propuesto es un camino alternativo que se puede adoptar para suplir la carencia de información mencionada, mientras se implementan los mecanismos formales, que acudiendo a la fuente primaria de los datos, permita hacer el vaciado de estos.
 
-En la segunda parte de esta investigación se muestra como se puede disponer de un Sistema de Recuperación de Información que integre la búsqueda mediante el ``índice invertido'', el ``rerank'' mediante la frecuencia y cercanía de las palabras, y la representación de los resultados mediante técnicas de procesamiento del lenguaje natural, todo esto dentro de una aplicación interactiva que enriquece la experiencia del usuario y aporta distintas herramientas para el investigador que inspecciona el Corpus conformado. El Sistema propuesto se pudo implementar y tener en producción, y si bien no está diseñado para suplir a Saber UCV, se muestra, tal cual como fue diseñado, como un complemento al repositorio ya que la aplicación web propuesta, por ejemplo, no sirve para que los buscadores puedan indexar los documentos que la componen, lo cual impide que este tipo de sistema tenga un alcance mayor al mencionado.
+En la segunda parte de esta investigación se muestra como se puede disponer de un Sistema de Recuperación de Información que integre la búsqueda mediante el ``índice invertido'', el ``rerank'' mediante la frecuencia y cercanía de las palabras, y la representación de los resultados mediante técnicas de procesamiento del lenguaje natural, todo esto dentro de una aplicación interactiva que enriquece la experiencia del usuario y aporta distintas herramientas para el investigador que inspecciona el Corpus conformado y obtiene recomendaciones de documentos que puedan resultar de interés. El Sistema propuesto se pudo implementar y tener en producción, y si bien no está diseñado para suplir a Saber UCV, se muestra, tal cual como fue diseñado, como un complemento al repositorio ya que la aplicación web propuesta, por ejemplo, no sirve para que los buscadores puedan indexar los documentos que la componen, lo cual impide que este tipo de sistema tenga un alcance mayor al mencionado.
 
-En la tercera fase, que sólo abarcó un proceso exploratorio, se asoma el incremento en el potencial de recuperación de información que se asocia al uso de \emph{embeddings.} Los resultados obtenidos muestran cómo se expanden las capacidades de búsqueda cuando se crea una base de datos vectorial, donde se cada porción de texto de un resumen es representada como un vector que refleja de una forma bastante aproximada el significado de cada trozo. Sin embargo es necesario tener presente que el uso de esta tecnología incrementa sustancialmente el uso de recursos computacionales y por ende el costo de implementación. Estas restricciones impidieron que este modelo de recuperación de información pudiese ser probado en un entorno de producción y sólo se hizo de forma local.
+En la tercera fase, que sólo abarcó un proceso exploratorio, se asoma el incremento en el potencial de recuperación de información que se asocia al uso de \emph{embeddings.} Los resultados obtenidos muestran cómo se expanden las capacidades de búsqueda cuando se crea una base de datos vectorial, donde se cada porción de texto del ``resumen'' es representada como un vector que refleja de una forma bastante aproximada el significado de cada trozo. Sin embargo es necesario tener presente que el uso de esta tecnología incrementa sustancialmente el uso de recursos computacionales y por ende el costo de implementación. Estas restricciones impidieron que este modelo de recuperación de información pudiese ser probado en un entorno de producción y sólo se hizo de forma local.
 
 \hypertarget{conclusionescontri}{%
 \section{Contribución:}\label{conclusionescontri}}
@@ -4992,20 +5010,22 @@ La investigación que se presentó en este Trabajo de Grado deja grandes inquiet
 \item
   Incorporar otros saberes (Universidad de los Andes, Universidad de Carabobo, Universidad Católica) u otros repositorios, a un sistema similar al propuesto, para así poder contar con un repositorio unificado donde se integren las distintas investigaciones que son realizadas a nivel nacional.
 \item
-  Distribuir mediante técnicas de ``map reduce'' los datos en un sistema distribuido y paralelo para evaluar métodos que permitan mejorar los tiempos de búsqueda, sobre todo en caso de que se contase con más documentos.
+  Distribuir mediante técnicas de ``map reduce'' los datos en un sistema distribuido y paralelo, para evaluar métodos que permitan mejorar los tiempos de búsqueda, sobre todo en caso de que se contase con más documentos.
 \item
   Mediante el uso de \emph{embeddings}:
 
   \begin{enumerate}
   \def\labelenumii{\arabic{enumii}.}
   \item
+    Incorporar todos los textos de las investigaciones a una base de datos vectorial.
+  \item
     Integrar ``Largos Modelos del Lenguaje'' dentro de una segunda versión del SCSU en un módulo de ``preguntas y respuesta'', donde el usuario mediante el uso del lenguaje natural, pueda realizar preguntas a los conocimientos abordados en los documentos que conformen el corpus.
   \item
-    Usar los corpus que se obtengan para realizar el sobre entrenamiento (\emph{fine tunning}) de ``Largos Modelos de Lenguaje'' y así lograr que estos sean adaptados a las necesidades de dominios específicos de conocimiento de una determinada comunidad de investigadores.
+    Usar el corpus generado para realizar el sobre entrenamiento (\emph{fine tunning}) de ``Largos Modelos de Lenguaje'' y así lograr que estos sean adaptados a las necesidades de dominios específicos de conocimiento de una determinada comunidad de investigadores.
   \item
-    Mejorar la representación de los ``Mapas de Conocimiento'' mediante representaciones más elaboradas de los conceptos que son abordados en las investigaciones que conforman el corpus.
+    Mejorar los ``Mapas de Conocimiento'' mediante representaciones más elaboradas de los conceptos.
   \item
-    Evaluar distintos modelos de aprendizaje automático para realizar el \emph{rerank} a los resultados obtenidos en un \emph{query}.
+    Evaluar distintos modelos de aprendizaje automático para realizar el \emph{rerank} a los resultados obtenidos en un \emph{query} bajo el modelo de búsqueda híbrida.
   \item
     Evaluar distintos modelos de generación de \emph{embeddings} para evaluar el comportamiento en el proceso de recuperación de información, incluso usando modelos que están entrenados sobre áreas de conocimiento específicas, como lo es ``SciBERT'' \citep{beltagy2019}.
   \item
@@ -5013,13 +5033,14 @@ La investigación que se presentó en este Trabajo de Grado deja grandes inquiet
   \end{enumerate}
 \end{enumerate}
 
-\hypertarget{apendicea}{%
-\chapter{Apéndice: Librerías usadas y créditos}\label{apendicea}}
+\hypertarget{apuxe9ndice-libreruxedas-usadas-y-cruxe9ditos}{%
+\chapter*{Apéndice: Librerías usadas y créditos}\label{apuxe9ndice-libreruxedas-usadas-y-cruxe9ditos}}
+\addcontentsline{toc}{chapter}{Apéndice: Librerías usadas y créditos}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Las librerías de R que usa la aplicación web son :
+  Las librerías de R que usa la aplicación web son:
 
   \begin{enumerate}
   \def\labelenumii{\arabic{enumii}.}

@@ -1,6 +1,6 @@
-# Apéndice: Librerías usadas y créditos {#apendicea}
+# Apéndice: Librerías usadas y créditos {.unnumbered}
 
-1.  Las librerías de R que usa la aplicación web son :
+1.  Las librerías de R que usa la aplicación web son:
 
     1.  **shinydashboard**: sirve para gener un formato de *dashboard* en la aplicación [@shinydashboard].
 

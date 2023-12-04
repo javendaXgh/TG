@@ -57,3 +57,11 @@ es necesario indicar este texto?: "La literatura en este tema siempre especifica
 -   Filtrar stopwords previo a recomendación
 
 -   Crear una versión simplificada de la app con datos locales, filtrar palabras. Evaluar pesos de las tablas. Igualmente para ver categorías
+
+-   Realizar shinytest
+
+-   Revisar nombre de apéndice
+
+-   Revisar concepto en Pruebas de Usabilidad:
+
+-   Revisar concepto en Interacción Usuario Sistema:

@@ -23,7 +23,7 @@
 <meta name="author" content="José Miguel Avendaño Infante" />
 
 
-<meta name="date" content="2023-12-02" />
+<meta name="date" content="2023-12-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="desarrollo.html"/>
-<link rel="next" href="apendicea.html"/>
+<link rel="next" href="apéndice-librerías-usadas-y-créditos.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -272,7 +272,7 @@ div.csl-indent {
 <li class="chapter" data-level="5.1" data-path="conclusiones.html"><a href="conclusiones.html#conclusionescontri"><i class="fa fa-check"></i><b>5.1</b> Contribución:</a></li>
 <li class="chapter" data-level="5.2" data-path="conclusiones.html"><a href="conclusiones.html#conclusionestrabafutu"><i class="fa fa-check"></i><b>5.2</b> Trabajos Futuros:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="apendicea.html"><a href="apendicea.html"><i class="fa fa-check"></i><b>6</b> Apéndice: Librerías usadas y créditos</a></li>
+<li class="chapter" data-level="" data-path="apéndice-librerías-usadas-y-créditos.html"><a href="apéndice-librerías-usadas-y-créditos.html"><i class="fa fa-check"></i>Apéndice: Librerías usadas y créditos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
 
@@ -296,9 +296,9 @@ div.csl-indent {
 <div id="conclusiones" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Capítulo 5</span> Conclusiones:<a href="conclusiones.html#conclusiones" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Para sintetizar el trabajo realizado a lo largo de esta investigación, se procede a dividir en tres partes los procesos abordados. Sobre cada uno de ellos se mencionan los elementos más importantes.</p>
-<p>En la primera, se hizo la obtención y clasificación de los trabajos de grado que reposan en Saber UCV. El proceso fue complejo al no contar con las etiquetas para realizar la clasificación y encontrar distintos problemas en la extracción y limpieza de los datos, motivado a que se puede considerar, que al realizar la lectura de cada investigación, se termina obteniendo una fuente distinta de datos para cada una, la cual tiene sus propias características, reflejando en gran medida el entorno y las técnicas de trabajo del autor, introduciendo con ello un gran ruido dentro del conjunto de datos y dificultando el proceso de etiquetado. No obstante, con el proceso propuesto e implementado, finalmente se obtuvieron con 454 etiquetas que permitieron clasificar a 9.585 trabajos, con un margen de error estimado en _____ %. El proceso igualmente facilitó extraer 7.969 nombres de tutores, equivalente al 79,8% de las investigaciones con el margen de error ____% . De los datos presentados se desprende que el método propuesto es un camino alternativo que se puede adoptar para suplir la carencia de información mencionada, mientras se implementan los mecanismos formales, que acudiendo a la fuente primaria de los datos, permita hacer el vaciado de estos.</p>
-<p>En la segunda parte de esta investigación se muestra como se puede disponer de un Sistema de Recuperación de Información que integre la búsqueda mediante el “índice invertido”, el “rerank” mediante la frecuencia y cercanía de las palabras, y la representación de los resultados mediante técnicas de procesamiento del lenguaje natural, todo esto dentro de una aplicación interactiva que enriquece la experiencia del usuario y aporta distintas herramientas para el investigador que inspecciona el Corpus conformado. El Sistema propuesto se pudo implementar y tener en producción, y si bien no está diseñado para suplir a Saber UCV, se muestra, tal cual como fue diseñado, como un complemento al repositorio ya que la aplicación web propuesta, por ejemplo, no sirve para que los buscadores puedan indexar los documentos que la componen, lo cual impide que este tipo de sistema tenga un alcance mayor al mencionado.</p>
-<p>En la tercera fase, que sólo abarcó un proceso exploratorio, se asoma el incremento en el potencial de recuperación de información que se asocia al uso de <em>embeddings.</em> Los resultados obtenidos muestran cómo se expanden las capacidades de búsqueda cuando se crea una base de datos vectorial, donde se cada porción de texto de un resumen es representada como un vector que refleja de una forma bastante aproximada el significado de cada trozo. Sin embargo es necesario tener presente que el uso de esta tecnología incrementa sustancialmente el uso de recursos computacionales y por ende el costo de implementación. Estas restricciones impidieron que este modelo de recuperación de información pudiese ser probado en un entorno de producción y sólo se hizo de forma local.</p>
+<p>En la primera se hizo la obtención y clasificación de los trabajos de grado que reposan en Saber UCV. El proceso fue complejo efectuarlo al no contar con las etiquetas para realizar la clasificación y encontrar distintos problemas en la extracción y limpieza de los datos, motivado a que se puede considerar, que al realizar la lectura de cada investigación, se termina obteniendo una fuente distinta de datos para cada una, la cual tiene sus propias características, reflejando en gran medida el entorno y las técnicas de trabajo del autor, introduciendo con ello un gran ruido dentro del conjunto de datos y dificultando el proceso de etiquetado. No obstante, con el proceso propuesto e implementado, finalmente se obtuvieron con 454 etiquetas que permitieron clasificar a 9.585 trabajos, con un margen de error estimado en _____ %. El proceso igualmente facilitó extraer 7.969 nombres de tutores, equivalente al 79,8% de las investigaciones con el margen de error ____% . De los datos presentados se desprende que el método propuesto es un camino alternativo que se puede adoptar para suplir la carencia de información mencionada, mientras se implementan los mecanismos formales, que acudiendo a la fuente primaria de los datos, permita hacer el vaciado de estos.</p>
+<p>En la segunda parte de esta investigación se muestra como se puede disponer de un Sistema de Recuperación de Información que integre la búsqueda mediante el “índice invertido”, el “rerank” mediante la frecuencia y cercanía de las palabras, y la representación de los resultados mediante técnicas de procesamiento del lenguaje natural, todo esto dentro de una aplicación interactiva que enriquece la experiencia del usuario y aporta distintas herramientas para el investigador que inspecciona el Corpus conformado y obtiene recomendaciones de documentos que puedan resultar de interés. El Sistema propuesto se pudo implementar y tener en producción, y si bien no está diseñado para suplir a Saber UCV, se muestra, tal cual como fue diseñado, como un complemento al repositorio ya que la aplicación web propuesta, por ejemplo, no sirve para que los buscadores puedan indexar los documentos que la componen, lo cual impide que este tipo de sistema tenga un alcance mayor al mencionado.</p>
+<p>En la tercera fase, que sólo abarcó un proceso exploratorio, se asoma el incremento en el potencial de recuperación de información que se asocia al uso de <em>embeddings.</em> Los resultados obtenidos muestran cómo se expanden las capacidades de búsqueda cuando se crea una base de datos vectorial, donde se cada porción de texto del “resumen” es representada como un vector que refleja de una forma bastante aproximada el significado de cada trozo. Sin embargo es necesario tener presente que el uso de esta tecnología incrementa sustancialmente el uso de recursos computacionales y por ende el costo de implementación. Estas restricciones impidieron que este modelo de recuperación de información pudiese ser probado en un entorno de producción y sólo se hizo de forma local.</p>
 <div id="conclusionescontri" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Contribución:<a href="conclusiones.html#conclusionescontri" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
@@ -313,13 +313,14 @@ div.csl-indent {
 <p>La investigación que se presentó en este Trabajo de Grado deja grandes inquietudes para inspeccionar nuevos métodos que ayudan a la gestión de la investigación. A continuación se muestran algunas de las áreas sobre las cuales se puede ahondar en Trabajos Futuros:</p>
 <ol style="list-style-type: decimal">
 <li><p>Incorporar otros saberes (Universidad de los Andes, Universidad de Carabobo, Universidad Católica) u otros repositorios, a un sistema similar al propuesto, para así poder contar con un repositorio unificado donde se integren las distintas investigaciones que son realizadas a nivel nacional.</p></li>
-<li><p>Distribuir mediante técnicas de “map reduce” los datos en un sistema distribuido y paralelo para evaluar métodos que permitan mejorar los tiempos de búsqueda, sobre todo en caso de que se contase con más documentos.</p></li>
+<li><p>Distribuir mediante técnicas de “map reduce” los datos en un sistema distribuido y paralelo, para evaluar métodos que permitan mejorar los tiempos de búsqueda, sobre todo en caso de que se contase con más documentos.</p></li>
 <li><p>Mediante el uso de <em>embeddings</em>:</p>
 <ol style="list-style-type: decimal">
+<li><p>Incorporar todos los textos de las investigaciones a una base de datos vectorial.</p></li>
 <li><p>Integrar “Largos Modelos del Lenguaje” dentro de una segunda versión del SCSU en un módulo de “preguntas y respuesta”, donde el usuario mediante el uso del lenguaje natural, pueda realizar preguntas a los conocimientos abordados en los documentos que conformen el corpus.</p></li>
-<li><p>Usar los corpus que se obtengan para realizar el sobre entrenamiento (<em>fine tunning</em>) de “Largos Modelos de Lenguaje” y así lograr que estos sean adaptados a las necesidades de dominios específicos de conocimiento de una determinada comunidad de investigadores.</p></li>
-<li><p>Mejorar la representación de los “Mapas de Conocimiento” mediante representaciones más elaboradas de los conceptos que son abordados en las investigaciones que conforman el corpus.</p></li>
-<li><p>Evaluar distintos modelos de aprendizaje automático para realizar el <em>rerank</em> a los resultados obtenidos en un <em>query</em>.</p></li>
+<li><p>Usar el corpus generado para realizar el sobre entrenamiento (<em>fine tunning</em>) de “Largos Modelos de Lenguaje” y así lograr que estos sean adaptados a las necesidades de dominios específicos de conocimiento de una determinada comunidad de investigadores.</p></li>
+<li><p>Mejorar los “Mapas de Conocimiento” mediante representaciones más elaboradas de los conceptos.</p></li>
+<li><p>Evaluar distintos modelos de aprendizaje automático para realizar el <em>rerank</em> a los resultados obtenidos en un <em>query</em> bajo el modelo de búsqueda híbrida.</p></li>
 <li><p>Evaluar distintos modelos de generación de <em>embeddings</em> para evaluar el comportamiento en el proceso de recuperación de información, incluso usando modelos que están entrenados sobre áreas de conocimiento específicas, como lo es “SciBERT” <span class="citation">(<a href="#ref-beltagy2019">Beltagy, Lo, y Cohan 2019</a>)</span>.</p></li>
 <li><p>Usar distintos métodos para medición de similitud, como el de vecinos cercanos (KNN) <span class="citation">(<a href="#ref-annoy2023">Bernhardsson 2023</a>)</span> o de máquinas de soporte vectorial (SVM) <span class="citation">(<a href="#ref-svm2023">Karpathy 2023</a>)</span>.</p></li>
 </ol></li>
@@ -345,7 +346,7 @@ Karpathy, Andrej. 2023. <span>«Lookups on Embeddings»</span>. <a href="https:/
         </div>
       </div>
 <a href="desarrollo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="apendicea.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="apéndice-librerías-usadas-y-créditos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

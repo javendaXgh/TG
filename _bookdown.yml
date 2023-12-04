@@ -13,8 +13,8 @@ language:
     def: 'Definicion '
     exm: 'Ejemplo '
     exr: 'Ejercicio '
-    hyp: 'Hipotesis '
-    proof: 'Pueba. '
+    hyp: 'Hipótesis '
+    proof: 'Prueba. '
     remark: 'Remark. '
     solution: 'Solución. '
   ui:
