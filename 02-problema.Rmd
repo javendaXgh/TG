@@ -86,7 +86,7 @@ Adicionalmente, el Sistema ofrece recomendaciones de documentos que presentan si
 
 La solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV y se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura "modelo-vista-controlador".
 
-En la figura \@ref(fig:arquitecturasri) se muestra un diagrama con la arquitectura del SCSU. (falta adaptarlo-pequeños cambios).
+En la figura \@ref(fig:arquitecturasri) se muestra un diagrama con la arquitectura MVC propuesta para el SCSU.
 
 ```{r, arquitecturasri, echo=FALSE, out.width='90%',fig.cap='Arquitectura del Sistema',fig.align='center'}
 knitr::include_graphics("images/05-desarrollo/MVC9.png")
@@ -98,17 +98,17 @@ Con esta Investigación se implementa un método que permite subsanar la falta d
 
 ### Objetivo General: {#objegeneral}
 
-Implementar un Sistema que realice procesos de recuperación de información (*information retrieval*), extracción y clasificación de los textos académicos alojados en el Repositorio Saber UCV, empleando técnicas de procesamiento de lenguaje natural, de minería de texto y modelos de lenguaje preentrenados de inteligencia artificial.
+Implementar un Sistema que realice procesos de recuperación de información (*information retrieval*), extracción y clasificación sobre el cien por ciento de los textos académicos alojados en el Repositorio Saber UCV, empleando técnicas de procesamiento de lenguaje natural, de minería de texto y modelos de lenguaje preentrenados de inteligencia artificial.
 
 ### Objetivos Específicos: {#objeespe}
 
-1.  Conformar un corpus con los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado, maestría y otros documentos alojados en SABER.UCV.
+1.  Conformar un corpus que contenga el cien por ciento de los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado, maestría y otros documentos alojados en SABER.UCV.
 
-2.  Clasificar los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer el nombre completo del tutor.
+2.  Clasificar al menos el noventa por ciento de los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer en el 80 por ciento de los documentos el nombre completo del tutor.
 
 3.  Crear una aplicación web que permita realizar las "búsquedas de texto completo" o "búsqueda semántica" sobre el corpus conformado donde se establezcan criterios de relevancia para presentar los resultados de la búsqueda y se representen los "Mapas de Conocimiento".
 
-4.  Generar recomendaciones de investigaciones que presenten similitud con los documentos recuperados por el Sistema.
+4.  Generar cinco recomendaciones de investigaciones que presenten similitud con cada documento recuperado por el Sistema.
 
 ## Aportes: {#aporte}
 

@@ -173,10 +173,12 @@ desarrollociclos6
 dcseisespe
 dcseiscola
 dcseisapre
+objetivos-alcanzados-3
 desasarrollociclos5
 semanespe
 semancola
 semanapre
+objetivos-alcanzados-4
 pruebas
 pruebas1
 rendimiento

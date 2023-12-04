@@ -830,6 +830,8 @@ knitr::include_graphics("images/05-desarrollo/2_ciclo/similitud_reco2.png")
 
 Es necesario señalar que el método adaptado no es se considera que esté dentro del "Estado del Arte" para realizar recomendaciones, no obstante, se hace la evaluación de este recurso dentro del SCSU, al ser de sencilla implementación, cálculos rápidos, robustos que no consumen mayores recursos computacionales, los cuales quedan disponibles para otras tareas que ejecuta el SCSU.
 
+Objetivos
+
 #### Iteración- Implementación Prototipo: {#iterbol}
 
 En esta iteración se hace el desarrollo del Prototipo de un "Sistema de Recuperación de Información" que servirá de base para probar distintas funcionalidades con las cuales contará el Sistema Complementario Saber UCV. En particular se hace el Prototipo de la aplicación web, mediante el uso del framework Shiny y se establecen los casos de uso, para que el usuario pueda realizar procesos de búsqueda, sobre el corpus anotado que se conformó en la iteración anterior \@ref(iternlp).
@@ -1130,7 +1132,7 @@ Realizar el etiquetado de las partes del discurso, previamente a realizar la sel
 
 3.  Contar con almacenamiento persistente para los datos.
 
-4.  Con los textos del Corpus generar recomendaciones de documentos que sean similares a una determinada investigación.
+4.  Con los textos del Corpus generar recomendaciones de documentos que sean similares a una determinada investigación acorde al Objetivo Específico número 4, ver \@ref(objeespe).
 
 \newpage
 
@@ -2402,7 +2404,7 @@ La utilidad de esta integración también representa en que se cuenta con un *fr
 
 Como la cantidad de ciclos e iteraciones ejecutados previamente había sido extenso, en esta Ciclo, más allá del reto de la integración y evaluación de componentes, no fue de distinta índole el aprendizaje adquirido, sin embargo se decidió incorporar en la interfaz del usuario un gráfico que muestre la frecuencia de aparición de *query* en el tiempo así como una representación estática de los "mapas de conocimiento" ya que en esta versión se presenta con una mejor perspectiva la coocurrencia de términos, a diferencia de la versión interactiva que está diseñada para inspeccionar en detalle una determinada aparición de términos.
 
-###### Objetivos alcanzados:
+#### Objetivos alcanzados:
 
 -   Se implementó el Sistema que cumple con el Objetivo General \@ref(objegeneral).
 
@@ -2453,6 +2455,12 @@ Luego de hacer la descarga y procesamiento de los datos se obtuvieron la siguien
 En caso de querer expandir el Sistema a otro tipo de publicaciones o universidades puede resultar de utilidad crear un módulo para la incorporación de estas donde se determine previamente la estructura de las etiquetas *css* o *html* , y posteriomente ser realice el *scrapy* y la asignación de categorías, no obstante con este método no se resolvería, en caso de ser necesario, el proceso de tener que realizar clasificaciones por área de conocimiento como se hizo *ad hoc* para Saber UCV.
 
 En los históricos de algunas publicaciones existen atributos que no cumplen con las etiquetas *css* identificadas para hacer la descarga y se presentan algunas fallas, no obstante es para un mínimo de artículos y se considera que sí es viable realizar las incorporaciones bajo el método propuesto.
+
+#### Objetivos Alcanzados:
+
+-   Se demuestra que es viable expandir el SCSU para incorporar otro tipo de publicaciones de investigación distintas a las tesis y trabajos de grado.
+
+-   Se demuestra que es posible incorporar documentos de repositorios distintos a Saber UCV
 
 \newpage
 
@@ -2529,6 +2537,10 @@ En esta implementación se evaluaron algunos modelos para crear los *embeddings*
 Igualmente es necesario en futuros trabajos establecer un umbral de similitud o cantidad de documentos a recuperar, óptimo, ya que al no hacerlo y simplemente reordenar los documentos por similitud, se extraerá todo el Corpus y se afectará directamente las métricas de precisión y exactitud (recall).
 
 Otro aspecto que resulta factible es someter todos los resultados obtenidos en la búsqueda, tanto los obtenidos por el método de "full text search", como los recuperados por "búsqueda semántica", a un proceso de "reranking" mediante el modelo mostrado. La tendencia de incorporar ambos métodos de búsqueda se denomina "Búsqueda Híbrida".
+
+#### Objetivos Alcanzados:
+
+-   Integrar la "búsqueda semántica" dentro del SCSU.
 
 \newpage
 

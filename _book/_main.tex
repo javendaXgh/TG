@@ -422,7 +422,7 @@ Adicionalmente, el Sistema ofrece recomendaciones de documentos que presentan si
 
 La solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV y se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura ``modelo-vista-controlador''.
 
-En la figura \ref{fig:arquitecturasri} se muestra un diagrama con la arquitectura del SCSU. (falta adaptarlo-pequeños cambios).
+En la figura \ref{fig:arquitecturasri} se muestra un diagrama con la arquitectura MVC propuesta para el SCSU.
 
 \begin{figure}
 
@@ -441,7 +441,7 @@ Con esta Investigación se implementa un método que permite subsanar la falta d
 \hypertarget{objegeneral}{%
 \subsection{Objetivo General:}\label{objegeneral}}
 
-Implementar un Sistema que realice procesos de recuperación de información (\emph{information retrieval}), extracción y clasificación de los textos académicos alojados en el Repositorio Saber UCV, empleando técnicas de procesamiento de lenguaje natural, de minería de texto y modelos de lenguaje preentrenados de inteligencia artificial.
+Implementar un Sistema que realice procesos de recuperación de información (\emph{information retrieval}), extracción y clasificación sobre el cien por ciento de los textos académicos alojados en el Repositorio Saber UCV, empleando técnicas de procesamiento de lenguaje natural, de minería de texto y modelos de lenguaje preentrenados de inteligencia artificial.
 
 \hypertarget{objeespe}{%
 \subsection{Objetivos Específicos:}\label{objeespe}}
@@ -449,13 +449,13 @@ Implementar un Sistema que realice procesos de recuperación de información (\e
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Conformar un corpus con los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado, maestría y otros documentos alojados en SABER.UCV.
+  Conformar un corpus que contenga el cien por ciento de los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado, maestría y otros documentos alojados en SABER.UCV.
 \item
-  Clasificar los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer el nombre completo del tutor.
+  Clasificar al menos el noventa por ciento de los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer en el 80 por ciento de los documentos el nombre completo del tutor.
 \item
   Crear una aplicación web que permita realizar las ``búsquedas de texto completo'' o ``búsqueda semántica'' sobre el corpus conformado donde se establezcan criterios de relevancia para presentar los resultados de la búsqueda y se representen los ``Mapas de Conocimiento''.
 \item
-  Generar recomendaciones de investigaciones que presenten similitud con los documentos recuperados por el Sistema.
+  Generar cinco recomendaciones de investigaciones que presenten similitud con cada documento recuperado por el Sistema.
 \end{enumerate}
 
 \hypertarget{aporte}{%
@@ -1917,6 +1917,8 @@ Se realizó un proceso iterativo para calcular la similitud coseno entre documen
 
 Es necesario señalar que el método adaptado no es se considera que esté dentro del ``Estado del Arte'' para realizar recomendaciones, no obstante, se hace la evaluación de este recurso dentro del SCSU, al ser de sencilla implementación, cálculos rápidos, robustos que no consumen mayores recursos computacionales, los cuales quedan disponibles para otras tareas que ejecuta el SCSU.
 
+Objetivos
+
 \hypertarget{iterbol}{%
 \subsubsection{Iteración- Implementación Prototipo:}\label{iterbol}}
 
@@ -2327,7 +2329,7 @@ Realizar el etiquetado de las partes del discurso, previamente a realizar la sel
 \item
   Contar con almacenamiento persistente para los datos.
 \item
-  Con los textos del Corpus generar recomendaciones de documentos que sean similares a una determinada investigación.
+  Con los textos del Corpus generar recomendaciones de documentos que sean similares a una determinada investigación acorde al Objetivo Específico número 4, ver \ref{objeespe}.
 \end{enumerate}
 
 \newpage
@@ -4304,7 +4306,7 @@ La utilidad de esta integración también representa en que se cuenta con un \em
 Como la cantidad de ciclos e iteraciones ejecutados previamente había sido extenso, en esta Ciclo, más allá del reto de la integración y evaluación de componentes, no fue de distinta índole el aprendizaje adquirido, sin embargo se decidió incorporar en la interfaz del usuario un gráfico que muestre la frecuencia de aparición de \emph{query} en el tiempo así como una representación estática de los ``mapas de conocimiento'' ya que en esta versión se presenta con una mejor perspectiva la coocurrencia de términos, a diferencia de la versión interactiva que está diseñada para inspeccionar en detalle una determinada aparición de términos.
 
 \hypertarget{objetivos-alcanzados-2}{%
-\subparagraph{Objetivos alcanzados:}\label{objetivos-alcanzados-2}}
+\subsubsection{Objetivos alcanzados:}\label{objetivos-alcanzados-2}}
 
 \begin{itemize}
 \item
@@ -4368,6 +4370,16 @@ Luego de hacer la descarga y procesamiento de los datos se obtuvieron la siguien
 En caso de querer expandir el Sistema a otro tipo de publicaciones o universidades puede resultar de utilidad crear un módulo para la incorporación de estas donde se determine previamente la estructura de las etiquetas \emph{css} o \emph{html} , y posteriomente ser realice el \emph{scrapy} y la asignación de categorías, no obstante con este método no se resolvería, en caso de ser necesario, el proceso de tener que realizar clasificaciones por área de conocimiento como se hizo \emph{ad hoc} para Saber UCV.
 
 En los históricos de algunas publicaciones existen atributos que no cumplen con las etiquetas \emph{css} identificadas para hacer la descarga y se presentan algunas fallas, no obstante es para un mínimo de artículos y se considera que sí es viable realizar las incorporaciones bajo el método propuesto.
+
+\hypertarget{objetivos-alcanzados-3}{%
+\subsubsection{Objetivos Alcanzados:}\label{objetivos-alcanzados-3}}
+
+\begin{itemize}
+\item
+  Se demuestra que es viable expandir el SCSU para incorporar otro tipo de publicaciones de investigación distintas a las tesis y trabajos de grado.
+\item
+  Se demuestra que es posible incorporar documentos de repositorios distintos a Saber UCV
+\end{itemize}
 
 \newpage
 
@@ -4461,6 +4473,15 @@ En esta implementación se evaluaron algunos modelos para crear los \emph{embedd
 Igualmente es necesario en futuros trabajos establecer un umbral de similitud o cantidad de documentos a recuperar, óptimo, ya que al no hacerlo y simplemente reordenar los documentos por similitud, se extraerá todo el Corpus y se afectará directamente las métricas de precisión y exactitud (recall).
 
 Otro aspecto que resulta factible es someter todos los resultados obtenidos en la búsqueda, tanto los obtenidos por el método de ``full text search'', como los recuperados por ``búsqueda semántica'', a un proceso de ``reranking'' mediante el modelo mostrado. La tendencia de incorporar ambos métodos de búsqueda se denomina ``Búsqueda Híbrida''.
+
+\hypertarget{objetivos-alcanzados-4}{%
+\subsubsection{Objetivos Alcanzados:}\label{objetivos-alcanzados-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  Integrar la ``búsqueda semántica'' dentro del SCSU.
+\end{itemize}
 
 \newpage
 
