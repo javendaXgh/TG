@@ -2,46 +2,60 @@
 bibliography: references.bib
 ---
 
-# Conclusiones: {#conclusiones}
+# Conclusiones {#conclusiones}
 
 Para sintetizar el trabajo realizado a lo largo de esta investigación, se procede a dividir en tres partes los procesos abordados. Sobre cada uno de ellos se mencionan los elementos más importantes.
 
-En la primera se hizo la obtención y clasificación de los trabajos de grado que reposan en Saber UCV. El proceso fue complejo efectuarlo al no contar con las etiquetas para realizar la clasificación y encontrar distintos problemas en la extracción y limpieza de los datos, motivado a que se puede considerar, que al realizar la lectura de cada investigación, se termina obteniendo una fuente distinta de datos para cada una, la cual tiene sus propias características, reflejando en gran medida el entorno y las técnicas de trabajo del autor, introduciendo con ello un gran ruido dentro del conjunto de datos y dificultando el proceso de etiquetado. No obstante, con el proceso propuesto e implementado, finalmente se obtuvieron con 454 etiquetas que permitieron clasificar a 9.585 trabajos, con un margen de error estimado en \_\_\_\_\_ %. El proceso igualmente facilitó extraer 7.969 nombres de tutores, equivalente al 79,8% de las investigaciones con el margen de error \_\_\_\_% . De los datos presentados se desprende que el método propuesto es un camino alternativo que se puede adoptar para suplir la carencia de información mencionada, mientras se implementan los mecanismos formales, que acudiendo a la fuente primaria de los datos, permita hacer el vaciado de estos.
+1.  **Obtención y Clasificación de las Investigaciones:**
 
-En la segunda parte de esta investigación se muestra como se puede disponer de un Sistema de Recuperación de Información que integre la búsqueda mediante el "índice invertido", el "rerank" mediante la frecuencia y cercanía de las palabras, y la representación de los resultados mediante técnicas de procesamiento del lenguaje natural, todo esto dentro de una aplicación interactiva que enriquece la experiencia del usuario y aporta distintas herramientas para el investigador que inspecciona el Corpus conformado y obtiene recomendaciones de documentos que puedan resultar de interés. El Sistema propuesto se pudo implementar y tener en producción, y si bien no está diseñado para suplir a Saber UCV, se muestra, tal cual como fue diseñado, como un complemento al repositorio ya que la aplicación web propuesta, por ejemplo, no sirve para que los buscadores puedan indexar los documentos que la componen, lo cual impide que este tipo de sistema tenga un alcance mayor al mencionado.
+    Inicialmente se hizo la obtención y clasificación de los trabajos de grado que reposan en Saber UCV. El proceso consitió en conformar un conjunto de datos que contuviese los nombres de las carreras de grado y los postgrados. Posteriormente vino uno de los mayores retos a abordar, que fue hacer la categorización de cada documento.
 
-En la tercera fase, que sólo abarcó un proceso exploratorio, se asoma el incremento en el potencial de recuperación de información que se asocia al uso de *embeddings.* Los resultados obtenidos muestran cómo se expanden las capacidades de búsqueda cuando se crea una base de datos vectorial, donde se cada porción de texto del "resumen" es representada como un vector que refleja de una forma bastante aproximada el significado de cada trozo. Sin embargo es necesario tener presente que el uso de esta tecnología incrementa sustancialmente el uso de recursos computacionales y por ende el costo de implementación. Estas restricciones impidieron que este modelo de recuperación de información pudiese ser probado en un entorno de producción y sólo se hizo de forma local.
+    En tal sentido, motivado a que se puede considerar que al realizar la lectura de cada investigación, se termina obteniendo una fuente distinta de datos para cada una de estas, lo que parece algo un tanto trivial mencionarlo, no resulta en la práctica ser así, ya que cada investigación refleja el entorno y las técnicas de trabajo del autor, introduciendo con ello una gran diversidad de características en el conjunto de datos, que dificultan al final poder generalizar sobre ellas los procesos evaluados para realizar la extracción y categorización de datos, tal es el caso necesario ejecutar para hacer para el etiquetado.
 
-## Contribución: {#conclusionescontri}
+    No obstante, con el proceso propuesto e implementado, finalmente se obtuvieron 454 etiquetas que permitieron clasificar a 9.585 trabajos, con un margen de error estimado en 3%. El proceso igualmente facilitó extraer 7.969 nombres de tutores, equivalente al 79,8% de las investigaciones con el margen de error cercano al 9% . De los datos presentados se desprende que, el método propuesto es un camino alternativo que se puede adoptar para suplir la carencia de información mencionada, mientras se implementan mecanismos formales para recolectar estos datos en el repositorio oficial.
 
-1.  Disponer de un sistema y procedimiento que permite clasificar los trabajos alojados en el repositorio Saber UCV.
+2.  **Implementación del Sistema Complementario Saber UCV:**
+
+    Uno de los aportes que representa esta investigación, es que se dispone de un sistema tangible para realizar procesos recuperación de información, el cual integra la búsqueda mediante el "índice invertido", hace el "rerank" mediante la determinación de frecuencia y cercanía de las palabras, e igualmente hace una representación de los resultados obtenidos mediante técnicas de procesamiento del lenguaje natural. Lo descrito se ejecuta dentro de una aplicación interactiva, que enriquece la experiencia del usuario y aporta distintas herramientas para el investigador que inspecciona el corpus conformado e igualmente permite generar recomendaciones de documentos que puedan resultar de interés.
+
+    El sistema propuesto se pudo implementar y tener en producción, y si bien no está diseñado para suplir a Saber UCV, se muestra, tal cual como fue diseñado, como un complemento al repositorio. Igualmente es necesario tener presente, que la aplicación web presentada, no sirve para que los buscadores puedan indexar los documentos que la componen, lo cual representa una de las muchas limitaciones que tiene el SCSU.
+
+3.  **Uso de *Embeddings*:**
+
+    En la tercera fase, que solo abarcó un proceso exploratorio, se asoma el potencial de incorporar en los procesos de recuperación de información el uso de *embeddings.* Los resultados obtenidos muestran cómo se expanden las capacidades de búsqueda cuando se crea una base de datos vectorial, donde cada porción de texto del "resumen" es representada como un vector, que refleja de una forma bastante aproximada el significado de cada segmento.
+
+    Sin embargo, es necesario tener presente que el uso de esta tecnología, incrementa sustancialmente el uso de recursos computacionales y por ende el costo de implementación. Estas restricciones impidieron que este modelo de recuperación de información pudiese ser probado en un entorno de producción y solo se hizo de forma local.
+
+## Contribución {#conclusionescontri}
+
+1.  Disponer de un sistema y un procedimiento que permite clasificar los trabajos alojados en el repositorio Saber UCV.
 
 2.  Conformar una base de datos con los nombres de los tutores, lo cual permite tener nociones sobre cuáles son las áreas de investigaciones que manejan los profesores de la Universidad Central de Venezuela.
 
 3.  El Sistema Complementario Saber UCV puede servir de base para el desarrollo de *softwares* que permitan incorporar métodos distintos para la recuperación y representación de los resultados obtenidos.
 
-4.  Usar los *embeddings* dentro del Sistema para realizar búsquedas semánticas introduce mejoras al proceso de "Recuperación de Información", concretamente al ensanchar las herramientas que tienen a disposición los investigadores que hagan búsquedas sobre el Corpus conformado.
+4.  Usar los *embeddings* dentro del sistema para realizar búsquedas semánticas introduce mejoras al proceso de "recuperación de información", concretamente, al incrementar las herramientas que tienen a disposición los investigadores que hagan búsquedas sobre el corpus conformado.
 
-## Trabajos Futuros: {#conclusionestrabafutu}
+## Trabajos Futuros {#conclusionestrabafutu}
 
-La investigación que se presentó en este Trabajo de Grado deja grandes inquietudes para inspeccionar nuevos métodos que ayudan a la gestión de la investigación. A continuación se muestran algunas de las áreas sobre las cuales se puede ahondar en Trabajos Futuros:
+La investigación que se presentó en este trabajo de grado deja grandes inquietudes para inspeccionar nuevos métodos que ayudan a la gestión de la investigación. A continuación se muestran algunas de las áreas sobre las cuales se puede ahondar en trabajos futuros:
 
-1.  Incorporar otros saberes (Universidad de los Andes, Universidad de Carabobo, Universidad Católica) u otros repositorios, a un sistema similar al propuesto, para así poder contar con un repositorio unificado donde se integren las distintas investigaciones que son realizadas a nivel nacional.
+1.  Incorporar otros saberes (Universidad de los Andes, Universidad de Carabobo, Universidad Católica Andrés Bello) u otros repositorios que cuenten con un sistema similar al mencionado. Esto permitiría disponer de un repositorio unificado, donde se integren las distintas investigaciones que son realizadas a nivel nacional.
 
-2.  Distribuir mediante técnicas de "map reduce" los datos en un sistema distribuido y paralelo, para evaluar métodos que permitan mejorar los tiempos de búsqueda, sobre todo en caso de que se contase con más documentos.
+2.  Distribuir, mediante técnicas de *map reduce*, los datos en un sistema distribuido y paralelo, para evaluar métodos que permitan mejorar los tiempos de búsqueda, sobre todo en caso de que se contase con más documentos.
 
 3.  Mediante el uso de *embeddings*:
 
-    1.  Incorporar todos los textos de las investigaciones a una base de datos vectorial.
+    i.  Incorporar todos los textos de las investigaciones a una base de datos vectorial.
 
-    2.  Integrar "Largos Modelos del Lenguaje" dentro de una segunda versión del SCSU en un módulo de "preguntas y respuesta", donde el usuario mediante el uso del lenguaje natural, pueda realizar preguntas a los conocimientos abordados en los documentos que conformen el corpus.
+    ii. Integrar largos modelos del lenguaje dentro de una segunda versión del SCSU en un módulo de "preguntas y respuesta", donde el usuario, mediante el uso del lenguaje natural, pueda realizar preguntas a los conocimientos abordados en los documentos que conformen el corpus.
 
-    3.  Usar el corpus generado para realizar el sobre entrenamiento (*fine tunning*) de "Largos Modelos de Lenguaje" y así lograr que estos sean adaptados a las necesidades de dominios específicos de conocimiento de una determinada comunidad de investigadores.
+    iii. Usar el corpus generado para realizar él un sobre entrenamiento (*fine tunning*) de largos modelos de lenguaje y así lograr que estos sean adaptados a las necesidades de dominios específicos de conocimiento de una determinada comunidad de investigadores.
 
-    4.  Mejorar los "Mapas de Conocimiento" mediante representaciones más elaboradas de los conceptos.
+    iv. Mejorar los mapas de conocimiento mediante representaciones más elaboradas de los conceptos.
 
-    5.  Evaluar distintos modelos de aprendizaje automático para realizar el *rerank* a los resultados obtenidos en un *query* bajo el modelo de búsqueda híbrida.
+    v.  Evaluar distintos modelos de aprendizaje automático para realizar el *rerank* a los resultados obtenidos en un *query* bajo el modelo de búsqueda híbrida (búsqueda de texto completo y búsqueda híbrida).
 
-    6.  Evaluar distintos modelos de generación de *embeddings* para evaluar el comportamiento en el proceso de recuperación de información, incluso usando modelos que están entrenados sobre áreas de conocimiento específicas, como lo es "SciBERT" [@beltagy2019].
+    vi. Evaluar distintos modelos de generación de *embeddings* para medir el comportamiento de estos en el proceso de recuperación de información, incluso usando modelos que están entrenados sobre áreas de conocimiento específicas, como lo es SciBERT [@beltagy2019].
 
-    7.  Usar distintos métodos para medición de similitud, como el de vecinos cercanos (KNN) [@annoy2023] o de máquinas de soporte vectorial (SVM) [@svm2023].
+    vii. Usar distintos métodos para medición de similitud, como el de vecinos cercanos (KNN) [@annoy2023] o de máquinas de soporte vectorial (SVM) [@svm2023].

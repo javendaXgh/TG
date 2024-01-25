@@ -1,10 +1,10 @@
-# Apéndice: Librerías usadas y créditos {.unnumbered}
+# Apéndice: Librerías Usadas y Créditos {.unnumbered}
 
 1.  Las librerías de R que usa la aplicación web son:
 
     1.  **shinydashboard**: sirve para gener un formato de *dashboard* en la aplicación [@shinydashboard].
 
-    2.  **shinydashboardPlus**: sirve para asistir a "shinydashboard" en configuraciones y funcionalidades adicionales [@shinydashboardPlus].
+    2.  **shinydashboardPlus**: asiste a la librería "shinydashboard" en configuraciones y funcionalidades adicionales [@shinydashboardPlus].
 
     3.  **shinycssloaders**: muestra un *loader* cuando la aplicación de está cargando [@shinycssloaders].
 
@@ -14,11 +14,11 @@
 
     6.  **DBI**: permite la definición en R de *querys* en lenguaje SQL [@DBI].
 
-    7.  **dplyr**: es una herramienta que facilita la manipulación de las *dataframes* que sirven de insumo para representar los resultados [@dplyr].
+    7.  **dplyr**: herramienta que facilita la manipulación de las *dataframes* que sirven de insumo para representar los resultados [@dplyr].
 
     8.  **tidyr**: manipulación de la *dataframe* que contiene los resultados [@tidyr].
 
-    9.  **dbplyr**: bajo la sintáxis de "dplyr" permite estucturar los querys [@dbplyr].
+    9.  **dbplyr**: bajo la sintaxis de "dplyr" permite estructurar los querys [@dbplyr].
 
     10. **DT**: *wrapper* de la librería "DataTables" de Javascript que permite generar tablas interactivas en html que muestran los resultados de los querys [@DT-2].
 
@@ -28,11 +28,11 @@
 
     13. **visNetwork**: permite realizar la visualización dinámica mediante grafos de las coocurrencias. Es un *wrapper* de la libraría Vis.Js.
 
-    14. **apexcharter**: permite generar gráficos interactivos y es un *wrapper* de la librería "ApexCharts.Js" [@apexcharter].
+    14. **apexcharter**: generar gráficos interactivos y es un *wrapper* de la librería "ApexCharts.Js" [@apexcharter].
 
     15. **scales**: se usa para reescalar los arcos que unen los nodos en las coocurrencias [@scales].
 
-    16. **fontawesome**: se usa para mostrar íconos en los selectores y ventanas [@fontawesome].
+    16. **fontawesome**: usado para mostrar íconos en los selectores y ventanas [@fontawesome].
 
     17. **stringr**: manipulación y manejo de textos [@stringr].
 
@@ -56,11 +56,11 @@
 
     5.  **odbc**: soporte para conexiones a manejadores de base de datos [@odbc].
 
-    6.  **dplyr**: es una herramienta que facilita la manipulación de las *dataframes* que sirven de insumo para representar los resultados [@dplyr].
+    6.  **dplyr**: herramienta que facilita la manipulación de las *dataframes* que sirven de insumo para representar los resultados [@dplyr].
 
     7.  **tidyr**: manipulación de la *dataframe* que contiene los resultados [@tidyr].
 
-    8.  **dbplyr**: bajo la sintáxis de "dplyr" permite estucturar los querys [@dbplyr].
+    8.  **dbplyr**: bajo la sintaxis de "dplyr" permite estucturar los querys [@dbplyr].
 
     9.  **stringr**: manipulación y manejo de textos [@stringr].
 
@@ -74,7 +74,7 @@
 
     14. **text.alignment**: aplicar el algoritmo "Smith-Waterman" [@text.alignment].
 
-    15. **spacyr**: wrapper para usar el framework Spacy [@spacyr-2].
+    15. **spacyr**: *wrapper* para usar el framework Spacy [@spacyr-2].
 
     16. **config**: configurar variables globales [@config].
 
@@ -84,4 +84,4 @@
 
 3.  Para realizar los diagramas y esquemas representados en esta investigación se uso el software "draw.io" [@draw2023].
 
-4.  Este documento, tanto en su versión PDF como en HTML se generó con la librería Bookdown [@bookdown].
+4.  Este documento, tanto en su versión PDF como en HTML, se generó con la librería bookdown [@bookdown].

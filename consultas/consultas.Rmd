@@ -65,3 +65,5 @@ es necesario indicar este texto?: "La literatura en este tema siempre especifica
 -   Revisar concepto en Pruebas de Usabilidad:
 
 -   Revisar concepto en Interacción Usuario Sistema:
+
+-   Remover "en" y "de" en las etiquetas en proceso de clasificación

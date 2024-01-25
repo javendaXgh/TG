@@ -2,37 +2,31 @@
 bibliography: references.bib
 ---
 
-# El Problema: {#capproblema}
+# El Problema {#capproblema}
 
-En el presente Capítulo en \@ref(desproblema) se hace la **Descripción del Problema**. En \@ref(delimitacion) se hace la **Delimitación del Problema**. En \@ref(justificacion) **Justificación e Importancia** se mencionan la razones principales que motivan haber llevado a cabo esta investigación. En \@ref(descripcion) **Descripción de la Solución** se hace una aproximación a la propuesta general.
+## Descripción del Problema {#desproblema}
 
-En \@ref(objegeneral) se menciona el **Objetivo Principal** que se trazó, mientras que en \@ref(objeespe) se enumeran los **Objetivos Específicos** y en \@ref(aporte) se listan los **Aportes** efectuados.
+La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad universitaria. Ingresando a la dirección web <http://saber.ucv.ve/>, se permite "el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV". ¿Qué es Saber UCV?. (2023). Saber UCV. [http://saber.ucv.ve](http://saber.ucv.ve/){.uri}.
 
-## Descripción del Problema: {#desproblema}
+En tal sentido, los usuarios interesados en hacer búsquedas sobre la información académica alojada en el repositorio, pueden efectuarlas introduciendo un texto y aplicando filtros sobre distintas categorías como:
 
-La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad de la Universidad. Ingresando a la dirección web <http://saber.ucv.ve/> se permite "el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV". ¿Qué es Saber UCV?. (2023). Saber UCV. [http://saber.ucv.ve](http://saber.ucv.ve/){.uri}.
+-   Seleccionar "comunidades", bien sean artículos de investigación, trabajos doctorales, maestrías, especialización y pregrado, guías de estudio y revistas, entre otras categorías.
 
-Los usuarios interesados en hacer búsquedas sobre la información académica alojada en el repositorio, pueden efectuarlas introduciendo un texto y aplicando filtros sobre distintas categorías como:
+-   Seleccionar la "fecha de inicio", referente al año en que se efectuó la publicación del trabajo.
 
--   Seleccionar "comunidades": artículos de investigación, trabajos doctorales, maestrías, especialización y pregrado, guías de estudio y revistas, entre otras categorías.
+Adicional a las funcionalidades mencionadas, el investigador pudiera necesitar filtrar información por criterios adicionales, como lo es el área académica donde fue realizada la investigación, en particular, si fue hecha en una escuela, en una facultad, o un postgrado. En estos casos, se presenta una limitación al hacer búsquedas en Saber UCV, ya que el sistema no dispone de esos criterios para realizar la recuperación de información.
 
--   Seleccionar la "fecha de inicio", referente al año en que se efectuó la publicación.
+Igualmente se tiene que esto ocurre con el nombre del tutor en los trabajos de grado, de pregrado y de tesis, ya que no es posible realizar búsquedas sobre estos nombres, al no encontrarse registros disponibles.
 
-También pueden realizar búsqueda en el texto en áreas como: el nombre del documento, el nombre del autor o en el resumen.
+Dentro del contexto expuesto y motivado a que es viable realizar procesos para extraer y clasificar la información faltante, se realiza esta investigación, que mediante la implementación de un software denominado **Sistema Complementario Saber UCV (SCSU)**, extrae y clasifica, los datos del área académica donde se realizaron las distintas investigaciones que están alojadas en Saber UCV.
 
-Además de estas funcionalidades, el investigador pudiera necesitar filtrar información por criterios adicionales, como lo es: el área académica donde fue realizada la investigación, en particular, si fue hecha en una escuela, en una facultad, o un postgrado. En este caso, se presenta una limitación al hacer búsquedas en Saber UCV, ya que el sistema no dispone de esos criterios para la recuperación de información.
+## Delimitación del Problema {#delimitacion}
 
-De manera similar ocurre con el nombre del tutor de los trabajos de grado, de pregrado y tesis, al no encontrarse datos registrados para esta información.
+En esta investigación el corpus que se conformará esta compuesto por los documentos alojados en Saber UCV que disponen de las siguientes categorías: trabajos de grado de pregrado, trabajos de grado de maestría, tesis doctorales. Igualmente se incluyen documentos que tienen la clasificación "Otros" constituida por los: trabajos de grado especiales y trabajos de ascenso.
 
-Motivado a que es viable realizar procesos para extraer y clasificar la información faltante, se realiza esta investigación que mediante la implementación de un software denominado **Sistema Complementario Saber UCV (SCSU)**, extrae y clasifica los datos del área académica donde se realizaron las distintas investigaciones que están alojadas en Saber UCV.
+Adicionalmente, en la implementación del ciclo de desarrollo \@ref(desarrollociclos4) se incluyen dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes Saber U.L.A., para mostrar posibles ampliaciones en la ingesta de distintas publicaciones y fuentes de documentos dentro del SCSU.
 
-## Delimitación del Problema: {#delimitacion}
-
-El corpus con el que se trabajará es el subconjunto de los trabajos de pregrado, trabajos de grado de maestría y tesis doctorales, así como otros tipos de documentos que se encuentran registrados en el repositorio que en Saber UCV están clasificados como "Otros" y alojan: trabajos de especialización, trabajos de ascenso y demás tipos de documentos, pero que no son diferenciados.
-
-Adicionalmente, en la implementación del ciclo de desarrollo \@ref(desarrollociclos4) se incluyen dos revistas dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes Saber U.L.A., para mostrar posibles ampliaciones en la ingesta de distintas publicaciones y fuentes de documentos dentro del SCSU.
-
-Sin embargo, posibles incorporaciones de otras fuentes de datos implican procesos de revisión en las estructuras de los datos, ya que por los momentos SCSU no está diseñado para incorporaciones de datos adicionales sin la modificación de los códigos con los que se extraen los datos desde las páginas web donde se alojan los documentos.
+Sin embargo, posibles incorporaciones de otras fuentes de datos implican procesos de revisión en las estructuras de los datos, ya que por los momentos SCSU no está diseñado para incorporaciones de datos adicionales, sin la modificación de los códigos con los que se extraen los datos desde las páginas web donde se alojan los documentos.
 
 ```{r totales, echo=FALSE}
 totales_tegs1 <- readRDS('data/totales_tegs.rds') |>
@@ -72,70 +66,72 @@ tutores_distintos <-length( unique(df_draw_seleccion$texto_tutor))
 
 ```
 
-## Descripción de la Solución: {#descripcion}
+## Antecedentes: {#antecedentes}
 
-La Solución que se propone es un un Sistema de Recuperación de Información con diversos componentes. Inicialmente de los trabajos mencionados en \@ref(delimitacion), mediante técnicas de extracción de nodos de archivos HTML´s, se obtienen de Saber UCV los siguientes datos de cada investigación: el título, el nombre del autor, las palabras claves, la fecha de publicación, el resumen y el enlace de descarga del documento que soporta el trabajo de grado.
+Se hizo una revisión bibliográfica de trabajos de grado generados dentro de la UCV que puedan haber realizado investigaciones similares o complementarias a la que se propone en este desarrollo. De particular interés resultó la "Elaboración de un prototipo de buscador de documentos académicos de la Facultad de Ciencias" [@sanchez2008], que fue una investigación donde se implementó un sistema que cuenta con un repositorio electrónico y un motor de búsqueda denominado BUSCONEST 1**,** que sirve exclusivamente a los documentos de investigación generados en la Facultad de Ciencias. Es importante señalar que este sistema sí dispone de trabajos clasificados por área del conocimiento, ya que el mismo obtiene los datos desde la biblioteca de la Facultad de Ciencias que dispone de la información categorizada, no obstante el sistema no permite clasificar el resto de documentos que reposan en Saber UCV.
 
-Posteriormente el Sistema descarga el documento anexo a cada investigación, da lectura y clasifica la información del nombre de la facultad, la escuela o postgrado donde fue realizado el trabajo así como el nombre del tutor.
+Dentro de la revisión efectuada también está la propuesta en que se implementa el BUSCONEST 2 [@guevara2015], que es una versión modificada de BUSCONEST 1, no obstante muestra la misma limitación que la versión primera del sistema en cuanto a realizar la clasificación de las investigaciones externas a la Facultad de Ciencias.
 
-Todos los datos obtenidos son sometidos a técnicas del estado del arte en el Procesamiento del Lenguaje Natural y la Minería de Texto para conformar un corpus anotado, un índice invertido y se generan los vectores de *embeddings* de texto. Posteriormente las tablas obtenidas se almacenan en una base de datos indexada.
+Otra investigación que se puede señalar es el "Sistema de recomendación para el Buscador Académico Venezolano" [@rodriguezlaguna2016]. En ella se muestran algunos repositorios digitales institucionales que se encuentran en Venezuela y se hace una propuesta de unificación de todos los contenidos y así poder generar recomendaciones de investigaciones a partir de una determinada búsqueda.
 
-El Sistema cuenta con una aplicación web que permite a los usuarios desde un navegador, explorar extensivamente el corpus anotado, realizando consultas de texto y aplicando varios filtros como la selección de la jerarquía, el área académica y el rango de fechas. La relevancia de los resultados recuperados se determina mediante una función de ponderación y los documentos se presentan de manera priorizada para mejorar la experiencia del usuario.
+Como se observa, si bien las investigaciones mencionadas se relacionan al tema abortado en el presente trabajo, ninguna de ellas aborda el problema de hacer la clasificación de los textos de tesis y trabajos de grado que están alojados es Saber UCV.
 
-Adicionalmente, el Sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También representa los "Mapas de Conocimiento", según una adaptación *ad-hoc* hecha para la implementación del SCSU basada en el trabajo de [@dueñas2011] donde mediante una representación en grafos en formato interactivo, se podrán aplicar filtros sobre palabras coocurrentes en los resultados de la búsqueda.
+## Descripción de la Solución {#descripcion}
 
-La solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV y se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura "modelo-vista-controlador".
+La solución que se propone es un sistema de recuperación de información con diversos componentes. Inicialmente, de los trabajos mencionados en \@ref(delimitacion), mediante técnicas de extracción de nodos de archivos HTML´s, se obtienen de Saber UCV los siguientes datos de cada investigación: el título, el nombre del autor, las palabras clave, la fecha de publicación, el resumen y el enlace de descarga del documento que soporta el trabajo de grado.
 
-En la figura \@ref(fig:arquitecturasri) se muestra un diagrama con la arquitectura MVC propuesta para el SCSU.
+Posteriormente, el sistema descarga el documento anexo a cada investigación en formato PDF, DOCX o DOC, da lectura y clasifica la información del nombre de la facultad, la escuela o postgrado, donde fue realizado el trabajo, así como el nombre del tutor.
+
+En consecuencia, todos los datos obtenidos son sometidos a técnicas del estado del arte en el procesamiento del lenguaje natural y minería de texto para conformar un corpus anotado y un índice invertido. Con los textos se generan, mediante un modelo de lenguaje preentreado, vectores de *embeddings*. Posteriormente, todos los datos obtenidos se almacenan en una base de datos indexada.
+
+Igualmente, el sistema cuenta con una aplicación web que permite a los usuarios desde un navegador, explorar extensivamente el corpus anotado, realizando consultas de texto y aplicando diversos filtros, como la selección de la jerarquía, el área académica y el rango de fechas. La relevancia de los resultados recuperados se determina mediante una función de ponderación y los documentos se presentan de manera priorizada para mejorar la experiencia del usuario.
+
+Adicionalmente, el sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También representa los "mapas de conocimiento", según una adaptación *ad-hoc* hecha para la implementación del SCSU basada en el trabajo de [@dueñas2011] donde mediante una representación de grafos en formato interactivo, se podrán aplicar filtros sobre palabras coocurrentes en los resultados de la búsqueda.
+
+En el mismo sentido, la solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV y se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura "modelo-vista-controlador".
+
+En la figura \@ref(fig:arquitecturasri) se muestra un diagrama con la arquitectura MVC propuesta para el SCSU, la cual se detalla en \@ref(desarrollo), "Capítulo Desarrollo de la Solución".
 
 ```{r, arquitecturasri, echo=FALSE, out.width='90%',fig.cap='Arquitectura del Sistema',fig.align='center'}
 knitr::include_graphics("images/05-desarrollo/MVC9.png")
 ```
 
-## Justificación e Importancia: {#justificacion}
+## Justificación e Importancia {#justificacion}
 
-Con esta Investigación se implementa un método que permite subsanar la falta de clasificaciones por área académica que tiene el repositorio Saber UCV y que mediante la aplicación web se amplían los criterios de búsqueda disponibles para investigadores que necesiten realizar consultas sobre los documentos disponibles en el repositorio.
+Esta Investigación implementa un método que permite subsanar la falta de clasificaciones por área académica que tiene el repositorio Saber UCV. Adicionalmente, mediante una aplicación web, se amplían los criterios de búsqueda disponibles para investigadores que necesiten realizar consultas sobre los documentos disponibles en el repositorio.
 
-### Objetivo General: {#objegeneral}
+### Objetivo General {#objegeneral}
 
-Implementar un Sistema que realice procesos de recuperación de información (*information retrieval*), extracción y clasificación sobre el cien por ciento de los textos académicos alojados en el Repositorio Saber UCV, empleando técnicas de procesamiento de lenguaje natural, de minería de texto y modelos de lenguaje preentrenados de inteligencia artificial.
+Implementar un sistema de recuperación de información (*information retrieval system*) que realice la extracción y clasificación del cien por ciento de las investigaciones alojadas en el repositorio digital Saber UCV y que este permita efectuar búsquedas de texto empleando un índice invertido y modelos de procesamiento de lenguaje natural.
 
-### Objetivos Específicos: {#objeespe}
+### Objetivos Específicos {#objeespe}
 
-1.  Conformar un corpus que contenga el cien por ciento de los resúmenes, títulos, palabras claves y nombres de autor con todos los documentos de tesis doctorales y trabajos de grado de pregrado, maestría y otros documentos alojados en SABER.UCV.
+1.  Conformar un corpus que contenga el cien por ciento de los resúmenes, títulos, palabras claves y nombres de autor, con todos los documentos de tesis doctorales y trabajos de grado de pregrado, maestría y otros documentos alojados en SABER.UCV.
 
 2.  Clasificar al menos el noventa por ciento de los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer en el 80 por ciento de los documentos el nombre completo del tutor.
 
-3.  Crear una aplicación web que permita realizar las "búsquedas de texto completo" o "búsqueda semántica" sobre el corpus conformado donde se establezcan criterios de relevancia para presentar los resultados de la búsqueda y se representen los "Mapas de Conocimiento".
+3.  Crear una aplicación web que permita realizar las "búsquedas de texto completo" o "búsqueda semántica" sobre el corpus conformado, donde se establezcan criterios de relevancia para presentar los resultados de la búsqueda y se representen los "mapas de conocimiento".
 
-4.  Generar cinco recomendaciones de investigaciones que presenten similitud con cada documento recuperado por el Sistema.
+4.  Recomendar investigaciones contenidas en el corpus que presenten alguna similitud con cada documento que sea recuperado por el sistema.
 
-## Aportes: {#aporte}
+## Aportes {#aporte}
 
 Algunos de los aportes que se generaron al realizar esta investigación son los siguientes:
 
--   Mejora y flexibiliza los criterios de búsqueda en comparación a los que tiene el repositorio Saber UCV al clasificar por área académica un total de `r prettyNum(clasificados,big.mark=".")` investigaciones de `r prettyNum(nrow(df_draw_seleccion),big.mark=".")` potenciales documentos a categorizar.
+-   Clasificar por área académica un total de `r prettyNum(clasificados,big.mark=".")` investigaciones de `r prettyNum(nrow(df_draw_seleccion),big.mark=".")` potenciales documentos a categorizar.
 
--   Se crea un listado con `r df_cdad_postgrados_total` categorías de carreras de pregrado, especializaciones, maestrías y doctorados que se imparten en la Universidad.
+-   Colocar a disposición de los investigadores un sistema que incrementa los criterios y filtros disponibles para realizar las búsqueda en comparación a los que tiene el repositorio Saber UCV.
 
--   Se obtiene un listado de potenciales tutores de las investigaciones realizadas con `r prettyNum(tutores,big.mark=".")` nombres y una cantidad de `r prettyNum(tutores_distintos,big.mark="." )` nombres únicos.
+-   Levantar y procesar un listado con `r df_cdad_postgrados_total` categorías de carreras de pregrado, especializaciones, maestrías y doctorados que se imparten en la Universidad.
 
--   Visualizaciones y representaciones de "Mapas de Conocimiento".
+-   Extraer de los textos de las investigaciones los nombres de los tutores generando un listado con `r prettyNum(tutores,big.mark=".")` nombres y una cantidad de `r prettyNum(tutores_distintos,big.mark="." )` nombres únicos.
 
--   Implementación de la búsqueda de texto completo con una función de relevancia distinta a la de Saber UCV permitiendo obtener mejores métricas de desempeño en la tarea de "recuperación de información"
+-   Representar mediante mapas de conocimiento interactivos los resultados de las búsquedas.
 
--   Implementación de un "sistema de recomendación" de documentos que presenten similitudes con los textos recuperados.
+-   Implementar un sistema que permite realizar búsquedas de texto completo y búsquedas semánticas, lo cual se conoce como búsqueda híbrida.
 
--   Enriquecimiento de la experiencia del usuario mediante gráficos que muestran la evolución de aparición de los términos solicitados en el período establecido para la búsqueda de la información.
+-   Integrar un "sistema de recomendación" de documentos que presenten similitudes con los textos recuperados.
 
--   Diseño del sistema para estar en producción donde todos los componentes son de código abierto, libres de algún pago de licencia.
+-   Incorporar a los resultados de las búsquedas, gráficos que muestran la evolución histórica de aparición de los términos requeridos.
 
--   Implementación fácil del Sistema en un servidor ya que está diseñado de manera que con los archivos "docker compose" y "dockerfiles", se puedan desplegar la aplicación, alcanzando elevados niveles de reproducibilidad en todos los procesos que conforman la solución.
-
--   Sistema escalable y adaptable a la demanda de accesos de acuerdo al tipo de componentes.
-
--   Sistema diseñado para poder actualizarse cada vez que sea necesario o con la periodicidad que se defina.
-
--   Sistema prototipo para integrar publicaciones de otros repositorios de documentos que pertenecen a instituciones nacionales de investigación.
-
--   Aproximación a la implementación de "búsquedas semánticas".
+-   Disponer de un sistema que puede integrar publicaciones de otros repositorios de documentos que pertenecen a instituciones nacionales de investigación.
