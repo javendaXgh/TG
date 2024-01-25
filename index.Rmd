@@ -49,7 +49,9 @@ set_flextable_defaults(
 
 ```
 
-`r if (knitr::is_latex_output()) '<!--'` \# Resumen {.unnumbered}
+`r if (knitr::is_latex_output()) '<!--'`
+
+# Resumen {.unnumbered}
 
 Se presenta la investigación **Recuperación, Extracción y Clasificación de Información de Saber UCV**, donde se ejecutan procesos de clasificación, almacenamiento y recuperación de información sobre las tesis y trabajos de grado que se encuentran publicados en el repositorio institucional Saber UCV.
 

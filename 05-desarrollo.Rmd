@@ -2298,11 +2298,11 @@ A continuación se indican los contenedores que forman parte del sistema y los p
 
         i.  **Definición *query*:** contiene un campo para la entrada de texto con el que se generará el *query*. Muestra tablas precargadas para seleccionar:
 
-            1) Nivel académico del trabajo - opciones: pregrado, especialización, maestría y doctorado.
+            1)  Nivel académico del trabajo - opciones: pregrado, especialización, maestría y doctorado.
 
-            2) Facultad o centro de adscripción - opciones: 11 facultades más un centro (CENDES).
+            2)  Facultad o centro de adscripción - opciones: 11 facultades más un centro (CENDES).
 
-            3) Nombre del pregrado o postgrado - opciones: 412 (50 carreras de pregrado y 362 postgrados).
+            3)  Nombre del pregrado o postgrado - opciones: 412 (50 carreras de pregrado y 362 postgrados).
 
             Cada una de las tablas anteriores se actualiza dinamicamente según se vayan seleccionando las relaciones y las disponibilidades. P. ej., al seleccionar pregrado solo se mostrarán los nombres de las carreras de pregrado, pero si se selecciona también el nombre de la facultad, solo se mostrarán las carreras de pregrado dentro de la facultad seleccionada. Para un determinado filtro se permiten selecciones múltiples dando una total flexibilidad al momento de ejecutar los *querys*. El texto del *query* es procesado convirtiéndolo a minúsculas y removiendo signos de puntuación. En caso de indicar el texto entre comillas el sistema aplicará el método de búsqueda exacta.
 
