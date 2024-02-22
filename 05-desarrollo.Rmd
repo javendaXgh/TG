@@ -24,7 +24,7 @@ Finalmente, el sistema se soporta en un sistema distribuido conformado por conte
 
 ## Arquitectura de la Solución {#desarrolloarquitectura}
 
-La arquitectura "modelo-vista-controlador" se muestra en la figura \@ref(fig:arquitecturamvc) y posteriormente se describe el comportamiento y las interacciones de los componentes.
+La arquitectura "modelo-vista-controlador" se muestra en la Figura \@ref(fig:arquitecturamvc) y posteriormente se describe el comportamiento y las interacciones de los componentes.
 
 ```{r, arquitecturamvc, echo=FALSE, out.width='90%',fig.cap='Modelo de Arquitectura MVC',fig.align='center'}
 knitr::include_graphics("images/05-desarrollo/MVC9.png")
@@ -109,7 +109,7 @@ En este ciclo es donde se ejecutaron las tareas que permitieron conformar el con
 
 **Especulación**
 
-El repositorio Saber UCV en la sección "Comunidades-Tesis" aloja las cantidades de trabajos por nivel académico que se muestran en el cuadro \@ref(tab:cantidadesteg) :
+El repositorio Saber UCV en la sección "Comunidades-Tesis" aloja las cantidades de trabajos por nivel académico que se muestran en el Cuadro \@ref(tab:cantidadesteg) :
 
 ```{r cantidadesteg, echo=FALSE, fig.cap='Cantidades de Trabajos por Categoría', warning=FALSE }
 
@@ -139,11 +139,11 @@ En la minería de datos con la extracción de datos web es posible "recolectar, 
 
 En esta etapa se realizaron dos procesos de extracción de datos web usando el lenguaje de programación `r version$version.string[1]` [@R].
 
-1.  El primero fue encontrar los enlaces de cada trabajo alojado en el repositorio Saber UCV. Usando la extensión *SelectorGadget* ([https://selectorgadget.com/](#0){.uri}) del navegador *Google Chrome* se puede obtener mediante un clic en un elemento de la página la etiqueta css asociada al nodo que se desea extraer. En este caso al visitar la página "[http://saber.ucv.ve/handle/10872/1957/browse](#0)", se identificó la etiqueta `evenRowOddCol`, ver figura \@ref(fig:nodosurl), que identifica a los nodos dentro de la página que tienen los enlaces `href` a las fichas de cada investigación.
+1.  El primero fue encontrar los enlaces de cada trabajo alojado en el repositorio Saber UCV. Usando la extensión *SelectorGadget* ([https://selectorgadget.com/](#0){.uri}) del navegador *Google Chrome* se puede obtener mediante un clic en un elemento de la página la etiqueta css asociada al nodo que se desea extraer. En este caso al visitar la página "[http://saber.ucv.ve/handle/10872/1957/browse](#0)", se identificó la etiqueta `evenRowOddCol`, ver Figura \@ref(fig:nodosurl), que identifica a los nodos dentro de la página que tienen los enlaces `href` a las fichas de cada investigación.
 
     Posteriormente, con el paquete rvest [@rvest] que permite la descarga de páginas web y la manipulación de nodos XML se pudieron extraer los `r prettyNum(rowSums(totales_tegs),big.mark=".")` enlaces a visitar.
 
-```{r nodosurl, echo=FALSE, fig.align='center', fig.cap=c('Etiquetas nodos url´s'), fig.show='hold', out.width="50%"}
+```{r nodosurl, echo=FALSE, fig.align='center', fig.cap=c('Etiquetas de nodos url'), fig.show='hold', out.width="50%"}
 
 knitr::include_graphics(c("images/05-desarrollo/1_ciclo/Picture3.png",
                           "images/05-desarrollo/1_ciclo/Picture2.png"))
@@ -152,7 +152,7 @@ knitr::include_graphics(c("images/05-desarrollo/1_ciclo/Picture3.png",
 
 ```
 
-2.  En una segunda fase, mediante la misma técnica indicada en el punto anterior, se localizó en la ficha de un trabajo la etiqueta css, en este caso la *`.metadataFieldValue`* que está asociada al nodo que contiene los valores del: título, autor, fecha de publicación, palabras clave, enlace de descarga del documento y el texto del resumen. En la figura \@ref(fig:nodosurl)-b se aprecia una imagen de la ficha mencionada. Al contar con el listado de enlaces y la identificación de los datos a extraer, se hizo un bucle para visitar cada enlace, se descargó el archivo `html`, se accedió al nodo, se extrajeron los valores y se fueron almacenando en una estructura de datos.
+2.  En una segunda fase, mediante la misma técnica indicada en el punto anterior, se localizó en la ficha de un trabajo la etiqueta css, en este caso la *`.metadataFieldValue`* que está asociada al nodo que contiene los valores del: título, autor, fecha de publicación, palabras clave, enlace de descarga del documento y el texto del resumen. En la Figura \@ref(fig:nodosurl)-b, se aprecia una imagen de la ficha mencionada. Al contar con el listado de enlaces y la identificación de los datos a extraer, se hizo un bucle para visitar cada enlace, se descargó el archivo `html`, se accedió al nodo, se extrajeron los valores y se fueron almacenando en una estructura de datos.
 
 ```{r lecturadupli, echo=FALSE}
 
@@ -169,7 +169,7 @@ Se enfrentaron las siguientes dificultades y se adoptaron las correspondientes s
 
 3.  Adoptar previsiones para caídas del servidor de Saber UCV y resguardar en cada vuelta del bucle la información extraída, para no perder el trabajo de extracción acumulado, en caso de una falla remota o local en el acceso.
 
-4.  La revisión del conjunto de datos obtenido mostró que existen `r prettyNum(sum(duplicados_tegs$Duplicados),big.mark=".")` documentos duplicados, bien sea en el "título" o en el texto del "resumen". Esto ocurre por la introducción de algún carácter adicional o mínimas alteraciones en el texto. Para descartar estos registros, se aplicó una función de limpieza al texto (convertir a minúscula, remover signos puntuación, etc.). Posteriormente se obtuvieron sendos valores *hash* sobre el título y el resumen y posteriormente se descartaron los *hashes* duplicados. Adicionalmente, se decidió usar el *hash* obtenido del "título procesado" como el identificador único de cada documento. La remoción de investigaciones que puedan estar duplicadas es importante efectuarla, ya que al ejecutar los procesos de recuperación de información o la representación de los resultados en mapas de conocimiento, al incluir textos repetidos, creará representaciones distorsionadas. En el cuadro \@ref(tab:cantidadesduplicados) se muestra la cantidad de los valores detectados por jerarquía.
+4.  La revisión del conjunto de datos obtenido mostró que existen `r prettyNum(sum(duplicados_tegs$Duplicados),big.mark=".")` documentos duplicados, bien sea en el "título" o en el texto del "resumen". Esto ocurre por la introducción de algún carácter adicional o mínimas alteraciones en el texto. Para descartar estos registros, se aplicó una función de limpieza al texto (convertir a minúscula, remover signos puntuación, etc.). Posteriormente se obtuvieron sendos valores *hash* sobre el título y el resumen y posteriormente se descartaron los *hashes* duplicados. Adicionalmente, se decidió usar el *hash* obtenido del "título procesado" como el identificador único de cada documento. La remoción de investigaciones que puedan estar duplicadas es importante efectuarla, ya que al ejecutar los procesos de recuperación de información o la representación de los resultados en mapas de conocimiento, al incluir textos repetidos, creará representaciones distorsionadas. En el Cuadro \@ref(tab:cantidadesduplicados), se muestra la cantidad de los valores detectados por jerarquía.
 
 ```{r cantidadesduplicados, echo=FALSE, fig.cap='Cantidades de Trabajos por Categoría', message=FALSE, warning=FALSE}
 
@@ -202,7 +202,7 @@ No obstante, al no encontrarse el listado de categorías disponible en el propio
 
 **Colaboración**
 
-Se visitó al sitio web oficial de la Universidad Central de Venezuela para revisar la oferta de pregrados y postgrados. Para los postgrados se encontró para cada categoría (especialización, maestría y doctorado) una página con el listado, p. ej. [http://www.ucv.ve/organizacion/maestria.html](http://www.ucv.ve/organizacion/vrac/gerencia-de-investigacion-cientifica-y-humanistica/gerencia-de-estudios-de-postgrado/programas-de-postgrado-ucv/maestria.html) [^05-desarrollo-3]. En la figura \@ref(fig:maestrias) se aprecian las potenciales etiquetas para las maestrías.
+Se visitó al sitio web oficial de la Universidad Central de Venezuela para revisar la oferta de pregrados y postgrados. Para los postgrados se encontró para cada categoría (especialización, maestría y doctorado) una página con el listado, p. ej. [http://www.ucv.ve/organizacion/maestria.html](http://www.ucv.ve/organizacion/vrac/gerencia-de-investigacion-cientifica-y-humanistica/gerencia-de-estudios-de-postgrado/programas-de-postgrado-ucv/maestria.html) [^05-desarrollo-3]. En la Figura \@ref(fig:maestrias), se aprecian las potenciales etiquetas para las maestrías.
 
 [^05-desarrollo-3]: previendo posibles modificacions en las páginas que contienen los listado de postgrados, se procedió a respaldarlas y forman parte del contenido del repositorio asociado a esta Investigación para garantizar la reproducibilidad de los resultados obtenidos. Para la fecha de redacción de este documento el contenido de los *enlaces* indicados fue modificado
 
@@ -214,7 +214,7 @@ knitr::include_graphics(c("images/05-desarrollo/1_ciclo/maestrias.png"
 
 Mediante la técnica de recuperación de datos web antes descrita, ver \@ref(scrapeo), "Extracción de Datos web Saber UCV", se procedió a extraer el nombre de cada postgrado, añadir el nivel académico y asociar la facultad a la cual está adscrito.
 
-La cantidad de postgrados por nivel académico: doctorado, maestría y especializaciones se muestran en el cuadro \@ref(tab:resultpostgrado).
+La cantidad de postgrados por nivel académico: doctorado, maestría y especializaciones se muestran en el Cuadro \@ref(tab:resultpostgrado).
 
 ```{r resultpostgrado, echo=FALSE, fig.cap='Cantidades de Postgrado por Nivel Académico', message=FALSE, warning=FALSE, out.width='50%'}
 df_cdad_postgrados <- readRDS('data/df_cdad_postgrados.rds')
@@ -232,9 +232,9 @@ flextable(df_cdad_postgrados) |>
 
 En cuanto a los pregrados no se encontró en el sitio de la Universidad en una página centralizada la información y se procedió a obtenerla de la página [wikipedia](https://es.wikipedia.org/wiki/Anexo:Facultades_de_la_Universidad_Central_de_Venezuela) asociada a la U.C.V., recuperando un total del 50 nombres de escuelas de pregrado junto con la facultad de adscripción.
 
-En la figura \@ref(fig:jerarquias) se muestran los totales apilados de pregrados y postgrados que se encontraron por Facultad-Centro de Investigación durante el levantamiento de información, cifra que al totalizar los postgrados y pregrados, alcanza la cantidad de `r sum(50+ rowSums(df_cdad_postgrados))` áreas de conocimiento.
+En la Figura \@ref(fig:jerarquias), se muestran los totales apilados de pregrados y postgrados que se encontraron por facultad-centro de Investigación durante el levantamiento de información, cifra que al totalizar los postgrados y pregrados, alcanza la cantidad de `r sum(50+ rowSums(df_cdad_postgrados))` áreas de conocimiento.
 
-```{r jerarquias,echo=FALSE, fig.cap='Total pregrados y postgrados por Facultad-Centro', message=FALSE, out.width='70%'}
+```{r jerarquias,echo=FALSE, fig.cap='Total pregrados y postgrados por facultad-centro', message=FALSE, out.width='70%'}
 totales_facultad <- readRDS('data/totales_facultad.rds')
 
 ggbarplot(totales_facultad,
@@ -333,7 +333,7 @@ df_ascenso <- readRDS('data/df_ascenso.rds')
 
 Como resultado de los procesos ejecutados se obtuvo que sobre un total de `r prettyNum(nrow(df_draw_seleccion),big.mark=".")` potenciales documentos se lograron clasificar `r prettyNum(clasificados,big.mark=".")` investigaciones, mientras que `r sin_lectura` no disponían información en el texto del documento y resultaba inviable hacer la categorización. En algunos casos la falta de información estuvo motivada en que el archivo contenía imágenes por estar escaneado el contenido o también en que los documentos anexos no fuesen trabajos de grado o tesis, sino informes de algún otro estilo.
 
-Otro resultado que se obtuvo, a nivel de cifras agregadas, es la cantidad de categorías distintas, con al menos una investigación asignada a una facultad o centro, que ascendió a `r nrow(totales_porarea)-1`, que se distribuyen por facultad según lo que se observa en la figura \@ref(fig:categorias).
+Otro resultado que se obtuvo, a nivel de cifras agregadas, es la cantidad de categorías distintas, con al menos una investigación asignada a una facultad o centro, que ascendió a `r nrow(totales_porarea)-1`, que se distribuyen por facultad según lo que se observa en la Figura \@ref(fig:categorias).
 
 ```{r categorias,echo=FALSE, fig.cap='Cantidades de categorías por facultad y nivel académico', message=FALSE, warning=FALSE,fig.show='hold',out.width="80%"}
 library(lubridate)
@@ -376,7 +376,7 @@ fecha_max <- max(df_draw_seleccion$Fecha) %>%
   format('%m/%d/%Y')
 ```
 
-Para ilustar algunos de los resultados generados, en la figura \@ref(fig:totalesporfacultad) se pueden ver primero la cantidad total de investigaciones que pudieron ser clasificadas por cada facultad - centro de estudios y en la segunda posición, la cantidad de documentos disponibles por fecha de publicación que abarcan el período `r fecha_min` al `r fecha_max`.
+Para ilustar algunos de los resultados generados, en la Figura \@ref(fig:totalesporfacultad), se pueden ver primero la cantidad total de investigaciones que pudieron ser clasificadas por cada facultad - centro de estudios y en la segunda posición, la cantidad de documentos disponibles por fecha de publicación que abarcan el período `r fecha_min` al `r fecha_max`.
 
 ```{r totalesporfacultad,echo=FALSE, fig.cap='Cantidades de investigaciones clasificadas por facultad y por año de publicación', message=FALSE, warning=FALSE,fig.show='hold',out.width="48%"}
 #el cuadro @ref(tab:totalesporfacultad) y
@@ -579,7 +579,7 @@ Por otra parte, en cuanto a la obtención de los nombres de los tutores, el proc
 
 [^05-desarrollo-4]: la diferencia entre la cantidad de "nombres" y los "nombres distintos" se motiva en que un mismo tutor puede haber tutoreado a más de un estudiante en la elaboración del trabajo de grado o tesis. Los nombres que aparecen más de una vez aportan mayor confianza a que el nombre se haya extraído con éxito, ya que existen múltiples coincidencias en la extracción del nombre.
 
-Dentro del mismo contexto, en la figura \@ref(fig:tutores) se aprecia el histograma que muestra la frecuencia para la cantidad de investigaciones que corresponden a un tutor que tiene un nombre coincidente, lo que se explica, p. ej., con el valor de la segunda barra de izquierda a derecha, el cual se debe interpretar de la siguiente forma: existen 487 casos donde un tutor aparece mencionado en dos trabajos de grado.
+Dentro del mismo contexto, en la Figura \@ref(fig:tutores), se aprecia el histograma que muestra la frecuencia para la cantidad de investigaciones que corresponden a un tutor que tiene un nombre coincidente, lo que se explica, p. ej., con el valor de la segunda barra de izquierda a derecha, el cual se debe interpretar de la siguiente forma: existen 487 casos donde un tutor aparece mencionado en dos trabajos de grado.
 
 ```{r tutores,echo=FALSE, fig.cap='Histógrama nombres tutores extraídos ', message=FALSE, warning=FALSE,fig.show='hold',out.width="90%"}
 
@@ -635,7 +635,7 @@ A continuación se agrupan y enuncian los principales inconvenientes que se enco
 
 7.  En la obtención del nombre del tutor es importante destacar que en varios casos el texto extraído no se corresponde propiamente al nombre del mismo, motivado a que la escritura de la portada puede responder a la representación visual. Se encontraron trabajos que tienen tutor académico, tutor industrial, cotutor y otras variantes, donde se hace una disposición en la escritura de colocar el tipo de cada tutor alíneado, cada uno en los extremos de una línea y los nombres también se disponen en los extremos de la línea superior, quebrando la regla de extracción que se había diseñando. Esto pareciera un problema a enfrentar con técnicas de segmentación de archivos que tienen en consideración la disposición visual. En el caso de esta investigación no se adoptaron métodos para abordar este problema. En las sección \@ref(pruebas), "Pruebas de Aceptación", se hace una evaluación estadística de la precisión alcanzada en esta extracción.
 
-8.  Se simplificaron algunos nombres de especializaciones por la cantidad de palabras que tienen estableciendo un límite, o *prunning*, de 5 palabras para el nombre del postgrado, lo que implica que algunos trabajos habrán quedado agrupados en la misma categoría. Estos casos mayormente están asociados a las especializaciones en el área de medicina, teniendo de ejemplo la figura \@ref(fig:especial).
+8.  Se simplificaron algunos nombres de especializaciones por la cantidad de palabras que tienen estableciendo un límite, o *prunning*, de 5 palabras para el nombre del postgrado, lo que implica que algunos trabajos habrán quedado agrupados en la misma categoría. Estos casos mayormente están asociados a las especializaciones en el área de medicina, teniendo de ejemplo la Figura \@ref(fig:especial).
 
     ```{r especial, echo=FALSE, fig.align='center', fig.cap=c('Ejemplo de nombres simplificados'), fig.show='hold', out.width="70%"}
 
@@ -666,6 +666,8 @@ A continuación se agrupan y enuncian los principales inconvenientes que se enco
 
 ### Ciclo-Prototipo del SCSU {#desarrollociclos3}
 
+En este ciclo se abordan integralmente los diversos aspectos que permiten hacer la implementación del prototipo del SCSU con distintas iteracciones donde inicialmente se hace la preparación del corpus, se crean recomendaciones de documentos de interés, así como hace el diseño y puesta en marcha de una versión simplificada del sistema incluyendo una interfaz de usuario, un servidor para atender las peticiones y el sistema gestor de base de datos.
+
 #### Iteración- Preparación del Corpus {#iternlp}
 
 En esta iteración el corpus conformado fue sometido a distintos procesamientos conocidos como "preparación del corpus" mediante la aplicación de técnicas de PLN.
@@ -678,13 +680,13 @@ Creando un corpus anotado con métodos del procesamiento del lenguaje natural se
 
 Para realizar el etiquetado de la "parte del discurso (POS)", se hizo una revisión exhaustiva de distintos *frameworks* para realizar el anotado del corpus, como *Freeling* [@padro12], CoreNLP [@manning-etal-2014-stanford], UDPipe [@UDPipe-2] y se decidió acudir a la librería spacyr [@spacyr] que es un *wrapper* de la librería spaCy [@spacy2020], que se ejecuta en el lenguaje Python. Esta librería, en lo relativo al etiquetado de las palabras por su función gramátical, lo hace acorde al marco de trabajo propuesto en la investigación "Universal Dependencies" [@demarneffe2021]. La implementación de spaCy dispone de un encadenamiento en el flujo de trabajo, resultando conveniente aplicarlo dentro del desarrollo del SCSU. Otra de las características que dispone, es contar con varios modelos preentrenados disponibles para realizar el etiquetado, e igualmente cuenta con métricas de desempeño que se encuentran dentro del estado del arte en el campo del procesamiento del lenguaje natural.
 
-En complemento de los anterior, la librería carga el modelo preentrenado de aprendizaje automático para el idioma español denominado "es_core_news_lg". Mediante un flujo de trabajo que se observa en la figura \@ref(fig:spacypi) se ejecutan procesos que permiten conformar el corpus anotado.
+En complemento de los anterior, la librería carga el modelo preentrenado de aprendizaje automático para el idioma español denominado "es_core_news_lg". Mediante un flujo de trabajo que se observa en la Figura \@ref(fig:spacypi), se ejecutan procesos que permiten conformar el corpus anotado.
 
 ```{r spacypi,echo=FALSE, fig.align='center', fig.cap='Arquitectura general- pipeline Spacy',  out.width="80%"}
 knitr::include_graphics("images/05-desarrollo/2_ciclo/nlp/spacy_pipeline1.png")
 ```
 
-Ilustrativamente se muestra el texto "*... y algunos no-metales. Contrariamente a lo...*", que al aplicar los métodos que dispone "spacyr", permite generar el corpus anotado que se puede ver en la figura \@ref(fig:corpusano), donde se aprecia:
+Ilustrativamente se muestra el texto "*... y algunos no-metales. Contrariamente a lo...*", que al aplicar los métodos que dispone "spacyr", permite generar el corpus anotado que se puede ver en la Figura \@ref(fig:corpusano), donde se aprecia:
 
 -   Código identificador del documento.
 
@@ -759,7 +761,7 @@ flextable(pos_total) |>
   autofit(add_w = 0.2, add_h = 0)
 ```
 
-En el mismo orden de ideas, realizando el análisis exploratorio del corpus, es interesante ver la cantidad de palabras únicas por función gramatical y el ratio que presentan con respecto al total de palabras por "POS" que se vio en la figura \@ref(fig:posgr). En la tabla \@ref(tab:lemmasg) se observa que las categorías del "etiquetado de la parte del discurso" que contienen mayor cantidad de información son los nombres propios (PROPN), los adjetivos (ADJ), números (NUM) y los sustantivos (NOUN) pero los nombres propios al ser únicos en cada trabajo y los números al representar cantidades, realmente la mayor cantidad de información del corpus se encuentra en los adjetivos y sustantivos, lo que refuerza la construcción y representación de los mapas de conocimiento mediante la selección de las palabras que tienen esas funciones gramaticales.
+En el mismo orden de ideas, realizando el análisis exploratorio del corpus, es interesante ver la cantidad de palabras únicas por función gramatical y el ratio que presentan con respecto al total de palabras por "POS" que se vio en la Figura \@ref(fig:posgr). En la Tabla \@ref(tab:lemmasg), se observa que las categorías del "etiquetado de la parte del discurso" que contienen mayor cantidad de información son los nombres propios (PROPN), los adjetivos (ADJ), números (NUM) y los sustantivos (NOUN) pero los nombres propios al ser únicos en cada trabajo y los números al representar cantidades, realmente la mayor cantidad de información del corpus se encuentra en los adjetivos y sustantivos, lo que refuerza la construcción y representación de los mapas de conocimiento mediante la selección de las palabras que tienen esas funciones gramaticales.
 
 ```{r lemmasg, echo=FALSE, fig.cap='Cantidad de palabras por función gramatical', message=FALSE, warning=FALSE}
 
@@ -777,7 +779,7 @@ flextable(lemmas_agrupados) |>
 
 ```
 
-Por otra parte se tiene que, contar con un corpus anotado permite ir inspeccionando los patrones que se presentan en él. Un ejemplo se tiene en la figura \@ref(fig:compurake) donde mediante el método *Rake*, que basado en la determinación de la frecuencia de palabras y patrones co-ocurrentes, logra extraer términos clave, en este caso para las palabras clave asociadas al subconjunto de trabajos que fueron realizados en la Escuela de Computación.
+Por otra parte se tiene que, contar con un corpus anotado permite ir inspeccionando los patrones que se presentan en él. Un ejemplo se tiene en la Figura \@ref(fig:compurake), donde mediante el método *Rake*, que basado en la determinación de la frecuencia de palabras y patrones co-ocurrentes, logra extraer términos clave, en este caso para las palabras clave asociadas al subconjunto de trabajos que fueron realizados en la Escuela de Computación.
 
 ```{r compurake, echo=FALSE, fig.align='center', fig.cap=c('Palabras clave en investigaciones de la Escuela de Computación'), fig.show='hold', out.width="60%"}
 
@@ -790,7 +792,7 @@ Cabe destacar que la tabla que conforma el corpus anotado para esta fase de la i
 
 Al analizar el corpus anotado se detectaron algunos puntos a considerar para análisis posteriores.
 
--   El proceso de separación por tokens y de lematización, como ya se mencionó, se hizo con la librería spacyr, que hace estos procesos mediante el uso de un modelo preentrenado de aprendizaje automático. Hubo ciertos términos que son muy específicos de un área de conocimiento, como en la química, donde los *c*ompuestos, moléculas, nomenclaturas u otros, contienen denominaciones conformadas por cadenas de letras mayúsculas seguidas de puntos, que no presentan estructuras gramaticales propias del lenguaje natural, sino de un dominio específico, ver figura \@ref(fig:quimica). Al tener un modelo intentando hacer la separación de los tokens o el etiquetado bajo unos textos con los cuales no fue entrenado, el proceso falla en la ejecución de sus tareas. Este problema, para ese tipo de términos, no fue resuelto al no disponer con un modelo entrenado para este dominio. En investigaciones posteriores pudiera realizarse un sobreentrenamiento que incluyera el etiquetado de estos *tokens* de dominios muy especializados, como generalmente se presenta en carreras científicas y así poder mejorar la fase del etiquetado de las funciones gramaticales (POS).
+-   El proceso de separación por tokens y de lematización, como ya se mencionó, se hizo con la librería spacyr, que hace estos procesos mediante el uso de un modelo preentrenado de aprendizaje automático. Hubo ciertos términos que son muy específicos de un área de conocimiento, como en la química, donde los *c*ompuestos, moléculas, nomenclaturas u otros, contienen denominaciones conformadas por cadenas de letras mayúsculas seguidas de puntos, que no presentan estructuras gramaticales propias del lenguaje natural, sino de un dominio específico, ver Figura \@ref(fig:quimica). Al tener un modelo intentando hacer la separación de los tokens o el etiquetado bajo unos textos con los cuales no fue entrenado, el proceso falla en la ejecución de sus tareas. Este problema, para ese tipo de términos, no fue resuelto al no disponer con un modelo entrenado para este dominio. En investigaciones posteriores pudiera realizarse un sobreentrenamiento que incluyera el etiquetado de estos *tokens* de dominios muy especializados, como generalmente se presenta en carreras científicas y así poder mejorar la fase del etiquetado de las funciones gramaticales (POS).
 
     ```{r quimica, echo=FALSE, fig.align='center', fig.cap=c('Texto "resumen" de trabajo de grado de Maestría en Química. Autora: Margarita González'), fig.show='hold', out.width="90%"}
 
@@ -819,7 +821,7 @@ Mediante la creación de una *"term document matrix"*, usando el *framework* par
 
 En cada fila de la matriz se representa un documento, también equivalente a un vector. Midiendo la similitud *coseno*, revisada en \@ref(similitud), con la función "`textstat_simil`", entre un determinado documento y el resto de los que conforman el corpus, es viable determinar cuáles son los más (ref:parecido)
 
-Se realizó un proceso iterativo para calcular la similitud coseno entre documentos y se pudo apreciar que los resultados de similitud pueden resultar de interés en diversos casos, como el que se muestra en la figura \@ref(fig:similitudreco).
+Se realizó un proceso iterativo para calcular la similitud coseno entre documentos y se pudo apreciar que los resultados de similitud pueden resultar de interés en diversos casos, como el que se muestra en la Figura \@ref(fig:similitudreco).
 
 ```{r similitudreco, echo=FALSE, fig.align='center', fig.cap='Resultado de recomendaciones al documento: "Diseño de un sistema para la desinfección de aguas de consumo humano y de uso industrial empleando un material inorgánico antibacterial"', fig.show='hold', out.width="90%"}
 
@@ -848,18 +850,18 @@ Durante la fase de especulación de este ciclo se realizaron los diagramas de ca
 
 \newpage
 
-```{r protoUC1, echo=FALSE, fig.align='center', fig.cap='Caso de Uso 1 - Prototipo SCSU - Nivel 1', out.width=c("45%"), fig.show='hold'}
+```{r protoUC1, echo=FALSE, fig.align='center', fig.cap='Caso de Uso 1 - Prototipo SCSU - nivel 1', out.width=c("45%"), fig.show='hold'}
 
 knitr::include_graphics("images/05-desarrollo/2_ciclo/UC/prototipo_nivel1.png")
 
 ```
 
-```{r protoUC11, echo=FALSE, fig.align='center', fig.cap='Caso de uso 1.1 - Prototipo SCSU - Nivel 2', out.width=c("45%"), fig.show='hold'}
+```{r protoUC11, echo=FALSE, fig.align='center', fig.cap='Caso de uso 1.1 - Prototipo SCSU - nivel 2', out.width=c("45%"), fig.show='hold'}
 
 knitr::include_graphics("images/05-desarrollo/2_ciclo/UC/prototipo_nivel2.png")
 ```
 
-En el cuadro \@ref(tab:prototipoUC1) se muestra el caso de uso UC.1 de prototipo del SCSU.
+En el Cuadro \@ref(tab:prototipoUC1), se muestra el caso de uso UC.1 de prototipo del SCSU.
 
 \newpage
 
@@ -970,14 +972,14 @@ flextable(df)%>%
 
 ```
 
-En la figura \@ref(fig:sidebar) se muestra el *mock-up* de la interfaz para el prototipo del SCSU.
+En la Figura \@ref(fig:sidebar) se muestra el *mock-up* de la interfaz para el prototipo del SCSU.
 
 ```{r sidebar, echo=FALSE, fig.align='center', fig.cap='Mock-Up de campos de entrada en la interfazde prototipo', out.width="25%"}
 
 knitr::include_graphics("images/05-desarrollo/2_ciclo/UI/prototipo_sidebar.png")
 ```
 
-En lo relativo a los mapas de conocimiento, motivado a que visualizar gráficamente los resultados es una forma conveniente de ayudar a los usuarios a descubrir relaciones y patrones presentes en los textos que pueden estar ocultos [@li2018], en la figura \@ref(fig:mapacon) se muestra la propuesta de representación de los mapas en el prototipo.
+En lo relativo a los mapas de conocimiento, motivado a que visualizar gráficamente los resultados es una forma conveniente de ayudar a los usuarios a descubrir relaciones y patrones presentes en los textos que pueden estar ocultos [@li2018], en la Figura \@ref(fig:mapacon), se muestra la propuesta de representación de los mapas en el prototipo.
 
 ```{r mapacon, echo=FALSE, fig.align='center', fig.cap='Representación mapas de conocimiento', out.width="70%"}
 
@@ -985,7 +987,7 @@ knitr::include_graphics("images/05-desarrollo/2_ciclo/UI/mapcon.png")
 
 ```
 
-Otro punto a señalar es que, para implementar la búsqueda de texto se usará PostgreSQL V16, por lo cual en la fase de "especulación" se realizó el diseño del modelo "entidad-relación" que se ve en detalle en la figura \@ref(fig:entrel).
+Otro punto a señalar es que, para implementar la búsqueda de texto se usará PostgreSQL V16, por lo cual en la fase de "especulación" se realizó el diseño del modelo "entidad-relación" que se ve en detalle en la Figura \@ref(fig:entrel).
 
 ```{r entrel, echo=FALSE, fig.align='center', fig.cap='Modelo Entidad-Relación', out.width=c("60%")}
 
@@ -996,7 +998,7 @@ En el modelo indicado, la entidad "corpus" se apoya en la tabla "POS" que contie
 
 Cabe destacar que, un factor determinante para la selección de PostgreSQL es el soporte que tiene para ejecutar procesos de "búsqueda de texto completo (*full text search*)" en el idioma español.
 
-Igualmente se tiene que, el esquema de la arquitectura general de la aplicación, el cuál se implementará en el *framework* Shiny, se representa en la figura \@ref(fig:esqshinyproto).
+Igualmente se tiene que, el esquema de la arquitectura general de la aplicación, el cuál se implementará en el *framework* Shiny, se representa en la Figura \@ref(fig:esqshinyproto).
 
 ```{r esqshinyproto, echo=FALSE, fig.align='center', fig.cap='Esquema general de prototipo de la aplicación', out.width="50%"}
 knitr::include_graphics("images/05-desarrollo/2_ciclo/esquemas/shinyappproto.png")
@@ -1028,7 +1030,7 @@ A continuación se describen los procesos con los que se realizó el "poblado**"
 
         ```
 
-        En la figura \@ref(fig:doctok) se puede ver parcialmente la estructura de datos de tipo "`tsvector`" que se genera para el texto "Las planicies de inundación son sistemas asociados al margen de un río que están sujetas a pulsos estacionales de inundación y sequía. La desembocadura del Río Mapire constituye un sistema complejo de planicie de inundación, como resultado del aumento del nivel de agua en el río por un efecto de represamiento por el Río Orinoco durante la época lluviosa. El gradiente de inundación que se forma genera un estrés ambiental en el sistema suelo que depende de la duración y profundidad...." .
+        En la Figura \@ref(fig:doctok), se puede ver parcialmente la estructura de datos de tipo "`tsvector`" que se genera para el texto "Las planicies de inundación son sistemas asociados al margen de un río que están sujetas a pulsos estacionales de inundación y sequía. La desembocadura del Río Mapire constituye un sistema complejo de planicie de inundación, como resultado del aumento del nivel de agua en el río por un efecto de represamiento por el Río Orinoco durante la época lluviosa. El gradiente de inundación que se forma genera un estrés ambiental en el sistema suelo que depende de la duración y profundidad...." .
 
         ```{r doctok, echo=FALSE, fig.align='center', fig.cap='Estructura de datos índice invertido', out.width="85%"}
 
@@ -1044,7 +1046,7 @@ A continuación se describen los procesos con los que se realizó el "poblado**"
 
         Para culminar el proceso de creación del índice invertido se debe ejecutar el comando "`CREATE INDEX document_weights_idx ON Corpus USING GIN (document_tokens);`" que cierra el ciclo de la generación del índice y es lo que permite realizar los procesos de búsqueda en una forma más eficiente, disminuyendo los tiempos de respuesta, debiendo tener presente que la creación del índice puede incrementar entre un cincuenta y doscientos por ciento el espacio de almacenamiento al ser generado. Una de las bondades que adicionalmente brinda la función "`TS_VECTOR`", es que al añadir nuevos documentos a la base de datos, el índice será actualizado automáticamente.
 
-2.  **Tabla "POS":** con los procesos que fueron ejecutados en \@ref(iternlp), "Etiquetado de la Parte del Discurso", se obtuvieron los datos que formarán parte de esta tabla, donde cada palabra que conforma el corpus pasa a ser una fila identificando el documento de origen, la oración dentro del documento donde se encuentra la palabra, el número de orden de aparición de la palabra, la palabra, su lema y la función gramatical asignada, idéntico a lo que se observó en la figura \@ref(fig:spacypi).
+2.  **Tabla "POS":** con los procesos que fueron ejecutados en \@ref(iternlp), "Etiquetado de la Parte del Discurso", se obtuvieron los datos que formarán parte de esta tabla, donde cada palabra que conforma el corpus pasa a ser una fila identificando el documento de origen, la oración dentro del documento donde se encuentra la palabra, el número de orden de aparición de la palabra, la palabra, su lema y la función gramatical asignada, idéntico a lo que se observó en la Figura \@ref(fig:spacypi).
 
 En cuanto a la aplicación web, mediante el *framework* Shiny se implementó el prototipo con la codificación de dos componentes principales que son: la interfaz de usuario (ui) y el servidor (*server*).
 
@@ -1065,7 +1067,7 @@ En el servidor de la aplicación, a nivel de generación de estructuras a ser re
 
 2.  **renderPlot**: con el uso de la librería ggraph [@ggraph] se crea un grafo que reproduce los mapas de conocimiento, representando las palabras mediante nodos y la coocurrencia implica la unión mediante arcos, y a mayor grosor en el arco, quiere decir que la cantidad de veces que se presenta la coocurrencia es mayor.
 
-En la figura \@ref(fig:prototipoapp) se muestra la versión implementada del prototipo donde ante la búsqueda de la palabra "física" se recuperan los documentos que incluyen tal palabra y se generan los mapas de conocimiento.
+En la Figura \@ref(fig:prototipoapp), se muestra la versión implementada del prototipo donde ante la búsqueda de la palabra "física" se recuperan los documentos que incluyen tal palabra y se generan los mapas de conocimiento.
 
 ```{r prototipoapp, echo=FALSE, fig.align='center', fig.cap='Resultado de búsqueda "física" en prototipo', out.width="80%"}
 
@@ -1141,6 +1143,8 @@ Adicionalmente, realizar el etiquetado de las partes del discurso, previamente a
 
 ### Ciclo Integración de Componentes del Software {#desarrollociclos4}
 
+En este ciclo, tomando de insumo los aprendizajes obtenidos en los ciclos anteriores, se hace la integración de los distintos componentes y se realizan las modificaciones que permiten obtener la primera versión completa y funcional del SCSU, que puede ser puesto en producción.
+
 **Especulación**
 
 Usando las técnicas y métodos aplicados en ciclos anteriores e integrando los aprendizajes obtenidos, se puede implementar el SCSU. Concretamente se tendrá como insumo en este ciclo lo revisado y obtenido en:
@@ -1158,6 +1162,8 @@ Usando las técnicas y métodos aplicados en ciclos anteriores e integrando los 
 6.  Usar el método para realizar la generación de "recomendaciones" revisado en \@ref(imrecomendacion), "Recomendación de Documentos".
 
 En el proceso de especulación de este ciclo se aplicaron los métodos de la "ingeniería de software" necesarios para implementar el SCSU estableciendo formalmente los requerimientos funcionales y no funcionales, los diagramas y tablas de casos de uso, el modelo entidad-relación y demás aspectos necesarios, para posteriormente en la fase de colaboración realizar la implementación del sistema.
+
+\newpage
 
 **Requerimientos Funcionales del SCSU:**
 
@@ -1189,6 +1195,8 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la "in
 -   **Descripción**
 
     El sistema debe permitir a los usuarios aplicar filtros avanzados a los resultados de búsqueda para refinar y limitar la información recuperada. Los filtros pueden incluir fechas, jerarquía (nivel académico), facultad, escuela-postgrado.
+
+    \newpage
 
 -   **Criterios de Aceptación**
 
@@ -1280,6 +1288,8 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la "in
 
     -   El tiempo de respuesta promedio para una consulta estándar no debe superar un segundo.
 
+        \newpage
+
 2.  **Utilización de Componentes *open source:***
 
 -   **Descripción**
@@ -1307,6 +1317,8 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la "in
 -   **Descripción**
 
     El sistema, bien sea al momento de conformar la base de datos o al realizar actualizaciones, en la mayor medida posible debe ejecutar el preprocesamiento de los textos (PLN-POS, remoción *stopwords*, índice invertido, etc.) para minimizar los cómputos al momento de la demanda de recursos cuando el usuario realiza las búsquedas.
+
+    \newpage
 
 -   **Criterios de Aceptación**
 
@@ -1340,15 +1352,15 @@ En el proceso de especulación de este ciclo se aplicaron los métodos de la "in
 
 **Diagramas de Caso de Uso**
 
-El SCSU cuenta con los casos de uso que se observan en las figuras \@ref(fig:uc1), \@ref(fig:uc12), \@ref(fig:uc2), \@ref(fig:uc3), \@ref(fig:uc31), \@ref(fig:uc4) ; seguido de las tablas \@ref(tab:tablauc1) ,\@ref(tab:tablauc11) , \@ref(tab:tablauc2), \@ref(tab:tablauc3), \@ref(tab:tablauc321), \@ref(tab:tablauc322), \@ref(tab:tablauc4) que contienen la descripción de cada caso.
+El SCSU cuenta con los casos de uso que se observan en las figuras \@ref(fig:uc1), \@ref(fig:uc12), \@ref(fig:uc2), \@ref(fig:uc3), \@ref(fig:uc31), \@ref(fig:uc4) ; seguido de las tablas \@ref(tab:tablauc1) ,\@ref(tab:tablauc11) , \@ref(tab:tablauc2), \@ref(tab:tablauc3), \@ref(tab:tablauc321), \@ref(tab:tablauc322), \@ref(tab:tablauc4), que contienen la descripción de cada caso.
 
-```{r uc1,echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama de casos de uso 1, Nivel 1.', out.width="40%"}
+```{r uc1,echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama de casos de uso 1, nivel 1.', out.width="40%"}
 knitr::include_graphics("images/05-desarrollo/4_ciclo/UC/SCSU_UC1_nivel1.png")
 ```
 
 <br><br>
 
-```{r uc12,echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama de casos de uso 1, Nivel 1.', out.width="50%"}
+```{r uc12,echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama de casos de uso 1, nivel 1.', out.width="50%"}
 knitr::include_graphics("images/05-desarrollo/4_ciclo/UC/SCSU_UC1_nivel2.png")
 ```
 
@@ -1360,13 +1372,13 @@ knitr::include_graphics("images/05-desarrollo/4_ciclo/UC/SCSU_UC2_nivel1.png")
 
 <br><br>
 
-```{r uc3,echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama de casos de uso 3, Nivel 1', out.width="40%"}
+```{r uc3,echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama de casos de uso 3, nivel 1', out.width="40%"}
 knitr::include_graphics("images/05-desarrollo/4_ciclo/UC/SCSU_UC3_nivel1.png")
 ```
 
 <br><br>
 
-```{r uc31,echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama de casos de uso 3, Nivel 2.', out.width="50%"}
+```{r uc31,echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama de casos de uso 3, nivel 2.', out.width="50%"}
 knitr::include_graphics("images/05-desarrollo/4_ciclo/UC/SCSU_UC3_nivel2.png")
 ```
 
@@ -2173,7 +2185,7 @@ flextable(df_salida)%>%
 
 **Modelo Entidad Relación**
 
-El modelo "entidad-relación" que se ve en detalle en la figura \@ref(fig:diagramer) se construyó teniendo como base el diseño de prototipo. En esta nueva versión hay otras tablas que sirven de apoyo a la entidad "Corpus" como la tabla "Facultad", "Escuela_Postgrado" y "jerarquia".
+El modelo "entidad-relación" que se ve en detalle en la Figura \@ref(fig:diagramer), se construyó teniendo como base el diseño de prototipo. En esta nueva versión hay otras tablas que sirven de apoyo a la entidad "Corpus" como la tabla "Facultad", "Escuela_Postgrado" y "jerarquia".
 
 ```{r diagramer, echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama entidad relación', out.width="80%"}
 
@@ -2184,7 +2196,7 @@ Adicionalmente, a la tabla "corpus" se le añade una columna que se corresponde 
 
 **Diagrama General del Sistema - Versión Contenedores**
 
-En la figura \@ref(fig:diagramacontenedores) se define la estructura que será implementada, teniendo en cuenta los requerimientos funcionales y no funcionales indicados anteriormente. La propuesta funciona como un sistema distribuido, ver \@ref(SD), "Sistemas Distribuidos", donde mediante el uso de contenedores, ver \@ref(contenedores), "Contenedores", se crean instancias en las que son ejecutadas los servicios necesarios para que el Sistema Complementario Saber UCV pueda cumplir con los objetivos propuestos. La integración y la asignación de recursos a cada contenedor se hace mediante el uso de un orquestador, ver \@ref(orquestador), "Orquestadores".
+En la Figura \@ref(fig:diagramacontenedores), se define la estructura que será implementada, teniendo en cuenta los requerimientos funcionales y no funcionales indicados anteriormente. La propuesta funciona como un sistema distribuido, ver \@ref(SD), "Sistemas Distribuidos", donde mediante el uso de contenedores, ver \@ref(contenedores), "Contenedores", se crean instancias en las que son ejecutadas los servicios necesarios para que el Sistema Complementario Saber UCV pueda cumplir con los objetivos propuestos. La integración y la asignación de recursos a cada contenedor se hace mediante el uso de un orquestador, ver \@ref(orquestador), "Orquestadores".
 
 ```{r diagramacontenedores, echo=FALSE, fig.align='center', fig.cap='SCSU: Diagrama general del sistema en contenedores', out.width="80%"}
 
@@ -2195,7 +2207,7 @@ En la fase de colaboración de este ciclo se especificarán las tareas y funcion
 
 **Esquema General de Clasificación y Extracción de Datos del SCSU**
 
-En la figura \@ref(fig:diagramaextra) se observa el proceso de extracción y clasificación de datos que realizará el SCSU, obteniendo los valores desde el repositorio Saber UCV, teniendo dos ramas principales que alimentan a la base de datos.
+En la Figura \@ref(fig:diagramaextra) ,se observa el proceso de extracción y clasificación de datos que realizará el SCSU, obteniendo los valores desde el repositorio Saber UCV, teniendo dos ramas principales que alimentan a la base de datos.
 
 En tal sentido, la lógica de este proceso es que en la primera rama se descarga el documento anexo a cada investigación, cuando se cumplan las condiciones, se hace la lectura del documento y se inicia el proceso de clasificación por facultad y área de estudio, como se vio en \@ref(asignacion), "Iteración- Extracción y Clasificación de las Investigaciones".
 
@@ -2212,14 +2224,14 @@ knitr::include_graphics("images/05-desarrollo/4_ciclo/esquema extraccion.png")
 
 La interfaz cuenta con tres componentes:
 
-1.  **Sidebar:** en la barra lateral que se ubicará en la parte izquierda de la aplicación y es el área donde el usuario definirá el texto de búsqueda, así como los paremetros que le acompañan. En la figura \@ref(fig:sidebar2) se puede ver el diseño propuesto.
+1.  **Sidebar:** en la barra lateral que se ubicará en la parte izquierda de la aplicación y es el área donde el usuario definirá el texto de búsqueda, así como los paremetros que le acompañan. En la Figura \@ref(fig:sidebar2), se puede ver el diseño propuesto.
 
     ```{r sidebar2,echo=FALSE, fig.align='center', fig.cap='Interfaz de usuario - Sidebar', out.width="35%"}
 
     knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/sidebar.jpg")
     ```
 
-2.  **Main Tabs:** es la sección de pestañas que se encontrará en la parte media alta de la aplicación y es donde el usuario podrá seleccionar la visualización de los "tabla resultados", bien sea para la tabla de los documentos o para ver los mapas de conocimiento. En la figura \@ref(fig:maintab) se representa la propuesta. Al seleccionar una pestaña está cambiará el color de fondo verde a gris.
+2.  **Main Tabs:** es la sección de pestañas que se encontrará en la parte media alta de la aplicación y es donde el usuario podrá seleccionar la visualización de los "tabla resultados", bien sea para la tabla de los documentos o para ver los mapas de conocimiento. En la Figura \@ref(fig:maintab), se representa la propuesta. Al seleccionar una pestaña está cambiará el color de fondo verde a gris.
 
     ```{r maintab, echo=FALSE, fig.align='center', fig.cap='Interfaz de usuario - Pestañas ', out.width="90%"}
 
@@ -2228,13 +2240,13 @@ La interfaz cuenta con tres componentes:
 
 3.  **Resultados:** debajo de "Main Tabs" se presentan los resultados obtenidos en el proceso de búsqueda. La representación es contextual basada en la selección de pestaña que está seleccionada ("tabla resultados" o "mapas de conocimiento").
 
-    1.  En la figura \@ref(fig:tablaresultados2) se puede ver la representación de la tabla de resultados de una búsqueda.
+    1.  En la Figura \@ref(fig:tablaresultados2), se puede ver la representación de la tabla de resultados de una búsqueda.
 
         ```{r tablaresultados2,echo=FALSE, fig.align='center', fig.cap='Interfaz de usuario - Tabla resultados de búsqueda', out.width="90%"}
         knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/tablaresultado.png")
         ```
 
-    2.  En las figura \@ref(fig:tablaresultados3) se puede ver la representación propuesta de mapas de conocimiento.
+    2.  En las Figura \@ref(fig:tablaresultados3), se puede ver la representación propuesta de mapas de conocimiento.
 
         ```{r tablaresultados3,echo=FALSE, fig.align='center', fig.cap='Interfaz de usuario - Mapas de conocimiento', out.width="70%"}
         knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/uimapas.png")
@@ -2242,27 +2254,29 @@ La interfaz cuenta con tres componentes:
 
 Adicional a estos tres componentes, la propuesta de interfaz incluye:
 
-1.  **Tooltips**: al hacer *hoover* por áreas de introducción o selección de valores se desplegará un texto de ayuda según se ve en la figura \@ref(fig:tooltip).
+1.  **Tooltips**: al hacer *hoover* por áreas de introducción o selección de valores se desplegará un texto de ayuda según se ve en la Figura \@ref(fig:tooltip).
 
     ```{r tooltip, echo=FALSE, fig.align='center', fig.cap='Interfaz de usuario - Tooltips ', out.width="30%"}
     knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/tooltip.png")
     ```
 
-2.  **Inspección documento:** la tabla de resultados dispondrá de un ícono "+" que expande la tabla para mostrar el detalle y recomendaciones de un documento, como se observa en la figura \@ref(fig:detalledoc).
+2.  **Inspección documento:** la tabla de resultados dispondrá de un ícono "+" que expande la tabla para mostrar el detalle y recomendaciones de un documento, como se observa en la Figura \@ref(fig:detalledoc).
 
     ```{r detalledoc, echo=FALSE, fig.align='center', fig.cap='Interfaz de usuario -Inspección documento ', out.width="80%"}
     knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/uiinspecciontabla.png")
     ```
 
-3.  **Inspección mapas de conocimiento:** la propuesta de visualización del detalle de aparición en documentos de una determinada coocurrencia de dos palabras que se encuentran unidas por un arco se ven en la figura \@ref(fig:detallemc). La tabla que se muestra aparecerá mediante una ventana desplegable.
+3.  **Inspección mapas de conocimiento:** la propuesta de visualización del detalle de aparición en documentos de una determinada coocurrencia de dos palabras que se encuentran unidas por un arco se ven en la Figura \@ref(fig:detallemc). La tabla que se muestra aparecerá mediante una ventana desplegable.
 
     ```{r detallemc, echo=FALSE, fig.align='center', fig.cap='Interfaz de usuario- Inspección mapas de conocimiento ', out.width="60%"}
     knitr::include_graphics("images/05-desarrollo/4_ciclo/UI/uiinspeccionmapas.png")
     ```
 
+    \newpage
+
 **Módulos Aplicación Web**
 
-La aplicación web, que será desarrollada en el *framework* Shiny, según las prácticas de desarrollo recomendadas, se hace bajo la arquitectura de módulos denominados "Shiny modules", descomponiendo en partes independientes cada par de funciones relacionadas en la ui (define la interfaz de usuario) y el *server* (define la lógica del servidor), facilitando la comprensión del funcionamiento de la aplicación, la legibilidad del código, pruebas unitarias y el mantenimiento [@wickham2021]. En la figura \@ref(fig:shinymodulo) se puede ver la arquitectura de la aplicación que se integrará dentro del sistema distribuido.
+La aplicación web, que será desarrollada en el *framework* Shiny, según las prácticas de desarrollo recomendadas, se hace bajo la arquitectura de módulos denominados "Shiny modules", descomponiendo en partes independientes cada par de funciones relacionadas en la ui (define la interfaz de usuario) y el *server* (define la lógica del servidor), facilitando la comprensión del funcionamiento de la aplicación, la legibilidad del código, pruebas unitarias y el mantenimiento [@wickham2021]. En la Figura \@ref(fig:shinymodulo), se puede ver la arquitectura de la aplicación que se integrará dentro del sistema distribuido.
 
 ```{r shinymodulo,echo=FALSE, fig.align='center', fig.cap='Diagrama aplicación web Shiny versión modular', out.width="60%"}
 
@@ -2288,11 +2302,11 @@ A continuación se indican los contenedores que forman parte del sistema y los p
 
 3.  **Shinyproxy:** es una solución de código abierto para alojar aplicaciones Shiny [@shinyproxy2023] que cuenta con una tecnología estable y probada. El uso de este contenedor se justifica en el hecho de que una aplicación Shiny funciona como "*single thread*" y es necesario que ante cada petición de acceso, al servidor despliegue un *workspace* completamente aislado, es decir, un contenedor distinto. Shinyproxy es una implementación del servidor *Spring Boo*t que tiene la capacidad de hacer la replicación indicada y permite controlar los recursos de memoria y *CPU* asignados, así como el *timeout* a cada instancia que se despliega. Otras ventajas que aporta, no implementadas en esta versión del sistema, es que permite establecer *login* en el uso de la aplicación y la creación de grupos de usuarios con perfiles distintos, contando con soporte para distintos métodos de autenticación. Si bien en estos momentos la aplicación está concebida para el libre acceso, en algún momento se pude restringir y no sería necesario hacer modificaciones en la arquitectura, más allá de variaciones en el archivo de configuración. Este contenedor habilita el puerto 8080 para escuchar las peticiones y fue generado desde la imagen almacenada en el Docker Hub, Shinyproxy.
 
-4.  **Shiny Web App**: en la imagen creada se encuentra la aplicación web con todas las dependencias y librerías necesarias para remitir los *querys* al contenedor del manejador de la base de datos, presentar los resultados y generar las visualizaciones correspondientes. Como se indicó anteriormente, cada vez que ocurre desde el navegador del cliente una petición de acceso, desde el contenedor Shinyproxy , se crea una instancia de esta imagen con todos los elementos necesarios para que la *app* funcione. En caso de presentar alguna falla, el sistema es tolerante a los mismos, porque se pueden seguir recibiendo peticiones que replicarían un contenedor nuevo desde la imagen sin afectar al contenedor que presentase el fallo, o viceversa. Desde cada contenedor instanciado de esta imagen se realiza el acceso de lectura al contenedor que contiene PostgreSQL*,* donde reposa la base de datos que contiene los textos ya procesados. La imagen que se usa en este servidor fue definida a medida de las necesidades.
+4.  **Shiny Web App**: en la imagen creada se encuentra la aplicación web con todas las dependencias y librerías necesarias para remitir los *queries* al contenedor del manejador de la base de datos, presentar los resultados y generar las visualizaciones correspondientes. Como se indicó anteriormente, cada vez que ocurre desde el navegador del cliente una petición de acceso, desde el contenedor Shinyproxy , se crea una instancia de esta imagen con todos los elementos necesarios para que la *app* funcione. En caso de presentar alguna falla, el sistema es tolerante a los mismos, porque se pueden seguir recibiendo peticiones que replicarían un contenedor nuevo desde la imagen sin afectar al contenedor que presentase el fallo, o viceversa. Desde cada contenedor instanciado de esta imagen se realiza el acceso de lectura al contenedor que contiene PostgreSQL*,* donde reposa la base de datos que contiene los textos ya procesados. La imagen que se usa en este servidor fue definida a medida de las necesidades.
 
     **Lógica de la Aplicación**
 
-    El esquema general de la aplicación es similar al que se presentó en el prototipo en la figura \@ref(fig:esqshinyproto). A continuación se mencionan las entradas y salidas que se generan dentro del contenedor.
+    El esquema general de la aplicación es similar al que se presentó en el prototipo en la Figura \@ref(fig:esqshinyproto). A continuación se mencionan las entradas y salidas que se generan dentro del contenedor.
 
     1.  **Entradas:** el usuario indica y selecciona los siguientes valores.
 
@@ -2304,7 +2318,7 @@ A continuación se indican los contenedores que forman parte del sistema y los p
 
             3)  Nombre del pregrado o postgrado - opciones: 412 (50 carreras de pregrado y 362 postgrados).
 
-            Cada una de las tablas anteriores se actualiza dinamicamente según se vayan seleccionando las relaciones y las disponibilidades. P. ej., al seleccionar pregrado solo se mostrarán los nombres de las carreras de pregrado, pero si se selecciona también el nombre de la facultad, solo se mostrarán las carreras de pregrado dentro de la facultad seleccionada. Para un determinado filtro se permiten selecciones múltiples dando una total flexibilidad al momento de ejecutar los *querys*. El texto del *query* es procesado convirtiéndolo a minúsculas y removiendo signos de puntuación. En caso de indicar el texto entre comillas el sistema aplicará el método de búsqueda exacta.
+            Cada una de las tablas anteriores se actualiza dinamicamente según se vayan seleccionando las relaciones y las disponibilidades. P. ej., al seleccionar pregrado solo se mostrarán los nombres de las carreras de pregrado, pero si se selecciona también el nombre de la facultad, solo se mostrarán las carreras de pregrado dentro de la facultad seleccionada. Para un determinado filtro se permiten selecciones múltiples dando una total flexibilidad al momento de ejecutar los *queries*. El texto del *query* es procesado convirtiéndolo a minúsculas y removiendo signos de puntuación. En caso de indicar el texto entre comillas el sistema aplicará el método de búsqueda exacta.
 
         ii. **Selector "Generar Coocurrencias":** es una casilla que sirve para seleccionar si se van a representar los mapas de conocimiento o no. Por defecto está deseleccionado ya que la representación de los mapas incrementa el tiempo de procesamiento.
 
@@ -2330,14 +2344,16 @@ A continuación se indican los contenedores que forman parte del sistema y los p
 
     **Procesos:** los procesos que se ejecutan en este contenedor se listan a continuación.
 
-    i.  **Poblado Base de Datos:** se ejecutan los procesos para hacer el poblado inicial de base de dato así como a la creación del indexado de la base de datos en el contenedor PostgreSQL**.** En la fase de especulación de este ciclo se presentó un diagrama que describe en el esquema de la figura \@ref(fig:diagramaextra), "extracción y clasificación de los datos".
+    i.  **Poblado Base de Datos:** se ejecutan los procesos para hacer el poblado inicial de base de dato así como a la creación del indexado de la base de datos en el contenedor PostgreSQL**.** En la fase de especulación de este ciclo se presentó un diagrama que describe en el esquema de la Figura \@ref(fig:diagramaextra), "extracción y clasificación de los datos".
     ii. **Descarga de Datos:** proceso que fue abordado en el ciclo \@ref(desarrollociclos1), "Ciclo Conformación del Conjunto de Datos".
     iii. **Text Mining y NLP:** en el ciclo \@ref(desarrollociclos3), "Ciclo Prototipo SCSU", en la iteración \@ref(iternlp), "Preparación del Corpus", se detallan los procesamientos a los textos que ahora son ejecutados en este contenedor. La diferencia es que para usar spacyr, al depender esta librería de una ambiente virtual en Python , es necesario configurar otro contenedor con las dependencias y librerías que permitan el llamado al etiquetado del discurso. El contenedor que se integra para realizar estos procesos es **"**Python Spacy"**.**
-    iv. **Generación de Recomendaciones:** se corresponde con detallado en el ciclo \@ref(desarrollociclos3) ,"Ciclo Prototipo de SCSU", en la iteración \@ref(imrecomendacion), "Recomendación de Documentos".
+    iv. **Generación de Recomendaciones:** se corresponde con detallado en el ciclo \@ref(desarrollociclos3), "Ciclo Prototipo de SCSU", en la iteración \@ref(imrecomendacion), "Recomendación de Documentos".
 
-    En el Apéndice de esta investigación se listan las librerías que usa este contenedor
+    En el Apéndice de esta investigación se listan las librerías que usa este contenedor.
 
 7.  **Python Spacy:** se creó una imagen que está basada en "Ubuntu 22" con "Python 3.10", la librería "spaCy v.3" y el modelo de spaCy "es_core_news_lg". Su función es que mediante un volumen compartido pueda ser invocado desde el contenedor "R Imagen Servicios" para así realizar los procesamientos de NLP descritos.
+
+    \newpage
 
 [^05-desarrollo-8]: Al momento de presentar este Trabajo de Grado no se dispone de un dominio para realizar la configuración del certificado para conexiones HTTPS, no obstante en un momento previo en que se tenía disponible un dominio se hicieron las pruebas para comprobar la integración y correcto funcionamiento.
 
@@ -2366,6 +2382,8 @@ De acuerdo a la implementación del sistema, los procesos de mantenimiento que c
 3.  Logs y registro de eventos:
 
     -   Registro de *logs* de contenedores en un volumen compartido con el *host*.
+
+        \newpage
 
 4.  Gestión de dependencias:
 
@@ -2526,7 +2544,7 @@ Finalmente, en la aplicación Shiny se hicieron las modificaciones para hacer el
 
 **Aprender**
 
-Usar la "búsqueda semántica" amplía considerablemente las posibilidades de obtener documentos que resulten de interés para el investigador, ya que no solo se queda circunscrita la recuperación de información a términos exactos, sino se extraen documentos que pueden estar altamente relacionados al tema de búsqueda. En la figura se presentan los resultados del *query* "problemas que enfrentan las mujeres".
+Usar la "búsqueda semántica" amplía considerablemente las posibilidades de obtener documentos que resulten de interés para el investigador, ya que no solo se queda circunscrita la recuperación de información a términos exactos, sino se extraen documentos que pueden estar altamente relacionados al tema de búsqueda. En la figura @ref(fig:resultsemantico) se presentan los resultados del *query* "problemas que enfrentan las mujeres".
 
 ```{r resultsemantico, echo=FALSE, fig.align='center', fig.cap='Resultados de Búsqueda Semántica', out.width="95%"}
 
@@ -2563,9 +2581,9 @@ A continuación se muestran los resultados de las distintas pruebas que fueron e
 
 Las pruebas funcionales constituyen la columna vertebral en la validación del software, evaluando su comportamiento según los requisitos que fueron especificados.
 
-Como se puede observar, en la tabla \@ref(tab:tablapruebasa) se muestran las pruebas de caja negra realizadas para evaluar si el sistema se comporta según lo que fue definido para cada caso de uso sin evaluar los procesos, sino de una forma concreta si la salida creada por el sistema se corresponde a lo descrito en los "casos de uso" en el ciclo \@ref(desarrollociclos4), "Ciclo Integración de Componentes de Software".
+Como se puede observar, en la Tabla \@ref(tab:tablapruebasa), se muestran las pruebas de caja negra realizadas para evaluar si el sistema se comporta según lo que fue definido para cada caso de uso sin evaluar los procesos, sino de una forma concreta si la salida creada por el sistema se corresponde a lo descrito en los "casos de uso" en el ciclo \@ref(desarrollociclos4), "Ciclo Integración de Componentes de Software".
 
-A continuación, en la tabla \@ref(tab:tablapruebasb) se muestran las pruebas de caja negra realizadas para evaluar si el sistema cumple con todos los requerimientos funcionales también definidos en ciclo precitado.
+A continuación, en la Tabla \@ref(tab:tablapruebasb), se muestran las pruebas de caja negra realizadas para evaluar si el sistema cumple con todos los requerimientos funcionales también definidos en ciclo precitado.
 
 \newpage
 
@@ -2651,7 +2669,7 @@ Al realizar el shinytest no se detectaron cuellos de botella ni tiempos de carga
 
 ### Pruebas de Usabilidad
 
-En estas pruebas se mide que el sistema disponga criterios de usabilidad:
+En estas pruebas se mide que el sistema disponga criterios de usabilidad.
 
 ```{r tablapruebasc, echo=FALSE}
 
@@ -2678,31 +2696,39 @@ flextable(df_pruebas_rf)%>%
 
 #### Interacción Usuario Sistema
 
-Se aplicó un instrumento a cinco usuarios que interactuaron con la aplicación web del SCSU, donde cada uno de estos tiene un perfil de ser profesor universitario de la Escuela de Computación o del Postgrado de Ciencias de la Computación de la Facultad de Ciencias de la Universidad Central de Venezuela.
+Esta prueba se diseñó pero no se pudo ejecutar, sin embargo, para trabajos futuros, quedan definido un instrumento que contiene las preguntas con las que se puede evaluar la "interacción usuario sistema".
 
-Se les preguntó:
+A continuación se enumeran las preguntas:
 
-1.  ¿Ha hecho búsquedas en el repositorio Saber UCV? (sí - no).
+1.  ¿Ha efectuado búsquedas en el repositorio Saber UCV? (sí - no).
 
 2.  ¿Pudo realizar una búsqueda en el SCSU? (sí - no).
 
-3.  ¿Los resultados de un query en el SCSU satisfacen sus expectativas ? (sí - no). se entiende por expectativa que los resultados se adaptan al *query* formulado.
+3.  ¿Los resultados de un *query* en el SCSU satisfacen sus expectativas ? (sí - no). se entiende por expectativa que los resultados respondan el *query* formulado.
 
-4.  ¿Comprendió las funcionalidades de cada pestaña del SCSU apoyándose en el menú de ayuda y en los tooltips? (sí - no).
+4.  ¿Comprendió las funcionalidades de cada pestaña del SCSU apoyándose en el menú de ayuda y en los *tooltips*? (sí - no).
 
-5.  En caso de ser negativa la respuesta anterior ¿Cuál funcionalidad no comprendió? (realizar *query*, inspeccionar documentos recuperados, generar mapas de conocimiento, inspeccionar mapas de conocimiento, cambiar cantidad de coocurrencias, acceder a menú ayuda).
+5.  En caso de ser negativa la respuesta anterior ¿Cuál funcionalidad no comprendió? Se incluyen las siguientes opciones para selección múltiple:
+
+    1.  Realizar *query*
+
+    2.  Inspeccionar documentos recuperados,
+
+    3.  Generar mapas de conocimiento,
+
+    4.  inspeccionar mapas de conocimiento,
+
+    5.  Cambiar cantidad de coocurrencias,
+
+    6.  Acceder a menú ayuda.
 
 6.  ¿Los colores de la interfaz del SCSU resultan agradables? (sí - no).
 
 Es importante señalar que, hacer preguntas sobre lo "intuitivo que resulta la interfaz" se omitieron en el diseño del instrumento, ya que el diseño de la aplicación no se considera que sea "intuitivo", al incorporar funcionalidades como la inspección de los mapas de conocimiento que son propias de este desarrollo.
 
-A continuación se muestran los resultados obtenidos con la aplicación de este instrumento:
+Los resultados de esta prueba se pueden representar mediante gráficos de torta como el que se aprecia en la Figura \@ref(fig:preguntaa)
 
-***las cifras y gráficos que se muestran a continuación no son los resultados reales. La encuesta se está procesando***
-
-1.  Para la pregunta ¿Ha hecho búsquedas en el repositorio Saber UCV? se muestran en la figura \@ref(fig:preguntaa) donde se aprecia que indica ????, lo que conlleva a que
-
-```{r preguntaa, echo=FALSE, fig.align='center', fig.cap='Pregunta: ¿Ha hecho búsquedas en el repositorio Saber UCV?',  out.width="35%"}
+```{r preguntaa, echo=FALSE, fig.align='center', fig.cap='Gráfico propuesto para mostrar resultados de aplicación del instrumento',  out.width="35%"}
 pregunta1 <- data.frame(respuesta=c('sí','no'),valor=c(45,55))
 
 labs <-paste0(pregunta1$respuesta," (", pregunta1$valor, " %)")
@@ -2719,116 +2745,13 @@ ggpie(pregunta1,
   theme(legend.position="none")
 ```
 
-2.  Los resultados recopilados para la pregunta ¿Pudo realizar una búsqueda en el SCSU? se muestran en la figura \@ref(fig:preguntab) donde se aprecia que indica ????, lo que conlleva a .
-
-```{r preguntab, echo=FALSE, fig.align='center', fig.cap='Pregunta: ¿Pudo realizar una búsqueda en el SCSU?',  out.width="35%"}
-
-pregunta2 <- data.frame(respuesta=c('sí','no'),valor=c(80,20))
-
-labs <-paste0(pregunta2$respuesta," (", pregunta2$valor, " %)")
-
-ggpie(pregunta2,
-      "valor",
-      label = labs,
-      lab.pos = "out",
-      # lab.font = "white",
-      fill = "respuesta",
-      # color = "white",
-      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
-  # theme(text=element_text(face='bold',size=20))+
-  theme(legend.position="none")
-```
-
-3.  Los resultados capturados para la pregunta ¿Los resultados de un query en el SCSU satisfacen sus expectativas ? se muestran en la figura \@ref(fig:preguntac) donde se aprecia que indica ????, lo que conlleva a .
-
-```{r preguntac, echo=FALSE, fig.align='center', fig.cap='Pregunta: ¿Los resultados de un query en el SCSU satisfacen sus expectativas? ',  out.width="35%"}
-
-pregunta3 <- data.frame(respuesta=c('sí','no'),valor=c(70,30))
-
-labs <-paste0(pregunta3$respuesta," (", pregunta3$valor, " %)")
-
-ggpie(pregunta3,
-      "valor",
-      label = labs,
-      lab.pos = "out",
-      # lab.font = "white",
-      fill = "respuesta",
-      # color = "white",
-      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
-  # theme(text=element_text(face='bold',size=20))+
-  theme(legend.position="none")
-```
-
-4.  Los resultados recopilados para la pregunta ¿Comprendió las funcionalidades de cada pestaña del SCSU apoyándose en el menú de ayuda y en los tooltips? se muestran en la figura \@ref(fig:preguntad) donde se aprecia que indica ????, lo que conlleva a.
-
-```{r preguntad, echo=FALSE, fig.align='center', fig.cap='Pregunta: ¿Comprendió las funcionalidades de cada pestaña del SCSU?',  out.width="35%"}
-
-pregunta4 <- data.frame(respuesta=c('sí','no'),valor=c(80,20))
-
-labs <-paste0(pregunta4$respuesta," (", pregunta4$valor, " %)")
-
-ggpie(pregunta4,
-      "valor",
-      label = labs,
-      lab.pos = "out",
-      # lab.font = "white",
-      fill = "respuesta",
-      # color = "white",
-      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
-  # theme(text=element_text(face='bold',size=20))+
-  theme(legend.position="none")
-```
-
-5.  Los resultados obtenidos para la pregunta ¿En caso de ser negativa la respuesta anterior cuál funcionalidad no comprendió? se muestran en la figura \@ref(fig:preguntae) donde se aprecia que indica ????, lo que conlleva a .
-
-```{r preguntae, echo=FALSE, fig.align='center', fig.cap='Pregunta condicionada: ¿Cuál funcionalidad no comprendió?',  out.width="35%"}
-
-pregunta5 <- data.frame(respuesta=c('interfaz',
-                                    'mapas de conocimiento',
-                                    'inspección mc',
-                                    'resultados recomendaciones'),valor=c(20,30,40,20))
-
-labs <-paste0(pregunta5$respuesta," (", pregunta5$valor, " %)")
-
-ggpie(pregunta5,
-      "valor",
-      label = labs,
-      lab.pos = "out",
-      # lab.font = "white",
-      fill = "respuesta",
-      # color = "white",
-      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
-  # theme(text=element_text(face='bold',size=20))+
-  theme(legend.position="none")
-```
-
-6.  Los resultados que se obtuvieron para la pregunta ¿Los colores de la interfaz del SCSU resultan agradables? ( se muestran en la figura \@ref(fig:preguntaf) donde se aprecia que indica ????, lo que conlleva a .
-
-```{r preguntaf, echo=FALSE, fig.align='center', fig.cap='Pregunta: ¿Los colores de la interfaz del SCSU resultan agradables? ',  out.width="35%"}
-pregunta6 <- data.frame(respuesta=c('sí','no'),valor=c(90,10))
-
-labs <-paste0(pregunta6$respuesta," (", pregunta6$valor, " %)")
-
-ggpie(pregunta6,
-      "valor",
-      label = labs,
-      lab.pos = "out",
-      # lab.font = "white",
-      fill = "respuesta",
-      # color = "white",
-      palette = c("#00AFBB", "#E7B800", "#FC4E07","#4785FF") )+
-  # theme(text=element_text(face='bold',size=20))+
-  theme(legend.position="none")
-
-```
-
 ### Validación de las Clasificaciones
 
 Para hacer la validación sobre las clasificaciones por área de conocimiento, aplicación del Algoritmo Smith Waterman y para el nombre del tutor, se adoptó el siguiente método:
 
-1.  **Muestra aleatoria:** del total de trabajos que son investigaciones de pregrado y postgrado, se tomó una muestra aleatoria del 1 % de los trabajos, equivalente a 100 investigaciones. La cantidad de trabajos por categoría se observa en la figura \@ref(fig:muestracategoria).
+1.  **Muestra aleatoria:** del total de trabajos que son investigaciones de pregrado y postgrado, se tomó una muestra aleatoria del 1 % de los trabajos, equivalente a 100 investigaciones. La cantidad de trabajos por categoría se observa en la Figura \@ref(fig:muestracategoria).
 
-    ```{r muestracategoria,echo=FALSE, fig.align='center', fig.cap='Muestra- Seleccionados por categoría',  out.width="50%" }
+    ```{r muestracategoria,echo=FALSE, fig.align='center', fig.cap='Muestra- Seleccionados por categoría',  out.width="75%" }
     df_muesta_clasificacion <- readRDS('data/muestra_clasificacion.rds')
 
     df_muesta_clasificacion_totales <- df_muesta_clasificacion%>%
@@ -2863,9 +2786,13 @@ El resultado de exactitud obtenido para el proceso de categorización fue 98% , 
 
 ### Relevancia {#pruebas3}
 
-Para realizar esta prueba, en una adaptación de lo revisado en \@ref(relevancia), "Relevancia", a un grupo de 4 expertos en ciencias de la computación se les pidió que evaluaran si cada uno de los resultados obtenidos de cuatro *querys* en el SCSU eran relevantes (de interés). Los datos de la prueba se muestran en la tabla a continuación compuesta por las columas: término del query, la cantidad de resultados obtenidos por query en SCSU, cantidad de documentos relevantes según el juicio de experto (cifra promedio por query) , *accuracy* obtenido por el SCSU (cifra promedio por query).
+La prueba de relevancia no se pudo ejecutar y queda pendiente para trabajos futuros, sin embargo, a continuación se detallan los aspectos necesarios a cumplir para poder llevarla a cabo, así como su contenido.
 
-***las cifras y gráficos que se muestran a continuación no son los resultados reales. La encuesta se está procesando***
+Para realizar esta prueba, en una adaptación de lo revisado en \@ref(relevancia), "Relevancia", a un grupo mayor a 5 expertos en ciencias de la computación se les pedirá que evalúen si cada uno de los resultados[^05-desarrollo-11] obtenidos con cuatro *queries* en el SCSU son relevantes (de interés).
+
+[^05-desarrollo-11]: Se entiende por "resultado" la lista que contiene los distintos títulos de los trabajos que son recuperados ante un *query.*
+
+Los datos de la prueba, se muestran en la tabla \@ref(tab:relpr), que está compuesta por las columnas: término del *query*, la cantidad de resultados obtenidos por *query* en SCSU, cantidad de documentos relevantes según el juicio de experto (cifra promedio por *query*) , *accuracy* obtenido por el SCSU (cifra promedio por *query*).
 
 ```{r,relpr,echo=FALSE}
 # fig.cap='Datos Prueba de Relevancia'
@@ -2877,10 +2804,11 @@ terminos <- c('Teléfono inteligente',
 
 resultados <- c(17,7,9,17)
 
+
 df_terminos_relevancia <- data.frame(col1=terminos ,
                                      col2=resultados,
-                                     col3=resultados,
-                                     col4='100 %')
+                                     col3='por determinar',
+                                     col4='por determinar')
 
 
 flextable(df_terminos_relevancia)%>%
@@ -2904,14 +2832,24 @@ flextable(df_terminos_relevancia)%>%
 
 ```
 
-Las cifras obtenidas indican que el desempeño del sistema presenta una exactitud (*accuracy*) promedio de \_\_\_\_.
+Los títulos de los trabajos obtenidos ante cada *query,* que deberán ser validados cada uno como relevantes o no, por el juicio de un experto, se encuentran detallados en un libro de excel alojado en el enlace <https://github.com/javendaXgh/TG/tree/main/pruebas_validacion>, donde en cada hoja está contenido los términos del *query* y el listado de documentos, como se puede apreciar en la Figura \@ref(fig:pruebaquery). Igualmente dicho libro contiene las instrucciones a seguir para efectuar el vaciado de la información.
 
-Es necesario indicar que, procedimentalmente para hacer esta prueba, se realizaron las siguientes consideraciones:
+```{r pruebaquery,echo=FALSE, fig.align='center', fig.cap='Ejemplo de lista de resultados de un query', out.width="95%" }
 
-1.  La prueba se hizo exclusivamente con documentos del subcojunto de trabajos de grado catalogados como pertenecientes a la Escuela y el Postgrado de Ciencias de la Computación, ya que sería imposible abordar las distintas áreas de conocimiento que conforman el corpus.
+knitr::include_graphics("images/05-desarrollo/prueba/pruebaquery.png")
 
-2.  En lo relativo a la selección de los términos de los *querys*, estos se determinaron por la extracción de datos de los resúmenes de los trabajos mediante el método *Rake*, revisado anteriormente en \@ref(fig:compurake), "Prototipo del SCSU".
+```
 
-3.  En lo referente a la válidez de usar *querys* de dos términos, esto se sustenta en que diversos estudios indican que inicialmente las consultas en los sistemas de recuperación de información, en el 80% de los casos, están compuestos por menos de tres palabras [@clarke2000].
+Al tener los datos de esta prueba se podrá obtener la métrica "exactitud" (*accuracy*) de SCSU .
 
-Con esta prueba se da por concluido el desarrollo de la Solución.
+Es necesario indicar que, procedimentalmente para hacer el diseño de esta prueba, se realizaron las siguientes consideraciones:
+
+1.  La prueba se hace exclusivamente con documentos del subcojunto de trabajos de grado catalogados como pertenecientes a la Escuela y el Postgrado de Ciencias de la Computación, ya que sería imposible abordar las distintas áreas de conocimiento que conforman el corpus en cuanto a conseguir los expertos de las distintas áreas de conocimiento.
+
+2.  En lo relativo a la selección de los términos de los *queries*, estos se determinaron por la extracción de datos de los resúmenes de los trabajos, mediante el método *Rake*, revisado anteriormente en \@ref(fig:compurake), "Prototipo del SCSU".
+
+3.  En lo referente a la válidez de usar *queries* de dos términos, esto se sustenta en que diversos estudios indican que inicialmente las consultas en los sistemas de recuperación de información, en el 80% de los casos, están compuestos por menos de tres palabras [@clarke2000].
+
+Igualmente, la propuesta es que la prueba sea aplicada a participantes con el siguiente perfil: profesor universitario o investigador de la Escuela de Computación o del Postgrado de Ciencias de la Computación de la Facultad de Ciencias de la Universidad Central de Venezuela.
+
+Con la descripción de estas pruebas se da por concluido el desarrollo de la solución.

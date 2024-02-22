@@ -41,14 +41,14 @@ bookdown::pdf_book:
     before_body: latex/portada.tex
     in_header: latex/preamble.tex
   latex_engine: xelatex
-  citation_package: natbib
+  biblio-style: apa
   keep_tex: yes
   fig_width: 7 #default
   fig_height: 5
   fontsize: 12pt
   number_sections: true
   self_contained: true
-  toc_depth: 5
+  toc_depth: 3
   toc: true
   lot: true
   lof: true

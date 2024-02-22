@@ -10,7 +10,7 @@ En este capítulo se indican los métodos de trabajo que se usaron para el desar
 
 En este método se fomenta la cultura de mejora continua e incremental al identificar cuellos de botella y la limitación del trabajo en curso para aumentar la eficiencia y la productividad. Gracias a su enfoque basado en la colaboración, flexibilidad y respuesta rápida a los cambios, puede considerarse que está dentro de las metodologías ágiles.
 
-En tal perspectiva, mediante la visualización del flujo de trabajo en un tablero, que se aprecia en la figura \@ref(fig:metkanban), se puede facilitar la gestión del proyecto desde la concepción de una idea hasta su implementación y entrega. En el caso del desarrollo de software, facilita la toma de decisiones informadas y promueve la transparencia al proporcionar una visualización clara de las tareas y actividades involucradas [@stephens2015].
+En tal perspectiva, mediante la visualización del flujo de trabajo en un tablero, que se aprecia en la Figura \@ref(fig:metkanban), se puede facilitar la gestión del proyecto desde la concepción de una idea hasta su implementación y entrega. En el caso del desarrollo de software, facilita la toma de decisiones informadas y promueve la transparencia al proporcionar una visualización clara de las tareas y actividades involucradas [@stephens2015].
 
 ```{r, metkanban, echo=FALSE, out.width='70%',fig.cap='Representación de un tablero según el método Kanban',fig.align='center'}
 knitr::include_graphics("images/04-metodologia/01_kanban.png")

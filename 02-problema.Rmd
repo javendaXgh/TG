@@ -6,7 +6,7 @@ bibliography: references.bib
 
 ## Descripción del Problema {#desproblema}
 
-La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad universitaria. Ingresando a la dirección web <http://saber.ucv.ve/>, se permite "el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV". ¿Qué es Saber UCV?. (2023). Saber UCV. [http://saber.ucv.ve](http://saber.ucv.ve/){.uri}.
+La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad universitaria. Ingresando a la dirección web <http://saber.ucv.ve/>, se permite "el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV". ¿Qué es Saber UCV? (2023). Saber UCV. [http://saber.ucv.ve](http://saber.ucv.ve/){.uri}.
 
 En tal sentido, los usuarios interesados en hacer búsquedas sobre la información académica alojada en el repositorio, pueden efectuarlas introduciendo un texto y aplicando filtros sobre distintas categorías como:
 
@@ -24,7 +24,7 @@ Dentro del contexto expuesto y motivado a que es viable realizar procesos para e
 
 En esta investigación el corpus que se conformará esta compuesto por los documentos alojados en Saber UCV que disponen de las siguientes categorías: trabajos de grado de pregrado, trabajos de grado de maestría, tesis doctorales. Igualmente se incluyen documentos que tienen la clasificación "Otros" constituida por los: trabajos de grado especiales y trabajos de ascenso.
 
-Adicionalmente, en la implementación del ciclo de desarrollo \@ref(desarrollociclos4) se incluyen dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes Saber U.L.A., para mostrar posibles ampliaciones en la ingesta de distintas publicaciones y fuentes de documentos dentro del SCSU.
+Adicionalmente, en la implementación del ciclo de desarrollo \@ref(desarrollociclos4) se incluyen dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes "Saber U.L.A.", para mostrar posibles ampliaciones en la ingesta de distintas publicaciones y fuentes de documentos dentro del SCSU.
 
 Sin embargo, posibles incorporaciones de otras fuentes de datos implican procesos de revisión en las estructuras de los datos, ya que por los momentos SCSU no está diseñado para incorporaciones de datos adicionales, sin la modificación de los códigos con los que se extraen los datos desde las páginas web donde se alojan los documentos.
 
@@ -78,7 +78,7 @@ Como se observa, si bien las investigaciones mencionadas se relacionan al tema a
 
 ## Descripción de la Solución {#descripcion}
 
-La solución que se propone es un sistema de recuperación de información con diversos componentes. Inicialmente, de los trabajos mencionados en \@ref(delimitacion), mediante técnicas de extracción de nodos de archivos HTML´s, se obtienen de Saber UCV los siguientes datos de cada investigación: el título, el nombre del autor, las palabras clave, la fecha de publicación, el resumen y el enlace de descarga del documento que soporta el trabajo de grado.
+La solución que se propone es un sistema de recuperación de información con diversos componentes. Inicialmente, de los trabajos mencionados en \@ref(delimitacion), mediante técnicas de extracción de nodos de archivos HTML, se obtienen de Saber UCV los siguientes datos de cada investigación: el título, el nombre del autor, las palabras clave, la fecha de publicación, el resumen y el enlace de descarga del documento que soporta el trabajo de grado.
 
 Posteriormente, el sistema descarga el documento anexo a cada investigación en formato PDF, DOCX o DOC, da lectura y clasifica la información del nombre de la facultad, la escuela o postgrado, donde fue realizado el trabajo, así como el nombre del tutor.
 
@@ -90,7 +90,7 @@ Adicionalmente, el sistema ofrece recomendaciones de documentos que presentan si
 
 En el mismo sentido, la solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV y se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura "modelo-vista-controlador".
 
-En la figura \@ref(fig:arquitecturasri) se muestra un diagrama con la arquitectura MVC propuesta para el SCSU, la cual se detalla en \@ref(desarrollo), "Capítulo Desarrollo de la Solución".
+En la Figura \@ref(fig:arquitecturasri), se muestra un diagrama con la arquitectura MVC propuesta para el SCSU, la cual se detalla en \@ref(desarrollo), "Capítulo Desarrollo de la Solución".
 
 ```{r, arquitecturasri, echo=FALSE, out.width='90%',fig.cap='Arquitectura del Sistema',fig.align='center'}
 knitr::include_graphics("images/05-desarrollo/MVC9.png")
@@ -108,7 +108,7 @@ Implementar un sistema de recuperación de información (*information retrieval 
 
 1.  Conformar un corpus que contenga el cien por ciento de los resúmenes, títulos, palabras claves y nombres de autor, con todos los documentos de tesis doctorales y trabajos de grado de pregrado, maestría y otros documentos alojados en SABER.UCV.
 
-2.  Clasificar al menos el noventa por ciento de los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer en el 80 por ciento de los documentos el nombre completo del tutor.
+2.  Clasificar al menos el noventa por ciento de los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer en el ochenta por ciento de los documentos el nombre completo del tutor.
 
 3.  Crear una aplicación web que permita realizar las "búsquedas de texto completo" o "búsqueda semántica" sobre el corpus conformado, donde se establezcan criterios de relevancia para presentar los resultados de la búsqueda y se representen los "mapas de conocimiento".
 
