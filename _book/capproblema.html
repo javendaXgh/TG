@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="introduccion.html"/>
 <link rel="next" href="teorico.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -163,9 +163,10 @@ div.csl-indent {
 <li><a href="https://tgucv.netlify.app">SCSU</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Resumen</a></li>
+<li class="chapter" data-level="1" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#estructura"><i class="fa fa-check"></i><b>1.1</b> Estructura</a></li>
+<li class="chapter" data-level="1.1" data-path="introduccion.html"><a href="introduccion.html#estructura"><i class="fa fa-check"></i><b>1.1</b> Estructura</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="capproblema.html"><a href="capproblema.html"><i class="fa fa-check"></i><b>2</b> El Problema</a>
 <ul>
@@ -206,7 +207,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.3.1.1" data-path="teorico.html"><a href="teorico.html#token"><i class="fa fa-check"></i><b>3.3.1.1</b> Tokenizador</a></li>
 <li class="chapter" data-level="3.3.1.2" data-path="teorico.html"><a href="teorico.html#pos"><i class="fa fa-check"></i><b>3.3.1.2</b> Etiquetado de Partes del Discurso <em>(Part of speech tagging-POS)</em></a></li>
-<li class="chapter" data-level="3.3.1.3" data-path="teorico.html"><a href="teorico.html#steaming"><i class="fa fa-check"></i><b>3.3.1.3</b> Stemming</a></li>
+<li class="chapter" data-level="3.3.1.3" data-path="teorico.html"><a href="teorico.html#steaming"><i class="fa fa-check"></i><b>3.3.1.3</b> <em>Stemming</em></a></li>
 <li class="chapter" data-level="3.3.1.4" data-path="teorico.html"><a href="teorico.html#lemma"><i class="fa fa-check"></i><b>3.3.1.4</b> Lematización</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3.2" data-path="teorico.html"><a href="teorico.html#textmin"><i class="fa fa-check"></i><b>3.3.2</b> Minería de Texto</a>
@@ -328,7 +329,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Capítulo 2</span> El Problema<a href="capproblema.html#capproblema" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="desproblema" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Descripción del Problema<a href="capproblema.html#desproblema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad universitaria. Ingresando a la dirección web <a href="http://saber.ucv.ve/" class="uri">http://saber.ucv.ve/</a>, se permite “el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV”. ¿Qué es Saber UCV?. (2023). Saber UCV. <a href="http://saber.ucv.ve/" class="uri">http://saber.ucv.ve</a>.</p>
+<p>La Universidad Central de Venezuela cuenta con un repositorio digital de documentos que se llama Saber UCV donde se alojan distintas investigaciones realizadas por la comunidad universitaria. Ingresando a la dirección web <a href="http://saber.ucv.ve/" class="uri">http://saber.ucv.ve/</a>, se permite “el acceso libre a la producción intelectual, materiales y recursos académicos elaborados en las áreas de docencia, investigación y difusión de la UCV”. ¿Qué es Saber UCV? (2023). Saber UCV. <a href="http://saber.ucv.ve/" class="uri">http://saber.ucv.ve</a>.</p>
 <p>En tal sentido, los usuarios interesados en hacer búsquedas sobre la información académica alojada en el repositorio, pueden efectuarlas introduciendo un texto y aplicando filtros sobre distintas categorías como:</p>
 <ul>
 <li><p>Seleccionar “comunidades”, bien sean artículos de investigación, trabajos doctorales, maestrías, especialización y pregrado, guías de estudio y revistas, entre otras categorías.</p></li>
@@ -341,7 +342,7 @@ div.csl-indent {
 <div id="delimitacion" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Delimitación del Problema<a href="capproblema.html#delimitacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En esta investigación el corpus que se conformará esta compuesto por los documentos alojados en Saber UCV que disponen de las siguientes categorías: trabajos de grado de pregrado, trabajos de grado de maestría, tesis doctorales. Igualmente se incluyen documentos que tienen la clasificación “Otros” constituida por los: trabajos de grado especiales y trabajos de ascenso.</p>
-<p>Adicionalmente, en la implementación del ciclo de desarrollo <a href="desarrollo.html#desarrollociclos4">5.3.3</a> se incluyen dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes Saber U.L.A., para mostrar posibles ampliaciones en la ingesta de distintas publicaciones y fuentes de documentos dentro del SCSU.</p>
+<p>Adicionalmente, en la implementación del ciclo de desarrollo <a href="desarrollo.html#desarrollociclos4">5.3.3</a> se incluyen dos revistas: una científica (Gestión I+D) y la otra del área de filosofía (Episteme) de la Universidad Central de Venezuela. También se añade una publicación del repositorio digital de la Universidad de los Andes “Saber U.L.A.”, para mostrar posibles ampliaciones en la ingesta de distintas publicaciones y fuentes de documentos dentro del SCSU.</p>
 <p>Sin embargo, posibles incorporaciones de otras fuentes de datos implican procesos de revisión en las estructuras de los datos, ya que por los momentos SCSU no está diseñado para incorporaciones de datos adicionales, sin la modificación de los códigos con los que se extraen los datos desde las páginas web donde se alojan los documentos.</p>
 </div>
 <div id="antecedentes" class="section level2 hasAnchor" number="2.3">
@@ -353,13 +354,13 @@ div.csl-indent {
 </div>
 <div id="descripcion" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Descripción de la Solución<a href="capproblema.html#descripcion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La solución que se propone es un sistema de recuperación de información con diversos componentes. Inicialmente, de los trabajos mencionados en <a href="capproblema.html#delimitacion">2.2</a>, mediante técnicas de extracción de nodos de archivos HTML´s, se obtienen de Saber UCV los siguientes datos de cada investigación: el título, el nombre del autor, las palabras clave, la fecha de publicación, el resumen y el enlace de descarga del documento que soporta el trabajo de grado.</p>
+<p>La solución que se propone es un sistema de recuperación de información con diversos componentes. Inicialmente, de los trabajos mencionados en <a href="capproblema.html#delimitacion">2.2</a>, mediante técnicas de extracción de nodos de archivos HTML, se obtienen de Saber UCV los siguientes datos de cada investigación: el título, el nombre del autor, las palabras clave, la fecha de publicación, el resumen y el enlace de descarga del documento que soporta el trabajo de grado.</p>
 <p>Posteriormente, el sistema descarga el documento anexo a cada investigación en formato PDF, DOCX o DOC, da lectura y clasifica la información del nombre de la facultad, la escuela o postgrado, donde fue realizado el trabajo, así como el nombre del tutor.</p>
 <p>En consecuencia, todos los datos obtenidos son sometidos a técnicas del estado del arte en el procesamiento del lenguaje natural y minería de texto para conformar un corpus anotado y un índice invertido. Con los textos se generan, mediante un modelo de lenguaje preentreado, vectores de <em>embeddings</em>. Posteriormente, todos los datos obtenidos se almacenan en una base de datos indexada.</p>
 <p>Igualmente, el sistema cuenta con una aplicación web que permite a los usuarios desde un navegador, explorar extensivamente el corpus anotado, realizando consultas de texto y aplicando diversos filtros, como la selección de la jerarquía, el área académica y el rango de fechas. La relevancia de los resultados recuperados se determina mediante una función de ponderación y los documentos se presentan de manera priorizada para mejorar la experiencia del usuario.</p>
 <p>Adicionalmente, el sistema ofrece recomendaciones de documentos que presentan similitud con aquellos que fueron recuperados en el proceso anterior. También representa los “mapas de conocimiento”, según una adaptación <em>ad-hoc</em> hecha para la implementación del SCSU basada en el trabajo de <span class="citation">(<a href="#ref-dueñas2011">Dueñas, Rojas, y Morales 2011</a>)</span> donde mediante una representación de grafos en formato interactivo, se podrán aplicar filtros sobre palabras coocurrentes en los resultados de la búsqueda.</p>
 <p>En el mismo sentido, la solución implementada cuenta con procesos automatizados de actualización para incorporar las nuevas investigaciones que sean añadidas al repositorio Saber UCV y se soporta en un sistema distribuido conformado por contenedores que son gestionados por un orquestador con la arquitectura “modelo-vista-controlador”.</p>
-<p>En la figura <a href="capproblema.html#fig:arquitecturasri">2.1</a> se muestra un diagrama con la arquitectura MVC propuesta para el SCSU, la cual se detalla en <a href="desarrollo.html#desarrollo">5</a>, “Capítulo Desarrollo de la Solución”.</p>
+<p>En la Figura <a href="capproblema.html#fig:arquitecturasri">2.1</a>, se muestra un diagrama con la arquitectura MVC propuesta para el SCSU, la cual se detalla en <a href="desarrollo.html#desarrollo">5</a>, “Capítulo Desarrollo de la Solución”.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:arquitecturasri"></span>
 <img src="images/05-desarrollo/MVC9.png" alt="Arquitectura del Sistema" width="90%" />
 <p class="caption">
@@ -378,7 +379,7 @@ Figura 2.1: Arquitectura del Sistema
 <h3><span class="header-section-number">2.5.2</span> Objetivos Específicos<a href="capproblema.html#objeespe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>Conformar un corpus que contenga el cien por ciento de los resúmenes, títulos, palabras claves y nombres de autor, con todos los documentos de tesis doctorales y trabajos de grado de pregrado, maestría y otros documentos alojados en SABER.UCV.</p></li>
-<li><p>Clasificar al menos el noventa por ciento de los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer en el 80 por ciento de los documentos el nombre completo del tutor.</p></li>
+<li><p>Clasificar al menos el noventa por ciento de los trabajos de grado alojados en Saber UCV por área académica donde se haya realizado la investigación y extraer en el ochenta por ciento de los documentos el nombre completo del tutor.</p></li>
 <li><p>Crear una aplicación web que permita realizar las “búsquedas de texto completo” o “búsqueda semántica” sobre el corpus conformado, donde se establezcan criterios de relevancia para presentar los resultados de la búsqueda y se representen los “mapas de conocimiento”.</p></li>
 <li><p>Recomendar investigaciones contenidas en el corpus que presenten alguna similitud con cada documento que sea recuperado por el sistema.</p></li>
 </ol>
@@ -421,7 +422,7 @@ Sánchez, J. 2008. <span>«Elaboración de un prototipo de buscador de documento
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduccion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="teorico.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

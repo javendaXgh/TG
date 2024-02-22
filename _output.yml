@@ -35,7 +35,6 @@ bookdown::gitbook:
       whatsapp: false
       all: ['twitter', 'linkedin','whatsapp']
 
-
 bookdown::pdf_book:
   includes:
     before_body: latex/portada.tex
